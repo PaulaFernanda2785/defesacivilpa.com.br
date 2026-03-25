@@ -167,7 +167,13 @@ $alertasSemArea = max(0, $totalAtivos - $totalAlertasMapeados);
 $monitoramentoVigencia = $totalExpirados > 0
     ? $totalExpirados . ' alertas ativos exigem revisao de vigencia imediata.'
     : 'Todos os alertas ativos estao dentro da vigencia registrada.';
+$cssBasePainelPath = __DIR__ . '/../assets/css/painel.css';
+$cssAlertasFormPath = __DIR__ . '/../assets/css/pages/alertas-form.css';
+$cssUsuariosListarPath = __DIR__ . '/../assets/css/pages/usuarios-listar.css';
 $cssPainelPath = __DIR__ . '/../assets/css/pages/painel.css';
+$cssBasePainelVersion = (string) ((int) @filemtime($cssBasePainelPath));
+$cssAlertasFormVersion = (string) ((int) @filemtime($cssAlertasFormPath));
+$cssUsuariosListarVersion = (string) ((int) @filemtime($cssUsuariosListarPath));
 $cssPainelVersion = (string) ((int) @filemtime($cssPainelPath));
 $chartLitePath = __DIR__ . '/../assets/vendor/chartjs/chart-lite.js';
 $chartLiteVersion = (string) ((int) @filemtime($chartLitePath));
@@ -182,9 +188,9 @@ $chartLiteVersion = (string) ((int) @filemtime($chartLitePath));
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo.cbmpa.ico">
 
 <link rel="stylesheet" href="/assets/css/base.css">
-<link rel="stylesheet" href="/assets/css/painel.css">
-<link rel="stylesheet" href="/assets/css/pages/alertas-form.css">
-<link rel="stylesheet" href="/assets/css/pages/usuarios-listar.css">
+<link rel="stylesheet" href="/assets/css/painel.css?v=<?= htmlspecialchars($cssBasePainelVersion, ENT_QUOTES, 'UTF-8') ?>">
+<link rel="stylesheet" href="/assets/css/pages/alertas-form.css?v=<?= htmlspecialchars($cssAlertasFormVersion, ENT_QUOTES, 'UTF-8') ?>">
+<link rel="stylesheet" href="/assets/css/pages/usuarios-listar.css?v=<?= htmlspecialchars($cssUsuariosListarVersion, ENT_QUOTES, 'UTF-8') ?>">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="/assets/css/pages/painel.css?v=<?= htmlspecialchars($cssPainelVersion, ENT_QUOTES, 'UTF-8') ?>">
 </head>

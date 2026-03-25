@@ -379,6 +379,18 @@ foreach ($analises as &$analise) {
     }
 }
 unset($analise);
+$cssPainelBasePath = __DIR__ . '/assets/css/painel.css';
+$cssPainelPagePath = __DIR__ . '/assets/css/pages/painel.css';
+$cssAlertasFormPath = __DIR__ . '/assets/css/pages/alertas-form.css';
+$cssAnalisesIndexPath = __DIR__ . '/assets/css/pages/analises-index.css';
+$cssMapaMultirriscosPath = __DIR__ . '/assets/css/mapa_multirriscos.css';
+$cssLoginPath = __DIR__ . '/assets/css/login.css';
+$cssPainelBaseVersion = (string) ((int) @filemtime($cssPainelBasePath));
+$cssPainelPageVersion = (string) ((int) @filemtime($cssPainelPagePath));
+$cssAlertasFormVersion = (string) ((int) @filemtime($cssAlertasFormPath));
+$cssAnalisesIndexVersion = (string) ((int) @filemtime($cssAnalisesIndexPath));
+$cssMapaMultirriscosVersion = (string) ((int) @filemtime($cssMapaMultirriscosPath));
+$cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -391,13 +403,13 @@ unset($analise);
 <link rel="preconnect" href="https://unpkg.com" crossorigin>
 <link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin>
 <link rel="stylesheet" href="/assets/css/base.css">
-<link rel="stylesheet" href="/assets/css/painel.css">
-<link rel="stylesheet" href="/assets/css/pages/painel.css">
-<link rel="stylesheet" href="/assets/css/pages/alertas-form.css">
-<link rel="stylesheet" href="/assets/css/pages/analises-index.css">
-<link rel="stylesheet" href="/assets/css/mapa_multirriscos.css">
+<link rel="stylesheet" href="/assets/css/painel.css?v=<?= htmlspecialchars($cssPainelBaseVersion, ENT_QUOTES, 'UTF-8') ?>">
+<link rel="stylesheet" href="/assets/css/pages/painel.css?v=<?= htmlspecialchars($cssPainelPageVersion, ENT_QUOTES, 'UTF-8') ?>">
+<link rel="stylesheet" href="/assets/css/pages/alertas-form.css?v=<?= htmlspecialchars($cssAlertasFormVersion, ENT_QUOTES, 'UTF-8') ?>">
+<link rel="stylesheet" href="/assets/css/pages/analises-index.css?v=<?= htmlspecialchars($cssAnalisesIndexVersion, ENT_QUOTES, 'UTF-8') ?>">
+<link rel="stylesheet" href="/assets/css/mapa_multirriscos.css?v=<?= htmlspecialchars($cssMapaMultirriscosVersion, ENT_QUOTES, 'UTF-8') ?>">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link rel="stylesheet" href="/assets/css/login.css">
+<link rel="stylesheet" href="/assets/css/login.css?v=<?= htmlspecialchars($cssLoginVersion, ENT_QUOTES, 'UTF-8') ?>">
 </head>
 <body class="public-home-page">
 <header class="public-topbar">
@@ -1123,18 +1135,33 @@ unset($analise);
 
 <?php if (!is_array($usuarioAtivo) || empty($usuarioAtivo['nome'])): ?>
     <div id="modalLogin" class="modal">
-        <div class="modal-content public-auth-modal">
+        <div class="modal-content public-auth-modal public-auth-shell">
             <button type="button" class="public-modal-close" data-close-modal="modalLogin" aria-label="Fechar login">&times;</button>
             <div class="public-auth-header">
                 <div class="public-auth-copy">
                     <span class="public-access-kicker">Acesso autenticado</span>
                     <h3>Entrar no ambiente operacional</h3>
                     <p>Use seu acesso institucional para abrir as telas internas, paineis detalhados e rotinas operacionais protegidas.</p>
+
+                    <div class="public-auth-chip-row">
+                        <span class="public-auth-chip">Acesso interno</span>
+                        <span class="public-auth-chip">Perfis autorizados</span>
+                        <span class="public-auth-chip">Sessao com timeout</span>
+                    </div>
                 </div>
 
-                <div class="public-auth-highlight">
-                    <strong>Ambiente protegido</strong>
-                    <span>O visitante continua com acesso visual ao mapa, ao relatorio consolidado e aos PDFs dos alertas ativos.</span>
+                <div class="public-auth-summary-grid">
+                    <article class="public-auth-summary-card public-auth-summary-card-primary">
+                        <span class="public-auth-summary-label">Ambiente</span>
+                        <strong class="public-auth-summary-value">Painel protegido</strong>
+                        <span class="public-auth-summary-note">Cadastro, edicao e gestao de alertas exigem autenticacao institucional.</span>
+                    </article>
+
+                    <article class="public-auth-summary-card public-auth-summary-card-neutral">
+                        <span class="public-auth-summary-label">Sessao</span>
+                        <strong class="public-auth-summary-value"><?= (int) (Session::inactivityTimeout() / 60) ?> min</strong>
+                        <span class="public-auth-summary-note">Tempo medio de inatividade antes do encerramento automatico da sessao.</span>
+                    </article>
                 </div>
             </div>
 
@@ -1142,17 +1169,19 @@ unset($analise);
                 <div class="public-banner public-banner-danger public-auth-banner"><?= htmlspecialchars($erro, ENT_QUOTES, 'UTF-8') ?></div>
             <?php endif; ?>
 
-            <form method="post" class="public-auth-form">
+            <form method="post" class="public-auth-form public-auth-form-panel">
                 <?= Csrf::inputField() ?>
 
-                <div class="public-auth-field">
-                    <label for="login-email">E-mail institucional</label>
-                    <input type="email" id="login-email" name="email" value="<?= htmlspecialchars($emailInformado, ENT_QUOTES, 'UTF-8') ?>" required autocomplete="username">
-                </div>
+                <div class="public-auth-form-grid">
+                    <div class="public-auth-field">
+                        <label for="login-email">E-mail institucional</label>
+                        <input type="email" id="login-email" name="email" value="<?= htmlspecialchars($emailInformado, ENT_QUOTES, 'UTF-8') ?>" required autocomplete="username">
+                    </div>
 
-                <div class="public-auth-field">
-                    <label for="login-senha">Senha</label>
-                    <input type="password" id="login-senha" name="senha" required autocomplete="current-password">
+                    <div class="public-auth-field">
+                        <label for="login-senha">Senha</label>
+                        <input type="password" id="login-senha" name="senha" required autocomplete="current-password">
+                    </div>
                 </div>
 
                 <div class="public-auth-actions">
@@ -1161,9 +1190,12 @@ unset($analise);
                 </div>
             </form>
 
-            <div class="public-auth-support">
-                <strong>Suporte de acesso</strong>
-                <a href="mailto:<?= htmlspecialchars($appConfig['support_email'], ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($appConfig['support_email'], ENT_QUOTES, 'UTF-8') ?></a>
+            <div class="public-auth-support-card">
+                <div class="public-auth-support">
+                    <strong>Suporte de acesso</strong>
+                    <span>Solicite suporte institucional para criacao, ajuste de perfil ou recuperacao de acesso.</span>
+                    <a href="mailto:<?= htmlspecialchars($appConfig['support_email'], ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($appConfig['support_email'], ENT_QUOTES, 'UTF-8') ?></a>
+                </div>
             </div>
         </div>
     </div>

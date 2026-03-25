@@ -49,7 +49,11 @@ $textoSecaoConta = $isEdicaoPropriaSenha
 $textoPermissaoSenha = ($usuarioLogado['perfil'] ?? '') === 'ADMIN'
     ? 'Administradores podem redefinir senhas de outras contas. Perfis nao administrativos so podem redefinir a propria senha.'
     : 'Voce esta autorizado a redefinir apenas a propria senha dentro deste modulo.';
+$cssUsuariosListarPath = __DIR__ . '/../../assets/css/pages/usuarios-listar.css';
+$cssUsuariosFormPath = __DIR__ . '/../../assets/css/pages/usuarios-form.css';
 $cssUsuariosSenhaPath = __DIR__ . '/../../assets/css/pages/usuarios-senha.css';
+$cssUsuariosListarVersion = (string) ((int) @filemtime($cssUsuariosListarPath));
+$cssUsuariosFormVersion = (string) ((int) @filemtime($cssUsuariosFormPath));
 $cssUsuariosSenhaVersion = (string) ((int) @filemtime($cssUsuariosSenhaPath));
 
 $mensagensErro = [
@@ -72,8 +76,8 @@ $mensagemErro = $mensagensErro[$erroCodigo] ?? '';
 <link rel="stylesheet" href="/assets/css/base.css">
 <link rel="stylesheet" href="/assets/css/painel.css">
 <link rel="stylesheet" href="/assets/css/pages/alertas-form.css">
-<link rel="stylesheet" href="/assets/css/pages/usuarios-listar.css">
-<link rel="stylesheet" href="/assets/css/pages/usuarios-form.css">
+<link rel="stylesheet" href="/assets/css/pages/usuarios-listar.css?v=<?= htmlspecialchars($cssUsuariosListarVersion, ENT_QUOTES, 'UTF-8') ?>">
+<link rel="stylesheet" href="/assets/css/pages/usuarios-form.css?v=<?= htmlspecialchars($cssUsuariosFormVersion, ENT_QUOTES, 'UTF-8') ?>">
 <link rel="stylesheet" href="/assets/css/pages/usuarios-senha.css?v=<?= htmlspecialchars($cssUsuariosSenhaVersion, ENT_QUOTES, 'UTF-8') ?>">
 </head>
 

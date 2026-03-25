@@ -1,0 +1,88 @@
+.usuarios-editar-shell {
+    gap: 24px;
+}
+
+.usuarios-editar-shell #edicao-dados,
+.usuarios-editar-shell #edicao-acesso {
+    scroll-margin-top: 96px;
+}
+
+.usuarios-editar-hero-grid {
+    gap: 22px;
+}
+
+.usuarios-editar-hero-panel {
+    min-width: 0;
+    order: 1;
+}
+
+.usuarios-editar-hero-panel.alerta-form-hero {
+    grid-template-columns: 1fr;
+    gap: 0;
+}
+
+.usuarios-editar-hero-copy.alerta-form-lead {
+    max-width: none;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.usuarios-editar-hero-copy .alerta-form-title {
+    max-width: none;
+    white-space: normal;
+}
+
+.usuarios-editar-hero-copy .alerta-form-description {
+    max-width: 72ch;
+}
+
+.usuarios-editar-summary-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    order: 2;
+}
+
+.usuarios-editar-command-card {
+    width: 100%;
+    grid-column: 1 / -1;
+    order: 3;
+}
+
+.usuarios-editar-command-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.usuarios-editar-form-panel {
+    gap: 20px;
+}
+
+.usuarios-editar-form-grid {
+    align-items: start;
+}
+
+@media (max-width: 1280px) {
+    .usuarios-editar-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .usuarios-editar-command-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .usuarios-editar-command-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .usuarios-editar-shell {
+        gap: 20px;
+    }
+
+    .usuarios-editar-summary-grid {
+        grid-template-columns: 1fr;
+    }
+}

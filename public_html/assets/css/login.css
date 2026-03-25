@@ -699,26 +699,31 @@ body.public-modal-open {
 }
 
 .public-auth-modal {
-    width: min(580px, calc(100vw - 32px));
+    width: min(820px, calc(100vw - 32px));
     padding: 28px 26px 24px;
     display: grid;
     gap: 18px;
+    background:
+        radial-gradient(circle at top right, rgba(31, 122, 140, 0.12), transparent 28%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 251, 253, 0.98));
 }
 
 .public-auth-header {
     display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.92fr);
     gap: 16px;
+    align-items: stretch;
 }
 
 .public-auth-copy {
     display: grid;
-    gap: 10px;
+    gap: 12px;
 }
 
 .public-auth-copy h3 {
     margin: 0;
     color: var(--cor-primaria);
-    font-size: 30px;
+    font-size: clamp(28px, 3vw, 34px);
     line-height: 1.12;
 }
 
@@ -728,32 +733,89 @@ body.public-modal-open {
     line-height: 1.65;
 }
 
-.public-auth-highlight {
-    display: grid;
-    gap: 6px;
-    padding: 16px 18px;
-    border-radius: 18px;
-    background: rgba(15, 61, 87, 0.05);
-    border: 1px solid rgba(15, 61, 87, 0.08);
+.public-auth-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.public-auth-highlight strong {
+.public-auth-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(15, 61, 87, 0.08);
     color: var(--cor-primaria);
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.45;
 }
 
-.public-auth-highlight span {
+.public-auth-summary-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.public-auth-summary-card {
+    display: grid;
+    gap: 8px;
+    padding: 16px 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(15, 61, 87, 0.08);
+    background: rgba(255, 255, 255, 0.82);
+}
+
+.public-auth-summary-card-primary {
+    background: linear-gradient(180deg, rgba(229, 243, 248, 0.92), rgba(255, 255, 255, 0.96));
+}
+
+.public-auth-summary-card-neutral {
+    background: linear-gradient(180deg, rgba(246, 249, 251, 0.96), rgba(255, 255, 255, 0.98));
+}
+
+.public-auth-summary-label {
+    color: var(--cor-texto-suave);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.public-auth-summary-value {
+    color: var(--cor-primaria);
+    font-size: 20px;
+    line-height: 1.22;
+}
+
+.public-auth-summary-note {
     color: var(--cor-texto-suave);
     font-size: 13px;
-    line-height: 1.55;
+    line-height: 1.6;
 }
 
 .public-auth-banner {
     margin-bottom: 0;
+    border-radius: 16px;
+    padding: 12px 14px;
 }
 
 .public-auth-form {
     display: grid;
+    gap: 14px;
+}
+
+.public-auth-form-panel {
+    padding: 18px;
+    border-radius: 22px;
+    border: 1px solid rgba(15, 61, 87, 0.08);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 248, 251, 0.98));
+}
+
+.public-auth-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
 }
 
@@ -796,6 +858,13 @@ body.public-modal-open {
     justify-content: center;
 }
 
+.public-auth-support-card {
+    border: 1px solid rgba(15, 61, 87, 0.08);
+    border-radius: 18px;
+    background: rgba(248, 251, 253, 0.9);
+    padding: 14px 16px;
+}
+
 .public-auth-support {
     display: grid;
     gap: 6px;
@@ -813,6 +882,18 @@ body.public-modal-open {
 .public-auth-support a:focus-visible {
     text-decoration: underline;
     outline: none;
+}
+
+@media (max-width: 900px) {
+    .public-auth-modal {
+        width: min(640px, calc(100vw - 24px));
+        padding: 22px 18px 18px;
+    }
+
+    .public-auth-header,
+    .public-auth-form-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .public-analysis-modal {
@@ -1383,8 +1464,12 @@ body.public-modal-open {
     }
 
     .public-auth-modal {
-        width: min(540px, calc(100vw - 28px));
+        width: min(760px, calc(100vw - 28px));
         padding: 24px 22px 22px;
+    }
+
+    .public-auth-header {
+        grid-template-columns: 1fr;
     }
 
     .public-auth-copy h3,

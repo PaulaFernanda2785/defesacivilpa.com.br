@@ -1,0 +1,64 @@
+# =========================
+# Sensitive Environment Data
+# =========================
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+public_html/.env
+public_html/.env.*
+!public_html/.env.example
+
+# =========================
+# Database Dumps / Backups
+# =========================
+public_html/banco_db/
+storage/database/backups/
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+
+# =========================
+# Runtime / Cache / Temp
+# =========================
+public_html/storage/cache/
+public_html/storage/tmp/
+storage/cache/
+storage/tmp/
+storage/logs/
+*.log
+*.tmp
+tmp_*.pdf
+
+# =========================
+# User Uploads
+# =========================
+public_html/uploads/
+
+# =========================
+# Local Backups / Old Files
+# =========================
+*.bak
+*.old
+*.old.php
+
+# =========================
+# Keys / Certificates
+# =========================
+*.pem
+*.key
+*.p12
+*.pfx
+
+# =========================
+# OS / Editor
+# =========================
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
