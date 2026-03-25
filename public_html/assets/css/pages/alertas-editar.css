@@ -1,0 +1,119 @@
+.alerta-edicao-shell {
+    gap: 24px;
+}
+
+.alerta-edicao-shell #edicao-dados,
+.alerta-edicao-shell #edicao-anexos {
+    scroll-margin-top: 96px;
+}
+
+.alerta-edicao-hero-grid {
+    gap: 22px;
+}
+
+.alerta-edicao-hero-panel {
+    min-width: 0;
+    order: 1;
+}
+
+.alerta-edicao-hero-panel.alerta-form-hero {
+    grid-template-columns: 1fr;
+    gap: 0;
+}
+
+.alerta-edicao-hero-copy.alerta-form-lead {
+    max-width: none;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.alerta-edicao-hero-copy .alerta-form-title {
+    max-width: none;
+    white-space: normal;
+}
+
+.alerta-edicao-hero-copy .alerta-form-description {
+    max-width: 72ch;
+}
+
+.alerta-edicao-summary-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    order: 2;
+}
+
+.alerta-edicao-command-card {
+    width: 100%;
+    grid-column: 1 / -1;
+    order: 3;
+}
+
+.alerta-edicao-command-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.alerta-edicao-form-panel {
+    gap: 20px;
+}
+
+.alerta-edicao-form-grid {
+    align-items: start;
+}
+
+.alerta-edicao-status-callout {
+    background: linear-gradient(135deg, rgba(227, 242, 253, 0.92), rgba(255, 255, 255, 0.98));
+    border-color: rgba(15, 61, 87, 0.16);
+    color: #0f3d57;
+}
+
+.vigencia-expirada {
+    color: #e65100;
+    font-weight: 600;
+    background: #fff3e0;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.vigencia-info {
+    font-size: 14px;
+    font-weight: 500;
+    color: #37474f;
+}
+
+.aviso-operacional {
+    background: #e3f2fd;
+    border-left: 4px solid #0b3c68;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: #0b3c68;
+    border-radius: 6px;
+}
+
+@media (max-width: 1280px) {
+    .alerta-edicao-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .alerta-edicao-command-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .alerta-edicao-command-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .alerta-edicao-shell {
+        gap: 20px;
+    }
+
+    .alerta-edicao-summary-grid {
+        grid-template-columns: 1fr;
+    }
+}

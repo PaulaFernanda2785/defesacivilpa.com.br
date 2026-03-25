@@ -1,0 +1,218 @@
+.alerta-detalhe-shell {
+    gap: 24px;
+}
+
+.alerta-detalhe-shell #detalhe-informacoes,
+.alerta-detalhe-shell #detalhe-mapa {
+    scroll-margin-top: 96px;
+}
+
+.alerta-detalhe-hero-grid {
+    gap: 22px;
+}
+
+.alerta-detalhe-hero-panel {
+    min-width: 0;
+    order: 1;
+}
+
+.alerta-detalhe-hero-panel.alerta-form-hero {
+    grid-template-columns: 1fr;
+    gap: 0;
+}
+
+.alerta-detalhe-hero-copy.alerta-form-lead {
+    max-width: none;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.alerta-detalhe-hero-copy .alerta-form-title {
+    max-width: none;
+    white-space: normal;
+}
+
+.alerta-detalhe-hero-copy .alerta-form-description {
+    max-width: 72ch;
+}
+
+.alerta-detalhe-summary-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    order: 2;
+}
+
+.alerta-detalhe-command-card {
+    width: 100%;
+    grid-column: 1 / -1;
+    order: 3;
+}
+
+.alerta-detalhe-command-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.alerta-detalhe-action-panel,
+.alerta-detalhe-content-panel {
+    gap: 18px;
+}
+
+.alerta-detail-actions {
+    margin-top: 0;
+}
+
+.alerta-detail-callout-danger {
+    border-color: rgba(176, 39, 39, 0.18);
+    background: linear-gradient(135deg, rgba(255, 235, 238, 0.96), rgba(255, 255, 255, 0.98));
+    color: #7d1f1f;
+}
+
+.alerta-detail-callout-info {
+    border-color: rgba(24, 96, 150, 0.16);
+    background: linear-gradient(135deg, rgba(232, 244, 253, 0.96), rgba(255, 255, 255, 0.98));
+    color: #174d77;
+}
+
+.alerta-detail-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.alerta-detail-item,
+.alerta-detail-text-card,
+.alerta-detail-loading {
+    border: 1px solid rgba(15, 61, 87, 0.08);
+    border-radius: 20px;
+    background: #ffffff;
+}
+
+.alerta-detail-item {
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.alerta-detail-label {
+    color: var(--cor-texto-suave);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.alerta-detail-value {
+    color: var(--cor-primaria);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.alerta-detail-text-card {
+    padding: 18px 20px;
+    display: grid;
+    gap: 10px;
+}
+
+.alerta-detail-text-card h3 {
+    margin: 0;
+    color: var(--cor-primaria);
+    font-size: 18px;
+}
+
+.alerta-detail-text-card p {
+    margin: 0;
+    color: var(--cor-texto);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.mapa-detalhe {
+    height: 520px;
+}
+
+.alerta-detail-loading {
+    padding: 14px 16px;
+    color: var(--cor-primaria);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.6;
+    background: linear-gradient(135deg, rgba(244, 248, 251, 0.96), rgba(255, 255, 255, 0.98));
+}
+
+.alerta-detail-image-card .upload-preview {
+    min-height: 280px;
+}
+
+.alerta-detail-image-card .upload-preview img {
+    object-fit: contain;
+    background: #ffffff;
+}
+
+.btn-disabled {
+    background: #cfd8dc;
+    color: #546e7a;
+    cursor: not-allowed;
+    opacity: 0.85;
+}
+
+.legenda-mapa {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 10px 12px;
+    font-size: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(15, 61, 87, 0.1);
+    box-shadow: 0 10px 24px rgba(15, 61, 87, 0.12);
+    line-height: 1.7;
+}
+
+.norte img {
+    width: 72px;
+}
+
+@media (max-width: 1280px) {
+    .alerta-detalhe-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .alerta-detalhe-command-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .alerta-detalhe-command-grid,
+    .alerta-detail-meta-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .alerta-detalhe-shell {
+        gap: 20px;
+    }
+
+    .alerta-detalhe-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mapa-detalhe {
+        height: 340px;
+    }
+
+    .alerta-detail-item,
+    .alerta-detail-text-card,
+    .alerta-detail-loading {
+        padding: 16px;
+    }
+
+    .alerta-detail-image-card .upload-preview {
+        min-height: 220px;
+    }
+}

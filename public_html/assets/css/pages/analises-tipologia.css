@@ -1,0 +1,298 @@
+.tipologia-shell {
+    gap: 24px;
+}
+
+.tipologia-shell #tipologia-filtros,
+.tipologia-shell #tipologia-graficos {
+    scroll-margin-top: 96px;
+}
+
+.tipologia-hero-grid {
+    gap: 22px;
+}
+
+.tipologia-hero-panel,
+.tipologia-control-panel,
+.tipologia-chart-panel {
+    min-width: 0;
+}
+
+.tipologia-hero-panel {
+    order: 1;
+}
+
+.tipologia-hero-copy .alerta-form-title {
+    max-width: none;
+    white-space: normal;
+}
+
+.tipologia-hero-copy .alerta-form-description {
+    max-width: 72ch;
+}
+
+.tipologia-hero-actions .btn {
+    width: 100%;
+}
+
+.tipologia-summary-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    order: 2;
+}
+
+.tipologia-command-card {
+    align-self: stretch;
+    width: 100%;
+    grid-column: 1 / -1;
+    order: 3;
+}
+
+.tipologia-command-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.tipologia-overview-grid {
+    grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+}
+
+.tipologia-filters {
+    display: grid;
+    gap: 16px;
+    height: 100%;
+}
+
+.tipologia-filter-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.tipologia-filter-grid .field-span-2 {
+    grid-column: span 2;
+}
+
+.tipologia-filter-meta {
+    margin-top: 2px;
+}
+
+.tipologia-filter-callout {
+    margin-top: 0;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.tipologia-filter-actions {
+    margin-top: 2px;
+}
+
+.tipologia-filter-actions .alerta-form-actions-right {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.tipologia-filter-panel .alerta-section-text,
+.tipologia-governance-panel .alerta-section-text {
+    max-width: 68ch;
+}
+
+.tipologia-insight-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.tipologia-mini-card {
+    min-height: 0;
+}
+
+.tipologia-info-callout {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.tipologia-actions {
+    margin-top: 4px;
+}
+
+.tipologia-action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.tipologia-action-buttons .btn {
+    width: fit-content;
+}
+
+.tipologia-chart-panel {
+    gap: 18px;
+}
+
+.tipologia-section-head {
+    margin-bottom: 0;
+}
+
+.tipologia-chart-toolbar {
+    align-items: flex-start;
+}
+
+.tipologia-analytics-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+}
+
+.tipologia-chart-section {
+    min-width: 0;
+}
+
+.tipologia-chart-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tipologia-chart-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(15, 61, 87, 0.08);
+    color: var(--usuarios-accent);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.tipologia-chart-card {
+    --tipologia-chart-height: 500px;
+    --tipologia-chart-max-height: 700px;
+    display: grid;
+    gap: 14px;
+    position: relative;
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid rgba(15, 61, 87, 0.08);
+    border-radius: 20px;
+    background: #ffffff;
+}
+
+.tipologia-chart-card--tall {
+    --tipologia-chart-height: 620px;
+    --tipologia-chart-max-height: 840px;
+}
+
+.tipologia-chart-stage {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    height: var(--tipologia-chart-height);
+    min-height: var(--tipologia-chart-height);
+    max-height: var(--tipologia-chart-max-height);
+    overflow: visible;
+}
+
+.tipologia-chart-stage--tall {
+    height: var(--tipologia-chart-height);
+    min-height: var(--tipologia-chart-height);
+}
+
+.tipologia-chart-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    pointer-events: auto;
+}
+
+@media (max-width: 1440px) {
+    .tipologia-overview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tipologia-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .tipologia-chart-card {
+        --tipologia-chart-height: 460px;
+        --tipologia-chart-max-height: 620px;
+    }
+
+    .tipologia-chart-card--tall {
+        --tipologia-chart-height: 560px;
+        --tipologia-chart-max-height: 740px;
+    }
+}
+
+@media (max-width: 1080px) {
+    .tipologia-filter-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tipologia-filter-grid .field-span-2 {
+        grid-column: auto;
+    }
+
+    .tipologia-chart-card {
+        --tipologia-chart-height: 400px;
+        --tipologia-chart-max-height: 540px;
+    }
+
+    .tipologia-chart-card--tall {
+        --tipologia-chart-height: 500px;
+        --tipologia-chart-max-height: 660px;
+    }
+}
+
+@media (max-width: 900px) {
+    .tipologia-command-grid,
+    .tipologia-insight-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tipologia-action-buttons {
+        width: 100%;
+        justify-content: stretch;
+    }
+
+    .tipologia-action-buttons .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .tipologia-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tipologia-hero-actions {
+        grid-template-columns: 1fr;
+        max-width: none;
+    }
+
+    .tipologia-hero-actions .btn,
+    .tipologia-filter-actions .btn,
+    .tipologia-action-buttons .btn {
+        width: 100%;
+    }
+
+    .tipologia-section-head,
+    .tipologia-chart-toolbar,
+    .tipologia-filter-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tipologia-chart-card {
+        --tipologia-chart-height: 320px;
+        --tipologia-chart-max-height: 430px;
+    }
+
+    .tipologia-chart-card--tall {
+        --tipologia-chart-height: 400px;
+        --tipologia-chart-max-height: 520px;
+    }
+}

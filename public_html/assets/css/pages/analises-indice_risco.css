@@ -1,0 +1,335 @@
+.indice-shell {
+    gap: 24px;
+}
+
+.indice-shell #indice-filtros,
+.indice-shell #indice-graficos {
+    scroll-margin-top: 96px;
+}
+
+.indice-hero-grid {
+    gap: 22px;
+}
+
+.indice-hero-panel,
+.indice-control-panel,
+.indice-chart-panel {
+    min-width: 0;
+}
+
+.indice-hero-panel {
+    order: 1;
+}
+
+.indice-hero-copy .alerta-form-title {
+    max-width: none;
+    white-space: normal;
+}
+
+.indice-hero-copy .alerta-form-description {
+    max-width: 72ch;
+}
+
+.indice-hero-actions .btn {
+    width: 100%;
+}
+
+.indice-summary-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    order: 2;
+}
+
+.indice-command-card {
+    align-self: stretch;
+    width: 100%;
+    grid-column: 1 / -1;
+    order: 3;
+}
+
+.indice-command-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.indice-overview-grid {
+    grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+}
+
+.indice-filters {
+    display: grid;
+    gap: 16px;
+    height: 100%;
+}
+
+.indice-filter-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.indice-filter-grid .field-span-2 {
+    grid-column: span 2;
+}
+
+.indice-filter-meta {
+    margin-top: 2px;
+}
+
+.indice-filter-callout {
+    margin-top: 0;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.indice-filter-actions {
+    margin-top: 2px;
+}
+
+.indice-filter-actions .alerta-form-actions-right {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.indice-filter-panel .alerta-section-text,
+.indice-governance-panel .alerta-section-text {
+    max-width: 68ch;
+}
+
+.indice-insight-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.indice-mini-card {
+    min-height: 0;
+}
+
+.indice-info-callout {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.indice-actions {
+    margin-top: 4px;
+}
+
+.indice-action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.indice-action-buttons .btn {
+    width: fit-content;
+}
+
+.indice-chart-panel {
+    gap: 18px;
+}
+
+.indice-analytics-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+}
+
+.indice-chart-section {
+    min-width: 0;
+}
+
+.indice-chart-card {
+    display: grid;
+    gap: 14px;
+    padding: 16px;
+    border: 1px solid rgba(15, 61, 87, 0.08);
+    border-radius: 20px;
+    background: #ffffff;
+}
+
+.indice-chart-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.indice-chart-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(15, 61, 87, 0.08);
+    color: var(--usuarios-accent);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.indice-chart-card canvas {
+    width: 100% !important;
+    height: 320px !important;
+}
+
+#modalInfo.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(7, 21, 31, 0.48);
+    z-index: 999;
+}
+
+.indice-modal-content {
+    width: min(920px, 100%);
+    max-height: calc(100vh - 48px);
+    overflow: auto;
+    margin: 0;
+    padding: 24px;
+    border-radius: 24px;
+    border: 1px solid rgba(15, 61, 87, 0.08);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(248, 251, 253, 0.99));
+    box-shadow: 0 20px 44px rgba(10, 39, 56, 0.2);
+}
+
+.indice-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.indice-modal-header h2 {
+    margin: 6px 0 0;
+    color: var(--usuarios-accent);
+    font-size: 26px;
+    line-height: 1.2;
+}
+
+.indice-modal-close {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 14px;
+    background: rgba(15, 61, 87, 0.08);
+    color: var(--usuarios-accent);
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.indice-modal-body {
+    display: grid;
+    gap: 16px;
+}
+
+.indice-modal-block {
+    padding: 18px;
+    border: 1px solid rgba(15, 61, 87, 0.08);
+    border-radius: 20px;
+    background: #ffffff;
+}
+
+.indice-modal-block h3 {
+    margin: 0 0 10px;
+    color: var(--usuarios-accent);
+    font-size: 18px;
+}
+
+.indice-modal-block p,
+.indice-modal-block li {
+    color: var(--usuarios-muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.indice-modal-block ul {
+    margin: 10px 0 0;
+    padding-left: 18px;
+    display: grid;
+    gap: 8px;
+}
+
+.indice-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 18px;
+}
+
+@media (max-width: 1440px) {
+    .indice-overview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .indice-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 1080px) {
+    .indice-filter-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .indice-command-grid,
+    .indice-insight-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .indice-action-buttons {
+        width: 100%;
+        justify-content: stretch;
+    }
+
+    .indice-action-buttons .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .indice-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .indice-hero-actions {
+        grid-template-columns: 1fr;
+        max-width: none;
+    }
+
+    .indice-hero-actions .btn,
+    .indice-filter-actions .btn,
+    .indice-action-buttons .btn {
+        width: 100%;
+    }
+
+    .indice-filter-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .indice-chart-card canvas {
+        height: 260px !important;
+    }
+
+    #modalInfo.modal {
+        padding: 12px;
+    }
+
+    .indice-modal-content {
+        padding: 18px 16px;
+        border-radius: 20px;
+    }
+
+    .indice-modal-header {
+        flex-direction: column;
+    }
+
+    .indice-modal-close {
+        align-self: flex-end;
+    }
+}

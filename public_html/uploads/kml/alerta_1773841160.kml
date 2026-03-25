@@ -1,0 +1,3213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.opengis.net/kml/2.2 http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd http://www.google.com/kml/ext/2.2 http://code.google.com/apis/kml/schema/kml22gx.xsd">
+<Document id="PA_ALENQUE_SR_CPRM">
+  <name>PA_ALENQUE_SR_CPRM</name>
+  <Snippet></Snippet>
+  <Style id="PolyStyle00">
+    <LabelStyle>
+      <color>00000000</color>
+      <scale>0.000000</scale>
+    </LabelStyle>
+    <LineStyle>
+      <color>ff0000ff</color>
+      <width>3.000000</width>
+    </LineStyle>
+    <PolyStyle>
+      <color>00f0f0f0</color>
+      <outline>1</outline>
+    </PolyStyle>
+  </Style>
+  <Style id="PolyStyle03">
+    <LabelStyle>
+      <color>00000000</color>
+      <scale>0.000000</scale>
+    </LabelStyle>
+    <LineStyle>
+      <color>ff00aaff</color>
+      <width>3.000000</width>
+    </LineStyle>
+    <PolyStyle>
+      <color>00f0f0f0</color>
+      <outline>1</outline>
+    </PolyStyle>
+  </Style>
+  <Folder id="FeatureLayer0">
+    <name>PA_ALENQUE_SR_CPRM</name>
+    <Snippet></Snippet>
+    <Placemark id="ID_00000">
+      <name>PA_ALENQUE_SR_1_CPRM</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>PA</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>0</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>ALENQUER</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL_1</td>
+<td>Trav. Santo Antônio -Morro da Band</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>29/11/2019</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_ALENQUE_SR_1_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLO_G1</td>
+<td>Erosão</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E1</td>
+<td>Laminar</td>
+</tr>
+<tr>
+<td>COBRADE_01</td>
+<td>1.1.4.3.1</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G2</td>
+<td>Deslizamento</td>
+</tr>
+<tr>
+<td>TIPOLO_E2</td>
+<td>Deslizamento planar</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_02</td>
+<td>1.1.3.2.1</td>
+</tr>
+<tr>
+<td>TIPOLO_G3</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E3</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_03</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G4</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E4</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_04</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G5</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E5</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_05</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalado</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Setor de risco muito alto a deslizamento planar e enxurrada, caracterizado por conter imóveis em alvenaria e madeira construídos sobre solo residual bastante friável de quartzo-arenito de fácil desagregação mecânica.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_EDIF</td>
+<td>1</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>2</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Médio</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Muito alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remoção temporária dos moradores durante o período de chuvas. Estudos de implantação e adequação de sistema de drenagem pluvial. Fiscalização e proibição da construção em encostas com declividade superior a 16º.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGAO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td>Setorização de Áreas em Alto e Muito Alto Risco a Movimentos de Massa, Enchentes e Inundações</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>751321</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>978416</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>21</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude><altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -54.74076525799995,-1.951230018999979,0 -54.74073516899995,-1.951237427999956,0 -54.74067696999998,-1.951233603999981,0 -54.74061583699995,-1.951223841999933,0 -54.74059984899998,-1.951219908999974,0 -54.74057045299998,-1.951212191999957,0 -54.74057536899994,-1.951148883999963,0 -54.74057770299999,-1.951082108999969,0 -54.74059081699994,-1.951018720999969,0 -54.74060420099994,-1.95094916599993,0 -54.74064283299998,-1.950934755999924,0 -54.74076125599998,-1.950950046999935,0 -54.74076525799995,-1.951230018999979,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00001">
+      <name>PA_ALENQUE_SR_2_CPRM</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>PA</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>1</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>ALENQUER</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL_1</td>
+<td>Trav. Ascendino Monteiro Nunes - Morro da Band</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>29/11/2019</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_ALENQUE_SR_2_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLO_G1</td>
+<td>Erosão</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E1</td>
+<td>Laminar</td>
+</tr>
+<tr>
+<td>COBRADE_01</td>
+<td>1.1.4.3.1</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G2</td>
+<td>Deslizamento</td>
+</tr>
+<tr>
+<td>TIPOLO_E2</td>
+<td>Deslizamento planar</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_02</td>
+<td>1.1.3.2.1</td>
+</tr>
+<tr>
+<td>TIPOLO_G3</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E3</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_03</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G4</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E4</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_04</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G5</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E5</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_05</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalado</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Ocupação desordenada de moradias de madeira construídas na crista e vertente de morro baixo. Avanço contínuo da erosão em direção as moradias, principalmente onde a vegetação foi retirada. Solo residual friável.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_EDIF</td>
+<td>4</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>16</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Médio</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Muito alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remoção temporária dos moradores durante o período de chuvas. Estudos de implantação e adequação de sistema de drenagem pluvial. Fiscalização e proibição da construção em encostas com declividade superior a 16º.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGAO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td>Setorização de Áreas em Alto e Muito Alto Risco a Movimentos de Massa, Enchentes e Inundações</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>751375</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>978411</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>21</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude><altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -54.74049142499996,-1.951570750999963,0 -54.74044084599996,-1.951610101999961,0 -54.74034770799994,-1.951659061999976,0 -54.74024285999997,-1.951696024999933,0 -54.74012375599995,-1.951709219999941,0 -54.74009333499998,-1.951706755999965,0 -54.74003966099997,-1.951537562999931,0 -54.74008560499993,-1.951517902999967,0 -54.74012382899997,-1.95150495799993,0 -54.74020483799995,-1.951474923999967,0 -54.74028010999996,-1.951443402999928,0 -54.74033620999995,-1.951418061999959,0 -54.74038008199994,-1.951403686999925,0 -54.74044096899996,-1.951409281999929,0 -54.74047778099998,-1.951516249999941,0 -54.74049142499996,-1.951570750999963,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00002">
+      <name>PA_ALENQUE_SR_3_CPRM</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>PA</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>2</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>ALENQUER</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL_1</td>
+<td>Rua Antonio Monteiro Nunes - Morro da Band</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>29/11/2019</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_ALENQUE_SR_3_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLO_G1</td>
+<td>Erosão</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E1</td>
+<td>Laminar</td>
+</tr>
+<tr>
+<td>COBRADE_01</td>
+<td>1.1.4.3.1</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G2</td>
+<td>Deslizamento</td>
+</tr>
+<tr>
+<td>TIPOLO_E2</td>
+<td>Deslizamento planar</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_02</td>
+<td>1.1.3.2.1</td>
+</tr>
+<tr>
+<td>TIPOLO_G3</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E3</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_03</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G4</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E4</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_04</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G5</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E5</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_05</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalado</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Ocupação desordenada de moradias de madeira construídas na crista e vertente de morro baixo. Avanço contínuo da erosão em direção as moradias. Algumas moradias encontram-se encaixadas diretamente na encosta.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_EDIF</td>
+<td>6</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>24</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Médio</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Muito alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remoção temporária dos moradores durante o período de chuvas. Estudos de implantação e adequação de sistema de drenagem pluvial. Fiscalização e proibição da construção em encostas com declividade superior a 16º.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGAO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td>Setorização de Áreas em Alto e Muito Alto Risco a Movimentos de Massa, Enchentes e Inundações</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>751380</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>9784270</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>21</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude><altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -54.74076950899996,-1.950526993999972,0 -54.74053453699997,-1.950615249999942,0 -54.74034094899997,-1.950676976999944,0 -54.74026835799998,-1.950694485999975,0 -54.74026890799996,-1.950704851999944,0 -54.74023864999998,-1.950625337999952,0 -54.74019084699995,-1.950524325999936,0 -54.74018906499998,-1.950520734999941,0 -54.74008533599994,-1.950297529999943,0 -54.74008352899995,-1.95029388599994,0 -54.73995629599995,-1.950043130999973,0 -54.73995826899994,-1.950042133999943,0 -54.74001337199996,-1.950011963999941,0 -54.74009411499998,-1.94997822299996,0 -54.74024727799997,-1.949948741999947,0 -54.74046095799997,-1.950359319999961,0 -54.74066597799998,-1.950324138999974,0 -54.74072611499997,-1.950308590999953,0 -54.74076950899996,-1.950526993999972,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00003">
+      <name>PA_ALENQUE_SR_4_CPRM</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>PA</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>3</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>ALENQUER</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL_1</td>
+<td>Rua Tenente José Cardoso  Morro da Band</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>29/11/2019</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_ALENQUE_SR_4_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLO_G1</td>
+<td>Deslizamento</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E1</td>
+<td>Deslizamento planar</td>
+</tr>
+<tr>
+<td>COBRADE_01</td>
+<td>1.1.3.2.1</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G2</td>
+<td>Erosão</td>
+</tr>
+<tr>
+<td>TIPOLO_E2</td>
+<td>Laminar</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_02</td>
+<td>1.1.4.3.1</td>
+</tr>
+<tr>
+<td>TIPOLO_G3</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E3</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_03</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G4</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E4</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_04</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G5</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E5</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_05</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalado</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Ocupação de moradias de madeira e alvenaria construídas próximas ao sopé de um talude de corte. Talude  formado por material arenoso, friável e de fácil desagregação mecânica, sendo possível identificar cicatrizes de deslizamento.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_EDIF</td>
+<td>9</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>36</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Médio</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remoção temporária dos moradores durante o período de chuvas. Estudos de implantação e adequação de sistema de drenagem pluvial. Fiscalização e proibição da construção em encostas com declividade superior a 16º.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGAO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td>Setorização de Áreas em Alto e Muito Alto Risco a Movimentos de Massa, Enchentes e Inundações</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>751239</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>9784360</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>21</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle03</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude><altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -54.74123653399994,-1.948973757999966,0 -54.74115991099995,-1.949020480999934,0 -54.74108504299994,-1.949058350999962,0 -54.74094641299996,-1.94910097199994,0 -54.74091567299996,-1.949044305999962,0 -54.74084734099995,-1.948953720999953,0 -54.74078881999998,-1.948889366999936,0 -54.74083691199996,-1.948840519999976,0 -54.74090021999996,-1.948799710999936,0 -54.74096964899996,-1.948749568999972,0 -54.74106128399995,-1.948827900999959,0 -54.74130553299995,-1.94894646399996,0 -54.74135304799995,-1.948925193999969,0 -54.74142773499995,-1.94887975599994,0 -54.74144940899998,-1.948925193999969,0 -54.74148457299998,-1.949036052999929,0 -54.74153080299993,-1.949145206999958,0 -54.74156645699998,-1.949248699999941,0 -54.74163453099993,-1.949349844999972,0 -54.74166410999993,-1.949410413999942,0 -54.74167038799993,-1.949532132999934,0 -54.74171163299997,-1.949672574999965,0 -54.74181643099996,-1.949868844999969,0 -54.74185124599995,-1.949970727999926,0 -54.74174738399995,-1.950062916999968,0 -54.74161617099998,-1.949836278999953,0 -54.74123653399994,-1.948973757999966,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00004">
+      <name>PA_ALENQUE_SR_5_CPRM</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>PA</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>4</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>ALENQUER</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL_1</td>
+<td>Beco Santa Isabel - Morro da Band</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>29/11/2019</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_ALENQUE_SR_5_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLO_G1</td>
+<td>Deslizamento</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E1</td>
+<td>Deslizamento planar</td>
+</tr>
+<tr>
+<td>COBRADE_01</td>
+<td>1.1.3.2.1</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G2</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E2</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_02</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G3</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E3</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_03</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G4</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E4</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_04</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G5</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E5</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_05</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalado</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Ocupação desordenada de moradias de alvenaria e madeira na crista e no sopé de talude. O talude é formado por material arenoso friável e de fácil desagregação mecânica, sendo possível identificar cicatrizes de deslizamento e sulcos erosivos.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_EDIF</td>
+<td>11</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>44</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Médio</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Muito alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remoção temporária dos moradores durante o período de chuvas. Estudos de implantação e adequação de sistema de drenagem pluvial. Fiscalização e proibição da construção em encostas com declividade superior a 16º.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGAO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td>Setorização de Áreas em Alto e Muito Alto Risco a Movimentos de Massa, Enchentes e Inundações</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>751545</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>9784330</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>21</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude><altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -54.73842673799999,-1.949960189999956,0 -54.73836369599996,-1.949844248999966,0 -54.73835260299995,-1.949796487999947,0 -54.73844006599995,-1.949740535999979,0 -54.73850498099995,-1.94966892399998,0 -54.73853360399994,-1.949641380999935,0 -54.73847386999995,-1.949508795999975,0 -54.73859760699997,-1.949432497999965,0 -54.73870936199995,-1.949382231999948,0 -54.73883589899998,-1.949323632999949,0 -54.73895137299996,-1.94927224199995,0 -54.73905823799998,-1.949228074999951,0 -54.73912203399993,-1.949312644999964,0 -54.73911929699995,-1.949341655999945,0 -54.73906429899995,-1.949416430999975,0 -54.73894141399995,-1.949535236999964,0 -54.73889294599996,-1.949599554999963,0 -54.73879930099997,-1.949696535999976,0 -54.73868064099997,-1.949804680999932,0 -54.73852609299996,-1.94991727699994,0 -54.73845021499994,-1.949964344999955,0 -54.73842673799999,-1.949960189999956,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00005">
+      <name>PA_ALENQUE_SR_6_CPRM</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>PA</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>5</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>ALENQUER</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL_1</td>
+<td>Rua Tenente José Cardoso - Morro da Band</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>29/11/2019</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_ALENQUE_SR_6_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLO_G1</td>
+<td>Enxurrada</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E1</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_01</td>
+<td>1.2.2.0.0</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G2</td>
+<td>Deslizamento</td>
+</tr>
+<tr>
+<td>TIPOLO_E2</td>
+<td>Deslizamento planar</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_02</td>
+<td>1.1.3.2.1</td>
+</tr>
+<tr>
+<td>TIPOLO_G3</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E3</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_03</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G4</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E4</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_04</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G5</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E5</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_05</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalado</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Ocupação desordenada de moradias de alvenaria e madeira nas proximidades do sopé de morro baixo. A enxurrada ocorre após vários eventos de erosão que se intensificam após chuvas intensas de rápida durabilidade e  de moderada pluviosidade.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_EDIF</td>
+<td>9</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>36</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Médio</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remoção temporária dos moradores durante o período de chuvas. Estudos de implantação e adequação de sistema de drenagem pluvial. Fiscalização e proibição da construção em encostas com declividade superior a 16º.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGAO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td>Setorização de Áreas em Alto e Muito Alto Risco a Movimentos de Massa, Enchentes e Inundações</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>751142</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>9784270</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>21</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle03</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude><altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -54.74268087799993,-1.949914666999973,0 -54.74274423999998,-1.950251932999947,0 -54.74275171499994,-1.950321342999928,0 -54.74275234099997,-1.950356653999961,0 -54.74270701499995,-1.95037920599998,0 -54.74264419799994,-1.950384619999966,0 -54.74258928399996,-1.95039554799996,0 -54.74249528299998,-1.95040159499996,0 -54.74237621899994,-1.950417350999942,0 -54.74224311299997,-1.950427483999931,0 -54.74216480099994,-1.950434571999949,0 -54.74209138099997,-1.950425782999957,0 -54.74198036299998,-1.950407466999934,0 -54.74193613399996,-1.950403042999937,0 -54.74192462099995,-1.950269306999928,0 -54.74193856799997,-1.95024790399998,0 -54.74196661299993,-1.950192995999942,0 -54.74199904099999,-1.950154603999977,0 -54.74201147799994,-1.950104653999972,0 -54.74202386399998,-1.950025130999961,0 -54.74208789799997,-1.950019882999925,0 -54.74261160899994,-1.949907500999927,0 -54.74268087799993,-1.949914666999973,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00006">
+      <name>PA_ALENQUE_SR_7_CPRM</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>PA</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>6</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>ALENQUER</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL_1</td>
+<td>Rua Tenente José Cardoso - Morro da Band</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>29/11/2019</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_ALENQUE_SR_7_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLO_G1</td>
+<td>Erosão</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E1</td>
+<td>Laminar</td>
+</tr>
+<tr>
+<td>COBRADE_01</td>
+<td>1.1.4.3.1</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G2</td>
+<td>Deslizamento</td>
+</tr>
+<tr>
+<td>TIPOLO_E2</td>
+<td>Deslizamento planar</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_02</td>
+<td>1.1.3.2.1</td>
+</tr>
+<tr>
+<td>TIPOLO_G3</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E3</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_03</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G4</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E4</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_04</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G5</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E5</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_05</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalado</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Ocupação desordenada de moradias de madeira e alvenaria construídas na crista e vertente de morro baixo. Avanço contínuo da erosão em direção as moradias, principalmente onde a vegetação foi retirada.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_EDIF</td>
+<td>5</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>20</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Médio</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Muito alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remoção temporária dos moradores durante o período de chuvas. Estudos de implantação e adequação de sistema de drenagem pluvial. Fiscalização e proibição da construção em encostas com declividade superior a 16º.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGAO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td>Setorização de Áreas em Alto e Muito Alto Risco a Movimentos de Massa, Enchentes e Inundações</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>751050</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>978415</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>21</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude><altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -54.74297061299995,-1.950837380999928,0 -54.74302718699994,-1.950808790999929,0 -54.74307403899996,-1.950791686999935,0 -54.74311483699995,-1.950770752999972,0 -54.74315994699998,-1.950842425999952,0 -54.74323160199998,-1.950979341999926,0 -54.74329030199993,-1.951091678999944,0 -54.74334186599998,-1.951180049999948,0 -54.74342211499999,-1.95133093499993,0 -54.74348279199995,-1.951434300999949,0 -54.74343633299998,-1.951450453999939,0 -54.74339252499993,-1.951474422999979,0 -54.74333981099994,-1.951496479999946,0 -54.74334278599997,-1.951498357999981,0 -54.74330208099997,-1.951516536999975,0 -54.74325792099995,-1.951538740999979,0 -54.74319442399997,-1.951573094999958,0 -54.74314121599997,-1.951493207999931,0 -54.74309658399994,-1.951388434999956,0 -54.74316165799996,-1.951357990999952,0 -54.74313829099998,-1.951307479999969,0 -54.74310196699997,-1.95122960499998,0 -54.74305729499997,-1.951128861999962,0 -54.74298649299993,-1.951015638999934,0 -54.74298400799995,-1.951011558999937,0 -54.74294746399994,-1.950933233999933,0 -54.74292325599998,-1.950866015999964,0 -54.74292282699997,-1.950853154999947,0 -54.74297061299995,-1.950837380999928,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00007">
+      <name>PA_ALENQUE_SR_8_CPRM</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>PA</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>7</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>ALENQUER</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL_1</td>
+<td>Trav. Francisco Monteiro e Trav. Dez de Outubro - Morro da Band</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>29/11/2019</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_ALENQUE_SR_8_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLO_G1</td>
+<td>Erosão</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E1</td>
+<td>Laminar</td>
+</tr>
+<tr>
+<td>COBRADE_01</td>
+<td>1.1.4.3.1</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G2</td>
+<td>Deslizamento</td>
+</tr>
+<tr>
+<td>TIPOLO_E2</td>
+<td>Deslizamento planar</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_02</td>
+<td>1.1.3.2.1</td>
+</tr>
+<tr>
+<td>TIPOLO_G3</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E3</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_03</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G4</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E4</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_04</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G5</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E5</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_05</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalado</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Ocupação desordenada de moradias de madeira e alvenaria construídas na crista e vertente de morro baixo. Avanço contínuo da erosão em direção as moradias. Algumas moradias encontram-se encaixadas diretamente na encosta.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_EDIF</td>
+<td>8</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>32</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Médio</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Muito alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remoção temporária dos moradores durante o período de chuvas. Estudos de implantação e adequação de sistema de drenagem pluvial. Fiscalização e proibição da construção em encostas com declividade superior a 16º.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGAO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td>Setorização de Áreas em Alto e Muito Alto Risco a Movimentos de Massa, Enchentes e Inundações</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>751150</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>9784130</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>21</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude><altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -54.74186154499995,-1.951285202999941,0 -54.74188836099995,-1.951275733999978,0 -54.74236993199997,-1.951190329999974,0 -54.74242225999996,-1.951221568999927,0 -54.74246269299994,-1.951291045999938,0 -54.74246293699997,-1.95129352899994,0 -54.74250726999998,-1.951350185999956,0 -54.74251032299998,-1.951354954999942,0 -54.74258227299998,-1.95145690399994,0 -54.74258554399995,-1.951464132999945,0 -54.74271938099997,-1.951450244999933,0 -54.74292022999998,-1.951430655999957,0 -54.74297441299996,-1.951450978999958,0 -54.74299448199997,-1.95147630799994,0 -54.74299258799994,-1.951481389999969,0 -54.74299561899994,-1.95155264899995,0 -54.74299643899997,-1.951559994999968,0 -54.74299263999995,-1.951570242999935,0 -54.74297328899996,-1.951641575999929,0 -54.74297082799995,-1.951641807999977,0 -54.74292907999995,-1.951670745999934,0 -54.74291943099996,-1.951674175999926,0 -54.74285121899993,-1.951695843999971,0 -54.74278613199994,-1.951704760999974,0 -54.74272037699996,-1.951711307999972,0 -54.74266311399998,-1.95170428299997,0 -54.74261422799998,-1.951706563999949,0 -54.74257395099994,-1.951692661999971,0 -54.74254288299994,-1.951639583999963,0 -54.74247144499998,-1.951544582999929,0 -54.74237404399997,-1.951540530999978,0 -54.74231764899997,-1.951530212999955,0 -54.74226976899996,-1.951529294999943,0 -54.74220200099995,-1.951517275999947,0 -54.74214399799996,-1.951501579999956,0 -54.74207542899995,-1.951489390999939,0 -54.74201644899995,-1.951502037999944,0 -54.74193741799996,-1.951508695999962,0 -54.74187981999995,-1.951319217999981,0 -54.74186154499995,-1.951285202999941,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00008">
+      <name>PA_ALENQUE_SR_9_CPRM</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>PA</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>8</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>ALENQUER</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL_1</td>
+<td>Rua Tenente José Cardoso - Morro da Band</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>29/11/2019</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_ALENQUE_SR_9_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLO_G1</td>
+<td>Erosão</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E1</td>
+<td>Laminar</td>
+</tr>
+<tr>
+<td>COBRADE_01</td>
+<td>1.1.4.3.1</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G2</td>
+<td>Deslizamento</td>
+</tr>
+<tr>
+<td>TIPOLO_E2</td>
+<td>Deslizamento planar</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_02</td>
+<td>1.1.3.2.1</td>
+</tr>
+<tr>
+<td>TIPOLO_G3</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E3</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_03</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G4</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E4</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_04</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G5</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E5</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_05</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalado</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Ocupação desordenada de moradias de madeira e alvenaria construídas na crista e vertente de talude. Avanço contínuo da erosão em direção as moradias. Algumas moradias encontram-se encaixadas diretamente na encosta.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_EDIF</td>
+<td>4</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>16</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Médio</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remoção temporária dos moradores durante o período de chuvas. Estudos de implantação e adequação de sistema de drenagem pluvial. Fiscalização e proibição da construção em encostas com declividade superior a 16º.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGAO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td>Setorização de Áreas em Alto e Muito Alto Risco a Movimentos de Massa, Enchentes e Inundações</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>751284</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>978463</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>21</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle03</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude><altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -54.74097863099996,-1.946710506999977,0 -54.74103939599996,-1.946685619999926,0 -54.74113349499999,-1.946656114999939,0 -54.74116263699995,-1.946671933999937,0 -54.74118556599996,-1.946695739999939,0 -54.74120636399994,-1.946718216999955,0 -54.74123572499997,-1.946754741999939,0 -54.74126114899997,-1.946840604999977,0 -54.74122359499995,-1.946850056999949,0 -54.74116471799994,-1.946864092999931,0 -54.74108865399995,-1.946874263999973,0 -54.74101941799995,-1.94686885599998,0 -54.74098459699997,-1.946744721999949,0 -54.74097863099996,-1.946710506999977,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00009">
+      <name>PA_ALENQUE_SR_10_CPRM</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>PA</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>9</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>ALENQUER</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL_1</td>
+<td>Rua João Coelho - Morro da Band</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>29/11/2019</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_ALENQUE_SR_10_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLO_G1</td>
+<td>Enxurrada</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E1</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_01</td>
+<td>1.2.2.0.0</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G2</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E2</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_02</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G3</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E3</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_03</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G4</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E4</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_04</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G5</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E5</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_05</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalado</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Ocupação desordenada de moradias de alvenaria e madeira nas proximidades do sopé de encosta. A enxurrada ocorre após vários eventos de erosão que se intensificam após chuvas intensas de rápida durabilidade e de moderada pluviosidade.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_EDIF</td>
+<td>5</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>20</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Médio</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Muito alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remoção temporária dos moradores durante o período de chuvas. Estudos de implantação e adequação de sistema de drenagem pluvial. Fiscalização e proibição da construção em encostas com declividade superior a 16º.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGAO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td>Setorização de Áreas em Alto e Muito Alto Risco a Movimentos de Massa, Enchentes e Inundações</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>751223</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>978455</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>21</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude><altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -54.74148899199997,-1.947380813999928,0 -54.74168696099997,-1.947248785999932,0 -54.74183268199994,-1.947192246999975,0 -54.74197733599993,-1.947473449999961,0 -54.74204788499998,-1.947621309999931,0 -54.74203273699993,-1.947687120999944,0 -54.74182428499995,-1.94777886299994,0 -54.74169834799994,-1.947846780999953,0 -54.74162540499998,-1.947771731999978,0 -54.74148899199997,-1.947380813999928,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00010">
+      <name>PA_ALENQUE_SR_11_CPRM</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>PA</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>10</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>ALENQUER</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL_1</td>
+<td>Rua St Antônico com Rua Paes de Carvalho - Morro da Band</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>29/11/2019</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_ALENQUE_SR_11_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLO_G1</td>
+<td>Enxurrada</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E1</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_01</td>
+<td>1.2.2.0.0</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G2</td>
+<td>Deslizamento</td>
+</tr>
+<tr>
+<td>TIPOLO_E2</td>
+<td>Deslizamento planar</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_02</td>
+<td>1.1.3.2.1</td>
+</tr>
+<tr>
+<td>TIPOLO_G3</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E3</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_03</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G4</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E4</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_04</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G5</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E5</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_05</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalado</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Ocupação desordenada de moradias de alvenaria e madeira nas proximidades do sopé de uma encosta. A  enxurrada ocorre após vários eventos de erosão que se intensificam após chuvas intensas de rápida durabilidade e de moderada pluviosidade.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_EDIF</td>
+<td>12</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>48</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Médio</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remoção temporária dos moradores durante o período de chuvas. Estudos de implantação e adequação de sistema de drenagem pluvial. Fiscalização e proibição da construção em encostas com declividade superior a 16º.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGAO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td>Setorização de Áreas em Alto e Muito Alto Risco a Movimentos de Massa, Enchentes e Inundações</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>751272</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>978451</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>21</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle03</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude><altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -54.74118860399994,-1.951224930999956,0 -54.74126261899994,-1.95122773199995,0 -54.74130716399998,-1.951320650999946,0 -54.74132788799994,-1.95137221899995,0 -54.74135852099994,-1.951418626999953,0 -54.74143120699995,-1.951441448999958,0 -54.74150764799998,-1.951423968999961,0 -54.74156231099994,-1.951406453999937,0 -54.74167295299998,-1.951395762999937,0 -54.74169289599996,-1.951415760999964,0 -54.74170179499998,-1.951476684999932,0 -54.74160384399994,-1.951495928999975,0 -54.74150923599996,-1.951521273999958,0 -54.74144938099994,-1.951526417999958,0 -54.74138811799997,-1.951522313999931,0 -54.74130108499998,-1.951527686999952,0 -54.74124727299994,-1.951529031999939,0 -54.74122063899995,-1.951517915999943,0 -54.74119429099994,-1.951461085999938,0 -54.74118787499998,-1.95140934799997,0 -54.74114406399997,-1.951334416999941,0 -54.74110000699994,-1.951268066999944,0 -54.74105664999996,-1.951227888999938,0 -54.74101962199995,-1.951199749999944,0 -54.74097596899998,-1.951160810999966,0 -54.74094862899994,-1.951131950999979,0 -54.74091673199996,-1.951074376999941,0 -54.74091619099994,-1.95104082499995,0 -54.74097321399995,-1.951031801999932,0 -54.74118860399994,-1.951224930999956,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00011">
+      <name>PA_ALENQUE_SR_12_CPRM</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>PA</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>11</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>ALENQUER</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL_1</td>
+<td>Rua Paes de Carvalho com Rua 10 de Outubro - Morro da Band</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>29/11/2019</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_ALENQUE_SR_12_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLO_G1</td>
+<td>Deslizamento</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E1</td>
+<td>Deslizamento planar</td>
+</tr>
+<tr>
+<td>COBRADE_01</td>
+<td>1.1.3.2.1</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G2</td>
+<td>Erosão</td>
+</tr>
+<tr>
+<td>TIPOLO_E2</td>
+<td>Laminar</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_02</td>
+<td>1.1.4.3.1</td>
+</tr>
+<tr>
+<td>TIPOLO_G3</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E3</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_03</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G4</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E4</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_04</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G5</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E5</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_05</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalado</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Ocupação desordenada de moradias de madeira e alvenaria construídas na crista e vertente de talude. Avanço contínuo da erosão em direção as moradias, principalmente onde a vegetação foi retirada.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_EDIF</td>
+<td>10</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>40</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Médio</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remoção temporária dos moradores durante o período de chuvas. Estudos de implantação e adequação de sistema de drenagem pluvial. Fiscalização e proibição da construção em encostas com declividade superior a 16º.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGAO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td>Setorização de Áreas em Alto e Muito Alto Risco a Movimentos de Massa, Enchentes e Inundações</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>751212</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>978409</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>21</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle03</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude><altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -54.74163028599996,-1.951806724999907,0 -54.74155961795002,-1.951825969825113,0 -54.74149046511184,-1.951851633211527,0 -54.74144895089773,-1.951785800469096,0 -54.7414377298584,-1.951731813235995,0 -54.74143348599993,-1.951727312999929,0 -54.74149688799996,-1.951700321999966,0 -54.74163512099994,-1.951671831999909,0 -54.74173757399995,-1.95164775399994,0 -54.74181698799997,-1.951702215999938,0 -54.74188851099996,-1.951687348999919,0 -54.74191133299995,-1.951736983999971,0 -54.74193596499998,-1.951785964999922,0 -54.74189087399997,-1.951786450999953,0 -54.74184745799994,-1.951752493999933,0 -54.74179932499993,-1.951752024999952,0 -54.74174242899992,-1.951771465999945,0 -54.74163028599996,-1.951806724999907,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00012">
+      <name>PA_ALENQUE_SR_13_CPRM</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>PA</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>12</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>ALENQUER</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL_1</td>
+<td>Trav. Tiago Serrão - Morro da Band</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>29/11/2019</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_ALENQUE_SR_13_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLO_G1</td>
+<td>Deslizamento</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E1</td>
+<td>Deslizamento planar</td>
+</tr>
+<tr>
+<td>COBRADE_01</td>
+<td>1.1.3.2.1</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G2</td>
+<td>Erosão</td>
+</tr>
+<tr>
+<td>TIPOLO_E2</td>
+<td>Laminar</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_02</td>
+<td>1.1.4.3.1</td>
+</tr>
+<tr>
+<td>TIPOLO_G3</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E3</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_03</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G4</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E4</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_04</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G5</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E5</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_05</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalado</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Ocupação desordenada de moradias de madeira e alvenaria construídas no sopé de talude. As moradias foram construídas com base no sistema de talude de corte subvertical na encosta. Solo residual friável de fácil desagregação mecânica.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_EDIF</td>
+<td>3</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>12</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Médio</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Muito alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remoção temporária dos moradores durante o período de chuvas. Estudos de implantação e adequação de sistema de drenagem pluvial. Fiscalização e proibição da construção em encostas com declividade superior a 16º.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGAO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td>Setorização de Áreas em Alto e Muito Alto Risco a Movimentos de Massa, Enchentes e Inundações</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>750923</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>978418</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>21</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude><altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -54.74433854299997,-1.950937498999963,0 -54.74436112099994,-1.951108983999973,0 -54.74433003699994,-1.95112662799994,0 -54.74425339799996,-1.951136739999924,0 -54.74422836499997,-1.951123389999964,0 -54.74423074399994,-1.951078924999933,0 -54.74423935299995,-1.951000361999945,0 -54.74423216199995,-1.95092718899997,0 -54.74422778199994,-1.950836969999955,0 -54.74422882099998,-1.950791846999948,0 -54.74423289599997,-1.950729319999937,0 -54.74429903199996,-1.950722753999969,0 -54.74433854299997,-1.950937498999963,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00013">
+      <name>PA_ALENQUE_SR_14_CPRM</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>PA</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>13</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>ALENQUER</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL_1</td>
+<td>Rua Paes de Carvalho entre Trav. Ascendino Monteiro Nunes e Trav. Dr Arnaldo Moraes - Morro da Band</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>29/11/2019</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_ALENQUE_SR_14_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLO_G1</td>
+<td>Deslizamento</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E1</td>
+<td>Deslizamento planar</td>
+</tr>
+<tr>
+<td>COBRADE_01</td>
+<td>1.1.3.2.1</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G2</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E2</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_02</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G3</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E3</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_03</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G4</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E4</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_04</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G5</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E5</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_05</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalado</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Ocupação desordenada de moradias de madeira e alvenaria construídas na base de talude. Avanço contínuo da erosão em direção as moradias, principalmente onde a vegetação foi retirada.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_EDIF</td>
+<td>4</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>16</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Médio</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Muito alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remoção temporária dos moradores durante o período de chuvas. Estudos de implantação e adequação de sistema de drenagem pluvial. Fiscalização e proibição da construção em encostas com declividade superior a 16º.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGAO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td>Setorização de Áreas em Alto e Muito Alto Risco a Movimentos de Massa, Enchentes e Inundações</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>751459</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>978403</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>21</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude><altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -54.73959025199997,-1.952138550999962,0 -54.73964429299997,-1.952275116999942,0 -54.73934857199998,-1.952399811999953,0 -54.73927584199998,-1.952309175999972,0 -54.73933554399997,-1.952242764999937,0 -54.73959025199997,-1.952138550999962,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00014">
+      <name>PA_ALENQUE_SR_15_CPRM</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>PA</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>14</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>ALENQUER</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL_1</td>
+<td>Trav. Arnaldo Moraes com a Rua Paes de Carvalho - Morro da Band</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>29/11/2019</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_ALENQUE_SR_15_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLO_G1</td>
+<td>Deslizamento</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E1</td>
+<td>Deslizamento planar</td>
+</tr>
+<tr>
+<td>COBRADE_01</td>
+<td>1.1.3.2.1</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G2</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E2</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_02</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G3</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E3</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_03</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G4</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E4</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_04</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G5</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E5</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_05</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalado</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Ocupação desordenada de moradias de madeira e alvenaria construídas no sopé da encosta.  Avanço contínuo da erosão em direção as moradias, principalmente onde a vegetação foi retirada.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_EDIF</td>
+<td>13</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>52</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Médio</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Muito alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remoção temporária dos moradores durante o período de chuvas. Estudos de implantação e adequação de sistema de drenagem pluvial. Fiscalização e proibição da construção em encostas com declividade superior a 16º.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGAO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td>Setorização de Áreas em Alto e Muito Alto Risco a Movimentos de Massa, Enchentes e Inundações</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>751425</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>978392</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>21</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude><altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -54.73939696499997,-1.95256472899996,0 -54.73935216099994,-1.952591607999977,0 -54.73918732399994,-1.952668661999951,0 -54.73920555399997,-1.952783310999962,0 -54.73927450099995,-1.952946039999972,0 -54.73939652599995,-1.953126443999963,0 -54.73945494699996,-1.953165693999949,0 -54.73949395899996,-1.953247763999968,0 -54.73962675399997,-1.953221353999936,0 -54.73972610299995,-1.953177953999955,0 -54.73977725599997,-1.95320150799995,0 -54.73981120099995,-1.953269126999942,0 -54.73977859099995,-1.953294045999939,0 -54.73972004299998,-1.953320067999925,0 -54.73960409699998,-1.953362186999925,0 -54.73946748299994,-1.953401980999956,0 -54.73934380499998,-1.953432174999932,0 -54.73928069599998,-1.953217539999969,0 -54.73923986799997,-1.953109362999953,0 -54.73920673599997,-1.95298268099998,0 -54.73919304399993,-1.952877628999943,0 -54.73913351299996,-1.95270091499998,0 -54.73911774499993,-1.952615174999949,0 -54.73909086199995,-1.952548413999978,0 -54.73934707999996,-1.952454108999973,0 -54.73939696499997,-1.95256472899996,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00015">
+      <name>PA_ALENQUE_SR_16_CPRM</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>PA</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>15</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>ALENQUER</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL_1</td>
+<td>Av. Getúlio Vargas - Bairros: Liberdade, Luanda, Centro e Beco do Anhingal.</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>29/11/2019</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_ALENQUE_SR_16_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLO_G1</td>
+<td>Inundação</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E1</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_01</td>
+<td>1.2.1.0.0</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G2</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E2</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_02</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G3</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E3</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_03</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G4</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E4</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_04</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G5</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E5</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_05</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalado</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Área de risco muito alta a inundação, localizada na margem direita do rio Surubiú, orla da cidade, sito à Av: Getúlio Vargas. Este setor corresponde a planície de inundação do rio a qual está densamente ocupada por moradias e prédios.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_EDIF</td>
+<td>580</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>2320</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Médio</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Muito alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Evitar o lançamento de aterro nas margens e leito dos igarapés e durante o período de chuvas intensas, realizar a remoção temporária dos moradores que se encontram na área de risco.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGAO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td>Setorização de Áreas em Alto e Muito Alto Risco a Movimentos de Massa, Enchentes e Inundações</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>750939</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>9783860</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>21</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude><altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -54.73563418199996,-1.953587232999894,0 -54.73581455199997,-1.95354860499998,0 -54.73598203799997,-1.953503537999893,0 -54.73611087299997,-1.953455252999959,0 -54.73629124399997,-1.95340374899996,0 -54.73639109199996,-1.953368338999894,0 -54.73648449799998,-1.953332929999874,0 -54.73656502099988,-1.953313615999889,0 -54.73660045099996,-1.953303958999811,0 -54.7366294389999,-1.953313615999889,0 -54.73665146999986,-1.953411636999931,0 -54.73670404199993,-1.95351156299995,0 -54.73670650199995,-1.953616175999798,0 -54.73670991799997,-1.953680776999818,0 -54.73666867499992,-1.953740301999858,0 -54.73657757799998,-1.95380961799998,0 -54.73663457299995,-1.953923190999888,0 -54.73664219199998,-1.954021645999944,0 -54.73660098799996,-1.954090396999959,0 -54.73659447799992,-1.954159010999945,0 -54.73665253999997,-1.954212824999786,0 -54.73666033399996,-1.954300701999955,0 -54.73670260199998,-1.954388353999832,0 -54.73672015499994,-1.954475780999871,0 -54.73677871799998,-1.954495178999878,0 -54.73680193799987,-1.954548466999938,0 -54.73676678499999,-1.954577496999946,0 -54.73679010999996,-1.954625826999916,0 -54.73681843599996,-1.954669264999893,0 -54.7368602759999,-1.954755973999966,0 -54.73691735999989,-1.954818459999956,0 -54.73695993399997,-1.954871243999889,0 -54.73695427699994,-1.954960325999878,0 -54.73689348399989,-1.954975536999939,0 -54.73682239699997,-1.955000874999882,0 -54.73683525999996,-1.955086883999968,0 -54.73687579199992,-1.955263294999838,0 -54.73693638499998,-1.955428805999929,0 -54.73701994399994,-1.955457984999953,0 -54.7370687639999,-1.955511211999919,0 -54.73710870799994,-1.955582180999841,0 -54.73713089899991,-1.95567976399991,0 -54.73709539299989,-1.955795088999935,0 -54.73707320099993,-1.955870493999896,0 -54.73703325699989,-1.955945898999914,0 -54.73701994299995,-1.955954769999948,0 -54.73694449299995,-1.95598581899992,0 -54.73694005499993,-1.956074530999899,0 -54.73695780799989,-1.95614549999982,0 -54.73701550399994,-1.956274130999873,0 -54.73704213399992,-1.956367277999959,0 -54.73711379799994,-1.95649744799988,0 -54.73714042699999,-1.956665998999881,0 -54.73716705599998,-1.956768015999899,0 -54.73719812299998,-1.956847855999911,0 -54.73722475199986,-1.956932131999963,0 -54.73728688599994,-1.957025277999946,0 -54.73733570599995,-1.95707406899993,0 -54.73734901999984,-1.95707406899993,0 -54.73740227799988,-1.957078504999913,0 -54.73745553599997,-1.95708293999985,0 -54.73749547999995,-1.957162779999976,0 -54.7375132329999,-1.957220441999937,0 -54.73757980499994,-1.957229312999857,0 -54.73761531099996,-1.957229312999971,0 -54.73788603999986,-1.957136165999884,0 -54.73794692799993,-1.957148683999947,0 -54.7380216659999,-1.957116002999896,0 -54.73806573999997,-1.957105861999878,0 -54.73811566499995,-1.957085437999979,0 -54.73825941199993,-1.95705004499996,0 -54.73832963299998,-1.957031736999966,0 -54.73839917299995,-1.957016672999941,0 -54.73854640199994,-1.956973762999951,0 -54.73859525099994,-1.956958505999921,0 -54.73866241899998,-1.956943249999938,0 -54.73876927699985,-1.956909684999971,0 -54.73884255099995,-1.956888325999898,0 -54.73899215199998,-1.956845607999924,0 -54.7391264879999,-1.956805940999914,0 -54.73913259399995,-1.956805940999914,0 -54.73925777099993,-1.956778478999979,0 -54.73934630999997,-1.95674796499992,0 -54.73941653199995,-1.95672355499994,0 -54.73954277099989,-1.956705673999977,0 -54.73970763699992,-1.956659903999935,0 -54.73984502599995,-1.956614133999949,0 -54.73997936099994,-1.956574466999939,0 -54.74006484799992,-1.956550056999902,0 -54.74015338699996,-1.956531748999964,0 -54.74028161599983,-1.956482927999957,0 -54.74052280999996,-1.956412747999821,0 -54.74067546499998,-1.956373080999924,0 -54.74081285499989,-1.956342566999979,0 -54.74098968299995,-1.956285150999918,0 -54.74100019199994,-1.95628164999988,0 -54.74122438099994,-1.956218632999935,0 -54.74146608499996,-1.95615911699997,0 -54.74166575399994,-1.956085597999902,0 -54.74179186099991,-1.956043585999907,0 -54.74186191999985,-1.956001574999902,0 -54.74194248799995,-1.955998073999979,0 -54.74202305599994,-1.955984069999943,0 -54.74216667799993,-1.955959563999954,0 -54.7422577559999,-1.955907048999961,0 -54.74233832399983,-1.955889544999934,0 -54.74233832399983,-1.955812523999896,0 -54.74228928199994,-1.955703995999954,0 -54.74229979099994,-1.955679488999976,0 -54.74231029999999,-1.955640978999895,0 -54.74233131799997,-1.955574460999912,0 -54.74240838399993,-1.955525447999946,0 -54.74259404299994,-1.955444924999938,0 -54.74275167899992,-1.955406413999867,0 -54.74284625999991,-1.955357399999968,0 -54.74290931499991,-1.955325890999973,0 -54.74296886699995,-1.955311886999937,0 -54.74299265099995,-1.955225319999954,0 -54.74297513599993,-1.955137796999907,0 -54.74295061499993,-1.955032769999946,0 -54.74297863799995,-1.954969752999887,0 -54.74298214099997,-1.954969752999887,0 -54.74302767899991,-1.954948747999936,0 -54.74303118199998,-1.954948747999936,0 -54.74308022399993,-1.954920739999977,0 -54.74308722999996,-1.954917238999883,0 -54.74312576199998,-1.954854222999927,0 -54.74319932399993,-1.95483321699993,0 -54.74323435299988,-1.954780702999869,0 -54.74323785599989,-1.954777201999946,0 -54.74324486199998,-1.954721187999837,0 -54.7432518679999,-1.954714185999876,0 -54.7432763889999,-1.954668673999947,0 -54.74327989099993,-1.954602155999908,0 -54.74332542999997,-1.95454614099998,0 -54.7433814769999,-1.954521634999935,0 -54.74342351199994,-1.954472621999969,0 -54.74342701499995,-1.954420107999965,0 -54.74341650599996,-1.954322081999919,0 -54.74348656499996,-1.954290573999913,0 -54.74355312099988,-1.954269567999859,0 -54.74360566599995,-1.95423805899992,0 -54.74360856299995,-1.954154686999857,0 -54.74361206599997,-1.954151185999933,0 -54.7436576049999,-1.954091669999968,0 -54.7436681129999,-1.954091669999968,0 -54.74372416099993,-1.954049658999963,0 -54.74373116699996,-1.95404965899985,0 -54.74380472899992,-1.954007646999969,0 -54.74382224399994,-1.954000644999894,0 -54.7439203269999,-1.953958633999889,0 -54.74392382899998,-1.953955132999965,0 -54.74402191199994,-1.953934126999911,0 -54.74403242099993,-1.953930625999874,0 -54.74407795999997,-1.953909620999923,0 -54.74410226699996,-1.953801267999836,0 -54.74407424299994,-1.953640225999834,0 -54.74400768599992,-1.953479183999832,0 -54.74401469199995,-1.9533811579999,0 -54.74408124799999,-1.95334964999995,0 -54.74416882199995,-1.953297135999946,0 -54.74415831299996,-1.953192107999882,0 -54.74423537799993,-1.953146595999954,0 -54.74424238399996,-1.953143094999916,0 -54.74432995799992,-1.953146595999954,0 -54.74434747199996,-1.953146595999954,0 -54.74440351999982,-1.953143093999927,0 -54.74440702299995,-1.953143093999927,0 -54.74448058499996,-1.953167600999961,0 -54.74454714099988,-1.953143093999927,0 -54.74461019399996,-1.953097581999941,0 -54.74464872599992,-1.953003056999876,0 -54.74467674899995,-1.95293653899995,0 -54.7447257899999,-1.952870020999967,0 -54.74478183699995,-1.952803503999974,0 -54.74487291399993,-1.952785998999957,0 -54.74494297299998,-1.952750988999981,0 -54.7449744999999,-1.952712478999899,0 -54.74505156499998,-1.95268096999996,0 -54.74508004599994,-1.952654549999977,0 -54.74509055499993,-1.952591532999918,0 -54.74511643799991,-1.952507222999884,0 -54.74515847299995,-1.952405695999914,0 -54.74519350199989,-1.952353181999911,0 -54.74523203399997,-1.952300667999907,0 -54.74528457799988,-1.952269159999901,0 -54.74529158399992,-1.952265658999977,0 -54.74533361999994,-1.95224815399996,0 -54.74541068399992,-1.952216644999908,0 -54.74558583199996,-1.952157128999943,0 -54.74568041099997,-1.952097612999921,0 -54.74570142899989,-1.952013590999968,0 -54.74570493099992,-1.951943571999948,0 -54.74577498999997,-1.951891057999944,0 -54.74578900199998,-1.951884055999926,0 -54.74585906099998,-1.951856047999911,0 -54.74592211399988,-1.951793030999852,0 -54.74599917899997,-1.951730013999963,0 -54.7460342089999,-1.951673998999865,0 -54.74607974699995,-1.951603979999845,0 -54.74608675299999,-1.951558467999973,0 -54.74611477699995,-1.951526958999864,0 -54.74612878799991,-1.951484947999916,0 -54.74613916699997,-1.951421570999912,0 -54.74613566399995,-1.951365555999928,0 -54.74611814899993,-1.951264028999958,0 -54.74612865699999,-1.951187008999966,0 -54.74610413599993,-1.951137995999943,0 -54.74607260999989,-1.951071478999836,0 -54.74610063299997,-1.95102246599987,0 -54.74611814799994,-1.951015463999909,0 -54.74616018299997,-1.950987455999893,0 -54.74617069199991,-1.950980454999922,0 -54.74618820599994,-1.950882428999819,0 -54.74618820599994,-1.950875426999971,0 -54.74617069099992,-1.95081941199993,0 -54.74617069099992,-1.950731888999883,0 -54.74617419299994,-1.950658369999928,0 -54.74623023999987,-1.950567345999957,0 -54.74623374299989,-1.950567345999843,0 -54.74629329299995,-1.950497326999937,0 -54.7463283219999,-1.950423807999869,0 -54.74630029799988,-1.950311777999957,0 -54.74630380099995,-1.950245260999964,0 -54.74632482999988,-1.950203343999931,0 -54.74635985899994,-1.950101816999961,0 -54.74640889999984,-1.950014293999914,0 -54.74641940899988,-1.950010792999933,0 -54.74647195299997,-1.949961779999967,0 -54.74647895899994,-1.949954777999892,0 -54.74649997599988,-1.949881257999834,0 -54.74649997599988,-1.949765727999875,0 -54.74649997599988,-1.949758725999914,0 -54.74651748999992,-1.94958718099997,0 -54.74652799799992,-1.949485653999886,0 -54.74649296799993,-1.949366622999889,0 -54.7464754529999,-1.949289602999841,0 -54.74645793799988,-1.949174071999948,0 -54.7464719489999,-1.949055039999962,0 -54.7464719489999,-1.949044537999896,0 -54.74647545199991,-1.948932507999871,0 -54.74647545199991,-1.948929006999947,0 -54.74648596099991,-1.948809974999961,0 -54.74649646899996,-1.948757460999843,0 -54.74653231899998,-1.948622303999969,0 -54.74654681899995,-1.94857508799987,0 -54.74657889399987,-1.948514133999879,0 -54.74660799699996,-1.948432426999887,0 -54.74660822999988,-1.948418760999971,0 -54.74662333999999,-1.948350218999906,0 -54.74665935599995,-1.948288230999935,0 -54.74666660599991,-1.948274416999936,0 -54.74670968399994,-1.948219017999975,0 -54.74671705099991,-1.948201658999949,0 -54.74672494599997,-1.948159906999877,0 -54.74671529299997,-1.948118025999975,0 -54.74673115199994,-1.948033872999929,0 -54.74670092299993,-1.94795980899994,0 -54.74669399399988,-1.947952733999898,0 -54.7466491969999,-1.947888895999938,0 -54.74664578199997,-1.94788178399989,0 -54.74662581399991,-1.947806887999889,0 -54.74658842999992,-1.94769917799988,0 -54.74658508999994,-1.947684752999919,0 -54.74655444099989,-1.947583350999878,0 -54.74655449399995,-1.94757971599995,0 -54.74655165099983,-1.94752871999998,0 -54.74650193799988,-1.947484859999975,0 -54.74647823799995,-1.947359830999972,0 -54.74647135399994,-1.947330247999901,0 -54.74647143999994,-1.947322842999824,0 -54.74646170599993,-1.947222481999972,0 -54.74649922299994,-1.947125152999888,0 -54.74650669999994,-1.947110118999888,0 -54.74659621399996,-1.946981677999815,0 -54.74660726099989,-1.946977882999875,0 -54.74670764099994,-1.946901757999967,0 -54.74671506199996,-1.946897940999918,0 -54.74686767199995,-1.946817544999931,0 -54.74694514399988,-1.946770556999979,0 -54.74694734799988,-1.946772875999955,0 -54.74708275199998,-1.946725682999897,0 -54.74708951299993,-1.946718933999932,0 -54.74724555699987,-1.946664880999833,0 -54.74729991699991,-1.946631041999979,0 -54.74741576399998,-1.946522460999859,0 -54.74747071499985,-1.946399768999925,0 -54.74753595699991,-1.946062899999959,0 -54.74741627099996,-1.945950850999907,0 -54.74724903299989,-1.945825041999967,0 -54.74722258399999,-1.945711955999855,0 -54.74731759799988,-1.945611762999931,0 -54.74741334399988,-1.945464112999957,0 -54.74744018099989,-1.945240645999945,0 -54.74743643899984,-1.945125410999822,0 -54.74730736299983,-1.945036628999844,0 -54.74721244099987,-1.944851271999937,0 -54.74717199499997,-1.94462989099992,0 -54.74711754199996,-1.944329472999868,0 -54.74715972499996,-1.944103687999814,0 -54.74715282999995,-1.944082421999951,0 -54.74709755699996,-1.94386168799997,0 -54.74709759399997,-1.943840229999978,0 -54.74717496199997,-1.943675146999908,0 -54.74725237999996,-1.943603055999802,0 -54.7474255109999,-1.943475013999944,0 -54.74744598599995,-1.943461441999887,0 -54.74758274099997,-1.943373047999955,0 -54.74760329599997,-1.943359421999958,0 -54.74762380699997,-1.943352606999952,0 -54.74776767899988,-1.943291187999932,0 -54.7477814099999,-1.943284354999889,0 -54.74781571199998,-1.943270683999913,0 -54.74797411399993,-1.943181644999925,0 -54.74798789999994,-1.943174782999961,0 -54.74807137699997,-1.943092304999823,0 -54.74808729399996,-1.942961185999877,0 -54.74800241799994,-1.942669021999961,0 -54.74793548099996,-1.942514692999964,0 -54.74794517799995,-1.942316974999869,0 -54.74796767499993,-1.942203332999895,0 -54.74796787999986,-1.942189093999957,0 -54.74800487999988,-1.942046286999869,0 -54.74804196399992,-1.94190991499994,0 -54.74804218999998,-1.941895519999832,0 -54.74805079699996,-1.941794537999897,0 -54.74794890099997,-1.941690589999837,0 -54.74795170199997,-1.941453268999908,0 -54.74795203299988,-1.941425208999817,0 -54.74794071499991,-1.941206738999938,0 -54.74790040099998,-1.941079062999961,0 -54.74786767199998,-1.940872074999959,0 -54.74786781699993,-1.940857740999832,0 -54.74789701299994,-1.940742793999846,0 -54.74791954899996,-1.940605656999878,0 -54.74791268099989,-1.940591180999888,0 -54.74791354999996,-1.940511423999965,0 -54.74786035799991,-1.940377933999855,0 -54.74778643199994,-1.940143391999811,0 -54.74771187599998,-1.939899763999904,0 -54.74771215299995,-1.939836752999838,0 -54.74773340399997,-1.939731403999929,0 -54.74767874299994,-1.939526543999932,0 -54.74761645699994,-1.939405720999957,0 -54.74760953799995,-1.939384341999869,0 -54.74753297999996,-1.939234215999875,0 -54.74751900499996,-1.939219874999935,0 -54.74739272999994,-1.938989368999955,0 -54.74725297599997,-1.938938308999923,0 -54.74719833899997,-1.938858386999868,0 -54.74709523999996,-1.938713275999874,0 -54.74703525299998,-1.938604828999871,0 -54.74701563399992,-1.938530219999905,0 -54.74697469499995,-1.938472686999944,0 -54.74693307699994,-1.938454899999897,0 -54.74690836499997,-1.938405779999925,0 -54.74688384199987,-1.938302083999872,0 -54.74684197499994,-1.938201625999909,0 -54.74674822799994,-1.938085929999943,0 -54.74668344999998,-1.937992170999962,0 -54.74664398199991,-1.937906856999916,0 -54.74653131399992,-1.937897322999959,0 -54.74640865399988,-1.937835079999957,0 -54.74633226699996,-1.937743254999816,0 -54.74629487099998,-1.937660224999945,0 -54.74629342999998,-1.937610993999954,0 -54.74631841099989,-1.937553863999938,0 -54.74640583499985,-1.937470394999877,0 -54.74642165199998,-1.937460307999856,0 -54.74653629899996,-1.937392669999952,0 -54.74667477799989,-1.937300263999759,0 -54.74680173799993,-1.937244900999872,0 -54.74700165399992,-1.937054655999873,0 -54.74720874199994,-1.936906606999969,0 -54.74731254699998,-1.936825843999941,0 -54.74749656499995,-1.936777676999952,0 -54.74764727499996,-1.936788818999958,0 -54.74778971499995,-1.936899295999979,0 -54.74789199699995,-1.936950257999911,0 -54.74789800199994,-1.936957507999978,0 -54.74791775599988,-1.937068919999888,0 -54.74797292699992,-1.937146905999953,0 -54.74797620499993,-1.937146905999953,0 -54.7480480289999,-1.93718206099993,0 -54.74800619899992,-1.937241413999971,0 -54.74798809399994,-1.937293355999884,0 -54.74801109599997,-1.937355163999939,0 -54.74796542399991,-1.937426562999917,0 -54.74795107399996,-1.937514393999891,0 -54.74793221699991,-1.937573806999922,0 -54.74792746399999,-1.937704758999928,0 -54.74794475199997,-1.937799643999938,0 -54.74794799499989,-1.937803007999946,0 -54.7480188639999,-1.937866602999975,0 -54.74802209399991,-1.937873261999925,0 -54.74807633499995,-1.937913075999916,0 -54.74807951799994,-1.937916382999845,0 -54.74814590299991,-1.938014832999897,0 -54.74830106399997,-1.938175698999885,0 -54.74841271899999,-1.938323361999949,0 -54.74842172299992,-1.93833267399998,0 -54.74849883199994,-1.938425047999829,0 -54.74850474699997,-1.93843115899989,0 -54.7485631479999,-1.93850403499988,0 -54.74857169599989,-1.93851911299987,0 -54.74858022399997,-1.938534154999957,0 -54.74864298499995,-1.938623657999926,0 -54.7486457359999,-1.93862957999994,0 -54.74862941899988,-1.938680272999875,0 -54.74858652199998,-1.938878083999896,0 -54.74865275299993,-1.939041636999775,0 -54.74869988599994,-1.939258490999975,0 -54.74879414799994,-1.939411108999877,0 -54.74880478599994,-1.939543873999924,0 -54.74880926299994,-1.939693024999826,0 -54.74883125699995,-1.93983451999992,0 -54.74887715799997,-1.939898825999933,0 -54.74899360399991,-1.939898824999887,0 -54.7490225009999,-1.93991047999998,0 -54.74917438499995,-1.939887155999941,0 -54.74919200799997,-1.939881317999948,0 -54.74932295999997,-1.939980175999892,0 -54.74932858199998,-1.939985965999938,0 -54.74939193799992,-1.940169798999932,0 -54.74939691399987,-1.940192580999792,0 -54.74940782399989,-1.940209639999864,0 -54.74941317399998,-1.940220998999905,0 -54.74942777999996,-1.940294569999878,0 -54.74951408899989,-1.940429212999902,0 -54.74951933999995,-1.940440364999972,0 -54.74963882399993,-1.940567859999931,0 -54.7498447509999,-1.940633834999971,0 -54.74989444699992,-1.940753839999957,0 -54.74989914299994,-1.94077010999996,0 -54.74989831699997,-1.940883366999913,0 -54.74994518999995,-1.940922289999946,0 -54.74995764199991,-1.940936117999854,0 -54.75002576099996,-1.941018784999926,0 -54.75011490399987,-1.941263712999955,0 -54.75018603199987,-1.941417821999892,0 -54.75020416999996,-1.941437789999952,0 -54.75032541299998,-1.941537164999943,0 -54.75034399599997,-1.941537163999953,0 -54.75036811899997,-1.94155694799997,0 -54.75055063299993,-1.94163577899991,0 -54.75059944599997,-1.941648869999938,0 -54.75076894699998,-1.94171412799983,0 -54.75078060799996,-1.941727139999841,0 -54.75096376199991,-1.94196550699985,0 -54.75108547199989,-1.942355147999933,0 -54.75108469499997,-1.942367517999969,0 -54.75115684199994,-1.942545516999871,0 -54.75107449999996,-1.94281079599989,0 -54.75107472199988,-1.943082131999972,0 -54.75108014999995,-1.943267376999927,0 -54.75107865799993,-1.943290333999926,0 -54.75107476399995,-1.943438493999963,0 -54.75106792199995,-1.943455471999869,0 -54.75101605499998,-1.943640652999875,0 -54.75100000799989,-1.943894046999901,0 -54.75099897399991,-1.943910384999924,0 -54.75103479699993,-1.944051029999912,0 -54.75104944599991,-1.944083247999913,0 -54.75105954499998,-1.944099322999932,0 -54.75109762099999,-1.944195309999941,0 -54.7510996019999,-1.944305318999909,0 -54.75109601499997,-1.94447979499995,0 -54.75108854399997,-1.944615195999972,0 -54.7511481759999,-1.944718821999913,0 -54.75114782499998,-1.944724890999964,0 -54.75111651899988,-1.944857656999943,0 -54.75098033699999,-1.944863659999896,0 -54.75082731999993,-1.944851657999891,0 -54.75080341899991,-1.944857661999947,0 -54.75068385399987,-1.944893624999906,0 -54.75059196099988,-1.944989012999883,0 -54.75058587399991,-1.944994950999956,0 -54.75052945599998,-1.945101328999954,0 -54.75052886799995,-1.945118968999907,0 -54.75052322699997,-1.945288179999977,0 -54.75052226199989,-1.945317116999945,0 -54.75052187699998,-1.945328672999949,0 -54.75048957699994,-1.945432176999873,0 -54.75048902599991,-1.945449340999971,0 -54.75048829099995,-1.945472188999929,0 -54.75043554699994,-1.945692699999938,0 -54.75043537799991,-1.945698300999879,0 -54.75039713699994,-1.945837470999948,0 -54.7503965009999,-1.945859586999973,0 -54.75039634199987,-1.945865108999897,0 -54.75034140599996,-1.946013248999918,0 -54.75031513099998,-1.946159540999929,0 -54.7503033989999,-1.946181058999855,0 -54.7502561899999,-1.946288055999901,0 -54.75014950299988,-1.946371670999895,0 -54.75007549899988,-1.946429128999966,0 -54.74997064099995,-1.946568492999916,0 -54.74992089799997,-1.94673123299998,0 -54.74985417499988,-1.946836509999912,0 -54.74975823599993,-1.946916420999969,0 -54.74974031299996,-1.946934788999954,0 -54.74972838199994,-1.946940905999952,0 -54.7496568869999,-1.946965342999817,0 -54.7495915159999,-1.946995821999963,0 -54.74958559799995,-1.947001908999937,0 -54.74942592699995,-1.947080766999932,0 -54.74942006999993,-1.947086811999839,0 -54.74929287399988,-1.947272753999925,0 -54.74929307899998,-1.94728465399993,0 -54.74926673499994,-1.947450051999965,0 -54.74925560999998,-1.947479352999892,0 -54.74925033699992,-1.947508582999831,0 -54.74920025799997,-1.94761901999982,0 -54.74918311299996,-1.947630586999878,0 -54.7489926689999,-1.94765945599994,0 -54.7489754749999,-1.947665221999898,0 -54.74895231899995,-1.947665221999898,0 -54.74882109799995,-1.947716986999922,0 -54.74879842899992,-1.947728459999894,0 -54.74878688099994,-1.947728459999894,0 -54.74870148399998,-1.947757094999872,0 -54.74846127199999,-1.947904904999916,0 -54.74844437899992,-1.947910553999975,0 -54.74835687599989,-1.947983744999874,0 -54.74834071099997,-1.948000570999966,0 -54.74827066999995,-1.948162008999873,0 -54.74826137299988,-1.948195136999971,0 -54.74826171299992,-1.948200648999887,0 -54.74824798999992,-1.948343069999851,0 -54.74824407299997,-1.94837026099998,0 -54.74824509699988,-1.948386545999881,0 -54.74824577899994,-1.948397389999911,0 -54.74826607699993,-1.948542804999931,0 -54.74827855799998,-1.948564193999971,0 -54.7482809089999,-1.948691708999831,0 -54.74827569599995,-1.948696991999839,0 -54.74821269499995,-1.948800989999825,0 -54.7481701829999,-1.948890750999794,0 -54.74807430999994,-1.949118688999931,0 -54.74807440099988,-1.949131231999957,0 -54.74801073999993,-1.949410187999888,0 -54.74798230399989,-1.949538260999873,0 -54.74797070499983,-1.949562506999939,0 -54.74795912799993,-1.949586704999888,0 -54.74795327399988,-1.94959274699994,0 -54.74787301999999,-1.949766692999958,0 -54.7478675129999,-1.949790492999966,0 -54.74775467599989,-1.950020148999897,0 -54.74766738099993,-1.950173109999923,0 -54.74761312999982,-1.950250486999948,0 -54.74755388299997,-1.950412592999953,0 -54.74743073699989,-1.950556218999907,0 -54.74734749699996,-1.950673508999955,0 -54.74728798299998,-1.950773337999863,0 -54.74728012799989,-1.95096288499991,0 -54.7472836369999,-1.951230801999941,0 -54.74729281399993,-1.951446541999871,0 -54.74724223399994,-1.951648755999884,0 -54.74710681399995,-1.951694521999968,0 -54.74707903499996,-1.95173101599994,0 -54.74707308699988,-1.951785560999951,0 -54.74704414999997,-1.951871447999963,0 -54.74700105499988,-1.952001420999864,0 -54.74700061399994,-1.952019242999825,0 -54.74699050399988,-1.952072559999976,0 -54.74698567899986,-1.952090280999926,0 -54.74698375799994,-1.952169720999848,0 -54.74698322599994,-1.952191697999979,0 -54.74698142499994,-1.952266130999931,0 -54.74698100299992,-1.952283580999961,0 -54.74698047599998,-1.952305357999876,0 -54.74696203499997,-1.952348797999832,0 -54.7469124399999,-1.952430917999948,0 -54.74682971499993,-1.952452437999966,0 -54.74675951699999,-1.952512494999951,0 -54.74675441699998,-1.952563740999949,0 -54.74673140299996,-1.952665594999928,0 -54.74673134199998,-1.952669820999915,0 -54.7467265119999,-1.952707785999962,0 -54.74672621299987,-1.952728825999941,0 -54.74672603399995,-1.952741432999971,0 -54.74671643299996,-1.952816802999905,0 -54.74671528099998,-1.952900002999854,0 -54.74671080299993,-1.952916574999904,0 -54.74670153599988,-1.95297439899997,0 -54.74665815899994,-1.953060617999938,0 -54.74660314799991,-1.95307288499987,0 -54.74654261599989,-1.953061164999951,0 -54.74649625999996,-1.953016891999937,0 -54.74639723599995,-1.952963557999965,0 -54.74632151799989,-1.95298580899987,0 -54.74622892299993,-1.952990254999975,0 -54.74614141299998,-1.952972463999913,0 -54.74604326799994,-1.953021328999853,0 -54.74598529799994,-1.953056747999938,0 -54.74596216999998,-1.953109688999973,0 -54.74592975199988,-1.953193054999872,0 -54.74591921699988,-1.953280209999889,0 -54.74586851899988,-1.953309261999891,0 -54.74580662599993,-1.953352916999847,0 -54.74575477199988,-1.953380812999967,0 -54.7457025359999,-1.953423948999955,0 -54.74563507999994,-1.953491107999923,0 -54.7456295099999,-1.953566508999927,0 -54.74561809999994,-1.953643911999961,0 -54.74557012399998,-1.95369397199994,0 -54.74549335199993,-1.953761020999877,0 -54.74544683799996,-1.953787046999878,0 -54.74540339699996,-1.953812955999979,0 -54.74537160999989,-1.953835888999947,0 -54.74532274399985,-1.953870116999838,0 -54.74528525299996,-1.95395199799998,0 -54.74528237899995,-1.953960400999961,0 -54.74527380999996,-1.953979960999959,0 -54.74527377099997,-1.953988322999862,0 -54.74528180199991,-1.954065778999961,0 -54.74527023899992,-1.954147599999885,0 -54.74524234899997,-1.954198806999955,0 -54.74519221399999,-1.954240355999843,0 -54.74512521499992,-1.954274292999969,0 -54.74505859599992,-1.954308037999908,0 -54.74501958899998,-1.954323312999975,0 -54.74496760299996,-1.954374954999878,0 -54.74491832999996,-1.954447099999868,0 -54.74491804699994,-1.954456055999913,0 -54.74488100799988,-1.954527213999938,0 -54.74482979499999,-1.954606241999898,0 -54.74479985999994,-1.954658333999873,0 -54.74471491199989,-1.954659344999868,0 -54.74465249299988,-1.954674287999865,0 -54.74454812899995,-1.95470999399987,0 -54.74447373199996,-1.954739583999924,0 -54.74441174099996,-1.954760207999868,0 -54.74436418099992,-1.95472480899997,0 -54.74435850899994,-1.954721848999952,0 -54.74428658799991,-1.954704059999926,0 -54.74426912699988,-1.954704059999926,0 -54.74421653899998,-1.954709996999952,0 -54.74417705899998,-1.954763148999916,0 -54.74418033799998,-1.954841977999877,0 -54.74418887099989,-1.954844876999857,0 -54.74422880899994,-1.954853564999951,0 -54.7442373209999,-1.954856457999938,0 -54.74424880999987,-1.954856457999938,0 -54.74430600599993,-1.954862239999954,0 -54.74433080399984,-1.954885309999895,0 -54.74435293799991,-1.954962495999894,0 -54.74434867399998,-1.955052645999899,0 -54.7443551369999,-1.955094415999895,0 -54.74436128399998,-1.955141384999877,0 -54.74433377699989,-1.955190692999963,0 -54.74428406699997,-1.955244974999914,0 -54.74422171699996,-1.955279977999965,0 -54.74421064999996,-1.955279977999965,0 -54.74411104599994,-1.955279977999794,0 -54.74403421999989,-1.955247676999875,0 -54.74400439499993,-1.955207033999955,0 -54.74397032299993,-1.95525307399987,0 -54.74398344399998,-1.95530140999989,0 -54.74398612199991,-1.955306753999878,0 -54.74401232499997,-1.955383678999851,0 -54.74402218399996,-1.955441326999903,0 -54.74399418199988,-1.95548546099991,0 -54.74394517499991,-1.955495793999887,0 -54.74391535599995,-1.955493212999954,0 -54.74385849999993,-1.955462140999941,0 -54.74376268399993,-1.955448088999958,0 -54.74372924299996,-1.955421302999923,0 -54.74368011399991,-1.955412346999822,0 -54.74362437499991,-1.955418318999875,0 -54.7436091159999,-1.955433222999943,0 -54.74361345499989,-1.955465878999973,0 -54.74363431799992,-1.955515989999981,0 -54.74363968199992,-1.955524787999877,0 -54.74365931199998,-1.955594698999903,0 -54.7436617489999,-1.955603377999978,0 -54.74366690599999,-1.955614930999957,0 -54.74369253299994,-1.95567234899994,0 -54.74369158799988,-1.955743320999943,0 -54.74368292999998,-1.955746141999896,0 -54.74362998199996,-1.955785484999979,0 -54.74356215499995,-1.955785484999979,0 -54.74350042999998,-1.955849532999935,0 -54.74350012199994,-1.955857833999914,0 -54.74349399999988,-1.955871640999874,0 -54.7434665909999,-1.955934722999871,0 -54.74346630999997,-1.955942898999922,0 -54.74346045899995,-1.955951062999873,0 -54.74342545299999,-1.956002493999961,0 -54.74342235099988,-1.956013260999896,0 -54.74341941799992,-1.956018636999886,0 -54.74338867199998,-1.956029372999978,0 -54.74332595199991,-1.955989005999925,0 -54.74329599299995,-1.95595921599994,0 -54.74329320999988,-1.95595921599994,0 -54.74324868299993,-1.95595921599994,0 -54.74324307799998,-1.95596193099982,0 -54.7432280299999,-1.956048111999849,0 -54.74322788899997,-1.956058790999919,0 -54.74322458099988,-1.956101302999969,0 -54.74318860699992,-1.95612770799994,0 -54.74317774199983,-1.956177399999888,0 -54.74316707899993,-1.956219333999968,0 -54.74318874799985,-1.956255039999917,0 -54.74319080299995,-1.956334587999834,0 -54.74317928999994,-1.956395713999825,0 -54.74315227499994,-1.95642171399993,0 -54.74313208199993,-1.95642459599992,0 -54.74305284899998,-1.956395713999825,0 -54.74300193599993,-1.956369596999878,0 -54.74294342399998,-1.956404394999822,0 -54.74287117699993,-1.956427476999977,0 -54.74279651299997,-1.956438983999931,0 -54.74271329299995,-1.956470508999871,0 -54.74265899199997,-1.95650754299993,0 -54.74263021899998,-1.956549217999907,0 -54.74257883999991,-1.956567436999933,0 -54.74254486999996,-1.956585717999928,0 -54.74249521999991,-1.956601387999967,0 -54.74244295799997,-1.956622280999909,0 -54.74244034499992,-1.956622280999909,0 -54.74236456399996,-1.956640561999905,0 -54.74232014099994,-1.956671900999936,0 -54.74227833099991,-1.956698016999951,0 -54.74224174699992,-1.956721520999963,0 -54.74219209799998,-1.956739801999959,0 -54.74218687199993,-1.956745025999965,0 -54.74213722299999,-1.956765917999974,0 -54.74205621599992,-1.956799868999894,0 -54.7420300849999,-1.956825984999966,0 -54.74203269799995,-1.956833819999929,0 -54.7420300849999,-1.956909555999971,0 -54.74198827499998,-1.956967009999914,0 -54.7419281739999,-1.956993125999873,0 -54.74188113799994,-1.95698006799995,0 -54.74182364899997,-1.956938282999943,0 -54.74180274499992,-1.956878216999939,0 -54.74174525599994,-1.956854711999881,0 -54.74174264299984,-1.956854711999881,0 -54.74170867299995,-1.956909555999971,0 -54.74169560699994,-1.956953952999925,0 -54.74164073199995,-1.95696962199986,0 -54.7415544989999,-1.957003572999952,0 -54.74154665999998,-1.957003572999952,0 -54.74151007699993,-1.956990514999916,0 -54.74148917199989,-1.956961786999955,0 -54.74144997499997,-1.95698006799995,0 -54.74143952299988,-1.957027076999907,0 -54.74147871899993,-1.95707930899988,0 -54.74155188599997,-1.957128928999907,0 -54.74159369599994,-1.957181159999891,0 -54.74158324399986,-1.95726211899995,0 -54.74150746299989,-1.957303904999833,0 -54.74150223699991,-1.957309127999906,0 -54.74145781399989,-1.957322185999942,0 -54.74141261499989,-1.957350232999943,0 -54.74130286399998,-1.95739985299997,0 -54.74115914199996,-1.957441638999853,0 -54.74104939099993,-1.957478200999844,0 -54.74087431299995,-1.95755132499994,0 -54.74074626999993,-1.957590498999821,0 -54.74061822799996,-1.957650564999938,0 -54.74046144099998,-1.957689738999875,0 -54.74031510699996,-1.957747193999921,0 -54.74017587899988,-1.957810877999862,0 -54.74008964599994,-1.957844827999907,0 -54.73998773499994,-1.957870943999922,0 -54.73994853799996,-1.957884001999957,0 -54.73980162299989,-1.957923162999975,0 -54.73971970899998,-1.957979444999864,0 -54.7396429129999,-1.958225039999945,0 -54.73956611799997,-1.958399002999954,0 -54.73955075899994,-1.958424585999921,0 -54.73941252999987,-1.95859343099994,0 -54.73939717099995,-1.958598546999838,0 -54.73928966099999,-1.95859343099994,0 -54.73931013999999,-1.958419467999931,0 -54.7393152599999,-1.958404118999908,0 -54.73933061899993,-1.958306904999972,0 -54.73933061899993,-1.958286437999959,0 -54.7393357389999,-1.958173873999954,0 -54.7392896639999,-1.958092008999927,0 -54.73914119599988,-1.95813294099986,0 -54.73895689199998,-1.958178989999851,0 -54.73883914199996,-1.958194339999977,0 -54.73856780599993,-1.958255737999878,0 -54.73838862199995,-1.958296669999925,0 -54.73812752499992,-1.958363183999893,0 -54.73801489499994,-1.958352950999938,0 -54.73783428810844,-1.958530163144701,0 -54.73767057516204,-1.958573526282237,0 -54.73775685148786,-1.958938793000812,0 -54.73773623278043,-1.959275636302948,0 -54.7375012827942,-1.959311993766903,0 -54.73721663703071,-1.959420121861228,0 -54.73680385672498,-1.959557201507891,0 -54.7365335026301,-1.959686795242988,0 -54.73624171844506,-1.959787773546964,0 -54.73598556065821,-1.959895837723479,0 -54.73584315000295,-1.959910489526351,0 -54.7356081516906,-1.959925349347543,0 -54.73535899099994,-1.959889316999977,0 -54.73507398999988,-1.960025536999979,0 -54.73438007699997,-1.960198904999913,0 -54.73362420999985,-1.960434192999912,0 -54.73297986599982,-1.960669483999936,0 -54.73276075588859,-1.960855227476827,0 -54.73210164518997,-1.961331119677993,0 -54.73118793216366,-1.961997368759626,0 -54.73082625409086,-1.962644582153246,0 -54.73017904069729,-1.963367938298973,0 -54.72995061244069,-1.963748652059849,0 -54.7295127916156,-1.964738507838263,0 -54.72920822060684,-1.965309578479776,0 -54.72896075666222,-1.965690292240652,0 -54.72863714996549,-1.966166184441875,0 -54.72814222207631,-1.965385721231883,0 -54.72856100721327,-1.964567186645922,0 -54.72877039978181,-1.964205508573002,0 -54.72880847115783,-1.963691544995811,0 -54.72844679308503,-1.963063367290204,0 -54.72781861537953,-1.962378082520559,0 -54.727209473362,-1.961502440870447,0 -54.7266384027206,-1.960798120412676,0 -54.72608041911474,-1.959953411755578,0 -54.72578298648898,-1.95903137061589,0 -54.72542606733811,-1.957841640112974,0 -54.72515837797499,-1.957127801811168,0 -54.72575324322645,-1.956532936559711,0 -54.72641949230808,-1.956080838968603,0 -54.72651467074832,-1.955902379393137,0 -54.72693107642431,-1.955557357547377,0 -54.72725230366012,-1.955176643786444,0 -54.72756163359088,-1.954879211160687,0 -54.72788286082658,-1.954688854280221,0 -54.72804942309705,-1.954427113569579,0 -54.72851341799316,-1.953737069877889,0 -54.7289007309999,-1.953458564999892,0 -54.72890980499994,-1.953448693999974,0 -54.72906974899996,-1.953399269999977,0 -54.72908406199997,-1.953399269999977,0 -54.72933605199995,-1.95337451599994,0 -54.72953580699988,-1.953349728999967,0 -54.72962192999989,-1.953354690999902,0 -54.72975541999995,-1.95334477199998,0 -54.7299164019999,-1.953335770999956,0 -54.73004289099998,-1.953335772999935,0 -54.73023028099993,-1.953335774999971,0 -54.73038008599991,-1.953321456999902,0 -54.73055341099996,-1.953297567999925,0 -54.73068471599998,-1.953278436999938,0 -54.73084902699998,-1.953254495999886,0 -54.73096652899994,-1.953235321999898,0 -54.73107954499989,-1.953206524999928,0 -54.73122074899993,-1.953192111999954,0 -54.73131980099987,-1.953172876999872,0 -54.73137650699994,-1.953158437999946,0 -54.73143796199997,-1.953143988999898,0 -54.73148033099983,-1.953143988999898,0 -54.73152450099991,-1.953204386999914,0 -54.73154320299994,-1.953277352999919,0 -54.73159500299988,-1.953396572999907,0 -54.7316292729999,-1.9535037039999,0 -54.7316711819999,-1.953581521999865,0 -54.73172411299993,-1.953634222999938,0 -54.73176910599983,-1.953704044999938,0 -54.73185082399993,-1.953783717999897,0 -54.73190789099993,-1.953866151999875,0 -54.73195374999983,-1.953958044999922,0 -54.73204373999988,-1.954035627999929,0 -54.73212401899997,-1.954095903999871,0 -54.73224145699999,-1.954189295999868,0 -54.73231186271568,-1.954245388581285,0 -54.73236917222931,-1.95431326705625,0 -54.73242271010196,-1.954238314034569,0 -54.73245483282557,-1.954177637778912,0 -54.7325012323152,-1.954116961523255,0 -54.73255120099623,-1.954049146884529,0 -54.7325954399999,-1.954017800999964,0 -54.73259744699988,-1.954020720999949,0 -54.73266024399993,-1.954058133999865,0 -54.73268372199993,-1.954078064999919,0 -54.73271622899995,-1.954113805999953,0 -54.73277311499993,-1.954156043999944,0 -54.73284300099994,-1.954216150999969,0 -54.73290638399993,-1.95427300699987,0 -54.73295566699994,-1.954313012999876,0 -54.73300929899995,-1.954366613999809,0 -54.73304830399996,-1.954426711999872,0 -54.73308243399998,-1.954485185999943,0 -54.73311168799989,-1.954538786999933,0 -54.73314256699996,-1.954608173999873,0 -54.73316856999998,-1.954676392999943,0 -54.73318807299989,-1.954726744999959,0 -54.73321245099999,-1.954781970999875,0 -54.73324007999986,-1.954845316999979,0 -54.73326283299997,-1.954890796999905,0 -54.73327745999995,-1.954936275999955,0 -54.73329208699988,-1.954983379999931,0 -54.73332032199994,-1.955032127999971,0 -54.7333360749999,-1.955106516999933,0 -54.73335476499994,-1.955237342999908,0 -54.73338637099988,-1.955371929999956,0 -54.73340572699988,-1.955428593999898,0 -54.73343975199992,-1.955531897999947,0 -54.73347446099996,-1.955613868999876,0 -54.73352960299991,-1.955695249999962,0 -54.73357705499996,-1.955747256999928,0 -54.73364845899988,-1.95573571999995,0 -54.73376285099994,-1.955698144999928,0 -54.73385490499999,-1.955645909999873,0 -54.73390227399995,-1.955602194999813,0 -54.73388657499999,-1.955526018999876,0 -54.73386817099987,-1.955443407999894,0 -54.73383273799993,-1.955389981999929,0 -54.73379524899997,-1.955318355999964,0 -54.7337279169999,-1.955134266999892,0 -54.73371881099996,-1.955082433999792,0 -54.73375241199994,-1.955074507999939,0 -54.73380250005278,-1.955162893266049,0 -54.73388578118795,-1.955168841918578,0 -54.73399880558566,-1.955168841918578,0 -54.734105881331,-1.955133150003462,0 -54.73414157324606,-1.955037971563229,0 -54.73436035299989,-1.954815904999919,0 -54.73445774899989,-1.954758640999898,0 -54.73456477999997,-1.954698053999891,0 -54.7346245679999,-1.95467361599998,0 -54.73470184399991,-1.954626699999835,0 -54.73478182799988,-1.95458462199997,0 -54.73487705099996,-1.954522570999927,0 -54.73494742199989,-1.95447527399989,0 -54.73503313299989,-1.954412858999888,0 -54.73509116799988,-1.954387834999977,0 -54.73512658399989,-1.954365284999938,0 -54.73512948799987,-1.954312561999927,0 -54.73515732299995,-1.954302502999894,0 -54.73518530499996,-1.95427733199989,0 -54.73521089299993,-1.954242034999879,0 -54.73523116599995,-1.954236987999934,0 -54.73526147599995,-1.954239511999845,0 -54.73530183499992,-1.954247081999938,0 -54.73531730899987,-1.954221835999817,0 -54.73533277199988,-1.954199086999893,0 -54.73537814899993,-1.954211728999951,0 -54.73539838799991,-1.954211728999951,0 -54.73539907999998,-1.954163642999958,0 -54.73539480999995,-1.954107812999951,0 -54.73538795099995,-1.95405436599998,0 -54.73538347399995,-1.954010988999869,0 -54.73538132099992,-1.953982868999958,0 -54.73542462699993,-1.953980309999906,0 -54.73547812099991,-1.953977750999968,0 -54.73552916799997,-1.953970071999947,0 -54.73555986299993,-1.953962390999948,0 -54.73555051999989,-1.953916235999827,0 -54.73554407999995,-1.953849369999887,0 -54.73554226899989,-1.953808104999951,0 -54.73553812599994,-1.953753807999817,0 -54.73558431399994,-1.953748628999904,0 -54.73562293499992,-1.953738265999846,0 -54.73564614999998,-1.953730490999931,0 -54.73566190599996,-1.953712334999921,0 -54.73565994299997,-1.953683770999874,0 -54.73564059399996,-1.95362651399995,0 -54.73563418199996,-1.953587232999894,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00016">
+      <name>PA_ALENQUE_SR_17_CPRM</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>PA</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>16</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>ALENQUER</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL_1</td>
+<td>Rua Paes de Carvalho</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>29/11/2019</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_ALENQUE_SR_17_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLO_G1</td>
+<td>Deslizamento</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E1</td>
+<td>Deslizamento planar</td>
+</tr>
+<tr>
+<td>COBRADE_01</td>
+<td>1.1.3.2.1</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G2</td>
+<td>Enxurrada</td>
+</tr>
+<tr>
+<td>TIPOLO_E2</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_02</td>
+<td>1.2.2.0.0</td>
+</tr>
+<tr>
+<td>TIPOLO_G3</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E3</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_03</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G4</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E4</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_04</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G5</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E5</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_05</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalado</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Setor de risco muito alto a deslizamento planar e enxurrada, caracterizado por conter imóveis em alvenaria e madeira construídos ao longo de diversos taludes de corte em encostas com declividade de até 60°.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_EDIF</td>
+<td>140</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>560</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Médio</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Muito alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remoção temporária dos moradores que se encontram nas áreas de risco durante o período de chuvas; Fiscalização para que os moradores não façam intervenções inadequadas em taludes. Estudos de implantação e adequação da drenagem.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGAO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td>Setorização de Áreas em Alto e Muito Alto Risco a Movimentos de Massa, Enchentes e Inundações</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>752018</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>9783940</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>21</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude><altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -54.73418542650167,-1.952786060604592,0 -54.7352650575924,-1.95253283733909,0 -54.73543816525406,-1.952980319410518,0 -54.73552196958188,-1.953302597811819,0 -54.73559361325948,-1.953493528347624,0 -54.73561760458449,-1.953606934874053,0 -54.73566190599995,-1.953712334999896,0 -54.73553812599992,-1.953753807999812,0 -54.73555986299993,-1.953962390999943,0 -54.73538132099991,-1.953982868999951,0 -54.7353983879999,-1.954211728999955,0 -54.73533277199986,-1.9541990869999,0 -54.73530183499991,-1.954247081999934,0 -54.73519762723294,-1.954246836056217,0 -54.73512948799988,-1.954312561999924,0 -54.73509116799988,-1.954387834999959,0 -54.73445774899988,-1.954758640999883,0 -54.734337878779,-1.95456802801458,0 -54.73422189988385,-1.954424467200626,0 -54.73412077279106,-1.954311442802738,0 -54.7339423132156,-1.954192469752515,0 -54.73381739151284,-1.954055650744636,0 -54.73369246981008,-1.953835550601646,0 -54.73388877534295,-1.953716577551295,0 -54.7340196456983,-1.95364519372118,0 -54.73413267009607,-1.953555963933389,0 -54.73412672144359,-1.953448888188176,0 -54.7341267214436,-1.953323966485414,0 -54.73402559435084,-1.952943252724481,0 -54.73402559435083,-1.952830228326708,0 -54.73418542650167,-1.952786060604592,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00017">
+      <name>PA_ALENQUE_SR_18_CPRM</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>PA</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>17</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>ALENQUER</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL_1</td>
+<td>Travessa B</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>29/11/2019</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_ALENQUE_SR_18_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLO_G1</td>
+<td>Deslizamento</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E1</td>
+<td>Deslizamento planar</td>
+</tr>
+<tr>
+<td>COBRADE_01</td>
+<td>1.1.3.2.1</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G2</td>
+<td>Enxurrada</td>
+</tr>
+<tr>
+<td>TIPOLO_E2</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_02</td>
+<td>1.2.2.0.0</td>
+</tr>
+<tr>
+<td>TIPOLO_G3</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E3</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_03</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G4</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E4</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_04</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G5</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E5</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_05</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalado</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Setor de risco alto a deslizamento planar e enxurrada, caracterizado por conter imóveis em alvenaria e madeira construídos ao longo de taludes de corte e encostas, formadas por antigas frentes de lavra de extração de material de construção civil.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_EDIF</td>
+<td>98</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>392</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Médio</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remoção temporária dos moradores que se encontram nas áreas de risco durante o período de chuvas; Fiscalização para que os moradores não façam intervenções inadequadas em taludes. Estudos de implantação e adequação da drenagem.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGAO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td>Setorização de Áreas em Alto e Muito Alto Risco a Movimentos de Massa, Enchentes e Inundações</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>752081</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>978408</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>21</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle03</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude><altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -54.73322714015802,-1.952725454496203,0 -54.73320513014369,-1.952744728130369,0 -54.73306593167484,-1.952479418228222,0 -54.73298440444881,-1.952308296083856,0 -54.73278809891582,-1.952358859630181,0 -54.73263652724978,-1.95238824597368,0 -54.73256766564828,-1.952311817686166,0 -54.73251555545221,-1.952230471845951,0 -54.73246439704064,-1.952154329093787,0 -54.73240728997649,-1.952071047958555,0 -54.73223668951431,-1.951616625667441,0 -54.73217362690565,-1.951399246801259,0 -54.73235130021942,-1.951365037323797,0 -54.73270821937035,-1.951274617805609,0 -54.73303856787322,-1.951176425381391,0 -54.73333600049904,-1.951064590714168,0 -54.73335979510904,-1.951088385324169,0 -54.73355015198945,-1.951599969440394,0 -54.7341331199359,-1.951373920644812,0 -54.73459711483218,-1.951251616349225,0 -54.73481126632259,-1.951802223625975,0 -54.73490466016716,-1.952147245471735,0 -54.73462626322947,-1.952232906067934,0 -54.73397667037477,-1.952411365643343,0 -54.73354122901083,-1.952575548452842,0 -54.7334317738044,-1.952618378750969,0 -54.73322714015802,-1.952725454496203,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00018">
+      <name>PA_ALENQUE_SR_19_CPRM</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>PA</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>18</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>ALENQUER</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL_1</td>
+<td>Travessa D</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>29/11/2019</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_ALENQUE_SR_19_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLO_G1</td>
+<td>Deslizamento</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E1</td>
+<td>Deslizamento planar</td>
+</tr>
+<tr>
+<td>COBRADE_01</td>
+<td>1.1.3.2.1</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G2</td>
+<td>Enxurrada</td>
+</tr>
+<tr>
+<td>TIPOLO_E2</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_02</td>
+<td>1.2.2.0.0</td>
+</tr>
+<tr>
+<td>TIPOLO_G3</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E3</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_03</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_G4</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_E4</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>COBRADE_04</td>
+<td></td>
+</tr>
+<tr>
+<td>TIPOLO_G5</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>TIPOLO_E5</td>
+<td></td>
+</tr>
+<tr>
+<td>COBRADE_05</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalado</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Setor de risco alto a deslizamento planar e enxurrada, caracterizado por conter imóveis em alvenaria e madeira construídos sobre solo residual bastante friável de quartzo-arenito de fácil desagregação mecânica.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_EDIF</td>
+<td>87</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>348</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Médio</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remoção temporária dos moradores que se encontram nas áreas de risco durante o período de chuvas; Fiscalização para que os moradores não façam intervenções inadequadas em taludes. Estudos de implantação e adequação da drenagem.</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGAO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td>Setorização de Áreas em Alto e Muito Alto Risco a Movimentos de Massa, Enchentes e Inundações</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>752292</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>978398</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>21</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle03</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude><altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -54.7296204981908,-1.95332563210809,0 -54.7293706547851,-1.952597517040317,0 -54.72969902040398,-1.952419057464908,0 -54.73005593955486,-1.952190629208246,0 -54.73039858193971,-1.952047861547896,0 -54.73084830006974,-1.951883678738568,0 -54.73136940203,-1.951726634312138,0 -54.73184053530923,-1.951505344438601,0 -54.732168900928,-1.951398268693367,0 -54.73229025343932,-1.951769464610322,0 -54.73240446756762,-1.952069276696989,0 -54.732568650377,-1.952311981719561,0 -54.73266144935621,-1.952411919081896,0 -54.73293270791083,-1.952326258485641,0 -54.73315399778437,-1.952783114998795,0 -54.73328962706177,-1.953054373553471,0 -54.73344667148814,-1.953368462406161,0 -54.73363226944662,-1.95365399772686,0 -54.7337107916598,-1.953789627004198,0 -54.73354660885042,-1.953868149217442,0 -54.73341811795603,-1.953739658323116,0 -54.73316113616738,-1.953889564366477,0 -54.73323251999761,-1.954025193643815,0 -54.73287560084668,-1.954232206751271,0 -54.73281849378264,-1.954167961304165,0 -54.73261861905814,-1.954010916877735,0 -54.73239019080154,-1.954296452198435,0 -54.73214034739595,-1.954075162324898,0 -54.73200471811862,-1.953968086579664,0 -54.73186908884128,-1.953811042153234,0 -54.73172632118093,-1.953611167428733,0 -54.73160496866961,-1.953425569470369,0 -54.73148361615836,-1.953132895766601,0 -54.73063414857927,-1.953254248277858,0 -54.7296204981908,-1.95332563210809,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+  </Folder>
+</Document>
+</kml>

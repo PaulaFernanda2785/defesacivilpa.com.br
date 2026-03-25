@@ -1,0 +1,113 @@
+@import url('/assets/css/app-shell.css');
+
+:root {
+    --cor-primaria: #0f3d57;
+    --cor-primaria-escura: #0a2738;
+    --cor-secundaria: #1f7a8c;
+    --cor-destaque: #e4a11b;
+    --cor-fundo: #edf3f7;
+    --cor-superficie: #ffffff;
+    --cor-superficie-2: #f8fbfd;
+    --cor-borda: #d7e3ea;
+    --cor-texto: #173042;
+    --cor-texto-suave: #587080;
+    --cor-sucesso: #1f8f55;
+    --cor-alerta: #cf5f24;
+    --cor-perigo: #bf3434;
+    --sombra-card: 0 18px 45px rgba(10, 39, 56, 0.08);
+    --raio-card: 20px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    background:
+        radial-gradient(circle at top right, rgba(31, 122, 140, 0.12), transparent 28%),
+        linear-gradient(180deg, #f7fbfd 0%, var(--cor-fundo) 100%);
+    color: var(--cor-texto);
+}
+
+a {
+    color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+.footer-sistema {
+    background: linear-gradient(135deg, var(--cor-primaria-escura), var(--cor-primaria));
+    color: #e8f1f6;
+    border-top: 4px solid var(--cor-destaque);
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+}
+
+.footer-identidade {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.footer-sistema-info {
+    font-size: 12px;
+    opacity: 0.96;
+}
+
+.footer-sistema-info .ambiente {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-left: 4px;
+}
+
+.footer-sistema-info .ambiente.local {
+    background: rgba(228, 161, 27, 0.2);
+    color: #ffe9a9;
+}
+
+.footer-sistema-info .ambiente.homologacao {
+    background: rgba(31, 122, 140, 0.22);
+    color: #c8f3ff;
+}
+
+.footer-sistema-info .ambiente.producao {
+    background: rgba(31, 143, 85, 0.2);
+    color: #c7f2dc;
+}
+
+.footer-direitos {
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        padding: 16px 12px;
+        font-size: 12px;
+    }
+}

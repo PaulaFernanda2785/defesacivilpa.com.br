@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.opengis.net/kml/2.2 http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd http://www.google.com/kml/ext/2.2 http://code.google.com/apis/kml/schema/kml22gx.xsd">
+<Document id="Setores_Bragança_2015">
+  <name>Setores_Bragança_2015</name>
+  <Snippet></Snippet>
+  <Folder id="FeatureLayer0">
+    <name>Setores_Bragança_2015</name>
+    <Snippet></Snippet>
+    <Placemark id="ID_00000">
+      <name> </name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td> </td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>0</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td></td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>Bragança</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL</td>
+<td>Ajuruteua</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>01/04/2015</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_BR_SR_01_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLOGIA</td>
+<td>Erosação Costeira</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalada</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Risco à erosão costeira devido a carência de sedimentos que chega à praia, provocando o avanço da maré sobre as casas mais próximas</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_MORAD</td>
+<td>150</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>500</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS_OCUP</td>
+<td>Área de risco envolve estabelecimentos comerciais (hoteis e restaurantes)</td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Alto</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Muito Alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remanejamento das famílias, obras de dragagem e alargamento de praia, fiscalização para a não ocupação da área, monitoramento, campanhas educativas</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGÃO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>312552</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>9908290</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>23</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -46.60193356311133,-0.8346878498773278,0 -46.60158590697461,-0.8349825733153671,0 -46.60130061473758,-0.8348726202605534,0 -46.60123404725631,-0.8348487192801305,0 -46.60146188152176,-0.8339489228327661,0 -46.60257343634928,-0.8316944253494109,0 -46.60324126694773,-0.8300124747703785,0 -46.60344599562205,-0.8292855706368241,0 -46.60372508330545,-0.8287470712698504,0 -46.60389421167956,-0.8281577693119422,0 -46.60408729465257,-0.8280260853160379,0 -46.60428936492175,-0.8280768505005943,0 -46.6045417011097,-0.8275144341182102,0 -46.60442283147716,-0.827472608108765,0 -46.60454158573055,-0.8272272953261887,0 -46.60479398328808,-0.8268174215654243,0 -46.60547716192514,-0.8262578212024567,0 -46.60585733923931,-0.8258807970201878,0 -46.60656725210132,-0.8253032400467207,0 -46.60733344806598,-0.8242979438182265,0 -46.6086728432464,-0.8226343902180205,0 -46.60917781737408,-0.8222632983962904,0 -46.60977773789061,-0.8215541826881249,0 -46.60968849929392,-0.821305964053251,0 -46.60986074059474,-0.8210696034845224,0 -46.61102502488885,-0.819899642436477,0 -46.6127358022093,-0.8181641587778306,0 -46.61298828752761,-0.8179756225030147,0 -46.61314416853292,-0.8178432368268276,0 -46.61349051045551,-0.8180253298598275,0 -46.61121300441259,-0.8206780489988831,0 -46.61113636599998,-0.8207651689729092,0 -46.61085603844987,-0.8211297865716565,0 -46.61017526499994,-0.8220871049728727,0 -46.60982140599997,-0.8225800719727999,0 -46.60973741131426,-0.8227540872383092,0 -46.60965500299994,-0.8229248159728251,0 -46.60938281099993,-0.8233344659727973,0 -46.60915832199998,-0.8234831739727384,0 -46.60903765999996,-0.8237665609727842,0 -46.60866599151084,-0.8241780080953091,0 -46.60840909099994,-0.8244624039727907,0 -46.60804550799998,-0.8244937659727368,0 -46.60765630299994,-0.8249884669727624,0 -46.60757494299998,-0.8251115929727668,0 -46.60750275685961,-0.8251945364451695,0 -46.60729919699996,-0.8253677029727125,0 -46.60703962299994,-0.8257365319727151,0 -46.60699863799992,-0.8258890719726968,0 -46.60677321899993,-0.8258389839727316,0 -46.60647902199997,-0.8265176899726947,0 -46.60628578699992,-0.8264494959727009,0 -46.60617211999992,-0.8265199629726747,0 -46.60601674973668,-0.8267842658524254,0 -46.60586067099995,-0.8269973159726866,0 -46.60566288999997,-0.8269609459726526,0 -46.60545601399996,-0.827449664972657,0 -46.60531545599997,-0.8274144369726351,0 -46.60515787699995,-0.8277436709726392,0 -46.60496263476491,-0.8278016407349657,0 -46.60468462201727,-0.8283515409120147,0 -46.60464632599994,-0.8283443129726166,0 -46.60454135599996,-0.8285884569726396,0 -46.60437346799994,-0.8285243309726016,0 -46.60432112696929,-0.8285412846792172,0 -46.60401838587836,-0.8293705216975427,0 -46.60335074277869,-0.8313805942534658,0 -46.60330240317409,-0.8315611679338741,0 -46.60308741899995,-0.8322364589725039,0 -46.60295699099999,-0.8322156499725204,0 -46.60269114599998,-0.8331252089724702,0 -46.60258625499994,-0.8332771029724571,0 -46.60249503499995,-0.8335378549724661,0 -46.60223727999993,-0.8338999699724283,0 -46.60207558699994,-0.8338854909724194,0 -46.60201525399999,-0.8340447529724356,0 -46.60196698699996,-0.8343753429724695,0 -46.60199111999995,-0.8344308439724295,0 -46.60193356311133,-0.8346878498773278,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00001">
+      <name> </name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td> </td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>1</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td></td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>Bragança</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL</td>
+<td>Ajuruteua</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>01/04/2015</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_BR_SR_01_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLOGIA</td>
+<td>Erosação Costeira</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalada</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Risco à erosão costeira devido a carência de sedimentos que chega à praia, provocando o avanço da maré sobre as casas mais próximas</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_MORAD</td>
+<td>50</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>100</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS_OCUP</td>
+<td>Área de risco envolve estabelecimentos comerciais</td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Alto</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remanejamento das famílias, obras de dragagem e alargamento de praia, fiscalização para a não ocupação da área, monitoramento, campanhas educativas</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGÃO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>312552</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>9908290</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>23</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle01</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -46.60193356311133,-0.8346878498773278,0 -46.60199111999995,-0.8344308439724295,0 -46.60196698699996,-0.8343753429724695,0 -46.60201525399999,-0.8340447529724356,0 -46.60207558699994,-0.8338854909724194,0 -46.60223727999993,-0.8338999699724283,0 -46.60249503499995,-0.8335378549724661,0 -46.60258625499994,-0.8332771029724571,0 -46.60269114599998,-0.8331252089724702,0 -46.60295699099999,-0.8322156499725204,0 -46.60308741899995,-0.8322364589725039,0 -46.60330240317409,-0.8315611679338741,0 -46.60335074277869,-0.8313805942534658,0 -46.60401838587836,-0.8293705216975427,0 -46.60432112696929,-0.8285412846792172,0 -46.60437346799994,-0.8285243309726016,0 -46.60454135599996,-0.8285884569726396,0 -46.60464632599994,-0.8283443129726166,0 -46.60468462201727,-0.8283515409120147,0 -46.60496263476491,-0.8278016407349657,0 -46.60515787699995,-0.8277436709726392,0 -46.60531545599997,-0.8274144369726351,0 -46.60545601399996,-0.827449664972657,0 -46.60566288999997,-0.8269609459726526,0 -46.60586067099995,-0.8269973159726866,0 -46.60601674973668,-0.8267842658524254,0 -46.60617211999992,-0.8265199629726747,0 -46.60628578699992,-0.8264494959727009,0 -46.60647902199997,-0.8265176899726947,0 -46.60677321899993,-0.8258389839727316,0 -46.60699863799992,-0.8258890719726968,0 -46.60703962299994,-0.8257365319727151,0 -46.60729919699996,-0.8253677029727125,0 -46.60750275685961,-0.8251945364451695,0 -46.60757494299998,-0.8251115929727668,0 -46.60765630299994,-0.8249884669727624,0 -46.60804550799998,-0.8244937659727368,0 -46.60840909099994,-0.8244624039727907,0 -46.60866599151084,-0.8241780080953091,0 -46.60903765999996,-0.8237665609727842,0 -46.60915832199998,-0.8234831739727384,0 -46.60938281099993,-0.8233344659727973,0 -46.60965500299994,-0.8229248159728251,0 -46.60973741131426,-0.8227540872383092,0 -46.60982140599997,-0.8225800719727999,0 -46.61017526499994,-0.8220871049728727,0 -46.61085603844987,-0.8211297865716565,0 -46.61113636599998,-0.8207651689729092,0 -46.61121300441259,-0.8206780489988831,0 -46.61349051045551,-0.8180253298598275,0 -46.61416056673248,-0.8183776189904676,0 -46.61393604700937,-0.8186540798140161,0 -46.61336927795103,-0.8190419452129883,0 -46.61280954651208,-0.8191965085313586,0 -46.61175830267316,-0.8206900510878022,0 -46.61182972321455,-0.820962803036639,0 -46.61185848119899,-0.8212949304817894,0 -46.61174195271773,-0.8219551673831675,0 -46.6114546650352,-0.822461730983443,0 -46.61087966513395,-0.8224167461959971,0 -46.61020087008417,-0.8224888846490839,0 -46.60976622025834,-0.8233612431753336,0 -46.60980550346473,-0.8235155639341584,0 -46.60970228052113,-0.8239606699799879,0 -46.60959538829487,-0.8241473532456363,0 -46.60918174442328,-0.8240542016101792,0 -46.6089002615395,-0.8245460402960388,0 -46.60851173934343,-0.8248584612414716,0 -46.60821588742613,-0.8250847030536519,0 -46.60812324300986,-0.8252354883828743,0 -46.60800206879431,-0.8253733641114881,0 -46.60785949188543,-0.8254882774960721,0 -46.60777875290575,-0.8256893072315125,0 -46.60763625098839,-0.8259908605743624,0 -46.60734116863517,-0.8261607513492871,0 -46.60722010780138,-0.8265807406540341,0 -46.60707406053447,-0.8269325448003324,0 -46.60693150377935,-0.8270977075421826,0 -46.60655005026202,-0.8272557892265009,0 -46.60643239332774,-0.8272737833454329,0 -46.60620417017876,-0.8272092701776151,0 -46.60552386198543,-0.828993396523347,0 -46.60525393559642,-0.8296527293844073,0 -46.60469288655738,-0.8294950321713923,0 -46.60452178278815,-0.829605171909951,0 -46.60434112256925,-0.8295956743678253,0 -46.60399924864969,-0.8306438709397646,0 -46.60408010724125,-0.8307395508631233,0 -46.60403747850248,-0.831131991456518,0 -46.60454620456378,-0.8312198393175228,0 -46.60476024028325,-0.8314686053858481,0 -46.60507881824795,-0.8315976874377179,0 -46.60498866989761,-0.8320427894357086,0 -46.60389037013444,-0.8317991710424652,0 -46.60375275778549,-0.8324357186748607,0 -46.60333922666307,-0.832627313979716,0 -46.60307339632952,-0.8336180524983545,0 -46.60279772299887,-0.8337808776223054,0 -46.60242227688898,-0.8341016701864411,0 -46.602379557532,-0.8342691855273965,0 -46.60197561175936,-0.8346522033848648,0 -46.60193356311133,-0.8346878498773278,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00002">
+      <name> </name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td> </td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>2</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td></td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>Bragança</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL</td>
+<td>Bairro Cereja</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>02/04/2015</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_BR_SR_02_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLOGIA</td>
+<td>Inundação</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalada</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>No período de chuvas intensas o rio Cereja é inundado e as águas atingem as casas que estão localizadas na sua margem</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_MORAD</td>
+<td>176</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>704</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS_OCUP</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Muito Alto</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Remanejamento das famílias, fiscalização para a não ocupação da área, planejamento urbano, implantação de isstema de alerta, monitoramento, campanhas educativas</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGÃO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>302959</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>9883892</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>23</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle01</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -46.7625495652563,-1.048325359286882,0 -46.76300624588482,-1.048851477986355,0 -46.76315854068037,-1.049148077105195,0 -46.76324428459348,-1.04945428443659,0 -46.7634726921375,-1.049836974724726,0 -46.76387209968642,-1.049961164359361,0 -46.76455674301655,-1.050075621311366,0 -46.76486104856546,-1.050161582780876,0 -46.7652605096472,-1.050381476930901,0 -46.7656789061872,-1.0504578028613,0 -46.76597369285386,-1.050524628551321,0 -46.7664967636478,-1.050754022463188,0 -46.76719090896965,-1.050858902487583,0 -46.76809429521668,-1.051078508725013,0 -46.76839867582182,-1.05129845608905,0 -46.76853185816659,-1.051422796280399,0 -46.76887427628005,-1.051652292260609,0 -46.76944489227929,-1.051891228327287,0 -46.77015820401508,-1.052264069121153,0 -46.77077641937323,-1.05260825244739,0 -46.77095730391149,-1.053019678778959,0 -46.77088151537652,-1.053507815560265,0 -46.77079630003662,-1.054139514673258,0 -46.77059667488181,-1.054216192641092,0 -46.77017108775277,-1.054033799915136,0 -46.77007599401622,-1.054009928171667,0 -46.76989768480761,-1.053950214792065,0 -46.76958860648799,-1.053830760777113,0 -46.76932696701181,-1.053531833299225,0 -46.76920789399052,-1.053137119558136,0 -46.76910071284913,-1.052754362053895,0 -46.76875585817498,-1.052419592547724,0 -46.76814939813843,-1.051845710299703,0 -46.76775714489346,-1.05176219235561,0 -46.76703209706854,-1.051654937823525,0 -46.76649732406333,-1.051750947391077,0 -46.76616458320022,-1.051822915606961,0 -46.7653801969533,-1.051871214855662,0 -46.7647977285653,-1.051692099823476,0 -46.76387056654063,-1.051465328185592,0 -46.76334754332417,-1.051322068167588,0 -46.76305005441273,-1.050676228532,0 -46.76277644988122,-1.05023374825995,0 -46.76236023145317,-1.049803311888043,0 -46.76208676113659,-1.049600093815234,0 -46.76181328414167,-1.049384912528451,0 -46.76156362415032,-1.049253459598646,0 -46.76102868909464,-1.049062352581591,0 -46.76060075303744,-1.048931000469404,0 -46.7603986800896,-1.04888326234611,0 -46.7601134316759,-1.048871460726638,0 -46.7598995738881,-1.049003176410997,0 -46.75980456682929,-1.049134824813818,0 -46.75970964669779,-1.049421994088772,0 -46.75949582897415,-1.049625488704489,0 -46.75928190421469,-1.049637573017276,0 -46.75909170947568,-1.049577864974188,0 -46.75894904168775,-1.049494203694867,0 -46.75860432078996,-1.049398693613225,0 -46.75833095046122,-1.049374922018897,0 -46.75825977359141,-1.049614225424054,0 -46.75808145049351,-1.04953058424962,0 -46.75784373534834,-1.04950679244772,0 -46.75767733072279,-1.049482960278191,0 -46.75732077796434,-1.049483161978732,0 -46.75703554906381,-1.049507249630598,0 -46.75669088795311,-1.049519407704429,0 -46.75631057147695,-1.049531585902117,0 -46.75604912596188,-1.049579586378883,0 -46.75571634308725,-1.049579774476956,0 -46.7550744806698,-1.049460505406172,0 -46.75476536115851,-1.04926926915183,0 -46.75463446496705,-1.048982226753283,0 -46.75469593611902,-1.048387223265989,0 -46.75481946127232,-1.048243595427249,0 -46.75497156928478,-1.048205227441002,0 -46.75519976325434,-1.048205098686814,0 -46.75552308064673,-1.048281480546286,0 -46.75587486357807,-1.0482525703632,0 -46.75633127794343,-1.048300165354299,0 -46.75654879635316,-1.048376659022438,0 -46.75711723364794,-1.048221673570065,0 -46.75789675124614,-1.04796282889843,0 -46.75842898407376,-1.047570136642978,0 -46.75879003961255,-1.047120118083474,0 -46.75899903018308,-1.046785031782032,0 -46.75931258802042,-1.046411604420653,0 -46.75965473395567,-1.046153007231009,0 -46.76008251625578,-1.046009207940628,0 -46.76060541624191,-1.045932348534073,0 -46.76103324628737,-1.045874683809106,0 -46.76152765386298,-1.04585526346896,0 -46.76184139252996,-1.045807233646104,0 -46.76216465519031,-1.045787909940395,0 -46.76231681049698,-1.045835676459653,0 -46.7624595218466,-1.045998294345547,0 -46.76249770356312,-1.04626624685109,0 -46.76237429674885,-1.046620425290928,0 -46.76234585813432,-1.046773569444889,0 -46.76245053209989,-1.046926638276349,0 -46.76257419008332,-1.047022273323814,0 -46.76281199802309,-1.04721354874877,0 -46.76274564500273,-1.047577265392234,0 -46.76261271433329,-1.047902737766511,0 -46.7625088510433,-1.048284423750716,0 -46.7625495652563,-1.048325359286882,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00003">
+      <name> </name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td> </td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>3</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td></td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>Bragança</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL</td>
+<td>Bairro Perpétuo Socorro</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>02/04/2015</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_BR_SR_03_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLOGIA</td>
+<td>Deslizamento planas em solo</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td></td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Condomínio com área  sujeita deslizamento devido ao desmatamento e terraplenagem. Foi construído murro de contenção para proteção das casas, porém o mesmo encontra-se com problemas estruturais</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_MORAD</td>
+<td>5</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>20</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS_OCUP</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Baixo</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Paralização das obras, estudos para implantação de muro de contenção apropriado, reflorestamento, adequar o projeto estrutual ao terreno</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGÃO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>302349</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>9885390</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>23</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle01</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -46.77568861830959,-1.036456928654645,0 -46.77568873745094,-1.03667076018739,0 -46.77562291410543,-1.036673809062036,0 -46.77561979956616,-1.036453955786802,0 -46.77568861830959,-1.036456928654645,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00004">
+      <name> </name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td> </td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>4</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UF</td>
+<td></td>
+</tr>
+<tr>
+<td>MUNIC</td>
+<td>Bragança</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>LOCAL</td>
+<td>Passagem Argentina Pereira</td>
+</tr>
+<tr>
+<td>DATA_SETOR</td>
+<td>02/04/2015</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_SETOR</td>
+<td>PA_BR_SR_04_CPRM</td>
+</tr>
+<tr>
+<td>TIPOLOGIA</td>
+<td>Deslizamento planas em solo</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>SITUACAO</td>
+<td>Instalada</td>
+</tr>
+<tr>
+<td>DESCRICAO</td>
+<td>Área de risco ocasionada por destruição da galeria de drenagem, permitindo a infiltração da água e deslizamento do solo do quintal das residências</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>NUM_MORAD</td>
+<td>2</td>
+</tr>
+<tr>
+<td>NUM_PESS</td>
+<td>10</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>OBS_OCUP</td>
+<td></td>
+</tr>
+<tr>
+<td>GRAU_VULNE</td>
+<td>Alto</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>GRAU_RISCO</td>
+<td>Alto</td>
+</tr>
+<tr>
+<td>SUG_INTERV</td>
+<td>Reestruturação e redimensionamento da geleria,recuperação estrutual das casas</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ORGÃO_EXEC</td>
+<td>CPRM</td>
+</tr>
+<tr>
+<td>PROJETO</td>
+<td></td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>UTME</td>
+<td>304276</td>
+</tr>
+<tr>
+<td>UTMN</td>
+<td>9881966</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>ZONA</td>
+<td>23</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle01</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -46.75912919601822,-1.067409724407868,0 -46.75909487589802,-1.067466797870261,0 -46.7589694576381,-1.067411545295274,0 -46.75900892475115,-1.067344095467572,0 -46.75907421621524,-1.067382093670283,0 -46.75912919601822,-1.067409724407868,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+  </Folder>
+  <Style id="PolyStyle00">
+    <LabelStyle>
+      <color>00000000</color>
+      <scale>0.000000</scale>
+    </LabelStyle>
+    <LineStyle>
+      <color>ff0000e6</color>
+      <width>2.000000</width>
+    </LineStyle>
+    <PolyStyle>
+      <color>00f0f0f0</color>
+      <outline>1</outline>
+    </PolyStyle>
+  </Style>
+  <Style id="PolyStyle01">
+    <LabelStyle>
+      <color>00000000</color>
+      <scale>0.000000</scale>
+    </LabelStyle>
+    <LineStyle>
+      <color>ff00aaff</color>
+      <width>2.000000</width>
+    </LineStyle>
+    <PolyStyle>
+      <color>00f0f0f0</color>
+      <outline>1</outline>
+    </PolyStyle>
+  </Style>
+</Document>
+</kml>

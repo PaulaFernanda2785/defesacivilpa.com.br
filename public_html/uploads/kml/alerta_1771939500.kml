@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="PA_PACAJA_SR_CPRM" id="PA_PACAJA_SR_CPRM">
+	<SimpleField name="fid" type="float"></SimpleField>
+	<SimpleField name="id" type="float"></SimpleField>
+	<SimpleField name="UF" type="string"></SimpleField>
+	<SimpleField name="MUNIC" type="string"></SimpleField>
+	<SimpleField name="LOCAL" type="string"></SimpleField>
+	<SimpleField name="TIPOLO_G1" type="string"></SimpleField>
+	<SimpleField name="TIPOLO_E1" type="string"></SimpleField>
+	<SimpleField name="COBRADE_01" type="string"></SimpleField>
+	<SimpleField name="TIPOLO_G2" type="string"></SimpleField>
+	<SimpleField name="TIPOLO_E2" type="string"></SimpleField>
+	<SimpleField name="COBRADE_02" type="string"></SimpleField>
+	<SimpleField name="TIPOLO_G3" type="string"></SimpleField>
+	<SimpleField name="TIPOLO_E3" type="string"></SimpleField>
+	<SimpleField name="COBRADE_03" type="string"></SimpleField>
+	<SimpleField name="TIPOLO_G4" type="string"></SimpleField>
+	<SimpleField name="TIPOLO_E4" type="string"></SimpleField>
+	<SimpleField name="COBRADE_04" type="string"></SimpleField>
+	<SimpleField name="TIPOLO_G5" type="string"></SimpleField>
+	<SimpleField name="TIPOLO_E5" type="string"></SimpleField>
+	<SimpleField name="COBRADE_05" type="string"></SimpleField>
+	<SimpleField name="SITUACAO_01" type="string"></SimpleField>
+	<SimpleField name="DESCRICAO" type="string"></SimpleField>
+	<SimpleField name="OBS_OCUP" type="string"></SimpleField>
+	<SimpleField name="GRAU_VULNE" type="string"></SimpleField>
+	<SimpleField name="GRAU_RISCO" type="string"></SimpleField>
+	<SimpleField name="SUG_INTERV" type="string"></SimpleField>
+	<SimpleField name="ORGAO_EXEC" type="string"></SimpleField>
+	<SimpleField name="PROJETO" type="string"></SimpleField>
+	<SimpleField name="EQUIPE_EXECUTORA" type="string"></SimpleField>
+	<SimpleField name="CD_GEOCMU" type="int"></SimpleField>
+	<SimpleField name="SEQUENCIA" type="int"></SimpleField>
+	<SimpleField name="NUM_EDIF" type="int"></SimpleField>
+	<SimpleField name="Sigla_risco" type="string"></SimpleField>
+	<SimpleField name="M_tipolo" type="int"></SimpleField>
+	<SimpleField name="NUM_PESS" type="int"></SimpleField>
+	<SimpleField name="SITUACAO_02" type="string"></SimpleField>
+	<SimpleField name="SITUACAO_03" type="string"></SimpleField>
+	<SimpleField name="SITUACAO_04" type="string"></SimpleField>
+	<SimpleField name="SITUACAO_05" type="string"></SimpleField>
+	<SimpleField name="DADOS" type="string"></SimpleField>
+	<SimpleField name="NUM_SETOR" type="string"></SimpleField>
+	<SimpleField name="DATA_SETOR" type="string"></SimpleField>
+	<SimpleField name="cd_setor" type="string"></SimpleField>
+	<SimpleField name="TIPOLOGIA" type="string"></SimpleField>
+</Schema>
+<Folder><name>PA_PACAJA_SR_CPRM</name>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#PA_PACAJA_SR_CPRM">
+		<SimpleData name="fid">198</SimpleData>
+		<SimpleData name="UF">PA</SimpleData>
+		<SimpleData name="MUNIC">PACAJÁ</SimpleData>
+		<SimpleData name="LOCAL">Bairros Alto Bonito, JB e Centro </SimpleData>
+		<SimpleData name="TIPOLO_G1">Inundação</SimpleData>
+		<SimpleData name="SITUACAO_01">Ocorrido</SimpleData>
+		<SimpleData name="DESCRICAO">Moradias construídas na planície de inundação do rio Pacajá, margem esquerda. Há relatos de subidas do nível do rio repentinas em torno de 1,5m em pouco mais de 2h, com risco de perdas de bens materiais (móveis, eletrodomésticos, etc.). Há falta de saneamento básico, com lançamento de água servida diretamente no rio.</SimpleData>
+		<SimpleData name="OBS_OCUP">Comércios</SimpleData>
+		<SimpleData name="GRAU_VULNE">Médio</SimpleData>
+		<SimpleData name="GRAU_RISCO">Alto</SimpleData>
+		<SimpleData name="SUG_INTERV">- Instalar sistema de alerta para as áreas de risco, através de meios de veiculação pública (mídia, sirenes, celulares), permitindo a remoção eficaz dos moradores em caso de alertas de chuvas intensas ou contínuas;
+- Avaliar possibilidade de remover e realocar temporariamente em locais seguros os moradores que se encontram nas áreas de risco durante o período de chuvas.</SimpleData>
+		<SimpleData name="ORGAO_EXEC">CPRM</SimpleData>
+		<SimpleData name="PROJETO">Cartografia de Risco Geológico</SimpleData>
+		<SimpleData name="EQUIPE_EXECUTORA">Antonio Gilmar Honorato de Souza – Pesquisador em Geociências
+Marco Antônio de Oliveira – Pesquisador em Geociências
+</SimpleData>
+		<SimpleData name="CD_GEOCMU">1505486</SimpleData>
+		<SimpleData name="SEQUENCIA">1</SimpleData>
+		<SimpleData name="NUM_EDIF">184</SimpleData>
+		<SimpleData name="Sigla_risco">PACAJA</SimpleData>
+		<SimpleData name="M_tipolo">1</SimpleData>
+		<SimpleData name="NUM_PESS">736</SimpleData>
+		<SimpleData name="NUM_SETOR">PA_PACAJA_SR_001_CPRM</SimpleData>
+		<SimpleData name="DATA_SETOR">2023/02/03</SimpleData>
+		<SimpleData name="cd_setor">SR_001</SimpleData>
+		<SimpleData name="TIPOLOGIA">Inundação</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-50.6334697459999,-3.83596129499989 -50.6332598629999,-3.83714785499996 -50.63300807,-3.83744658499995 -50.631923117,-3.83751415899997 -50.6314369659999,-3.83747602299991 -50.6309169529999,-3.83769413299996 -50.630544126,-3.83895060599997 -50.630506575,-3.8398190289999 -50.6308073179999,-3.84047536399993 -50.6312016029999,-3.84092663499996 -50.6314443419999,-3.84161675599995 -50.631760508,-3.84202955699993 -50.631740056,-3.8426510999999 -50.6316911059999,-3.84331780299993 -50.6320247049999,-3.84334188899987 -50.6319988889999,-3.84351784699987 -50.6318382919999,-3.84447424499996 -50.6315405999999,-3.84450599999991 -50.6315317688875,-3.84454554753972 -50.6315331909999,-3.8445123809999 -50.6313953919999,-3.84448461499994 -50.6312646339999,-3.84441938399993 -50.631140918,-3.8443140089999 -50.6310286,-3.84426550399991 -50.6309927249999,-3.84415343899997 -50.6310496999999,-3.8440048999999 -50.631097,-3.84368949999993 -50.6312733999999,-3.84367239999995 -50.6312930999999,-3.84350179999996 -50.631536543,-3.84333820899991 -50.6316388029999,-3.84263136299995 -50.6312834099999,-3.84260593999988 -50.630707741,-3.84257516399992 -50.630662479,-3.84326026499997 -50.6306615,-3.84358309999993 -50.6306071999999,-3.8440670999999 -50.6305706129999,-3.84424208699994 -50.630962886,-3.84454516399995 -50.6311298529999,-3.84464117099998 -50.6312787159999,-3.84468030999994 -50.6314860451149,-3.84475030800957 -50.6313822999999,-3.84521489999997 -50.6313269999999,-3.84520279999992 -50.6313165999999,-3.84542629999993 -50.6312370999999,-3.84561399999996 -50.6311073999999,-3.84584749999988 -50.6309202999999,-3.84610399999997 -50.6307734999999,-3.84631749999994 -50.6306989999999,-3.84649679999995 -50.6304337999999,-3.84671719999989 -50.6306208999999,-3.84703129999997 -50.6309189999999,-3.84759369999995 -50.6312142999999,-3.84789239999998 -50.6314561,-3.84813419999989 -50.6318426999999,-3.84837679999993 -50.6324893999999,-3.84865809999991 -50.6330808,-3.84850119999987 -50.6335723,-3.84835099999998 -50.6339407999999,-3.84820209999992 -50.6341345999999,-3.84791009999992 -50.6340779,-3.84725339999994 -50.6341057999999,-3.8470362999999 -50.6342337999999,-3.84660609999997 -50.6344885999999,-3.84639169999997 -50.6348020999999,-3.84633749999995 -50.6353281999999,-3.8463478999999 -50.6359249999999,-3.84635389999994 -50.6365934999999,-3.84645589999997 -50.6369217,-3.84653389999994 -50.6369113999999,-3.84589729999993 -50.6361244999999,-3.84586749999994 -50.6359732999999,-3.84592769999995 -50.6357848,-3.84591239999992 -50.6354605999999,-3.84592869999994 -50.6348533999999,-3.84587389999996 -50.6345487,-3.84585849999991 -50.6342736999999,-3.84587149999993 -50.633861348,-3.84584477899995 -50.6335294249999,-3.84591302199988 -50.6335217129999,-3.84655429799994 -50.6336575,-3.84661250499994 -50.633678287,-3.8467867899999 -50.6337949629999,-3.84678779399997 -50.6337789,-3.84700419999996 -50.6338445999999,-3.84700559999987 -50.6338315,-3.84725449999996 -50.6339407999999,-3.84724679999994 -50.6339058999999,-3.84773949999993 -50.6338878,-3.84783179999994 -50.6336973999999,-3.84796399999993 -50.6334409,-3.84802889999997 -50.6328309999999,-3.8480545999999 -50.6324792999999,-3.84784519999988 -50.6322194999999,-3.84759399999996 -50.6321570999999,-3.84755819999992 -50.6321074999999,-3.84761469999989 -50.6320504999999,-3.84760169999993 -50.6320068999999,-3.84764249999989 -50.6319341999999,-3.84758999999991 -50.6317763,-3.84749299999987 -50.6316957999999,-3.84742469999992 -50.6316236999999,-3.84727819999995 -50.6316655999999,-3.8470961999999 -50.631675,-3.84699349999994 -50.6316126999999,-3.84693329999993 -50.6314637999999,-3.84683929999989 -50.6315332,-3.84655529999992 -50.6314409999999,-3.84649539999992 -50.6313792999999,-3.84645589999997 -50.6314611,-3.84634019999987 -50.6314077999999,-3.8462856999999 -50.6315157999999,-3.84610399999997 -50.6317796,-3.84585819999995 -50.6318392999999,-3.84580329999994 -50.6319291999999,-3.84574379999992 -50.6320035999999,-3.84564239999997 -50.6321149,-3.84561659999997 -50.6320987999999,-3.84559759999991 -50.6320924,-3.84546039999992 -50.6323083489999,-3.84539250699987 -50.632459223,-3.8456159669999 -50.6328635659999,-3.84583206699995 -50.633296743,-3.84566313399989 -50.6333111599999,-3.84551862099994 -50.633512326,-3.84550289899988 -50.6334814799999,-3.84458196099996 -50.6333091479999,-3.84456255899988 -50.6331498919999,-3.84429326899988 -50.6330529969999,-3.84417652099989 -50.6330747899999,-3.84400825599994 -50.633209571,-3.84399019199998 -50.633326247,-3.84388214199987 -50.633324236,-3.8434957689999 -50.6333363059999,-3.84319904799997 -50.6337165089999,-3.84312946699987 -50.6337212029999,-3.84302175099992 -50.6338244679999,-3.84296822699997 -50.634000823,-3.84297491799987 -50.6340112159999,-3.84289898099991 -50.6342408809999,-3.84288927999989 -50.6342613319999,-3.8427176699999 -50.6339347739999,-3.84272435999992 -50.633957908,-3.84225301799995 -50.6336507949999,-3.84220785799994 -50.6337077919999,-3.84152242099998 -50.6336440889999,-3.84142540899995 -50.6336239729999,-3.84107014599994 -50.634080619,-3.84083531099998 -50.634140298,-3.8401615809999 -50.6342331689999,-3.83968053599989 -50.6343957779999,-3.83968421599991 -50.634494349,-3.83901383099987 -50.6345677749999,-3.8389820509999 -50.6345768269999,-3.83877732199994 -50.6347002089999,-3.83873684499997 -50.634793751,-3.8386451849999 -50.6349201499999,-3.83817116499995 -50.634921826,-3.83778077499989 -50.634794757,-3.83771888799993 -50.6348118559999,-3.83764629599989 -50.6347625699999,-3.83755430199989 -50.6346777449999,-3.83749040799995 -50.6346472349999,-3.83732849799998 -50.634693168,-3.83710603899993 -50.634792745,-3.83704548999998 -50.634789057,-3.83695817899996 -50.6347347419999,-3.83695048499987 -50.6347035619999,-3.83696553899995 -50.6346767399999,-3.83697891999998 -50.634620078,-3.83696787999997 -50.6346462289999,-3.83650924699992 -50.6345275419999,-3.83649921099993 -50.634487979,-3.83598337399997 -50.634650253,-3.83592918099993 -50.6346184019999,-3.83564751099988 -50.6343485039999,-3.83569032999998 -50.6340155749999,-3.8357304729999 -50.6334697459999,-3.83596129499989</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#PA_PACAJA_SR_CPRM">
+		<SimpleData name="fid">199</SimpleData>
+		<SimpleData name="UF">PA</SimpleData>
+		<SimpleData name="MUNIC">PACAJÁ</SimpleData>
+		<SimpleData name="LOCAL">Bairros Campinho, Centro, PT, Bela Vista e Laranjeira</SimpleData>
+		<SimpleData name="TIPOLO_G1">Inundação</SimpleData>
+		<SimpleData name="TIPOLO_G2">Alagamento</SimpleData>
+		<SimpleData name="SITUACAO_01">Ocorrido</SimpleData>
+		<SimpleData name="DESCRICAO">Moradias construídas na planície de inundação do rio Pacajá, margem esquerda. Há relatos de subidas do nível do rio repentinas em torno de 1,5m em pouco mais de 2h, com risco de perdas de bens materiais (móveis, eletrodomésticos, etc.). Existem dois igarapés afluentes que em episódios de chuvas intensas, alagam por conta da dificuldade do escoamento superficial e ficam represadas. Há falta de saneamento básico, com lançamento de água servida diretamente no rio.</SimpleData>
+		<SimpleData name="OBS_OCUP">Empreendimentos comerciais, escolas e igrejas
+</SimpleData>
+		<SimpleData name="GRAU_VULNE">Médio</SimpleData>
+		<SimpleData name="GRAU_RISCO">Alto</SimpleData>
+		<SimpleData name="SUG_INTERV">- Instalar sistema de alerta para as áreas de risco, através de meios de veiculação pública (mídia, sirenes, celulares), permitindo a remoção eficaz dos moradores em caso de alertas de chuvas intensas ou contínuas;
+- Avaliar possibilidade de remover e realocar temporariamente em locais seguros os moradores que se encontram nas áreas de risco durante o período de chuvas;
+- Desenvolver estudos de adequação do sistema de drenagem pluvial e esgoto a fim de evitar que o fluxo seja direcionado sobre a face dos taludes ou encostas.</SimpleData>
+		<SimpleData name="ORGAO_EXEC">CPRM</SimpleData>
+		<SimpleData name="PROJETO">Cartografia de Risco Geológico</SimpleData>
+		<SimpleData name="EQUIPE_EXECUTORA">Antonio Gilmar Honorato de Souza – Pesquisador em Geociências
+Marco Antônio de Oliveira – Pesquisador em Geociências</SimpleData>
+		<SimpleData name="CD_GEOCMU">1505486</SimpleData>
+		<SimpleData name="SEQUENCIA">2</SimpleData>
+		<SimpleData name="NUM_EDIF">151</SimpleData>
+		<SimpleData name="Sigla_risco">PACAJA</SimpleData>
+		<SimpleData name="M_tipolo">2</SimpleData>
+		<SimpleData name="NUM_PESS">620</SimpleData>
+		<SimpleData name="SITUACAO_02">Ocorrido</SimpleData>
+		<SimpleData name="NUM_SETOR">PA_PACAJA_SR_002_CPRM</SimpleData>
+		<SimpleData name="DATA_SETOR">2023/02/03</SimpleData>
+		<SimpleData name="cd_setor">SR_002</SimpleData>
+		<SimpleData name="TIPOLOGIA">Inundação, Alagamento</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-50.6318151579999,-3.82256781299998 -50.6314292549998,-3.82263639199988 -50.632040463,-3.82370989899982 -50.6324471529999,-3.82468772899989 -50.632601716,-3.82607234499989 -50.632646307,-3.82691937099997 -50.632654354,-3.82826016099989 -50.6327012929999,-3.82874288399995 -50.6328196449999,-3.82914431799998 -50.6335760279999,-3.83012314499996 -50.6337523829999,-3.83048878299991 -50.6340048,-3.83238249999994 -50.6339823149791,-3.83320596457787 -50.6339649479999,-3.83320614299993 -50.6338868289999,-3.83369087099993 -50.634259656,-3.83491322799995 -50.6346737219999,-3.83479380199987 -50.6346666809999,-3.83457502299996 -50.634980835,-3.83450510699987 -50.6350991999999,-3.83476269999994 -50.6352389999999,-3.83476369999994 -50.6352164999999,-3.83439299999992 -50.6350096689999,-3.83436393699998 -50.6350311259999,-3.8342060409999 -50.6350468839999,-3.8340902949999 -50.635042191,-3.83376179099992 -50.635024756,-3.83349617699997 -50.6350204992233,-3.8333317955898 -50.6352570999999,-3.83336969999988 -50.63582,-3.83335669999997 -50.6361047,-3.83335069999993 -50.6361083999999,-3.83352229999997 -50.6363339999999,-3.83353399999987 -50.6363876999999,-3.83387449999998 -50.6366655999999,-3.83389229999995 -50.6369981999999,-3.83384839999997 -50.6372452999999,-3.83386719999993 -50.6372549999999,-3.83350319999994 -50.6370901,-3.83345099999997 -50.6370846999999,-3.83338039999995 -50.6370515,-3.83301609999995 -50.6370441,-3.83245679999993 -50.6369908,-3.83212759999998 -50.6369774,-3.83170309999991 -50.6367597999999,-3.83150039999992 -50.6367122,-3.83089319999988 -50.6369605999999,-3.8308674999999 -50.6368962999999,-3.83059849999995 -50.6365137,-3.83070919999994 -50.6364614,-3.83016059999994 -50.63627,-3.83007359999993 -50.6359735999999,-3.83013249999993 -50.6356748999999,-3.83014519999989 -50.6353153999999,-3.83022279999994 -50.6350340999999,-3.83017869999992 -50.6350434999998,-3.82979329999984 -50.6350204,-3.82960499999996 -50.6347676,-3.82970569999998 -50.6346741,-3.82958459999998 -50.6345443059999,-3.82963172399997 -50.634508431,-3.82950259699993 -50.634433664,-3.82950359999995 -50.634382032,-3.82940290799996 -50.6339394669999,-3.82946512999996 -50.633820444,-3.82793131999995 -50.633905269,-3.82778747199995 -50.634012893,-3.82763492799995 -50.63400954,-3.82732281299997 -50.6340910119999,-3.82722044699995 -50.6342687089999,-3.82722211999987 -50.6343334169999,-3.82740744799997 -50.6345010549999,-3.82741012499991 -50.6345161419999,-3.82765901399989 -50.6345251949999,-3.82771889399987 -50.6346230949999,-3.82771253799996 -50.635265149,-3.82768343399988 -50.6357626989999,-3.82762288499993 -50.635961853,-3.8276195389999 -50.63625589,-3.82770383999997 -50.636670962,-3.82766536999998 -50.636763833,-3.82692673099996 -50.6367966909999,-3.82647812799996 -50.6366129589999,-3.82647377899997 -50.636648163,-3.82623793599993 -50.636423528,-3.82627172399987 -50.636122115,-3.82637408999989 -50.6360396369999,-3.82651960999993 -50.635821372,-3.82633160399985 -50.6354911249999,-3.82615296599988 -50.635014027,-3.82609275099998 -50.634839684,-3.82614058899992 -50.6346978619998,-3.82610847399997 -50.6346033139999,-3.82584285799993 -50.6346026439999,-3.82567525899998 -50.6347209959999,-3.82530526999994 -50.6346237659999,-3.82523602199996 -50.6346036489999,-3.82492156499995 -50.6345821919999,-3.82472452699994 -50.6346086789999,-3.82462483699993 -50.634762235,-3.82454889899998 -50.634729713,-3.82436323499996 -50.634662323,-3.82434717799987 -50.634708256,-3.82414813199995 -50.6344886499999,-3.82408691399991 -50.6341858949999,-3.82394741499991 -50.634099729,-3.82354731699996 -50.6341470029999,-3.82347171299983 -50.6343887369999,-3.82344193999995 -50.6345275419999,-3.8231515679999 -50.634554699,-3.82274243799998 -50.634431317,-3.8227203589999 -50.634398125,-3.8225751729999 -50.6343102829998,-3.82260126599994 -50.6342817839999,-3.8227514699999 -50.6341329219999,-3.82272872199991 -50.634089671,-3.82256580599994 -50.6338700649999,-3.82257015499994 -50.6337973099999,-3.82248016599993 -50.633757077,-3.82239251899989 -50.6336293369999,-3.82238783599996 -50.6335867569998,-3.82229115699994 -50.632696599,-3.82226539799996 -50.6326603889999,-3.82245674899997 -50.6318151579999,-3.82256781299998</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#PA_PACAJA_SR_CPRM">
+		<SimpleData name="fid">200</SimpleData>
+		<SimpleData name="UF">PA</SimpleData>
+		<SimpleData name="MUNIC">PACAJÁ</SimpleData>
+		<SimpleData name="LOCAL">Bairro Bela Vista</SimpleData>
+		<SimpleData name="TIPOLO_G1">Deslizamento</SimpleData>
+		<SimpleData name="TIPOLO_E1">Deslizamento planar</SimpleData>
+		<SimpleData name="COBRADE_01">1.1.3.2.1</SimpleData>
+		<SimpleData name="TIPOLO_G2">Erosão</SimpleData>
+		<SimpleData name="TIPOLO_E2">Ravina</SimpleData>
+		<SimpleData name="COBRADE_02">1.1.4.3.2</SimpleData>
+		<SimpleData name="SITUACAO_01">Potencial</SimpleData>
+		<SimpleData name="DESCRICAO">Moradias construídas numa colina desmatada, constituída de solo de alteração de rochas graníticas, com cortes verticais de 8m de altura. Presença de ravinas, água servida jogada diretamente na encosta, fossa danificada formando cavidades em risco de colapso.</SimpleData>
+		<SimpleData name="OBS_OCUP"></SimpleData>
+		<SimpleData name="GRAU_VULNE">Alto</SimpleData>
+		<SimpleData name="GRAU_RISCO">Alto</SimpleData>
+		<SimpleData name="SUG_INTERV">- Instalar sistema de alerta para as áreas de risco, através de meios de veiculação pública (mídia, sirenes, celulares), permitindo a remoção eficaz dos moradores em caso de alertas de chuvas intensas ou contínuas;
+- Desenvolver estudos geotécnicos e hidrológicos com a finalidade de embasar os projetos e/ou obras de contenção de encostas ou de blocos rochosos;
+- Avaliar possibilidade de remover e realocar temporariamente em locais seguros os moradores que se encontram nas áreas de risco durante o período de chuvas.</SimpleData>
+		<SimpleData name="ORGAO_EXEC">CPRM</SimpleData>
+		<SimpleData name="PROJETO">Cartografia de Risco Geológico</SimpleData>
+		<SimpleData name="EQUIPE_EXECUTORA">Antonio Gilmar Honorato de Souza – Pesquisador em Geociências
+Marco Antônio de Oliveira – Pesquisador em Geociências</SimpleData>
+		<SimpleData name="CD_GEOCMU">1505486</SimpleData>
+		<SimpleData name="SEQUENCIA">3</SimpleData>
+		<SimpleData name="NUM_EDIF">4</SimpleData>
+		<SimpleData name="Sigla_risco">PACAJA</SimpleData>
+		<SimpleData name="M_tipolo">2</SimpleData>
+		<SimpleData name="NUM_PESS">16</SimpleData>
+		<SimpleData name="SITUACAO_02">Instalado</SimpleData>
+		<SimpleData name="NUM_SETOR">PA_PACAJA_SR_003_CPRM</SimpleData>
+		<SimpleData name="DATA_SETOR">2023/02/03</SimpleData>
+		<SimpleData name="cd_setor">SR_003</SimpleData>
+		<SimpleData name="TIPOLOGIA">Deslizamento planar, Ravina</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-50.639776,-3.82214529999993 -50.639892,-3.82211549999994 -50.6398829,-3.82195189999993 -50.6398278999999,-3.82171609999995 -50.6397193,-3.82172039999995 -50.6396786999999,-3.82163679999996 -50.639495999,-3.82143676599998 -50.63899979,-3.82126816199997 -50.638601147,-3.82115509099998 -50.638540462,-3.82125846099996 -50.638988726,-3.82137521199996 -50.639365241,-3.82155686199997 -50.6396566,-3.82172549999996 -50.6397501,-3.82185159999995 -50.639776,-3.82214529999993</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#PA_PACAJA_SR_CPRM">
+		<SimpleData name="fid">201</SimpleData>
+		<SimpleData name="UF">PA</SimpleData>
+		<SimpleData name="MUNIC">PACAJÁ</SimpleData>
+		<SimpleData name="LOCAL">Bairro Bela Vista</SimpleData>
+		<SimpleData name="TIPOLO_G1">Deslizamento</SimpleData>
+		<SimpleData name="TIPOLO_E1">Deslizamento planar</SimpleData>
+		<SimpleData name="COBRADE_01">1.1.3.2.1</SimpleData>
+		<SimpleData name="TIPOLO_G2">Erosão</SimpleData>
+		<SimpleData name="TIPOLO_E2">Ravina</SimpleData>
+		<SimpleData name="COBRADE_02">1.1.4.3.2</SimpleData>
+		<SimpleData name="SITUACAO_01">Potencial</SimpleData>
+		<SimpleData name="DESCRICAO">Moradias construídas numa colina parcialmente desmatada, constituída de solo de alteração de rochas graníticas, com cortes sub-vertical de 4m de altura. Presença de ravinas originadas devido ausência de rede de drenagem pluvial, e da água servida jogada diretamente na encosta. Notou-se deslocamento do solo evidenciado pelas cercas de madeira tortas.</SimpleData>
+		<SimpleData name="OBS_OCUP"></SimpleData>
+		<SimpleData name="GRAU_VULNE">Alto</SimpleData>
+		<SimpleData name="GRAU_RISCO">Alto</SimpleData>
+		<SimpleData name="SUG_INTERV">- Instalar sistema de alerta para as áreas de risco, através de meios de veiculação pública (mídia, sirenes, celulares), permitindo a remoção eficaz dos moradores em caso de alertas de chuvas intensas ou contínuas;
+- Avaliar possibilidade de remover e realocar temporariamente em locais seguros os moradores que se encontram nas áreas de risco durante o período de chuvas;
+- Desenvolver estudos geotécnicos e hidrológicos com a finalidade de embasar os projetos e/ou obras de contenção de encostas ou de blocos rochosos.
+</SimpleData>
+		<SimpleData name="ORGAO_EXEC">CPRM</SimpleData>
+		<SimpleData name="PROJETO">Cartografia de Risco Geológico</SimpleData>
+		<SimpleData name="EQUIPE_EXECUTORA">Antonio Gilmar Honorato de Souza – Pesquisador em Geociências
+Marco Antônio de Oliveira – Pesquisador em Geociências</SimpleData>
+		<SimpleData name="CD_GEOCMU">1505486</SimpleData>
+		<SimpleData name="SEQUENCIA">4</SimpleData>
+		<SimpleData name="NUM_EDIF">2</SimpleData>
+		<SimpleData name="Sigla_risco">PACAJA</SimpleData>
+		<SimpleData name="M_tipolo">2</SimpleData>
+		<SimpleData name="NUM_PESS">8</SimpleData>
+		<SimpleData name="SITUACAO_02">Instalado</SimpleData>
+		<SimpleData name="NUM_SETOR">PA_PACAJA_SR_004_CPRM</SimpleData>
+		<SimpleData name="DATA_SETOR">2023/02/03</SimpleData>
+		<SimpleData name="cd_setor">SR_004</SimpleData>
+		<SimpleData name="TIPOLOGIA">Deslizamento planar, Ravina</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-50.6374079,-3.81914419999993 -50.6370951,-3.81914589999997 -50.6371028,-3.81933589999994 -50.6374102,-3.81934859999996 -50.6374079,-3.81914419999993</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#PA_PACAJA_SR_CPRM">
+		<SimpleData name="fid">202</SimpleData>
+		<SimpleData name="UF">PA</SimpleData>
+		<SimpleData name="MUNIC">PACAJÁ</SimpleData>
+		<SimpleData name="LOCAL">Bairro Novo Horizonte</SimpleData>
+		<SimpleData name="TIPOLO_G1">Deslizamento</SimpleData>
+		<SimpleData name="TIPOLO_E1">Deslizamento planar</SimpleData>
+		<SimpleData name="COBRADE_01">1.1.3.2.1</SimpleData>
+		<SimpleData name="TIPOLO_G2">Erosão</SimpleData>
+		<SimpleData name="TIPOLO_E2">Ravina</SimpleData>
+		<SimpleData name="COBRADE_02">1.1.4.3.2</SimpleData>
+		<SimpleData name="SITUACAO_01">Ocorrido</SimpleData>
+		<SimpleData name="DESCRICAO">Moradias construídas numa colina parcialmente desmatada, muito próximo ao corte do talude vertical de 5m de altura, constituída de solo de alteração de rochas graníticas, argilo-arenoso. Houve um desabamento do muro de concreto no dia 01/02/2023, além da existência de rachaduras na casa de alvenaria. Ausência de rede de drenagem pluvial, e poço de captação de água na parte alta do talude.</SimpleData>
+		<SimpleData name="OBS_OCUP"></SimpleData>
+		<SimpleData name="GRAU_VULNE">Baixo</SimpleData>
+		<SimpleData name="GRAU_RISCO">Alto</SimpleData>
+		<SimpleData name="SUG_INTERV">- Instalar sistema de alerta para as áreas de risco, através de meios de veiculação pública (mídia, sirenes, celulares), permitindo a remoção eficaz dos moradores em caso de alertas de chuvas intensas ou contínuas;
+- Avaliar possibilidade de remover e realocar temporariamente em locais seguros os moradores que se encontram nas áreas de risco durante o período de chuvas;
+- Desenvolver estudos geotécnicos e hidrológicos com a finalidade de embasar os projetos e/ou obras de contenção de encostas ou de blocos rochosos;
+- Desenvolver estudos de adequação do sistema de drenagem pluvial e esgoto a fim de evitar que o fluxo seja direcionado sobre a face dos taludes ou encostas.</SimpleData>
+		<SimpleData name="ORGAO_EXEC">CPRM</SimpleData>
+		<SimpleData name="PROJETO">Cartografia de Risco Geológico</SimpleData>
+		<SimpleData name="EQUIPE_EXECUTORA">Antonio Gilmar Honorato de Souza – Pesquisador em Geociências
+Marco Antônio de Oliveira – Pesquisador em Geociências
+</SimpleData>
+		<SimpleData name="CD_GEOCMU">1505486</SimpleData>
+		<SimpleData name="SEQUENCIA">5</SimpleData>
+		<SimpleData name="NUM_EDIF">4</SimpleData>
+		<SimpleData name="Sigla_risco">PACAJA</SimpleData>
+		<SimpleData name="M_tipolo">2</SimpleData>
+		<SimpleData name="NUM_PESS">16</SimpleData>
+		<SimpleData name="SITUACAO_02">Potencial</SimpleData>
+		<SimpleData name="NUM_SETOR">PA_PACAJA_SR_005_CPRM</SimpleData>
+		<SimpleData name="DATA_SETOR">2023/02/03</SimpleData>
+		<SimpleData name="cd_setor">SR_005</SimpleData>
+		<SimpleData name="TIPOLOGIA">Deslizamento planar, Ravina</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-50.6425262239999,-3.82441609099993 -50.642498732,-3.82398287499996 -50.642310306,-3.82398789299998 -50.642348528,-3.82441341399993 -50.6425262239999,-3.82441609099993</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#PA_PACAJA_SR_CPRM">
+		<SimpleData name="fid">203</SimpleData>
+		<SimpleData name="UF">PA</SimpleData>
+		<SimpleData name="MUNIC">PACAJÁ</SimpleData>
+		<SimpleData name="LOCAL">Bairro Tozete</SimpleData>
+		<SimpleData name="TIPOLO_G1">Inundação</SimpleData>
+		<SimpleData name="TIPOLO_G2">Alagamento</SimpleData>
+		<SimpleData name="SITUACAO_01">Ocorrido</SimpleData>
+		<SimpleData name="DESCRICAO">Moradias às margens da planície de inundação do rio Pacajá, em que no período de cheia do rio, invade as planícies e inundam as moradias e comércios. Na parte comercial, às margens da rodovia Transamazônica ocorre alagamentos em episódios de chuvas intensas devido à falta de obras de drenagem adequada, causando represamento da água da chuva. Atualmente há uma obra para melhorar a drenagem da região. Na rua Pioneira, as casas já inundaram pelo menos 3 vezes nos últimos 5 anos, com perda material e chegando a ficar 3 dias inundado. É possível observar marcas d’água das recentes inundações.</SimpleData>
+		<SimpleData name="OBS_OCUP">Comércios e empreendimentos</SimpleData>
+		<SimpleData name="GRAU_VULNE">Médio</SimpleData>
+		<SimpleData name="GRAU_RISCO">Alto</SimpleData>
+		<SimpleData name="SUG_INTERV">-Instalar sistema de alerta para as áreas de risco, através de meios de veiculação pública (mídia, sirenes, celulares), permitindo a remoção eficaz dos moradores em caso de alertas de chuvas intensas ou contínuas;
+-Avaliar possibilidade de remover e realocar temporariamente em locais seguros os moradores que se encontram nas áreas de risco durante o período de chuvas;
+-Executar manutenção das drenagens pluviais e canais de córregos, a fim de evitar que o acúmulo de resíduos impeça o perfeito escoamento das águas durante a estação chuvosa.</SimpleData>
+		<SimpleData name="ORGAO_EXEC">CPRM</SimpleData>
+		<SimpleData name="PROJETO">Cartografia de Risco Geológico</SimpleData>
+		<SimpleData name="EQUIPE_EXECUTORA">Antonio Gilmar Honorato de Souza – Pesquisador em Geociências
+Marco Antônio de Oliveira – Pesquisador em Geociências</SimpleData>
+		<SimpleData name="CD_GEOCMU">1505486</SimpleData>
+		<SimpleData name="SEQUENCIA">6</SimpleData>
+		<SimpleData name="NUM_EDIF">93</SimpleData>
+		<SimpleData name="Sigla_risco">PACAJA</SimpleData>
+		<SimpleData name="M_tipolo">2</SimpleData>
+		<SimpleData name="NUM_PESS">372</SimpleData>
+		<SimpleData name="SITUACAO_02">Ocorrido</SimpleData>
+		<SimpleData name="NUM_SETOR">PA_PACAJA_SR_006_CPRM</SimpleData>
+		<SimpleData name="DATA_SETOR">2023/02/04</SimpleData>
+		<SimpleData name="cd_setor">SR_006</SimpleData>
+		<SimpleData name="TIPOLOGIA">Inundação, Alagamento</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-50.6303121,-3.83512599999995 -50.6303644,-3.83555789999997 -50.6324042379999,-3.83535112199996 -50.632421672,-3.83510424199994 -50.632211454,-3.83485501999996 -50.632082708,-3.83428231299996 -50.631931499,-3.83161981899997 -50.631900318,-3.83111568699996 -50.6318517029999,-3.83084438599997 -50.631756149,-3.83063998999995 -50.63142892,-3.83046101799994 -50.631166734,-3.83019740999993 -50.630687624,-3.82957585799994 -50.630392581,-3.82944271599996 -50.6302145499999,-3.82947717299993 -50.6302219259999,-3.82979965699997 -50.630260818,-3.82980233299998 -50.630382523,-3.82984782899996 -50.630579665,-3.83000104299992 -50.6307637319999,-3.83055903399998 -50.6308401749999,-3.83078985799995 -50.6309293579999,-3.83130168399992 -50.630725175,-3.83138063199993 -50.630808324,-3.83171950799994 -50.630272888,-3.83174560099997 -50.630129725,-3.83169307999998 -50.629109144,-3.83158134799993 -50.6290350479999,-3.83215271999995 -50.629669055,-3.83211725999996 -50.629724376,-3.83238554999997 -50.629769638,-3.83238722299996 -50.629774332,-3.83242201399997 -50.629773326,-3.83245212099996 -50.6297753379999,-3.83246148799998 -50.629888326,-3.83252571699995 -50.6299241999999,-3.83269866699993 -50.629977174,-3.83304222499993 -50.62997885,-3.83311682499993 -50.6303369249999,-3.83310979899994 -50.6303831929999,-3.83323290499993 -50.6303945929999,-3.83362630799996 -50.630464666,-3.83397354499994 -50.6304911519999,-3.83410401099997 -50.6305853649999,-3.83459342199995 -50.630799942,-3.83457502299996 -50.630832464,-3.83472589399997 -50.630928688,-3.83470347999997 -50.631153323,-3.83478711199996 -50.631161705,-3.83502362099995 -50.6303121,-3.83512599999995</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#PA_PACAJA_SR_CPRM">
+		<SimpleData name="fid">204</SimpleData>
+		<SimpleData name="UF">PA</SimpleData>
+		<SimpleData name="MUNIC">PACAJÁ</SimpleData>
+		<SimpleData name="LOCAL">Comunidade Arataú</SimpleData>
+		<SimpleData name="TIPOLO_G1">Inundação</SimpleData>
+		<SimpleData name="TIPOLO_G2">Enxurrada</SimpleData>
+		<SimpleData name="SITUACAO_01">Ocorrido</SimpleData>
+		<SimpleData name="DESCRICAO">Moradias construídas na planície de inundação do rio Arataú, com correnteza forte, possibilidade de enxurrada que causaram destruição da ponte na rodovia Transamazôniva (BR-230). Há relatos de subidas do nível do rio repentinas, com risco de perdas de bens materiais (móveis, eletrodomésticos, etc.). Há falta de saneamento básico, com lançamento de água servida diretamente no rio.</SimpleData>
+		<SimpleData name="OBS_OCUP"></SimpleData>
+		<SimpleData name="GRAU_VULNE">Médio</SimpleData>
+		<SimpleData name="GRAU_RISCO">Alto</SimpleData>
+		<SimpleData name="SUG_INTERV">- Instalar sistema de alerta para as áreas de risco, através de meios de veiculação pública (mídia, sirenes, celulares), permitindo a remoção eficaz dos moradores em caso de alertas de chuvas intensas ou contínuas;
+
+- Avaliar possibilidade de remover e realocar temporariamente em locais seguros os moradores que se encontram nas áreas de risco durante o período de chuvas.
+</SimpleData>
+		<SimpleData name="ORGAO_EXEC">CPRM</SimpleData>
+		<SimpleData name="PROJETO">Cartografia de Risco Geológico</SimpleData>
+		<SimpleData name="EQUIPE_EXECUTORA">Antonio Gilmar Honorato de Souza – Pesquisador em Geociências
+Marco Antônio de Oliveira – Pesquisador em Geociências</SimpleData>
+		<SimpleData name="CD_GEOCMU">1505486</SimpleData>
+		<SimpleData name="SEQUENCIA">7</SimpleData>
+		<SimpleData name="NUM_EDIF">30</SimpleData>
+		<SimpleData name="Sigla_risco">PACAJA</SimpleData>
+		<SimpleData name="M_tipolo">2</SimpleData>
+		<SimpleData name="NUM_PESS">120</SimpleData>
+		<SimpleData name="SITUACAO_02">Ocorrido</SimpleData>
+		<SimpleData name="NUM_SETOR">PA_PACAJA_SR_007_CPRM</SimpleData>
+		<SimpleData name="DATA_SETOR">2023/02/04</SimpleData>
+		<SimpleData name="cd_setor">SR_007</SimpleData>
+		<SimpleData name="TIPOLOGIA">Inundação, Enxurrada</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-50.4469445999999,-3.86296039999996 -50.4467463999999,-3.86288439999993 -50.4465781,-3.86335779999996 -50.445967577,-3.86348021599997 -50.445441864,-3.86350898399996 -50.445098206,-3.86367891699996 -50.4449513549999,-3.86383045199995 -50.444849432,-3.86394719699996 -50.4447535429999,-3.86415325799993 -50.44435557,-3.86473765399995 -50.443971679,-3.86577096599996 -50.4436897109999,-3.86636372299995 -50.443769172,-3.86693741299996 -50.44397939,-3.86730671499993 -50.4442962259999,-3.86793593299996 -50.444282815,-3.86831560499996 -50.4444692279999,-3.86934322599996 -50.4447304079999,-3.86961652199994 -50.4459226499999,-3.86998013599998 -50.446369573,-3.86855979799998 -50.4452463979999,-3.86815905299994 -50.4447562249999,-3.86768437999996 -50.444396809,-3.86730169699996 -50.4441500459999,-3.86687318599996 -50.44407025,-3.86665976699993 -50.44412557,-3.86638780799996 -50.444325395,-3.86623961899994 -50.444673412,-3.86603188599997 -50.444826297,-3.86586563299994 -50.444927886,-3.86588001699994 -50.445443541,-3.86591146099994 -50.4455002019999,-3.86580976899995 -50.445541777,-3.86547057299993 -50.44555787,-3.86528792799993 -50.445488133,-3.86489086099994 -50.4454324769999,-3.86477311199997 -50.445212871,-3.86448609899998 -50.445082113,-3.86424558399995 -50.445197783,-3.86401911799993 -50.445313454,-3.86394853499996 -50.445573628,-3.86400874799995 -50.445732214,-3.86405491099993 -50.445932038,-3.86404989299996 -50.446156673,-3.86405658299998 -50.446363203,-3.86420979099995 -50.446605943,-3.86435296299993 -50.44681415,-3.86407631999998 -50.446772911,-3.86371872399997 -50.4468856,-3.86346479999997 -50.4470046,-3.86315009999993 -50.4468975999999,-3.86310149999997 -50.4469445999999,-3.86296039999996</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#PA_PACAJA_SR_CPRM">
+		<SimpleData name="fid">205</SimpleData>
+		<SimpleData name="UF">PA</SimpleData>
+		<SimpleData name="MUNIC">PACAJÁ</SimpleData>
+		<SimpleData name="LOCAL">Rua Getúlio Vargas, Lagoa da Capivara - Centro</SimpleData>
+		<SimpleData name="TIPOLO_G1">Alagamento</SimpleData>
+		<SimpleData name="TIPOLO_G2">Inundação</SimpleData>
+		<SimpleData name="SITUACAO_01">Ocorrido</SimpleData>
+		<SimpleData name="DESCRICAO">Moradias construídas às margens de um igarapé represado, que em episódios de chuvas intensas alaga devido à dificuldade de escoamento da água pela obra de drenagem mal dimensionada. Nota-se falta de saneamento e obras de drenagem, com lançamento de água servida diretamente na drenagem. </SimpleData>
+		<SimpleData name="OBS_OCUP"></SimpleData>
+		<SimpleData name="GRAU_VULNE">Baixo</SimpleData>
+		<SimpleData name="GRAU_RISCO">Alto</SimpleData>
+		<SimpleData name="SUG_INTERV">-Instalar sistema de alerta para as áreas de risco, através de meios de veiculação pública (mídia, sirenes, celulares), permitindo a remoção eficaz dos moradores em caso de alertas de chuvas intensas ou contínuas;
+-Avaliar possibilidade de remover e realocar temporariamente em locais seguros os moradores que se encontram nas áreas de risco durante o período de chuvas;
+-Executar manutenção das drenagens pluviais e canais de córregos, a fim de evitar que o acúmulo de resíduos impeça o perfeito escoamento das águas durante a estação chuvosa.</SimpleData>
+		<SimpleData name="ORGAO_EXEC">CPRM</SimpleData>
+		<SimpleData name="PROJETO">Cartografia de Risco Geológico</SimpleData>
+		<SimpleData name="EQUIPE_EXECUTORA">Antonio Gilmar Honorato de Souza – Pesquisador em Geociências
+Marco Antônio de Oliveira – Pesquisador em Geociências</SimpleData>
+		<SimpleData name="CD_GEOCMU">1505486</SimpleData>
+		<SimpleData name="SEQUENCIA">8</SimpleData>
+		<SimpleData name="NUM_EDIF">4</SimpleData>
+		<SimpleData name="Sigla_risco">PACAJA</SimpleData>
+		<SimpleData name="M_tipolo">2</SimpleData>
+		<SimpleData name="NUM_PESS">16</SimpleData>
+		<SimpleData name="SITUACAO_02">Ocorrido</SimpleData>
+		<SimpleData name="NUM_SETOR">PA_PACAJA_SR_008_CPRM</SimpleData>
+		<SimpleData name="DATA_SETOR">2023/02/04</SimpleData>
+		<SimpleData name="cd_setor">SR_008</SimpleData>
+		<SimpleData name="TIPOLOGIA">Alagamento, Inundação</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-50.639557689,-3.83571441599997 -50.6395794819999,-3.83602518999993 -50.639686771,-3.83601849899998 -50.639698505,-3.83613993199998 -50.6398520619999,-3.83615899999995 -50.639822893,-3.83569802399995 -50.639557689,-3.83571441599997</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+</Folder>
+</Document></kml>

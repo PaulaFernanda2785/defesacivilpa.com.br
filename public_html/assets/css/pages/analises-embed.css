@@ -1,0 +1,30 @@
+.analise-embed-body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top right, rgba(31, 122, 140, 0.12), transparent 26%),
+        linear-gradient(180deg, #f7fbfd 0%, #edf3f7 100%);
+}
+
+.analise-embed-shell {
+    width: min(1600px, calc(100vw - 24px));
+    margin: 0 auto;
+    padding: 16px 0 24px;
+}
+
+.analise-embed-shell .dashboard {
+    margin: 0;
+}
+
+.analise-embed-shell .temporal-hero-actions,
+.analise-embed-shell .severidade-hero-actions,
+.analise-embed-shell .tipologia-hero-actions,
+.analise-embed-shell .indice-hero-actions {
+    display: none;
+}
+
+@media (max-width: 960px) {
+    .analise-embed-shell {
+        width: min(100vw - 16px, 1600px);
+        padding: 10px 0 16px;
+    }
+}

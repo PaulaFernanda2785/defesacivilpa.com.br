@@ -1,0 +1,88 @@
+.usuarios-senha-shell {
+    gap: 24px;
+}
+
+.usuarios-senha-shell #senha-conta,
+.usuarios-senha-shell #senha-redefinicao {
+    scroll-margin-top: 96px;
+}
+
+.usuarios-senha-hero-grid {
+    gap: 22px;
+}
+
+.usuarios-senha-hero-panel {
+    min-width: 0;
+    order: 1;
+}
+
+.usuarios-senha-hero-panel.alerta-form-hero {
+    grid-template-columns: 1fr;
+    gap: 0;
+}
+
+.usuarios-senha-hero-copy.alerta-form-lead {
+    max-width: none;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.usuarios-senha-hero-copy .alerta-form-title {
+    max-width: none;
+    white-space: normal;
+}
+
+.usuarios-senha-hero-copy .alerta-form-description {
+    max-width: 72ch;
+}
+
+.usuarios-senha-summary-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    order: 2;
+}
+
+.usuarios-senha-command-card {
+    width: 100%;
+    grid-column: 1 / -1;
+    order: 3;
+}
+
+.usuarios-senha-command-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.usuarios-senha-form-panel {
+    gap: 20px;
+}
+
+.usuarios-senha-form-grid {
+    align-items: start;
+}
+
+@media (max-width: 1280px) {
+    .usuarios-senha-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .usuarios-senha-command-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .usuarios-senha-command-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .usuarios-senha-shell {
+        gap: 20px;
+    }
+
+    .usuarios-senha-summary-grid {
+        grid-template-columns: 1fr;
+    }
+}

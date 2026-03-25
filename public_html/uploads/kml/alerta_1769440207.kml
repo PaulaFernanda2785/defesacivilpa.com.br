@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+    <name>Alerta 030/2026</name>
+    
+        <Placemark>
+            <name>Área do Alerta</name>
+            <Style>
+                <LineStyle>
+                    <color>ff0000ff</color>
+                    <width>3</width>
+                </LineStyle>
+                <PolyStyle>
+                    <color>660000ff</color>
+                </PolyStyle>
+            </Style>
+            <Polygon>
+                <outerBoundaryIs>
+                    <LinearRing>
+                        <coordinates>
+                            -50.976563,-1.142502,0 -46.669922,-0.98872,0 -48.955078,-5.57225,0 -52.075195,-5.900189,0 -54.42627,-3.316018,0 -54.404297,-0.461421,0 -50.976563,-1.142502,0
+                        </coordinates>
+                    </LinearRing>
+                </outerBoundaryIs>
+            </Polygon>
+        </Placemark></Document>
+</kml>
