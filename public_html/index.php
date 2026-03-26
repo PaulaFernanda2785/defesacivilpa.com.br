@@ -1154,10 +1154,41 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
 
 <div id="modalInfo" class="modal">
     <div class="modal-content public-info-modal">
-        <button type="button" class="close" data-close-modal="modalInfo" aria-label="Fechar sobre o sistema">&times;</button>
-        <h3>Sistema Inteligente Multirriscos</h3>
-        <p>Plataforma institucional da Defesa Civil do Estado do Para voltada ao monitoramento, leitura territorial, consolidacao analitica e apoio a tomada de decisao sobre alertas ativos.</p>
-        <p>Nesta tela publica, o foco e visualizacao: mapa, indicadores, relatorio em modal e download dos PDFs dos alertas ativos.</p>
+        <button type="button" class="public-modal-close" data-close-modal="modalInfo" aria-label="Fechar sobre o sistema">&times;</button>
+        <div class="public-info-modal-header">
+            <span class="public-info-modal-kicker">Sobre o sistema</span>
+            <h3>Sistema Inteligente Multirriscos</h3>
+            <p>Plataforma institucional da Defesa Civil do Estado do Para para monitoramento, leitura territorial e apoio a tomada de decisao com base nos alertas ativos.</p>
+        </div>
+
+        <div class="public-info-modal-pill-row">
+            <span class="public-info-modal-pill">Painel publico</span>
+            <span class="public-info-modal-pill">Mapa ao vivo</span>
+            <span class="public-info-modal-pill">Relatorio analitico</span>
+            <span class="public-info-modal-pill">Versao <?= htmlspecialchars($appConfig['version'], ENT_QUOTES, 'UTF-8') ?></span>
+        </div>
+
+        <div class="public-info-modal-grid">
+            <article class="public-info-modal-card">
+                <span class="public-info-modal-card-kicker">Consulta aberta</span>
+                <strong>Leitura publica em tempo real</strong>
+                <p>Qualquer visitante consegue visualizar mapa, indicadores e fazer download dos PDFs dos alertas ativos diretamente na pagina inicial.</p>
+            </article>
+
+            <article class="public-info-modal-card">
+                <span class="public-info-modal-card-kicker">Ambiente protegido</span>
+                <strong>Fluxos internos com autenticacao</strong>
+                <p>Cadastro, gestao operacional, historico e paginas internas permanecem restritos aos perfis autorizados da Defesa Civil.</p>
+            </article>
+        </div>
+
+        <div class="public-info-modal-footer">
+            <div class="public-info-modal-support">
+                <strong>Solicitacao de acesso</strong>
+                <a href="mailto:dgr.cedecpa@gmail.com">dgr.cedecpa@gmail.com</a>
+            </div>
+            <button type="button" class="btn btn-secondary" data-close-modal="modalInfo">Fechar</button>
+        </div>
     </div>
 </div>
 
