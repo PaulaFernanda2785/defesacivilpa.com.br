@@ -442,8 +442,7 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
             <span class="alerta-form-kicker">Painel institucional aberto</span>
             <h1>Monitoramento multirriscos publico<br>Defesa Civil do Para</h1>
             <p>
-                Consulte o mapa multirriscos em destaque, leia os indicadores territoriais, gere o relatorio analitico
-                no modal e baixe os PDFs dos alertas ativos sem precisar estar logado.
+                Consulte o mapa multirriscos em destaque, leia os indicadores territoriais, gere o relatorio analitico na tela e baixe os PDFs dos alertas ativos sem precisar estar logado.
             </p>
 
             <div class="public-hero-actions">
@@ -563,8 +562,7 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
                 <span class="alerta-form-kicker">Mapa em destaque</span>
                 <h2 class="alerta-form-title">Mapa multirriscos com leitura territorial aberta ao publico</h2>
                 <p class="alerta-form-description">
-                    A tela abaixo segue o mesmo idioma visual das areas internas de painel e listagem, com o mapa como
-                    elemento central, filtros sincronizados, ranking regional e detalhamento territorial em modal.
+                    A tela abaixo segue o mesmo idioma visual das areas internas de painel e listagem, com o mapa como elemento central, filtros sincronizados, ranking regional e detalhamento territorial em modal.
                 </p>
             </div>
 
@@ -711,7 +709,7 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
                             <article class="public-operational-card public-operational-card-highlight">
                                 <span class="public-operational-step">Passo 3</span>
                                 <h3>Abra o detalhe territorial</h3>
-                                <p>Depois de identificar a area critica, clique no mapa ou no ranking para abrir o modal com os alertas ativos discriminados.</p>
+                                <p>Depois de identificar a area critica, clique no mapa ou no ranking para abrir na tela com os alertas ativos discriminados.</p>
                             </article>
                         </div>
                     </div>
@@ -824,7 +822,7 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
                 <span class="alerta-form-kicker">Central analitica</span>
                 <h2 class="alerta-form-title">Relatorio analitico multirriscos em modal</h2>
                 <p class="alerta-form-description">
-                    A consulta abaixo abre um relatorio consolidado direto no modal, sem funcao de impressao e sem
+                    A consulta abaixo abre um relatorio consolidado direto na tela, e sem
                     depender de login. O objetivo aqui e leitura institucional e consulta publica qualificada.
                 </p>
             </div>
@@ -838,7 +836,7 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
                 <div class="alerta-summary-card">
                     <span class="alerta-summary-label">Recorte global</span>
                     <span class="alerta-summary-value">Ano, mes, regiao e municipio</span>
-                    <span class="alerta-summary-note">O mesmo recorte alimenta todos os blocos do modal analitico.</span>
+                    <span class="alerta-summary-note">O mesmo recorte alimenta todos os blocos da tela analitico.</span>
                 </div>
                 <div class="alerta-summary-card">
                     <span class="alerta-summary-label">Experiencia publica</span>
@@ -854,7 +852,7 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
                     <header class="alerta-section-header">
                         <span class="alerta-section-kicker">Secao 1</span>
                         <h2 class="alerta-section-title">Recorte global do relatorio</h2>
-                        <p class="alerta-section-text">Defina o recorte desejado para abrir a sintese analitica consolidada no modal.</p>
+                        <p class="alerta-section-text">Defina o recorte desejado para abrir a sintese analitica consolidada na tela.</p>
                     </header>
 
                     <div class="analises-filter-grid">
@@ -879,7 +877,7 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
 
                         <div class="alerta-callout analises-filter-callout form-group field-span-2">
                             <strong>Relatorio publico</strong>
-                            O modal abaixo organiza a leitura consolidada para consulta institucional sem funcao de impressao.
+                            A tela abaixo organiza a leitura consolidada para consulta institucional sem funcao de impressao.
                         </div>
 
                         <div class="alerta-form-actions analises-filter-actions form-group field-span-2">
@@ -897,7 +895,7 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
                     <header class="alerta-section-header">
                         <span class="alerta-section-kicker">Secao 2</span>
                         <h2 class="alerta-section-title">Como a analise esta organizada</h2>
-                        <p class="alerta-section-text">Clique em um modulo para abrir a previa da pagina correspondente, com hero, filtros, cards e blocos graficos no mesmo desenho da tela analitica real.</p>
+                        <p class="alerta-section-text">Clique em um modulo para abrir a previa da pagina correspondente, com filtros, cards e blocos graficos no mesmo desenho da tela analitica real.</p>
                     </header>
 
                     <div class="analises-insight-grid public-analises-insight-grid">
@@ -1092,7 +1090,7 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
                         <li>Nome do territorio consultado e pressao acumulada.</li>
                         <li>Quantidade de alertas ativos e tipos de evento presentes no recorte.</li>
                         <li>Numero do alerta, data, vigencia, gravidade, pressao e fonte de cada alerta ativo.</li>
-                        <li>Quando houver mais de um alerta ativo, cada alerta aparece discriminado no modal.</li>
+                        <li>Quando houver mais de um alerta ativo, cada alerta aparece discriminado na tela.</li>
                     </ul>
                 </article>
 
