@@ -429,11 +429,9 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
     </nav>
 
     <div class="public-topbar-actions">
-        <span class="topbar-pill topbar-pill-neutral"><?= htmlspecialchars($appConfig['version'], ENT_QUOTES, 'UTF-8') ?></span>
+        <span class="topbar-pill topbar-pill-neutral">Versao <?= htmlspecialchars($appConfig['version'], ENT_QUOTES, 'UTF-8') ?></span>
         <?php if (is_array($usuarioAtivo) && !empty($usuarioAtivo['nome'])): ?>
             <a href="/pages/painel.php" class="btn btn-primary">Acessar painel</a>
-        <?php else: ?>
-            <button type="button" class="btn btn-primary" data-open-login>Entrar no sistema</button>
         <?php endif; ?>
     </div>
 </header>
@@ -526,13 +524,34 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
                         <span>Cadastro e gerenciamento operacional continuam reservados aos perfis internos do sistema.</span>
                     </article>
                 </div>
-                <div class="public-access-actions">
-                    <button type="button" class="btn btn-primary" data-open-login>Entrar no sistema</button>
-                    <a href="#analises-publicas" class="btn btn-secondary">Ver analises</a>
-                </div>
+                <?php if ($erro !== ''): ?>
+                    <div class="public-banner public-banner-danger public-auth-banner"><?= htmlspecialchars($erro, ENT_QUOTES, 'UTF-8') ?></div>
+                <?php endif; ?>
+
+                <form method="post" class="public-access-login-form">
+                    <?= Csrf::inputField() ?>
+
+                    <div class="public-access-login-grid">
+                        <div class="public-auth-field">
+                            <label for="login-email">E-mail institucional</label>
+                            <input type="email" id="login-email" name="email" value="<?= htmlspecialchars($emailInformado, ENT_QUOTES, 'UTF-8') ?>" required autocomplete="username">
+                        </div>
+
+                        <div class="public-auth-field">
+                            <label for="login-senha">Senha</label>
+                            <input type="password" id="login-senha" name="senha" required autocomplete="current-password">
+                        </div>
+                    </div>
+
+                    <div class="public-access-actions">
+                        <button type="submit" class="btn btn-primary">Entrar no sistema</button>
+                        <button type="reset" class="btn btn-secondary">Limpar</button>
+                    </div>
+                </form>
+
                 <div class="public-access-support">
                     <strong>Solicitacao de acesso</strong>
-                    <a href="mailto:<?= htmlspecialchars($appConfig['support_email'], ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($appConfig['support_email'], ENT_QUOTES, 'UTF-8') ?></a>
+                    <a href="mailto:dgr.cedecpa@gmail.com">dgr.cedecpa@gmail.com</a>
                 </div>
             <?php endif; ?>
         </aside>
@@ -1126,80 +1145,12 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
             <?php if (is_array($usuarioAtivo) && !empty($usuarioAtivo['nome'])): ?>
                 <a id="modalAnaliseLink" href="/pages/analises/index.php" class="btn btn-primary">Abrir pagina completa</a>
             <?php else: ?>
-                <button type="button" class="btn btn-primary" data-open-login>Entrar para acessar a pagina</button>
+                <a href="#acesso-sistema" class="btn btn-primary" data-close-modal="modalAnalisePreview">Ir para acesso protegido</a>
             <?php endif; ?>
             <button type="button" class="btn btn-secondary" data-close-modal="modalAnalisePreview">Fechar</button>
         </div>
     </div>
 </div>
-
-<?php if (!is_array($usuarioAtivo) || empty($usuarioAtivo['nome'])): ?>
-    <div id="modalLogin" class="modal">
-        <div class="modal-content public-auth-modal public-auth-shell">
-            <button type="button" class="public-modal-close" data-close-modal="modalLogin" aria-label="Fechar login">&times;</button>
-            <div class="public-auth-header">
-                <div class="public-auth-copy">
-                    <span class="public-access-kicker">Acesso autenticado</span>
-                    <h3>Entrar no ambiente operacional</h3>
-                    <p>Use seu acesso institucional para abrir as telas internas, paineis detalhados e rotinas operacionais protegidas.</p>
-
-                    <div class="public-auth-chip-row">
-                        <span class="public-auth-chip">Acesso interno</span>
-                        <span class="public-auth-chip">Perfis autorizados</span>
-                        <span class="public-auth-chip">Sessao com timeout</span>
-                    </div>
-                </div>
-
-                <div class="public-auth-summary-grid">
-                    <article class="public-auth-summary-card public-auth-summary-card-primary">
-                        <span class="public-auth-summary-label">Ambiente</span>
-                        <strong class="public-auth-summary-value">Painel protegido</strong>
-                        <span class="public-auth-summary-note">Cadastro, edicao e gestao de alertas exigem autenticacao institucional.</span>
-                    </article>
-
-                    <article class="public-auth-summary-card public-auth-summary-card-neutral">
-                        <span class="public-auth-summary-label">Sessao</span>
-                        <strong class="public-auth-summary-value"><?= (int) (Session::inactivityTimeout() / 60) ?> min</strong>
-                        <span class="public-auth-summary-note">Tempo medio de inatividade antes do encerramento automatico da sessao.</span>
-                    </article>
-                </div>
-            </div>
-
-            <?php if ($erro !== ''): ?>
-                <div class="public-banner public-banner-danger public-auth-banner"><?= htmlspecialchars($erro, ENT_QUOTES, 'UTF-8') ?></div>
-            <?php endif; ?>
-
-            <form method="post" class="public-auth-form public-auth-form-panel">
-                <?= Csrf::inputField() ?>
-
-                <div class="public-auth-form-grid">
-                    <div class="public-auth-field">
-                        <label for="login-email">E-mail institucional</label>
-                        <input type="email" id="login-email" name="email" value="<?= htmlspecialchars($emailInformado, ENT_QUOTES, 'UTF-8') ?>" required autocomplete="username">
-                    </div>
-
-                    <div class="public-auth-field">
-                        <label for="login-senha">Senha</label>
-                        <input type="password" id="login-senha" name="senha" required autocomplete="current-password">
-                    </div>
-                </div>
-
-                <div class="public-auth-actions">
-                    <button type="submit" class="btn btn-primary">Entrar no sistema</button>
-                    <button type="button" class="btn btn-secondary" data-close-modal="modalLogin">Cancelar</button>
-                </div>
-            </form>
-
-            <div class="public-auth-support-card">
-                <div class="public-auth-support">
-                    <strong>Suporte de acesso</strong>
-                    <span>Solicite suporte institucional para criacao, ajuste de perfil ou recuperacao de acesso.</span>
-                    <a href="mailto:<?= htmlspecialchars($appConfig['support_email'], ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($appConfig['support_email'], ENT_QUOTES, 'UTF-8') ?></a>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php endif; ?>
 
 <div id="modalInfo" class="modal">
     <div class="modal-content public-info-modal">
@@ -1223,7 +1174,6 @@ window.ANALISE_GLOBAL_CONFIG = { pdfEnabled: false };
 
 (function () {
     const modalInfo = document.getElementById('modalInfo');
-    const modalLogin = document.getElementById('modalLogin');
     const modalAnalisePreview = document.getElementById('modalAnalisePreview');
     const loginEmail = document.getElementById('login-email');
     const previewDataNode = document.getElementById('analises-preview-data');
@@ -1257,7 +1207,7 @@ window.ANALISE_GLOBAL_CONFIG = { pdfEnabled: false };
     }
 
     function atualizarScrollBody() {
-        const existeModalAberto = [modalInfo, modalLogin, modalAnalisePreview].some(modalVisivel);
+        const existeModalAberto = [modalInfo, modalAnalisePreview].some(modalVisivel);
         document.body.classList.toggle('public-modal-open', existeModalAberto);
     }
 
@@ -1619,7 +1569,6 @@ window.ANALISE_GLOBAL_CONFIG = { pdfEnabled: false };
 
     document.addEventListener('click', function (event) {
         const openInfo = event.target.closest('[data-open-info]');
-        const openLogin = event.target.closest('[data-open-login]');
         const previewButton = event.target.closest('[data-analise-preview]');
         const closeButton = event.target.closest('[data-close-modal]');
 
@@ -1633,19 +1582,6 @@ window.ANALISE_GLOBAL_CONFIG = { pdfEnabled: false };
             return;
         }
 
-        if (openLogin) {
-            fecharModalPersonalizado(modalAnalisePreview);
-            abrirModal(modalLogin);
-
-            if (loginEmail) {
-                window.setTimeout(function () {
-                    loginEmail.focus();
-                }, 40);
-            }
-
-            return;
-        }
-
         if (closeButton) {
             fecharModalPersonalizado(document.getElementById(closeButton.getAttribute('data-close-modal')));
             return;
@@ -1653,10 +1589,6 @@ window.ANALISE_GLOBAL_CONFIG = { pdfEnabled: false };
 
         if (event.target === modalInfo) {
             fecharModalPersonalizado(modalInfo);
-        }
-
-        if (event.target === modalLogin) {
-            fecharModalPersonalizado(modalLogin);
         }
 
         if (event.target === modalAnalisePreview) {
@@ -1674,22 +1606,20 @@ window.ANALISE_GLOBAL_CONFIG = { pdfEnabled: false };
             return;
         }
 
-        if (modalVisivel(modalLogin)) {
-            fecharModalPersonalizado(modalLogin);
-            return;
-        }
-
         if (modalVisivel(modalInfo)) {
             fecharModalPersonalizado(modalInfo);
         }
     });
 
     <?php if ($erro !== '' && (!is_array($usuarioAtivo) || empty($usuarioAtivo['nome']))): ?>
-    abrirModal(modalLogin);
+    const acessoSistema = document.getElementById('acesso-sistema');
+    if (acessoSistema) {
+        acessoSistema.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
     if (loginEmail) {
         window.setTimeout(function () {
             loginEmail.focus();
-        }, 40);
+        }, 120);
     }
     <?php endif; ?>
 })();
