@@ -442,7 +442,7 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
     <section class="public-hero">
         <div class="public-hero-copy">
             <span class="alerta-form-kicker">Painel institucional aberto</span>
-            <h1>Monitoramento multirriscos publico da Defesa Civil do Para</h1>
+            <h1>Monitoramento multirriscos publico<br>Defesa Civil do Para</h1>
             <p>
                 Consulte o mapa multirriscos em destaque, leia os indicadores territoriais, gere o relatorio analitico
                 no modal e baixe os PDFs dos alertas ativos sem precisar estar logado.
@@ -454,7 +454,7 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
                 <?php if (is_array($usuarioAtivo) && !empty($usuarioAtivo['nome'])): ?>
                     <a href="/pages/painel.php" class="btn btn-secondary">Abrir ambiente operacional</a>
                 <?php else: ?>
-                    <button type="button" class="btn btn-secondary" data-open-login>Entrar no sistema</button>
+                    <a href="#analises-publicas" class="btn btn-secondary">Ver analise</a>
                 <?php endif; ?>
                 <button type="button" class="btn btn-secondary" data-open-info>Sobre o sistema</button>
             </div>
