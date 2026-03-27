@@ -44,7 +44,7 @@ $emailInformado = '';
 $motivo = trim((string) ($_GET['motivo'] ?? ''));
 
 if ($motivo === 'inatividade') {
-    $mensagemSessao = 'Sua sessao foi encerrada por inatividade. Entre novamente para continuar.';
+    $mensagemSessao = 'Sua sessão foi encerrada por inatividade. Entre novamente para continuar.';
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 (string) $usuario['nome'],
                 'LOGIN_SISTEMA',
                 'Realizou login no sistema',
-                'Origem: tela inicial publica'
+                'Origem: tela inicial pública'
             );
         }
 
@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (LoginRateLimiter::isBlocked($loginThrottleKey)) {
             $erro = 'Muitas tentativas de acesso. Aguarde alguns minutos antes de tentar novamente.';
         } else {
-            $erro = 'Usuario ou senha invalidos.';
+            $erro = 'Usuário ou senha inválidos.';
         }
     }
 }
@@ -199,175 +199,175 @@ $analises = [
         'slug' => 'temporal',
         'kicker' => 'Temporal',
         'titulo' => 'Leitura temporal',
-        'descricao' => 'Avalia sazonalidade, frequencia por periodo do dia e variacao anual dos alertas.',
-        'nivel' => 'Operacional / Tatico',
-        'filtros' => ['Ano', 'Mes', 'Regiao', 'Municipio', 'Evento'],
+        'descricao' => 'Avalia sazonalidade, frequência por período do dia e variação anual dos alertas.',
+        'nivel' => 'Operacional / Tático',
+        'filtros' => ['Ano', 'Mês', 'Região', 'Município', 'Evento'],
         'href' => '/pages/analises/temporal.php',
         'graficos' => [
             'Sazonalidade mensal',
             'Comparativo multievento',
-            'Distribuicao mensal por evento',
-            'Evolucao do periodo',
-            'Evolucao anual',
+            'Distribuição mensal por evento',
+            'Evolução do período',
+            'Evolução anual',
             'Alertas cancelados por ano',
-            'Frequencia por periodo do dia',
+            'Frequência por período do dia',
         ],
     ],
     [
         'slug' => 'severidade',
         'kicker' => 'Severidade',
         'titulo' => 'Severidade e impacto',
-        'descricao' => 'Resume distribuicao por gravidade, duracao media e concentracao territorial.',
+        'descricao' => 'Resume distribuição por gravidade, duração média e concentração territorial.',
         'nivel' => 'Operacional',
-        'filtros' => ['Ano', 'Mes', 'Regiao', 'Municipio'],
+        'filtros' => ['Ano', 'Mês', 'Região', 'Município'],
         'href' => '/pages/analises/severidade.php',
         'graficos' => [
-            'Distribuicao por gravidade',
-            'Proporcao entre faixas de severidade',
-            'Duracao media por evento',
+            'Distribuição por gravidade',
+            'Proporção entre faixas de severidade',
+            'Duração média por evento',
             'Quantidade de alertas por evento',
-            'Municipios mais impactados',
+            'Municípios mais impactados',
         ],
     ],
     [
         'slug' => 'tipologia',
         'kicker' => 'Tipologia',
         'titulo' => 'Tipologia de eventos',
-        'descricao' => 'Mostra quais eventos predominam por regiao e sua correlacao com severidade.',
+        'descricao' => 'Mostra quais eventos predominam por região e sua correlação com severidade.',
         'nivel' => 'Operacional',
-        'filtros' => ['Ano', 'Mes', 'Regiao', 'Municipio'],
+        'filtros' => ['Ano', 'Mês', 'Região', 'Município'],
         'href' => '/pages/analises/tipologia.php',
         'graficos' => [
-            'Distribuicao por tipo de evento',
-            'Participacao percentual dos eventos',
-            'Correlacao entre tipologia e severidade',
-            'Tipologia por regiao',
+            'Distribuição por tipo de evento',
+            'Participação percentual dos eventos',
+            'Correlação entre tipologia e severidade',
+            'Tipologia por região',
             'Sazonalidade dos eventos',
-            'Recorrencia municipal por tipologia',
+            'Recorrência municipal por tipologia',
         ],
     ],
     [
         'slug' => 'indices',
-        'kicker' => 'Indices',
+        'kicker' => 'Índices',
         'titulo' => 'IRP e IPT',
-        'descricao' => 'Prioriza territorios com maior pressao operacional e maior intensidade territorial.',
-        'nivel' => 'Estrategico',
-        'filtros' => ['Ano', 'Mes', 'Regiao', 'Municipio'],
+        'descricao' => 'Prioriza territórios com maior pressão operacional e maior intensidade territorial.',
+        'nivel' => 'Estratégico',
+        'filtros' => ['Ano', 'Mês', 'Região', 'Município'],
         'href' => '/pages/analises/indice_risco.php',
         'graficos' => [
             'Ranking regional do IRP',
             'Ranking municipal do IPT',
-            'Grafico comparativo do IRP',
-            'Grafico comparativo do IPT',
+            'Gráfico comparativo do IRP',
+            'Gráfico comparativo do IPT',
         ],
     ],
 ];
 
 $analisesPreview = [
     'temporal' => [
-        'hero_kicker' => 'Analise operacional',
-        'pagina_titulo' => 'Analise temporal de alertas',
-        'pagina_descricao' => 'Organize a leitura de sazonalidade, recorrencia por periodo do dia e evolucao historica dos alertas no mesmo padrao visual das telas analiticas.',
+        'hero_kicker' => 'Análise operacional',
+        'pagina_titulo' => 'Análise temporal de alertas',
+        'pagina_descricao' => 'Organize a leitura de sazonalidade, recorrência por período do dia e evolução histórica dos alertas no mesmo padrão visual das telas analíticas.',
         'resumo' => [
-            ['label' => 'Sazonalidade', 'value' => 'Meses criticos', 'note' => 'Resume os periodos com maior concentracao de alertas no recorte.'],
-            ['label' => 'Recorrencia diaria', 'value' => 'Turno predominante', 'note' => 'Mostra a faixa horaria mais frequente nas ocorrencias monitoradas.'],
-            ['label' => 'Historico', 'value' => 'Comparativo anual', 'note' => 'Cruza a evolucao temporal com os anos anteriores do recorte selecionado.'],
+            ['label' => 'Sazonalidade', 'value' => 'Meses críticos', 'note' => 'Resume os períodos com maior concentração de alertas no recorte.'],
+            ['label' => 'Recorrência diária', 'value' => 'Turno predominante', 'note' => 'Mostra a faixa horária mais frequente nas ocorrências monitoradas.'],
+            ['label' => 'Histórico', 'value' => 'Comparativo anual', 'note' => 'Cruza a evolução temporal com os anos anteriores do recorte selecionado.'],
         ],
         'filtros_titulo' => 'Filtros do recorte temporal',
-        'filtros_texto' => 'Ano, mes, regiao, municipio e evento recalculam a leitura temporal e mantem a comparacao historica coerente.',
-        'insights_titulo' => 'Leituras rapidas do periodo',
-        'insights_texto' => 'A pagina destaca pico sazonal, periodo do dia predominante, evento dominante e ano historicamente mais ativo.',
+        'filtros_texto' => 'Ano, mês, região, município e evento recalculam a leitura temporal e mantêm a comparação histórica coerente.',
+        'insights_titulo' => 'Leituras rápidas do período',
+        'insights_texto' => 'A página destaca pico sazonal, período do dia predominante, evento dominante e ano historicamente mais ativo.',
         'insights' => [
-            ['label' => 'Pico sazonal', 'value' => 'Mes com maior volume', 'note' => 'Ajuda a localizar a janela de maior recorrencia no recorte.'],
-            ['label' => 'Periodo do dia', 'value' => 'Faixa horaria lider', 'note' => 'Indica o turno em que os alertas mais se concentram.'],
+            ['label' => 'Pico sazonal', 'value' => 'Mês com maior volume', 'note' => 'Ajuda a localizar a janela de maior recorrência no recorte.'],
+            ['label' => 'Período do dia', 'value' => 'Faixa horária líder', 'note' => 'Indica o turno em que os alertas mais se concentram.'],
             ['label' => 'Evento dominante', 'value' => 'Tipologia principal', 'note' => 'Aponta o evento mais recorrente da leitura temporal.'],
-            ['label' => 'Base historica', 'value' => 'Ano mais ativo', 'note' => 'Mostra a referencia anual com maior carga de alertas.'],
+            ['label' => 'Base histórica', 'value' => 'Ano mais ativo', 'note' => 'Mostra a referência anual com maior carga de alertas.'],
         ],
         'graficos_preview' => [
-            ['kicker' => 'Secao 3', 'titulo' => 'Sazonalidade mensal do recorte', 'descricao' => 'Grafico principal com a distribuicao mensal dos alertas.', 'variant' => 'wide'],
-            ['kicker' => 'Secao 4', 'titulo' => 'Comparativo mensal de eventos', 'descricao' => 'Compara o comportamento das tipologias ao longo do ano.', 'variant' => 'half'],
-            ['kicker' => 'Secao 5', 'titulo' => 'Sazonalidade do evento selecionado', 'descricao' => 'Detalha a distribuicao mensal de um evento especifico.', 'variant' => 'half'],
-            ['kicker' => 'Secao 6', 'titulo' => 'Evolucao anual e alertas cancelados', 'descricao' => 'Consolida historico anual, cancelamentos e recorrencia por hora.', 'variant' => 'wide'],
+            ['kicker' => 'Seção 3', 'titulo' => 'Sazonalidade mensal do recorte', 'descricao' => 'Gráfico principal com a distribuição mensal dos alertas.', 'variant' => 'wide'],
+            ['kicker' => 'Seção 4', 'titulo' => 'Comparativo mensal de eventos', 'descricao' => 'Compara o comportamento das tipologias ao longo do ano.', 'variant' => 'half'],
+            ['kicker' => 'Seção 5', 'titulo' => 'Sazonalidade do evento selecionado', 'descricao' => 'Detalha a distribuição mensal de um evento específico.', 'variant' => 'half'],
+            ['kicker' => 'Seção 6', 'titulo' => 'Evolução anual e alertas cancelados', 'descricao' => 'Consolida histórico anual, cancelamentos e recorrência por hora.', 'variant' => 'wide'],
         ],
-        'rodape' => 'Ideal para entender janelas criticas antes de aprofundar a leitura territorial no mapa.',
+        'rodape' => 'Ideal para entender janelas críticas antes de aprofundar a leitura territorial no mapa.',
     ],
     'severidade' => [
-        'hero_kicker' => 'Analise operacional',
+        'hero_kicker' => 'Análise operacional',
         'pagina_titulo' => 'Severidade e impacto dos alertas',
-        'pagina_descricao' => 'Consolide distribuicao de gravidade, duracao media dos eventos e impacto territorial no mesmo padrao visual das paginas analiticas recentes.',
+        'pagina_descricao' => 'Consolide distribuição de gravidade, duração média dos eventos e impacto territorial no mesmo padrão visual das páginas analíticas recentes.',
         'resumo' => [
             ['label' => 'Severidade', 'value' => 'Faixas de gravidade', 'note' => 'Mostra como o recorte se distribui entre baixo, moderado, alto, muito alto e extremo.'],
-            ['label' => 'Impacto', 'value' => 'Abrangencia territorial', 'note' => 'Resume a carga operacional observada por regiao e municipio.'],
-            ['label' => 'Contexto', 'value' => 'Eventos e duracao', 'note' => 'Cruza severidade com tempo de permanencia dos alertas ativos.'],
+            ['label' => 'Impacto', 'value' => 'Abrangência territorial', 'note' => 'Resume a carga operacional observada por região e município.'],
+            ['label' => 'Contexto', 'value' => 'Eventos e duração', 'note' => 'Cruza severidade com tempo de permanência dos alertas ativos.'],
         ],
-        'filtros_titulo' => 'Filtros do recorte analitico',
-        'filtros_texto' => 'Ano, mes, regiao e municipio recalculam automaticamente a leitura de severidade e impacto.',
-        'insights_titulo' => 'Leituras rapidas do periodo',
-        'insights_texto' => 'A pagina evidencia a severidade predominante, o evento mais recorrente, a maior duracao media e o municipio mais impactado.',
+        'filtros_titulo' => 'Filtros do recorte analítico',
+        'filtros_texto' => 'Ano, mês, região e município recalculam automaticamente a leitura de severidade e impacto.',
+        'insights_titulo' => 'Leituras rápidas do período',
+        'insights_texto' => 'A página evidencia a severidade predominante, o evento mais recorrente, a maior duração média e o município mais impactado.',
         'insights' => [
-            ['label' => 'Severidade predominante', 'value' => 'Faixa lider', 'note' => 'Sinaliza a faixa de gravidade com maior concentracao no recorte.'],
-            ['label' => 'Evento recorrente', 'value' => 'Tipologia dominante', 'note' => 'Mostra qual evento mais pressiona a operacao no periodo.'],
-            ['label' => 'Duracao media', 'value' => 'Evento mais duradouro', 'note' => 'Indica os eventos que tendem a permanecer ativos por mais tempo.'],
-            ['label' => 'Impacto municipal', 'value' => 'Municipio mais afetado', 'note' => 'Destaca o territorio com maior concentracao de alertas.'],
+            ['label' => 'Severidade predominante', 'value' => 'Faixa líder', 'note' => 'Sinaliza a faixa de gravidade com maior concentração no recorte.'],
+            ['label' => 'Evento recorrente', 'value' => 'Tipologia dominante', 'note' => 'Mostra qual evento mais pressiona a operação no período.'],
+            ['label' => 'Duração média', 'value' => 'Evento mais duradouro', 'note' => 'Indica os eventos que tendem a permanecer ativos por mais tempo.'],
+            ['label' => 'Impacto municipal', 'value' => 'Município mais afetado', 'note' => 'Destaca o território com maior concentração de alertas.'],
         ],
         'graficos_preview' => [
-            ['kicker' => 'Secao 3', 'titulo' => 'Distribuicao final de severidade', 'descricao' => 'Grafico principal com a quantidade absoluta por gravidade.', 'variant' => 'wide'],
-            ['kicker' => 'Secao 4', 'titulo' => 'Proporcao por grau de severidade', 'descricao' => 'Leitura percentual da composicao do recorte.', 'variant' => 'half'],
-            ['kicker' => 'Secao 5', 'titulo' => 'Duracao media por tipo de evento', 'descricao' => 'Compara em horas os eventos com maior permanencia.', 'variant' => 'half'],
-            ['kicker' => 'Secao 6', 'titulo' => 'Alertas por evento e municipios impactados', 'descricao' => 'Cruza volume de emissoes com os territorios mais pressionados.', 'variant' => 'wide'],
+            ['kicker' => 'Seção 3', 'titulo' => 'Distribuição final de severidade', 'descricao' => 'Gráfico principal com a quantidade absoluta por gravidade.', 'variant' => 'wide'],
+            ['kicker' => 'Seção 4', 'titulo' => 'Proporção por grau de severidade', 'descricao' => 'Leitura percentual da composição do recorte.', 'variant' => 'half'],
+            ['kicker' => 'Seção 5', 'titulo' => 'Duração média por tipo de evento', 'descricao' => 'Compara em horas os eventos com maior permanência.', 'variant' => 'half'],
+            ['kicker' => 'Seção 6', 'titulo' => 'Alertas por evento e municípios impactados', 'descricao' => 'Cruza volume de emissões com os territórios mais pressionados.', 'variant' => 'wide'],
         ],
-        'rodape' => 'Recomendado para medir carga operacional e identificar territorios onde a resposta pode ficar mais pressionada.',
+        'rodape' => 'Recomendado para medir carga operacional e identificar territórios onde a resposta pode ficar mais pressionada.',
     ],
     'tipologia' => [
-        'hero_kicker' => 'Analise operacional',
+        'hero_kicker' => 'Análise operacional',
         'pagina_titulo' => 'Tipologia de alertas',
-        'pagina_descricao' => 'Observe os tipos de evento mais recorrentes, sua correlacao com a severidade e a distribuicao territorial por regioes e municipios.',
+        'pagina_descricao' => 'Observe os tipos de evento mais recorrentes, sua correlação com a severidade e a distribuição territorial por regiões e municípios.',
         'resumo' => [
-            ['label' => 'Tipologias', 'value' => 'Eventos no recorte', 'note' => 'Resume as tipologias de alerta presentes no periodo analisado.'],
-            ['label' => 'Territorio', 'value' => 'Regioes e municipios', 'note' => 'Mostra onde cada evento aparece com maior recorrencia.'],
-            ['label' => 'Severidade', 'value' => 'Correlacao ativa', 'note' => 'Conecta tipologias com as faixas de gravidade observadas.'],
+            ['label' => 'Tipologias', 'value' => 'Eventos no recorte', 'note' => 'Resume as tipologias de alerta presentes no período analisado.'],
+            ['label' => 'Território', 'value' => 'Regiões e municípios', 'note' => 'Mostra onde cada evento aparece com maior recorrência.'],
+            ['label' => 'Severidade', 'value' => 'Correlação ativa', 'note' => 'Conecta tipologias com as faixas de gravidade observadas.'],
         ],
-        'filtros_titulo' => 'Filtros do recorte analitico',
-        'filtros_texto' => 'Ano, mes, regiao e municipio recalculam automaticamente a leitura tipologica.',
-        'insights_titulo' => 'Leituras rapidas do periodo',
-        'insights_texto' => 'A pagina destaca a tipologia dominante e os territorios com maior recorrencia para cada padrao de evento.',
+        'filtros_titulo' => 'Filtros do recorte analítico',
+        'filtros_texto' => 'Ano, mês, região e município recalculam automaticamente a leitura tipológica.',
+        'insights_titulo' => 'Leituras rápidas do período',
+        'insights_texto' => 'A página destaca a tipologia dominante e os territórios com maior recorrência para cada padrão de evento.',
         'insights' => [
             ['label' => 'Evento mais recorrente', 'value' => 'Tipologia principal', 'note' => 'Aponta o tipo de evento com maior volume no recorte.'],
-            ['label' => 'Recorrencia regional', 'value' => 'Regiao lider', 'note' => 'Mostra a regiao com maior concentracao tipologica.'],
-            ['label' => 'Recorrencia municipal', 'value' => 'Municipio lider', 'note' => 'Evidencia o municipio mais impactado por aquele padrao de evento.'],
+            ['label' => 'Recorrência regional', 'value' => 'Região líder', 'note' => 'Mostra a região com maior concentração tipológica.'],
+            ['label' => 'Recorrência municipal', 'value' => 'Município líder', 'note' => 'Evidencia o município mais impactado por aquele padrão de evento.'],
         ],
         'graficos_preview' => [
-            ['kicker' => 'Secao 3', 'titulo' => 'Correlacao entre evento e severidade', 'descricao' => 'Matriz visual para comparar tipologias e faixas de gravidade.', 'variant' => 'wide'],
-            ['kicker' => 'Secao 4', 'titulo' => 'Distribuicao das tipologias', 'descricao' => 'Mostra a composicao total por tipo de evento.', 'variant' => 'half'],
-            ['kicker' => 'Secao 5', 'titulo' => 'Tipologia por regiao e sazonalidade', 'descricao' => 'Cruza regioes, eventos e comportamento temporal.', 'variant' => 'half'],
-            ['kicker' => 'Secao 6', 'titulo' => 'Recorrencia municipal por tipologia', 'descricao' => 'Indica onde cada evento se concentra com maior intensidade.', 'variant' => 'wide'],
+            ['kicker' => 'Seção 3', 'titulo' => 'Correlação entre evento e severidade', 'descricao' => 'Matriz visual para comparar tipologias e faixas de gravidade.', 'variant' => 'wide'],
+            ['kicker' => 'Seção 4', 'titulo' => 'Distribuição das tipologias', 'descricao' => 'Mostra a composição total por tipo de evento.', 'variant' => 'half'],
+            ['kicker' => 'Seção 5', 'titulo' => 'Tipologia por região e sazonalidade', 'descricao' => 'Cruza regiões, eventos e comportamento temporal.', 'variant' => 'half'],
+            ['kicker' => 'Seção 6', 'titulo' => 'Recorrência municipal por tipologia', 'descricao' => 'Indica onde cada evento se concentra com maior intensidade.', 'variant' => 'wide'],
         ],
-        'rodape' => 'Use essa pagina quando precisar entender padroes de evento e sua distribuicao territorial com mais profundidade.',
+        'rodape' => 'Use essa página quando precisar entender padrões de evento e sua distribuição territorial com mais profundidade.',
     ],
     'indices' => [
-        'hero_kicker' => 'Inteligencia estrategica',
-        'pagina_titulo' => 'Indices de risco (IRP / IPT)',
-        'pagina_descricao' => 'Acompanhe a pressao regional e territorial provocada pelos alertas multirriscos, com leitura consolidada por periodo e metodologia em modal.',
+        'hero_kicker' => 'Inteligência estratégica',
+        'pagina_titulo' => 'Índices de risco (IRP / IPT)',
+        'pagina_descricao' => 'Acompanhe a pressão regional e territorial provocada pelos alertas multirriscos, com leitura consolidada por período e metodologia em modal.',
         'resumo' => [
-            ['label' => 'IRP', 'value' => 'Pressao regional', 'note' => 'Mostra a carga operacional media nas regioes de integracao.'],
-            ['label' => 'IPT', 'value' => 'Carga municipal', 'note' => 'Resume a intensidade territorial acumulada nos municipios.'],
-            ['label' => 'Contexto', 'value' => 'Priorizacao territorial', 'note' => 'Facilita decidir onde monitorar e responder primeiro.'],
+            ['label' => 'IRP', 'value' => 'Pressão regional', 'note' => 'Mostra a carga operacional média nas regiões de integração.'],
+            ['label' => 'IPT', 'value' => 'Carga municipal', 'note' => 'Resume a intensidade territorial acumulada nos municípios.'],
+            ['label' => 'Contexto', 'value' => 'Priorização territorial', 'note' => 'Facilita decidir onde monitorar e responder primeiro.'],
         ],
-        'filtros_titulo' => 'Filtros do recorte analitico',
-        'filtros_texto' => 'Ano, mes, regiao e municipio recalculam automaticamente o IRP e o IPT no mesmo painel.',
-        'insights_titulo' => 'Leituras rapidas do periodo',
-        'insights_texto' => 'A pagina destaca lideres de pressao, comportamento do recorte atual e acesso imediato a metodologia dos indices.',
+        'filtros_titulo' => 'Filtros do recorte analítico',
+        'filtros_texto' => 'Ano, mês, região e município recalculam automaticamente o IRP e o IPT no mesmo painel.',
+        'insights_titulo' => 'Leituras rápidas do período',
+        'insights_texto' => 'A página destaca líderes de pressão, comportamento do recorte atual e acesso imediato à metodologia dos índices.',
         'insights' => [
-            ['label' => 'Regiao com maior IRP', 'value' => 'Lider regional', 'note' => 'Indica a regiao com maior pressao operacional no recorte.'],
-            ['label' => 'Municipio com maior IPT', 'value' => 'Lider territorial', 'note' => 'Mostra o municipio com maior carga acumulada.'],
-            ['label' => 'Metodologia', 'value' => 'IRP e IPT explicados', 'note' => 'O painel possui modal proprio para interpretar os calculos.'],
+            ['label' => 'Região com maior IRP', 'value' => 'Líder regional', 'note' => 'Indica a região com maior pressão operacional no recorte.'],
+            ['label' => 'Município com maior IPT', 'value' => 'Líder territorial', 'note' => 'Mostra o município com maior carga acumulada.'],
+            ['label' => 'Metodologia', 'value' => 'IRP e IPT explicados', 'note' => 'O painel possui modal próprio para interpretar os cálculos.'],
         ],
         'graficos_preview' => [
-            ['kicker' => 'Secao 3', 'titulo' => 'Ranking regional de pressao', 'descricao' => 'Grafico principal comparando as regioes pelo IRP.', 'variant' => 'half'],
-            ['kicker' => 'Secao 4', 'titulo' => 'Ranking territorial de pressao', 'descricao' => 'Grafico principal comparando municipios pelo IPT.', 'variant' => 'half'],
-            ['kicker' => 'Destaque', 'titulo' => 'Metodologia em modal', 'descricao' => 'A pagina traz explicacao detalhada sobre como os indices sao calculados.', 'variant' => 'wide'],
+            ['kicker' => 'Seção 3', 'titulo' => 'Ranking regional de pressão', 'descricao' => 'Gráfico principal comparando as regiões pelo IRP.', 'variant' => 'half'],
+            ['kicker' => 'Seção 4', 'titulo' => 'Ranking territorial de pressão', 'descricao' => 'Gráfico principal comparando municípios pelo IPT.', 'variant' => 'half'],
+            ['kicker' => 'Destaque', 'titulo' => 'Metodologia em modal', 'descricao' => 'A página traz explicação detalhada sobre como os índices são calculados.', 'variant' => 'wide'],
         ],
-        'rodape' => 'Recomendado para priorizacao estrategica e decisao sobre onde a pressao multirriscos exige resposta mais imediata.',
+        'rodape' => 'Recomendado para priorização estratégica e decisão sobre onde a pressão multirriscos exige resposta mais imediata.',
     ],
 ];
 
@@ -400,7 +400,7 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<title><?= htmlspecialchars($appConfig['name'], ENT_QUOTES, 'UTF-8') ?> - Defesa Civil do Estado do Para</title>
+<title><?= htmlspecialchars($appConfig['name'], ENT_QUOTES, 'UTF-8') ?> - Defesa Civil do Estado do Pará</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-site-verification" content="n12nK-Z0mLxGkBdZgzgKzSED9LVYlsNL-8JJKt-Vo9g">
 <link rel="icon" type="image/x-icon" href="/assets/images/logo.cbmpa.ico">
@@ -426,14 +426,14 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
         </span>
     </a>
 
-    <nav class="public-nav" aria-label="Navegacao publica">
+    <nav class="public-nav" aria-label="Navegação pública">
         <a href="#mapa-publico">Mapa ao vivo</a>
-        <a href="#analises-publicas">Relatorio analitico</a>
+        <a href="#analises-publicas">Relatório analítico</a>
         <a href="#alertas-ativos">Alertas ativos</a>
     </nav>
 
     <div class="public-topbar-actions">
-        <span class="topbar-pill topbar-pill-neutral">Versao <?= htmlspecialchars($appConfig['version'], ENT_QUOTES, 'UTF-8') ?></span>
+        <span class="topbar-pill topbar-pill-neutral">Versão <?= htmlspecialchars($appConfig['version'], ENT_QUOTES, 'UTF-8') ?></span>
         <?php if (is_array($usuarioAtivo) && !empty($usuarioAtivo['nome'])): ?>
             <a href="/pages/painel.php" class="btn btn-primary">Acessar painel</a>
         <?php endif; ?>
@@ -444,9 +444,9 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
     <section class="public-hero">
         <div class="public-hero-copy">
             <span class="alerta-form-kicker">Painel institucional aberto</span>
-            <h1>Monitoramento multirriscos publico<br>Defesa Civil do Para</h1>
+            <h1>Monitoramento multirriscos público<br>Defesa Civil do Pará</h1>
             <p>
-                Consulte o mapa multirriscos em destaque, leia os indicadores territoriais, gere o relatorio analitico na tela e baixe os PDFs dos alertas ativos sem precisar estar logado.
+                Consulte o mapa multirriscos em destaque, leia os indicadores territoriais, gere o relatório analítico na tela e baixe os PDFs dos alertas ativos sem precisar estar logado.
             </p>
 
             <div class="public-hero-actions">
@@ -455,7 +455,7 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                 <?php if (is_array($usuarioAtivo) && !empty($usuarioAtivo['nome'])): ?>
                     <a href="/pages/painel.php" class="btn btn-secondary">Abrir ambiente operacional</a>
                 <?php else: ?>
-                    <a href="#analises-publicas" class="btn btn-secondary">Ver analise</a>
+                    <a href="#analises-publicas" class="btn btn-secondary">Ver análise</a>
                 <?php endif; ?>
                 <button type="button" class="btn btn-secondary" data-open-info>Sobre o sistema</button>
             </div>
@@ -468,28 +468,28 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                 <article class="public-highlight-card">
                     <span class="alerta-summary-label">Alertas ativos</span>
                     <strong class="alerta-summary-value"><?= $totalAtivos ?></strong>
-                    <span class="alerta-summary-note">Alertas vigentes e disponiveis para consulta e download em PDF.</span>
+                    <span class="alerta-summary-note">Alertas vigentes e disponíveis para consulta e download em PDF.</span>
                 </article>
 
                 <article class="public-highlight-card">
                     <span class="alerta-summary-label">Cobertura territorial</span>
-                    <strong class="alerta-summary-value"><?= count($municipiosDisponiveis) ?> municipios</strong>
-                    <span class="alerta-summary-note"><?= count($regioesDisponiveis) ?> regioes de integracao monitoradas.</span>
+                    <strong class="alerta-summary-value"><?= count($municipiosDisponiveis) ?> municípios</strong>
+                    <span class="alerta-summary-note"><?= count($regioesDisponiveis) ?> regiões de integração monitoradas.</span>
                 </article>
 
                 <article class="public-highlight-card">
                     <span class="alerta-summary-label">Mapa pronto</span>
-                    <strong class="alerta-summary-value"><?= $totalAlertasMapeados ?> areas mapeadas</strong>
-                    <span class="alerta-summary-note">Leitura cartografica com foco territorial e filtros analiticos.</span>
+                    <strong class="alerta-summary-value"><?= $totalAlertasMapeados ?> áreas mapeadas</strong>
+                    <span class="alerta-summary-note">Leitura cartográfica com foco territorial e filtros analíticos.</span>
                 </article>
 
                 <article class="public-highlight-card">
-                    <span class="alerta-summary-label">Ultimo alerta ativo</span>
+                    <span class="alerta-summary-label">Último alerta ativo</span>
                     <strong class="alerta-summary-value"><?= htmlspecialchars((string) ($alertaMaisRecente['numero'] ?? 'Sem alerta ativo'), ENT_QUOTES, 'UTF-8') ?></strong>
                     <span class="alerta-summary-note">
                         <?= $alertaMaisRecente
                             ? htmlspecialchars((string) ($alertaMaisRecente['tipo_evento'] ?? ''), ENT_QUOTES, 'UTF-8') . ' em ' . htmlspecialchars(TimeHelper::formatDate((string) ($alertaMaisRecente['data_alerta'] ?? null)), ENT_QUOTES, 'UTF-8')
-                            : 'Nao ha registros ativos no momento.' ?>
+                            : 'Não há registros ativos no momento.' ?>
                     </span>
                 </article>
             </div>
@@ -497,30 +497,30 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
 
         <aside class="public-access-card public-access-summary-card" id="acesso-sistema">
             <?php if (is_array($usuarioAtivo) && !empty($usuarioAtivo['nome'])): ?>
-                <span class="public-access-kicker">Sessao ativa</span>
+                <span class="public-access-kicker">Sessão ativa</span>
                 <h2><?= htmlspecialchars((string) $usuarioAtivo['nome'], ENT_QUOTES, 'UTF-8') ?></h2>
-                <p>Seu acesso autenticado esta ativo. Use os atalhos abaixo para entrar no ambiente operacional ou encerrar a sessao.</p>
+                <p>Seu acesso autenticado está ativo. Use os atalhos abaixo para entrar no ambiente operacional ou encerrar a sessão.</p>
                 <div class="public-access-meta">
                     <span class="analises-chip">Perfil: <?= htmlspecialchars((string) ($usuarioAtivo['perfil'] ?? ''), ENT_QUOTES, 'UTF-8') ?></span>
                     <span class="analises-chip">Timeout: <?= (int) (Session::inactivityTimeout() / 60) ?> min</span>
                 </div>
                 <div class="public-access-actions">
                     <a href="/pages/painel.php" class="btn btn-primary">Ir para o painel</a>
-                    <a href="/logout.php" class="btn btn-secondary">Encerrar sessao</a>
+                    <a href="/logout.php" class="btn btn-secondary">Encerrar sessão</a>
                 </div>
             <?php else: ?>
                 <span class="public-access-kicker">Acesso protegido</span>
-                <h2 class="public-access-title-protected">Ambiente operacional com autenticacao</h2>
-                <p>O visitante consulta o painel aberto. O usuario autenticado acessa cadastro, gestao, historico e os paineis analiticos completos do sistema.</p>
+                <h2 class="public-access-title-protected">Ambiente operacional com autenticação</h2>
+                <p>O visitante consulta o painel aberto. O usuário autenticado acessa cadastro, gestão, histórico e os painéis analíticos completos do sistema.</p>
                 <div class="public-access-meta">
                     <span class="analises-chip">Mapa ao vivo</span>
-                    <span class="analises-chip">Relatorio em modal</span>
+                    <span class="analises-chip">Relatório em modal</span>
                     <span class="analises-chip">PDFs ativos</span>
                 </div>
                 <div class="public-access-feature-list">
                     <article class="public-access-feature">
-                        <strong>Consulta publica</strong>
-                        <span>Mapa multirriscos, leitura territorial e relatorio consolidado liberados para qualquer visitante.</span>
+                        <strong>Consulta pública</strong>
+                        <span>Mapa multirriscos, leitura territorial e relatório consolidado liberados para qualquer visitante.</span>
                     </article>
                     <article class="public-access-feature">
                         <strong>Acesso autenticado</strong>
@@ -553,7 +553,7 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                 </form>
 
                 <div class="public-access-support">
-                    <strong>Solicitacao de acesso</strong>
+                    <strong>Solicitação de acesso</strong>
                     <a href="mailto:dgr.cedecpa@gmail.com">dgr.cedecpa@gmail.com</a>
                 </div>
             <?php endif; ?>
@@ -564,9 +564,9 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
         <div class="alerta-form-hero public-section-hero">
             <div class="alerta-form-lead">
                 <span class="alerta-form-kicker">Mapa em destaque</span>
-                <h2 class="alerta-form-title">Mapa multirriscos com leitura territorial aberta ao publico</h2>
+                <h2 class="alerta-form-title">Mapa multirriscos com leitura territorial aberta ao público</h2>
                 <p class="alerta-form-description">
-                    A tela abaixo segue o mesmo idioma visual das areas internas de painel e listagem, com o mapa como elemento central, filtros sincronizados, ranking regional e detalhamento territorial em modal.
+                    A tela abaixo segue o mesmo idioma visual das áreas internas de painel e listagem, com o mapa como elemento central, filtros sincronizados, ranking regional e detalhamento territorial na tela.
                 </p>
             </div>
 
@@ -574,17 +574,17 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                 <div class="alerta-summary-card">
                     <span class="alerta-summary-label">Monitoramento ativo</span>
                     <span class="alerta-summary-value" id="hero-alertas-ativos"><?= $totalAtivos ?> alertas</span>
-                    <span class="alerta-summary-note">Total de alertas ativos disponiveis para leitura territorial nesta tela publica.</span>
+                    <span class="alerta-summary-note">Total de alertas ativos disponíveis para leitura territorial nesta tela pública.</span>
                 </div>
                 <div class="alerta-summary-card">
                     <span class="alerta-summary-label">Base territorial</span>
-                    <span class="alerta-summary-value"><?= count($municipiosDisponiveis) ?> municipios</span>
-                    <span class="alerta-summary-note">Cobertura completa em <?= count($regioesDisponiveis) ?> regioes de integracao.</span>
+                    <span class="alerta-summary-value"><?= count($municipiosDisponiveis) ?> municípios</span>
+                    <span class="alerta-summary-note">Cobertura completa em <?= count($regioesDisponiveis) ?> regiões de integração.</span>
                 </div>
                 <div class="alerta-summary-card">
                     <span class="alerta-summary-label">Foco atual</span>
                     <span class="alerta-summary-value" id="hero-foco-value">Sem recorte territorial</span>
-                    <span class="alerta-summary-note" id="hero-foco-note">Selecione regiao ou municipio para destacar automaticamente o recorte.</span>
+                    <span class="alerta-summary-note" id="hero-foco-note">Selecione região ou município para destacar automaticamente o recorte.</span>
                 </div>
             </div>
         </div>
@@ -593,19 +593,19 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
             <div class="alerta-form-grid multirrisco-overview-grid">
                 <section class="alerta-form-section multirrisco-overview-section multirrisco-overview-section-filtros">
                     <header class="alerta-section-header">
-                        <span class="alerta-section-kicker">Secao 1</span>
+                        <span class="alerta-section-kicker">Seção 1</span>
                         <h2 class="alerta-section-title">Filtros e recorte territorial</h2>
-                        <p class="alerta-section-text">Os filtros abaixo sincronizam mapa, indicadores, ranking regional, grafico de pressao e detalhamento territorial.</p>
+                        <p class="alerta-section-text">Os filtros abaixo sincronizam mapa, indicadores, ranking regional, gráfico de pressão e detalhamento territorial.</p>
                     </header>
 
                     <form id="multirrisco-form" class="multirrisco-filter-form">
                         <div class="multirrisco-filter-grid">
                             <div class="form-group">
-                                <label for="data_inicio">Periodo inicial</label>
+                                <label for="data_inicio">Período inicial</label>
                                 <input type="date" id="data_inicio" name="data_inicio">
                             </div>
                             <div class="form-group">
-                                <label for="data_fim">Periodo final</label>
+                                <label for="data_fim">Período final</label>
                                 <input type="date" id="data_fim" name="data_fim">
                             </div>
                             <div class="form-group">
@@ -636,18 +636,18 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="regiao">Regiao</label>
+                                <label for="regiao">Região</label>
                                 <select id="regiao" name="regiao">
-                                    <option value="">Todas as regioes</option>
+                                    <option value="">Todas as regiões</option>
                                     <?php foreach ($regioesDisponiveis as $regiao): ?>
                                         <option value="<?= htmlspecialchars($regiao, ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($regiao, ENT_QUOTES, 'UTF-8') ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="municipio">Municipio</label>
+                                <label for="municipio">Município</label>
                                 <select id="municipio" name="municipio">
-                                    <option value="">Todos os municipios</option>
+                                    <option value="">Todos os municípios</option>
                                 </select>
                             </div>
                         </div>
@@ -667,9 +667,9 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
 
                 <section class="alerta-form-section multirrisco-overview-section multirrisco-overview-section-operacional">
                     <header class="alerta-section-header">
-                        <span class="alerta-section-kicker">Secao 2</span>
+                        <span class="alerta-section-kicker">Seção 2</span>
                         <h2 class="alerta-section-title">Leitura operacional</h2>
-                        <p class="alerta-section-text">Organize a leitura do cenario em um fluxo simples: entenda a carga territorial, identifique o foco e avance para o detalhe no mapa.</p>
+                        <p class="alerta-section-text">Organize a leitura do cenário em um fluxo simples: entenda a carga territorial, identifique o foco e avance para o detalhe no mapa.</p>
                     </header>
 
                     <div class="public-operational-layout">
@@ -680,46 +680,46 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                                 <span class="painel-kpi-note">Total de alertas no recorte atual.</span>
                             </article>
                             <article class="painel-kpi-card">
-                                <span class="painel-kpi-label">Municipios em risco</span>
+                                <span class="painel-kpi-label">Municípios em risco</span>
                                 <strong class="painel-kpi-value" id="kpi-municipios">-</strong>
-                                <span class="painel-kpi-note">Municipios com alertas ativos no recorte consultado.</span>
+                                <span class="painel-kpi-note">Municípios com alertas ativos no recorte consultado.</span>
                             </article>
                             <article class="painel-kpi-card is-neutral">
-                                <span class="painel-kpi-label">Regioes afetadas</span>
+                                <span class="painel-kpi-label">Regiões afetadas</span>
                                 <strong class="painel-kpi-value" id="kpi-regioes">-</strong>
-                                <span class="painel-kpi-note">Regioes de integracao alcancadas pelo recorte atual.</span>
+                                <span class="painel-kpi-note">Regiões de integração alcançadas pelo recorte atual.</span>
                             </article>
                             <article class="painel-kpi-card is-warning multirrisco-focus-card">
-                                <span class="painel-kpi-label">Territorio em foco</span>
+                                <span class="painel-kpi-label">Território em foco</span>
                                 <strong class="painel-kpi-value" id="foco-territorial-titulo">Nenhum foco definido</strong>
-                                <span class="painel-kpi-note" id="foco-territorial-texto">Clique em uma regiao, municipio ou item do ranking para abrir o detalhe.</span>
+                                <span class="painel-kpi-note" id="foco-territorial-texto">Clique em uma região, município ou item do ranking para abrir o detalhe.</span>
                             </article>
                         </div>
 
                         <div class="public-operational-stack">
                             <article class="public-operational-card">
                                 <span class="public-operational-step">Passo 1</span>
-                                <h3>Defina o cenario</h3>
-                                <p>Use periodo, evento, gravidade, fonte, regiao e municipio para reduzir o mapa ao recorte realmente necessario.</p>
+                                <h3>Defina o cenário</h3>
+                                <p>Use período, evento, gravidade, fonte, região e município para reduzir o mapa ao recorte realmente necessário.</p>
                             </article>
 
                             <article class="public-operational-card">
                                 <span class="public-operational-step">Passo 2</span>
-                                <h3>Leia a pressao ativa</h3>
-                                <p>Os indicadores mostram rapidamente o volume de alertas, a abrangencia territorial e o foco principal da consulta.</p>
+                                <h3>Leia a pressão ativa</h3>
+                                <p>Os indicadores mostram rapidamente o volume de alertas, a abrangência territorial e o foco principal da consulta.</p>
                             </article>
 
                             <article class="public-operational-card public-operational-card-highlight">
                                 <span class="public-operational-step">Passo 3</span>
                                 <h3>Abra o detalhe territorial</h3>
-                                <p>Depois de identificar a area critica, clique no mapa ou no ranking para abrir na tela com os alertas ativos discriminados.</p>
+                                <p>Depois de identificar a área crítica, clique no mapa ou no ranking para abrir na tela com os alertas ativos discriminados.</p>
                             </article>
                         </div>
                     </div>
 
                     <div class="alerta-callout multirrisco-callout">
                         <strong>Leitura recomendada</strong>
-                        Escolha primeiro o recorte territorial. Ao selecionar uma regiao, o mapa destaca a camada regional; ao selecionar um municipio, o destaque migra automaticamente para o territorio municipal.
+                        Escolha primeiro o recorte territorial. Ao selecionar uma região, o mapa destaca a camada regional; ao selecionar um município, o destaque migra automaticamente para o território municipal.
                     </div>
                 </section>
             </div>
@@ -728,13 +728,13 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
         <section class="alerta-form-panel multirrisco-map-panel">
             <header class="painel-section-head">
                 <div class="alerta-section-header">
-                    <span class="alerta-section-kicker">Secao 3</span>
-                    <h2 class="alerta-section-title">Mapa territorial e pressao ativa</h2>
-                    <p class="alerta-section-text">O mapa ocupa o maior protagonismo da tela para facilitar navegacao, leitura de pressao e abertura do detalhamento territorial.</p>
+                    <span class="alerta-section-kicker">Seção 3</span>
+                    <h2 class="alerta-section-title">Mapa territorial e pressão ativa</h2>
+                    <p class="alerta-section-text">O mapa ocupa o maior protagonismo da tela para facilitar navegação, leitura de pressão e abertura do detalhamento territorial.</p>
                 </div>
 
                 <div class="painel-map-meta">
-                    <span class="painel-chip" id="chip-modo-territorial">Modo: municipios</span>
+                    <span class="painel-chip" id="chip-modo-territorial">Modo: municípios</span>
                     <span class="painel-chip" id="chip-filtro-territorial">Sem recorte territorial</span>
                 </div>
             </header>
@@ -743,10 +743,10 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                 <div class="map-card multirrisco-map-card">
                     <div class="map-card-header">
                         <div>
-                            <span class="map-card-title">Mapa multirriscos do Para</span>
-                            <p class="map-card-text">Alertas ativos, pressao territorial, regioes de integracao e municipios se atualizam juntos, com destaque automatico a partir do filtro selecionado.</p>
+                            <span class="map-card-title">Mapa multirriscos do Pará</span>
+                            <p class="map-card-text">Alertas ativos, pressão territorial, regiões de integração e municípios se atualizam juntos, com destaque automático a partir do filtro selecionado.</p>
                         </div>
-                        <div class="multirrisco-toolbar-status" id="status-atualizacao">Pronto para consulta publica</div>
+                        <div class="multirrisco-toolbar-status" id="status-atualizacao">Pronto para consulta pública</div>
                     </div>
 
                     <div class="multirrisco-toolbar">
@@ -761,11 +761,11 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                             <span class="multirrisco-toolbar-label">Recorte territorial</span>
                             <label class="multirrisco-segment">
                                 <input type="radio" name="modoTerritorial" value="municipios" checked>
-                                <span>Municipios</span>
+                                <span>Municípios</span>
                             </label>
                             <label class="multirrisco-segment">
                                 <input type="radio" name="modoTerritorial" value="regioes">
-                                <span>Regioes</span>
+                                <span>Regiões</span>
                             </label>
                         </div>
                     </div>
@@ -780,8 +780,8 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                     <section class="alerta-form-section multirrisco-side-section multirrisco-side-section-ranking">
                         <header class="alerta-section-header">
                             <span class="alerta-section-kicker">Ranking</span>
-                            <h2 class="alerta-section-title">Regioes mais pressionadas</h2>
-                            <p class="alerta-section-text">Clique em uma regiao da lista para centralizar o mapa e abrir o detalhamento regional.</p>
+                            <h2 class="alerta-section-title">Regiões mais pressionadas</h2>
+                            <p class="alerta-section-text">Clique em uma região da lista para centralizar o mapa e abrir o detalhamento regional.</p>
                         </header>
 
                         <div id="lista-regioes" class="lista-regioes">
@@ -796,9 +796,9 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                         </div>
 
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Serie diaria</span>
-                            <h2 class="alerta-section-title">Evolucao do IRP</h2>
-                            <p class="alerta-section-text">Clique em um ponto do grafico para refinar o mapa por um dia especifico.</p>
+                            <span class="alerta-section-kicker">Série diária</span>
+                            <h2 class="alerta-section-title">Evolução do IRP</h2>
+                            <p class="alerta-section-text">Clique em um ponto do gráfico para refinar o mapa por um dia específico.</p>
                         </header>
 
                         <div class="grafico-container multirrisco-chart-container">
@@ -807,7 +807,7 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
 
                         <div class="alerta-form-actions multirrisco-chart-actions">
                             <div class="alerta-form-actions-left">
-                                <span class="alerta-inline-note">O IRP combina gravidade e abrangencia territorial dos alertas ativos.</span>
+                                <span class="alerta-inline-note">O IRP combina gravidade e abrangência territorial dos alertas ativos.</span>
                             </div>
                             <div class="alerta-form-actions-right">
                                 <button type="button" class="btn btn-secondary" id="btnAbrirIRP">Entender o IRP</button>
@@ -822,29 +822,29 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
     <section class="dashboard alerta-form-shell public-section" id="analises-publicas">
         <div class="alerta-form-hero public-section-hero">
             <div class="alerta-form-lead">
-                <span class="alerta-form-kicker">Central analitica</span>
-                <h2 class="alerta-form-title">Relatorio analitico multirriscos em modal</h2>
+                <span class="alerta-form-kicker">Central analítica</span>
+                <h2 class="alerta-form-title">Relatório analítico multirriscos</h2>
                 <p class="alerta-form-description">
-                    A consulta abaixo abre um relatorio consolidado direto na tela, e sem
-                    depender de login. O objetivo aqui e leitura institucional e consulta publica qualificada.
+                    A consulta abaixo abre um relatório consolidado direto na tela, e sem
+                    depender de login. O objetivo aqui é leitura institucional e consulta pública qualificada.
                 </p>
             </div>
 
             <div class="alerta-form-summary">
                 <div class="alerta-summary-card">
-                    <span class="alerta-summary-label">Modulos integrados</span>
+                    <span class="alerta-summary-label">Módulos integrados</span>
                     <span class="alerta-summary-value"><?= count($analises) ?> leituras</span>
-                    <span class="alerta-summary-note">Temporal, severidade, tipologia e indices em um mesmo fluxo.</span>
+                    <span class="alerta-summary-note">Temporal, severidade, tipologia e índices em um mesmo fluxo.</span>
                 </div>
                 <div class="alerta-summary-card">
                     <span class="alerta-summary-label">Recorte global</span>
-                    <span class="alerta-summary-value">Ano, mes, regiao e municipio</span>
-                    <span class="alerta-summary-note">O mesmo recorte alimenta todos os blocos da tela analitico.</span>
+                    <span class="alerta-summary-value">Ano, mês, região e município</span>
+                    <span class="alerta-summary-note">O mesmo recorte alimenta todos os blocos da tela analítica.</span>
                 </div>
                 <div class="alerta-summary-card">
-                    <span class="alerta-summary-label">Experiencia publica</span>
+                    <span class="alerta-summary-label">Experiência pública</span>
                     <span class="alerta-summary-value">Visual e responsiva</span>
-                    <span class="alerta-summary-note">Feita para leitura rapida sem expor funcoes operacionais internas.</span>
+                    <span class="alerta-summary-note">Feita para leitura rápida sem expor funções operacionais internas.</span>
                 </div>
             </div>
         </div>
@@ -853,9 +853,9 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
             <div class="alerta-form-grid analises-overview-grid">
                 <section class="alerta-form-section">
                     <header class="alerta-section-header">
-                        <span class="alerta-section-kicker">Secao 1</span>
-                        <h2 class="alerta-section-title">Recorte global do relatorio</h2>
-                        <p class="alerta-section-text">Defina o recorte desejado para abrir a sintese analitica consolidada na tela.</p>
+                        <span class="alerta-section-kicker">Seção 1</span>
+                        <h2 class="alerta-section-title">Recorte global do relatório</h2>
+                        <p class="alerta-section-text">Defina o recorte desejado para abrir a síntese analítica consolidada na tela.</p>
                     </header>
 
                     <div class="analises-filter-grid">
@@ -864,23 +864,23 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                             <select id="filtroAno"></select>
                         </div>
                         <div class="form-group">
-                            <label for="filtroMes">Mes</label>
+                            <label for="filtroMes">Mês</label>
                             <select id="filtroMes"></select>
                         </div>
                         <div class="form-group">
-                            <label for="filtroRegiao">Regiao de integracao</label>
+                            <label for="filtroRegiao">Região de integração</label>
                             <select id="filtroRegiao"></select>
                         </div>
                         <div class="form-group">
-                            <label for="filtroMunicipio">Municipio</label>
+                            <label for="filtroMunicipio">Município</label>
                             <select id="filtroMunicipio">
                                 <option value="">Todos</option>
                             </select>
                         </div>
 
                         <div class="alerta-callout analises-filter-callout form-group field-span-2">
-                            <strong>Relatorio publico</strong>
-                            A tela abaixo organiza a leitura consolidada para consulta institucional sem funcao de impressao.
+                            <strong>Relatório público</strong>
+                            A tela abaixo organiza a leitura consolidada para consulta institucional sem função de impressão.
                         </div>
 
                         <div class="alerta-form-actions analises-filter-actions form-group field-span-2">
@@ -888,7 +888,7 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                                 <span class="alerta-inline-note">Use esse recorte para abrir um panorama integrado antes de aprofundar a leitura no mapa.</span>
                             </div>
                             <div class="alerta-form-actions-right">
-                                <button id="btnGerarRelatorio" type="button" class="btn btn-primary">Gerar relatorio analitico</button>
+                                <button id="btnGerarRelatorio" type="button" class="btn btn-primary">Gerar relatório analítico</button>
                             </div>
                         </div>
                     </div>
@@ -896,9 +896,9 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
 
                 <section class="alerta-form-section">
                     <header class="alerta-section-header">
-                        <span class="alerta-section-kicker">Secao 2</span>
-                        <h2 class="alerta-section-title">Como a analise esta organizada</h2>
-                        <p class="alerta-section-text">Clique em um modulo para abrir a pagina publica correspondente com filtros e graficos reais no mesmo padrao das telas internas.</p>
+                        <span class="alerta-section-kicker">Seção 2</span>
+                        <h2 class="alerta-section-title">Como a análise está organizada</h2>
+                        <p class="alerta-section-text">Clique em um módulo para abrir a página pública correspondente com filtros e gráficos reais no mesmo padrão das telas internas.</p>
                     </header>
 
                     <div class="analises-insight-grid public-analises-insight-grid">
@@ -913,8 +913,8 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                                 <span class="alerta-summary-value"><?= htmlspecialchars($analise['titulo'], ENT_QUOTES, 'UTF-8') ?></span>
                                 <span class="alerta-summary-note"><?= htmlspecialchars($analise['descricao'], ENT_QUOTES, 'UTF-8') ?></span>
                                 <span class="public-analise-card-footer">
-                                    <span class="analises-chip"><?= count($analise['graficos']) ?> graficos</span>
-                                    <span class="public-analise-card-link">Abrir pagina publica</span>
+                                    <span class="analises-chip"><?= count($analise['graficos']) ?> gráficos</span>
+                                    <span class="public-analise-card-link">Abrir página pública</span>
                                 </span>
                             </a>
                         <?php endforeach; ?>
@@ -922,7 +922,7 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
 
                     <div class="alerta-callout analises-info-callout">
                         <strong>Uso recomendado</strong>
-                        Combine o relatorio consolidado com a previa de cada pagina para decidir rapidamente qual analise detalhada faz mais sentido para o recorte consultado.
+                        Combine o relatório consolidado com a prévia de cada página para decidir rapidamente qual análise detalhada faz mais sentido para o recorte consultado.
                     </div>
                 </section>
             </div>
@@ -932,9 +932,9 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
     <section class="dashboard public-section" id="alertas-ativos">
         <div class="public-section-header">
             <div>
-                <span class="alerta-form-kicker">Download publico</span>
-                <h2>Alertas ativos disponiveis em PDF</h2>
-                <p>Somente alertas com status ativo aparecem nesta vitrine publica. Cada card libera o download direto do PDF oficial do alerta.</p>
+                <span class="alerta-form-kicker">Download público</span>
+                <h2>Alertas ativos disponíveis em PDF</h2>
+                <p>Somente alertas com status ativo aparecem nesta vitrine pública. Cada card libera o download direto do PDF oficial do alerta.</p>
             </div>
 
             <div class="public-section-meta">
@@ -944,7 +944,7 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
         </div>
 
         <?php if (!$alertasPublicos): ?>
-            <div class="multirrisco-empty-box">Nao ha alertas ativos disponiveis para download no momento.</div>
+            <div class="multirrisco-empty-box">Não há alertas ativos disponíveis para download no momento.</div>
         <?php else: ?>
             <div class="public-alert-grid">
                 <?php foreach ($alertasPublicos as $alerta): ?>
@@ -962,13 +962,13 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                         <div class="public-alert-meta">
                             <span><strong>Fonte:</strong> <?= htmlspecialchars((string) $alerta['fonte'], ENT_QUOTES, 'UTF-8') ?></span>
                             <span><strong>Data:</strong> <?= htmlspecialchars(TimeHelper::formatDate((string) ($alerta['data_alerta'] ?? null)), ENT_QUOTES, 'UTF-8') ?></span>
-                            <span><strong>Vigencia:</strong> <?= htmlspecialchars(TimeHelper::formatDateTime((string) ($alerta['inicio_alerta'] ?? null)), ENT_QUOTES, 'UTF-8') ?> ate <?= htmlspecialchars(TimeHelper::formatDateTime((string) ($alerta['fim_alerta'] ?? null)), ENT_QUOTES, 'UTF-8') ?></span>
-                            <span><strong>Municipios:</strong> <?= (int) ($alerta['total_municipios'] ?? 0) ?></span>
+                            <span><strong>Vigência:</strong> <?= htmlspecialchars(TimeHelper::formatDateTime((string) ($alerta['inicio_alerta'] ?? null)), ENT_QUOTES, 'UTF-8') ?> até <?= htmlspecialchars(TimeHelper::formatDateTime((string) ($alerta['fim_alerta'] ?? null)), ENT_QUOTES, 'UTF-8') ?></span>
+                            <span><strong>Municípios:</strong> <?= (int) ($alerta['total_municipios'] ?? 0) ?></span>
                         </div>
 
                         <p class="public-alert-region">
-                            <strong>Regioes:</strong>
-                            <?= htmlspecialchars((string) ($alerta['regioes'] ?: 'Nao informadas'), ENT_QUOTES, 'UTF-8') ?>
+                            <strong>Regiões:</strong>
+                            <?= htmlspecialchars((string) ($alerta['regioes'] ?: 'Não informadas'), ENT_QUOTES, 'UTF-8') ?>
                         </p>
 
                         <div class="public-alert-actions">
@@ -987,34 +987,34 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
     <div class="public-footer-brand">
         <span class="public-footer-kicker">Painel institucional aberto</span>
         <strong><?= htmlspecialchars($appConfig['organization'], ENT_QUOTES, 'UTF-8') ?></strong>
-        <p><?= htmlspecialchars($appConfig['department'], ENT_QUOTES, 'UTF-8') ?> com acesso visual ao mapa multirriscos, relatorio consolidado e PDFs dos alertas ativos.</p>
+        <p><?= htmlspecialchars($appConfig['department'], ENT_QUOTES, 'UTF-8') ?> com acesso visual ao mapa multirriscos, relatório consolidado e PDFs dos alertas ativos.</p>
         <div class="public-footer-pills">
             <span class="analises-chip"><?= htmlspecialchars($appConfig['name'], ENT_QUOTES, 'UTF-8') ?></span>
-            <span class="analises-chip">Versao <?= htmlspecialchars($appConfig['version'], ENT_QUOTES, 'UTF-8') ?></span>
+            <span class="analises-chip">Versão <?= htmlspecialchars($appConfig['version'], ENT_QUOTES, 'UTF-8') ?></span>
         </div>
     </div>
     <div>
-        <?= htmlspecialchars($appConfig['name'], ENT_QUOTES, 'UTF-8') ?> · Versao <strong><?= htmlspecialchars($appConfig['version'], ENT_QUOTES, 'UTF-8') ?></strong>
+        <?= htmlspecialchars($appConfig['name'], ENT_QUOTES, 'UTF-8') ?> · Versão <strong><?= htmlspecialchars($appConfig['version'], ENT_QUOTES, 'UTF-8') ?></strong>
     </div>
     <div>
         Suporte: <a href="mailto:<?= htmlspecialchars($appConfig['support_email'], ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($appConfig['support_email'], ENT_QUOTES, 'UTF-8') ?></a>
     </div>
     <div class="public-footer-grid">
         <section class="public-footer-card">
-            <span class="public-footer-kicker">Navegacao rapida</span>
+            <span class="public-footer-kicker">Navegação rápida</span>
             <a href="#mapa-publico">Mapa ao vivo</a>
-            <a href="#analises-publicas">Analises e relatorio</a>
+            <a href="#analises-publicas">Análises e relatório</a>
             <a href="#alertas-ativos">Alertas ativos</a>
         </section>
 
         <section class="public-footer-card">
-            <span class="public-footer-kicker">Experiencia publica</span>
-            <p>Consulta territorial, leitura analitica e download dos PDFs ativos sem necessidade de autenticacao.</p>
+            <span class="public-footer-kicker">Experiência pública</span>
+            <p>Consulta territorial, leitura analítica e download dos PDFs ativos sem necessidade de autenticação.</p>
         </section>
 
         <section class="public-footer-card">
             <span class="public-footer-kicker">Acesso e suporte</span>
-            <p>Suporte institucional para acesso autenticado e orientacoes operacionais.</p>
+            <p>Suporte institucional para acesso autenticado e orientações operacionais.</p>
             <a href="mailto:<?= htmlspecialchars($appConfig['support_email'], ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($appConfig['support_email'], ENT_QUOTES, 'UTF-8') ?></a>
         </section>
     </div>
@@ -1024,9 +1024,9 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
     <div class="modal-territorio-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTerritorioTitulo">
         <div class="modal-territorio-header">
             <div class="modal-territorio-header-copy">
-                <span class="modal-territorio-kicker" id="modalTerritorioKicker">Territorio</span>
+                <span class="modal-territorio-kicker" id="modalTerritorioKicker">Território</span>
                 <h3 id="modalTerritorioTitulo">Detalhamento territorial</h3>
-                <p id="modalTerritorioResumo">Carregando detalhamento do territorio selecionado.</p>
+                <p id="modalTerritorioResumo">Carregando detalhamento do território selecionado.</p>
             </div>
             <button type="button" class="modal-territorio-close" data-close-territorio aria-label="Fechar modal">X</button>
         </div>
@@ -1038,15 +1038,15 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
     <div class="modal-conteudo irp-modal-conteudo" role="dialog" aria-modal="true" aria-labelledby="modalIrpTitulo">
         <div class="irp-modal-header">
             <div class="irp-modal-heading">
-                <span class="irp-modal-kicker">Indice de pressao</span>
-                <h3 id="modalIrpTitulo">Como o IRP e calculado</h3>
-                <p>O indice de pressao de risco mede a carga operacional causada pelos alertas ativos no territorio filtrado.</p>
+                <span class="irp-modal-kicker">Índice de pressão</span>
+                <h3 id="modalIrpTitulo">Como o IRP é calculado</h3>
+                <p>O índice de pressão de risco mede a carga operacional causada pelos alertas ativos no território filtrado.</p>
             </div>
             <button type="button" class="irp-modal-close" data-close-irp aria-label="Fechar modal">X</button>
         </div>
 
         <div class="irp-modal-body">
-            <p>A leitura considera o peso da gravidade e a abrangencia municipal de cada alerta ativo.</p>
+            <p>A leitura considera o peso da gravidade e a abrangência municipal de cada alerta ativo.</p>
 
             <div class="irp-modal-peso-grid">
                 <article class="irp-peso-item">
@@ -1072,8 +1072,8 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
             </div>
 
             <div class="alerta-callout irp-modal-callout">
-                <strong>Interpretacao</strong>
-                Quanto maior o IRP, maior a pressao territorial e a necessidade de resposta.
+                <strong>Interpretação</strong>
+                Quanto maior o IRP, maior a pressão territorial e a necessidade de resposta.
             </div>
         </div>
 
@@ -1087,7 +1087,7 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
     <div class="modal-ajuda-conteudo">
         <div class="modal-ajuda-header">
             <div class="modal-ajuda-heading">
-                <span class="modal-ajuda-kicker">Guia rapido</span>
+                <span class="modal-ajuda-kicker">Guia rápido</span>
                 <h3>Como usar o mapa multirriscos</h3>
                 <p>Um roteiro simples para filtrar, interpretar o mapa e abrir o detalhamento territorial com rapidez.</p>
             </div>
@@ -1098,10 +1098,10 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
             <section class="modal-ajuda-hero">
                 <div class="modal-ajuda-hero-copy">
                     <strong>Leitura recomendada</strong>
-                    <p>Comece pelos filtros, use o mapa como referencia central e abra os modais territoriais para entender cada alerta ativo.</p>
+                    <p>Comece pelos filtros, use o mapa como referência central e abra os modais territoriais para entender cada alerta ativo.</p>
                 </div>
                 <div class="modal-ajuda-pill-row">
-                    <span class="modal-ajuda-pill">1. Filtre o cenario</span>
+                    <span class="modal-ajuda-pill">1. Filtre o cenário</span>
                     <span class="modal-ajuda-pill">2. Observe o destaque territorial</span>
                     <span class="modal-ajuda-pill">3. Abra o detalhamento</span>
                 </div>
@@ -1112,10 +1112,10 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                     <span class="modal-ajuda-card-kicker">Passo a passo</span>
                     <h4>Fluxo ideal de uso</h4>
                     <ol class="modal-ajuda-sequencia">
-                        <li>Defina periodo, evento, gravidade, fonte, regiao ou municipio.</li>
-                        <li>Observe o destaque automatico da camada territorial no mapa.</li>
-                        <li>Use o ranking regional para priorizar a leitura das areas mais pressionadas.</li>
-                        <li>Clique no territorio para abrir o detalhamento com todos os alertas ativos.</li>
+                        <li>Defina período, evento, gravidade, fonte, região ou município.</li>
+                        <li>Observe o destaque automático da camada territorial no mapa.</li>
+                        <li>Use o ranking regional para priorizar a leitura das áreas mais pressionadas.</li>
+                        <li>Clique no território para abrir o detalhamento com todos os alertas ativos.</li>
                     </ol>
                 </article>
 
@@ -1123,9 +1123,9 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                     <span class="modal-ajuda-card-kicker">Detalhamento</span>
                     <h4>O que aparece nos modais territoriais</h4>
                     <ul class="modal-ajuda-lista">
-                        <li>Nome do territorio consultado e pressao acumulada.</li>
+                        <li>Nome do território consultado e pressão acumulada.</li>
                         <li>Quantidade de alertas ativos e tipos de evento presentes no recorte.</li>
-                        <li>Numero do alerta, data, vigencia, gravidade, pressao e fonte de cada alerta ativo.</li>
+                        <li>Número do alerta, data, vigência, gravidade, pressão e fonte de cada alerta ativo.</li>
                         <li>Quando houver mais de um alerta ativo, cada alerta aparece discriminado na tela.</li>
                     </ul>
                 </article>
@@ -1134,17 +1134,17 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                     <span class="modal-ajuda-card-kicker">Leitura visual</span>
                     <h4>Como interpretar as cores do mapa</h4>
                     <ul class="modal-ajuda-lista">
-                        <li>Quanto mais intensa a cor, maior a pressao operacional do territorio.</li>
-                        <li>O modo territorial permite alternar entre municipios e regioes.</li>
-                        <li>O grafico do IRP ajuda a identificar rapidamente janelas de maior pressao.</li>
-                        <li>O ranking regional facilita localizar as areas mais criticas sem perder contexto visual.</li>
+                        <li>Quanto mais intensa a cor, maior a pressão operacional do território.</li>
+                        <li>O modo territorial permite alternar entre municípios e regiões.</li>
+                        <li>O gráfico do IRP ajuda a identificar rapidamente janelas de maior pressão.</li>
+                        <li>O ranking regional facilita localizar as áreas mais críticas sem perder contexto visual.</li>
                     </ul>
                 </article>
             </div>
         </div>
 
         <div class="modal-ajuda-footer">
-            <span class="modal-ajuda-footer-note">Dica: combine os filtros territoriais com o relatorio analitico para uma leitura mais completa.</span>
+            <span class="modal-ajuda-footer-note">Dica: combine os filtros territoriais com o relatório analítico para uma leitura mais completa.</span>
             <button type="button" data-close-ajuda>Fechar</button>
         </div>
     </div>
@@ -1154,10 +1154,10 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
     <div class="modal-content analises-modal-content">
         <div class="modal-header analises-modal-header">
             <div>
-                <span class="analises-modal-kicker">Relatorio consolidado</span>
-                <h2>Relatorio analitico multirriscos</h2>
+                <span class="analises-modal-kicker">Relatório consolidado</span>
+                <h2>Relatório analítico multirriscos</h2>
             </div>
-            <button id="fecharModal" type="button" class="analises-modal-close" aria-label="Fechar relatorio">&times;</button>
+            <button id="fecharModal" type="button" class="analises-modal-close" aria-label="Fechar relatório">&times;</button>
         </div>
         <div id="conteudoRelatorio" class="analises-modal-body"></div>
     </div>
@@ -1169,33 +1169,33 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
         <div class="public-info-modal-header">
             <span class="public-info-modal-kicker">Sobre o sistema</span>
             <h3>Sistema Inteligente Multirriscos</h3>
-            <p>Plataforma institucional da Defesa Civil do Estado do Para para monitoramento, leitura territorial e apoio a tomada de decisao com base nos alertas ativos.</p>
+            <p>Plataforma institucional da Defesa Civil do Estado do Pará para monitoramento, leitura territorial e apoio à tomada de decisão com base nos alertas ativos.</p>
         </div>
 
         <div class="public-info-modal-pill-row">
-            <span class="public-info-modal-pill">Painel publico</span>
+            <span class="public-info-modal-pill">Painel público</span>
             <span class="public-info-modal-pill">Mapa ao vivo</span>
-            <span class="public-info-modal-pill">Relatorio analitico</span>
-            <span class="public-info-modal-pill">Versao <?= htmlspecialchars($appConfig['version'], ENT_QUOTES, 'UTF-8') ?></span>
+            <span class="public-info-modal-pill">Relatório analítico</span>
+            <span class="public-info-modal-pill">Versão <?= htmlspecialchars($appConfig['version'], ENT_QUOTES, 'UTF-8') ?></span>
         </div>
 
         <div class="public-info-modal-grid">
             <article class="public-info-modal-card">
                 <span class="public-info-modal-card-kicker">Consulta aberta</span>
-                <strong>Leitura publica em tempo real</strong>
-                <p>Qualquer visitante consegue visualizar mapa, indicadores e fazer download dos PDFs dos alertas ativos diretamente na pagina inicial.</p>
+                <strong>Leitura pública em tempo real</strong>
+                <p>Qualquer visitante consegue visualizar mapa, indicadores e fazer download dos PDFs dos alertas ativos diretamente na página inicial.</p>
             </article>
 
             <article class="public-info-modal-card">
                 <span class="public-info-modal-card-kicker">Ambiente protegido</span>
-                <strong>Fluxos internos com autenticacao</strong>
-                <p>Cadastro, gestao operacional, historico e paginas internas permanecem restritos aos perfis autorizados da Defesa Civil.</p>
+                <strong>Fluxos internos com autenticação</strong>
+                <p>Cadastro, gestão operacional, histórico e páginas internas permanecem restritos aos perfis autorizados da Defesa Civil.</p>
             </article>
         </div>
 
         <div class="public-info-modal-footer">
             <div class="public-info-modal-support">
-                <strong>Solicitacao de acesso</strong>
+                <strong>Solicitação de acesso</strong>
                 <a href="mailto:dgr.cedecpa@gmail.com">dgr.cedecpa@gmail.com</a>
             </div>
             <button type="button" class="btn btn-secondary" data-close-modal="modalInfo">Fechar</button>

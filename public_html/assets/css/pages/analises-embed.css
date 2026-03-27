@@ -155,11 +155,11 @@
     gap: 18px;
 }
 
-.analise-embed-shell .usuarios-hero-grid > .usuarios-command-card {
+.analise-embed-shell .usuarios-hero-grid > .usuarios-summary-grid {
     order: 2;
 }
 
-.analise-embed-shell .usuarios-hero-grid > .usuarios-summary-grid {
+.analise-embed-shell .usuarios-hero-grid > .usuarios-command-card {
     order: 3;
 }
 
