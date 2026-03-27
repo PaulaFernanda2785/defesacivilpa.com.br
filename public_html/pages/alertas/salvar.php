@@ -78,58 +78,66 @@ try {
     $novoSeq = $ultimo ? ((int) explode('/', $ultimo)[0] + 1) : 1;
     $numero_alerta = str_pad($novoSeq, 3, '0', STR_PAD_LEFT) . '/' . $ano;
 
-    $stmt = $db->prepare("
-        INSERT INTO alertas (
-            numero,
-            status,
-            fonte,
-            tipo_evento,
-            nivel_gravidade,
-            data_alerta,
-            inicio_alerta,
-            fim_alerta,
-            riscos,
-            recomendacoes,
-            informacoes,
-            area_geojson,
-            area_origem,
-            kml_arquivo,
-            criado_em
-        ) VALUES (
-            :numero,
-            'ATIVO',
-            :fonte,
-            :tipo_evento,
-            :nivel_gravidade,
-            :data_alerta,
-            :inicio_alerta,
-            :fim_alerta,
-            :riscos,
-            :recomendacoes,
-            :informacoes,
-            :area_geojson,
-            :area_origem,
-            :kml_arquivo,
-            :criado_em
-        )
-    ");
+    $singleClickValidated = Csrf::currentRequestIsValidated();
 
-    $stmt->execute([
-        ':numero' => $numero_alerta,
-        ':fonte' => $fonte,
-        ':tipo_evento' => $tipo_evento,
-        ':nivel_gravidade' => $nivel_gravidade,
-        ':data_alerta' => $data_alerta,
-        ':inicio_alerta' => $inicio_alerta,
-        ':fim_alerta' => $fim_alerta,
-        ':riscos' => $riscos,
-        ':recomendacoes' => $recomendacoes,
-        ':informacoes' => $informacoes,
-        ':area_geojson' => $area_geojson,
-        ':area_origem' => $area_origem,
-        ':kml_arquivo' => $kml_arquivo,
-        ':criado_em' => TimeHelper::now(),
-    ]);
+    if (!$singleClickValidated) {
+        throw new RuntimeException('Falha ao validar envio unico da requisicao. Recarregue a pagina e tente novamente.');
+    }
+
+    if ($singleClickValidated) {
+        $stmt = $db->prepare("
+            INSERT INTO alertas (
+                numero,
+                status,
+                fonte,
+                tipo_evento,
+                nivel_gravidade,
+                data_alerta,
+                inicio_alerta,
+                fim_alerta,
+                riscos,
+                recomendacoes,
+                informacoes,
+                area_geojson,
+                area_origem,
+                kml_arquivo,
+                criado_em
+            ) VALUES (
+                :numero,
+                'ATIVO',
+                :fonte,
+                :tipo_evento,
+                :nivel_gravidade,
+                :data_alerta,
+                :inicio_alerta,
+                :fim_alerta,
+                :riscos,
+                :recomendacoes,
+                :informacoes,
+                :area_geojson,
+                :area_origem,
+                :kml_arquivo,
+                :criado_em
+            )
+        ");
+
+        $stmt->execute([
+            ':numero' => $numero_alerta,
+            ':fonte' => $fonte,
+            ':tipo_evento' => $tipo_evento,
+            ':nivel_gravidade' => $nivel_gravidade,
+            ':data_alerta' => $data_alerta,
+            ':inicio_alerta' => $inicio_alerta,
+            ':fim_alerta' => $fim_alerta,
+            ':riscos' => $riscos,
+            ':recomendacoes' => $recomendacoes,
+            ':informacoes' => $informacoes,
+            ':area_geojson' => $area_geojson,
+            ':area_origem' => $area_origem,
+            ':kml_arquivo' => $kml_arquivo,
+            ':criado_em' => TimeHelper::now(),
+        ]);
+    }
 
     $alertaId = $db->lastInsertId();
 

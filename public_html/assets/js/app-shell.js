@@ -24,6 +24,7 @@
     let inactivityDeadline = 0;
     const scrollTopButtonId = 'scrollTopButton';
     const scrollTopThreshold = 280;
+    const doubleSubmitOptOutAttribute = 'data-allow-resubmit';
     const requestFrame = window.requestAnimationFrame || function (callback) {
         return window.setTimeout(callback, 16);
     };
@@ -280,6 +281,140 @@
         updateScrollTopVisibility();
     }
 
+    function shouldGuardFormSubmission(form) {
+        if (!(form instanceof HTMLFormElement)) {
+            return false;
+        }
+
+        const method = String(form.getAttribute('method') || 'GET').toUpperCase();
+
+        if (method !== 'POST') {
+            return false;
+        }
+
+        if (form.getAttribute(doubleSubmitOptOutAttribute) === 'true') {
+            return false;
+        }
+
+        return true;
+    }
+
+    function isSubmitButton(element) {
+        if (!(element instanceof HTMLElement)) {
+            return false;
+        }
+
+        if (element instanceof HTMLButtonElement) {
+            const type = String(element.getAttribute('type') || 'submit').toLowerCase();
+            return type === 'submit';
+        }
+
+        if (element instanceof HTMLInputElement) {
+            const type = String(element.getAttribute('type') || 'submit').toLowerCase();
+            return type === 'submit';
+        }
+
+        return false;
+    }
+
+    function formSubmitButtons(form) {
+        return Array.from(form.querySelectorAll('button[type="submit"], input[type="submit"], button:not([type])'))
+            .filter(isSubmitButton);
+    }
+
+    function setLoadingStateOnButton(button) {
+        if (!isSubmitButton(button)) {
+            return;
+        }
+
+        if (button instanceof HTMLInputElement) {
+            if (typeof button.dataset.originalLabel !== 'string') {
+                button.dataset.originalLabel = button.value;
+            }
+
+            button.value = 'Processando...';
+        } else {
+            if (typeof button.dataset.originalLabel !== 'string') {
+                button.dataset.originalLabel = button.innerHTML;
+            }
+
+            button.innerHTML = '<span class="btn-loading-spinner" aria-hidden="true"></span><span>Processando...</span>';
+        }
+
+        button.classList.add('is-loading');
+        button.setAttribute('aria-busy', 'true');
+        button.disabled = true;
+    }
+
+    function restoreButtonState(button) {
+        if (!isSubmitButton(button)) {
+            return;
+        }
+
+        const originalLabel = button.dataset.originalLabel;
+        button.classList.remove('is-loading');
+        button.removeAttribute('aria-busy');
+        button.disabled = false;
+
+        if (typeof originalLabel !== 'string') {
+            return;
+        }
+
+        if (button instanceof HTMLInputElement) {
+            button.value = originalLabel;
+        } else {
+            button.innerHTML = originalLabel;
+        }
+
+        delete button.dataset.originalLabel;
+    }
+
+    function guardDoubleSubmit() {
+        document.addEventListener('submit', function (event) {
+            const form = event.target;
+
+            if (!shouldGuardFormSubmission(form)) {
+                return;
+            }
+
+            if (form.dataset.submitting === '1') {
+                event.preventDefault();
+                return;
+            }
+
+            form.dataset.submitting = '1';
+
+            const buttons = formSubmitButtons(form);
+            buttons.forEach(function (button) {
+                if (button.disabled) {
+                    return;
+                }
+
+                button.disabled = true;
+            });
+
+            const submitter = event.submitter instanceof HTMLElement && isSubmitButton(event.submitter)
+                ? event.submitter
+                : (buttons[0] || null);
+
+            if (submitter) {
+                setLoadingStateOnButton(submitter);
+            }
+        });
+
+        // Evita botoes travados ao voltar para a pagina via historico (bfcache).
+        window.addEventListener('pageshow', function () {
+            document.querySelectorAll('form[data-submitting="1"]').forEach(function (formNode) {
+                if (!(formNode instanceof HTMLFormElement)) {
+                    return;
+                }
+
+                formSubmitButtons(formNode).forEach(restoreButtonState);
+                delete formNode.dataset.submitting;
+            });
+        });
+    }
+
     if (body && sidebar && backdrop) {
         toggles.forEach(function (toggle) {
             toggle.addEventListener('click', function () {
@@ -334,6 +469,7 @@
     });
 
     ensureScrollTopButton();
+    guardDoubleSubmit();
 
     window.addEventListener('scroll', requestScrollTopUpdate, { passive: true });
     window.addEventListener('resize', requestScrollTopUpdate);

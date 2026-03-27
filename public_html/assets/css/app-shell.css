@@ -499,6 +499,34 @@ a[class*="btn-"]:focus-visible,
     outline: none;
 }
 
+.btn.is-loading,
+button.is-loading,
+input[type="submit"].is-loading {
+    cursor: wait;
+    opacity: 0.92;
+}
+
+.btn-loading-spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: btn-loading-spin 0.65s linear infinite;
+    display: inline-flex;
+    flex-shrink: 0;
+}
+
+@keyframes btn-loading-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .sidebar-toggle,
 .sidebar-close {
     border: none;
