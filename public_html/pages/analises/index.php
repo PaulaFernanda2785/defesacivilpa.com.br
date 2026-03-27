@@ -66,6 +66,8 @@ foreach ($analises as $analise) {
 $catalogoFiltros = implode(' | ', array_values(array_unique($filtrosCatalogo)));
 $operadorNome = trim((string) ($usuario['nome'] ?? 'Nao identificado'));
 $operadorPerfil = trim((string) ($usuario['perfil'] ?? 'Nao informado'));
+$cssAnalisesIndexPath = __DIR__ . '/../../assets/css/pages/analises-index.css';
+$cssAnalisesIndexVersion = (string) ((int) @filemtime($cssAnalisesIndexPath));
 $jsAnaliseGlobalPath = __DIR__ . '/../../assets/js/analise-global.js';
 $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
 $resumoExecutivo = [
@@ -108,7 +110,7 @@ $resumoExecutivo = [
 <link rel="stylesheet" href="/assets/css/painel.css">
 <link rel="stylesheet" href="/assets/css/pages/alertas-form.css">
 <link rel="stylesheet" href="/assets/css/pages/usuarios-listar.css">
-<link rel="stylesheet" href="/assets/css/pages/analises-index.css">
+<link rel="stylesheet" href="/assets/css/pages/analises-index.css?v=<?= htmlspecialchars($cssAnalisesIndexVersion, ENT_QUOTES, 'UTF-8') ?>">
 </head>
 
 <body>
