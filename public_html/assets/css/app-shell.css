@@ -1,3 +1,31 @@
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+a.btn,
+a[class*="btn-"],
+.btn > a,
+[class*="btn-"] > a {
+    text-decoration: none !important;
+}
+
+a.btn:hover,
+a.btn:focus-visible,
+a[class*="btn-"]:hover,
+a[class*="btn-"]:focus-visible,
+.btn > a:hover,
+.btn > a:focus-visible,
+[class*="btn-"] > a:hover,
+[class*="btn-"] > a:focus-visible {
+    text-decoration: none !important;
+}
+
 .layout {
     display: flex;
     min-height: 100vh;

@@ -510,7 +510,7 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                 </div>
             <?php else: ?>
                 <span class="public-access-kicker">Acesso protegido</span>
-                <h2>Ambiente operacional com autenticacao</h2>
+                <h2 class="public-access-title-protected">Ambiente operacional com autenticacao</h2>
                 <p>O visitante consulta o painel aberto. O usuario autenticado acessa cadastro, gestao, historico e os paineis analiticos completos do sistema.</p>
                 <div class="public-access-meta">
                     <span class="analises-chip">Mapa ao vivo</span>
