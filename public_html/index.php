@@ -1346,6 +1346,7 @@ window.ANALISE_GLOBAL_CONFIG = { pdfEnabled: false };
     <?php endif; ?>
 })();
 </script>
+<script src="/assets/js/app-shell.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="/assets/vendor/chartjs/chart-lite.js"></script>
 <script src="/assets/js/pages/mapas-mapa_multirriscos.js?v=<?= htmlspecialchars($jsMapaMultirriscosVersion, ENT_QUOTES, 'UTF-8') ?>"></script>

@@ -22,6 +22,13 @@
     let inactivityCountdownId = null;
     let inactivityWarningNode = null;
     let inactivityDeadline = 0;
+    const scrollTopButtonId = 'scrollTopButton';
+    const scrollTopThreshold = 280;
+    const requestFrame = window.requestAnimationFrame || function (callback) {
+        return window.setTimeout(callback, 16);
+    };
+    let scrollTopButton = null;
+    let scrollTopTicking = false;
 
     function syncExpandedState(isOpen) {
         toggles.forEach(function (toggle) {
@@ -226,6 +233,53 @@
         inactivityWarningId = window.setTimeout(showInactivityWarning, warningDelay);
     }
 
+    function updateScrollTopVisibility() {
+        if (!scrollTopButton) {
+            return;
+        }
+
+        const currentScroll = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+        scrollTopButton.classList.toggle('is-visible', currentScroll > scrollTopThreshold);
+    }
+
+    function requestScrollTopUpdate() {
+        if (scrollTopTicking) {
+            return;
+        }
+
+        scrollTopTicking = true;
+        requestFrame(function () {
+            scrollTopTicking = false;
+            updateScrollTopVisibility();
+        });
+    }
+
+    function ensureScrollTopButton() {
+        if (!document.body) {
+            return;
+        }
+
+        scrollTopButton = document.getElementById(scrollTopButtonId);
+
+        if (!scrollTopButton) {
+            scrollTopButton = document.createElement('button');
+            scrollTopButton.type = 'button';
+            scrollTopButton.id = scrollTopButtonId;
+            scrollTopButton.className = 'scroll-top-button';
+            scrollTopButton.setAttribute('aria-label', 'Voltar ao topo');
+            scrollTopButton.setAttribute('title', 'Voltar ao topo');
+            scrollTopButton.innerHTML = '<span aria-hidden="true">&uarr;</span>';
+            scrollTopButton.addEventListener('click', function () {
+                const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+            });
+
+            document.body.appendChild(scrollTopButton);
+        }
+
+        updateScrollTopVisibility();
+    }
+
     if (body && sidebar && backdrop) {
         toggles.forEach(function (toggle) {
             toggle.addEventListener('click', function () {
@@ -278,6 +332,11 @@
             closeSidebar();
         }
     });
+
+    ensureScrollTopButton();
+
+    window.addEventListener('scroll', requestScrollTopUpdate, { passive: true });
+    window.addEventListener('resize', requestScrollTopUpdate);
 
     if (sessionAuthenticated && sessionTimeoutSeconds > 0) {
         ['click', 'keydown', 'mousemove', 'scroll', 'touchstart'].forEach(function (eventName) {

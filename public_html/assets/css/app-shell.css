@@ -427,6 +427,50 @@
     flex-wrap: wrap;
 }
 
+.scroll-top-button {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 46px;
+    height: 46px;
+    border: 0;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--cor-primaria, #0f3d57), var(--cor-secundaria, #1f7a8c));
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(10px);
+    box-shadow: 0 16px 34px rgba(10, 39, 56, 0.24);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease, box-shadow 0.2s ease;
+    z-index: 1400;
+}
+
+.scroll-top-button span {
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 800;
+    transform: translateY(-1px);
+}
+
+.scroll-top-button.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.scroll-top-button:hover,
+.scroll-top-button:focus-visible {
+    box-shadow: 0 18px 38px rgba(10, 39, 56, 0.3);
+    transform: translateY(-2px);
+    outline: none;
+}
+
 .sidebar-toggle,
 .sidebar-close {
     border: none;
@@ -789,6 +833,11 @@
     .session-warning-card {
         width: 100%;
     }
+
+    .scroll-top-button {
+        right: 16px;
+        bottom: 16px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -827,5 +876,11 @@
     .dashboard {
         padding-top: 18px;
         padding-bottom: 20px;
+    }
+
+    .scroll-top-button {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
     }
 }

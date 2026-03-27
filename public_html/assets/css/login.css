@@ -3868,3 +3868,620 @@ body.public-home-page #analises-publicas .public-analise-card:active {
         padding: 18px;
     }
 }
+
+/* Secao "Download publico" no mesmo padrao visual do novo layout institucional. */
+body.public-home-page #alertas-ativos {
+    position: relative;
+    overflow: hidden;
+    padding: 22px;
+    border-radius: 16px;
+    border: 1px solid rgba(15, 61, 87, 0.11);
+    background:
+        radial-gradient(circle at top right, rgba(31, 122, 140, 0.12), transparent 34%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 251, 253, 0.98));
+    box-shadow: 0 12px 26px rgba(15, 61, 87, 0.1);
+    gap: 18px;
+}
+
+body.public-home-page #alertas-ativos::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(90deg, #0a3f63 0%, #1f7a8c 52%, #e4a11b 100%);
+}
+
+body.public-home-page #alertas-ativos .public-section-header {
+    gap: 12px;
+    margin-bottom: 0;
+}
+
+body.public-home-page #alertas-ativos .public-section-header h2 {
+    margin: 2px 0 0;
+    font-size: clamp(24px, 1.55vw, 30px);
+    line-height: 1.16;
+}
+
+body.public-home-page #alertas-ativos .public-section-header p {
+    font-size: 14px;
+    line-height: 1.65;
+    max-width: 80ch;
+}
+
+body.public-home-page #alertas-ativos .public-section-meta {
+    gap: 10px;
+}
+
+body.public-home-page #alertas-ativos .public-section-meta .analises-chip {
+    background: rgba(15, 61, 87, 0.08);
+    border: 1px solid rgba(15, 61, 87, 0.12);
+    color: var(--cor-primaria);
+}
+
+body.public-home-page #alertas-ativos .public-alert-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+body.public-home-page #alertas-ativos .public-alert-card {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    align-content: start;
+    gap: 12px;
+    min-height: 260px;
+    padding: 18px;
+    border: 1px solid rgba(15, 61, 87, 0.12);
+    border-radius: 16px;
+    background:
+        radial-gradient(circle at top right, rgba(31, 122, 140, 0.12), transparent 34%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 250, 253, 0.98));
+    box-shadow: 0 10px 24px rgba(10, 39, 56, 0.09);
+}
+
+body.public-home-page #alertas-ativos .public-alert-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #0a3f63 0%, #1f7a8c 52%, #e4a11b 100%);
+    pointer-events: none;
+}
+
+body.public-home-page #alertas-ativos .public-alert-head h3 {
+    margin-top: 6px;
+    font-size: clamp(20px, 1.28vw, 24px);
+    line-height: 1.2;
+}
+
+body.public-home-page #alertas-ativos .public-alert-number {
+    background: rgba(15, 61, 87, 0.08);
+    border: 1px solid rgba(15, 61, 87, 0.12);
+    color: var(--cor-primaria);
+}
+
+body.public-home-page #alertas-ativos .public-alert-severity {
+    border: 1px solid rgba(15, 61, 87, 0.14);
+}
+
+body.public-home-page #alertas-ativos .public-alert-meta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 10px;
+}
+
+body.public-home-page #alertas-ativos .public-alert-meta span {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(15, 61, 87, 0.09);
+    background: rgba(255, 255, 255, 0.86);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+body.public-home-page #alertas-ativos .public-alert-meta span strong {
+    color: var(--cor-primaria);
+}
+
+body.public-home-page #alertas-ativos .public-alert-region {
+    margin-top: 2px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(15, 61, 87, 0.1);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+body.public-home-page #alertas-ativos .public-alert-actions {
+    margin-top: auto;
+}
+
+body.public-home-page #alertas-ativos .public-alert-actions .btn {
+    min-height: 42px;
+    border-radius: 12px;
+}
+
+body.public-home-page #alertas-ativos .multirrisco-empty-box {
+    border: 1px solid rgba(15, 61, 87, 0.12);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--cor-texto-suave);
+    padding: 18px;
+}
+
+@media (max-width: 1280px) {
+    body.public-home-page #alertas-ativos .public-alert-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 860px) {
+    body.public-home-page #alertas-ativos {
+        padding: 18px;
+    }
+
+    body.public-home-page #alertas-ativos .public-alert-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    body.public-home-page #alertas-ativos {
+        padding: 16px;
+    }
+
+    body.public-home-page #alertas-ativos .public-section-header h2 {
+        font-size: clamp(22px, 6vw, 26px);
+    }
+
+    body.public-home-page #alertas-ativos .public-alert-card {
+        min-height: 0;
+        padding: 16px;
+    }
+
+    body.public-home-page #alertas-ativos .public-alert-meta {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Cabecalho e rodape da pagina login/publica no novo padrao institucional. */
+body.public-home-page .public-topbar {
+    position: sticky;
+    top: 10px;
+    z-index: 96;
+    width: min(1440px, calc(100vw - 28px));
+    margin: 10px auto 0;
+    padding: 14px 18px;
+    border: 1px solid rgba(15, 61, 87, 0.12);
+    border-radius: 18px;
+    background:
+        radial-gradient(circle at top right, rgba(31, 122, 140, 0.14), transparent 34%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 250, 253, 0.98));
+    box-shadow: 0 14px 28px rgba(10, 39, 56, 0.09);
+    backdrop-filter: blur(10px);
+}
+
+body.public-home-page .public-topbar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(90deg, #0a3f63 0%, #1f7a8c 52%, #e4a11b 100%);
+}
+
+body.public-home-page .public-brand {
+    position: relative;
+    z-index: 1;
+    gap: 12px;
+}
+
+body.public-home-page .public-brand img {
+    width: 54px;
+}
+
+body.public-home-page .public-brand small {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+}
+
+body.public-home-page .public-brand strong {
+    font-size: 14px;
+    line-height: 1.25;
+}
+
+body.public-home-page .public-brand em {
+    font-size: 11px;
+    line-height: 1.35;
+}
+
+body.public-home-page .public-nav {
+    position: relative;
+    z-index: 1;
+    gap: 8px;
+}
+
+body.public-home-page .public-nav a {
+    min-height: 36px;
+    padding: 0 13px;
+    border: 1px solid rgba(15, 61, 87, 0.1);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.82);
+    color: var(--cor-primaria);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+body.public-home-page .public-nav a:hover,
+body.public-home-page .public-nav a:focus-visible {
+    transform: translateY(-1px);
+    background: rgba(15, 61, 87, 0.1);
+    outline: none;
+}
+
+body.public-home-page .public-topbar-actions {
+    position: relative;
+    z-index: 1;
+    gap: 10px;
+}
+
+body.public-home-page .public-topbar-actions .topbar-pill {
+    min-height: 34px;
+    border: 1px solid rgba(15, 61, 87, 0.12);
+    border-radius: 999px;
+    background: rgba(15, 61, 87, 0.08);
+    color: var(--cor-primaria);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+body.public-home-page .public-topbar-actions .btn {
+    min-height: 38px;
+}
+
+body.public-home-page .public-footer {
+    position: relative;
+    overflow: hidden;
+    margin-top: 12px;
+    padding: 26px;
+    border: 1px solid rgba(15, 61, 87, 0.2);
+    border-radius: 20px;
+    background:
+        radial-gradient(circle at top right, rgba(228, 161, 27, 0.2), transparent 40%),
+        linear-gradient(135deg, rgba(8, 38, 56, 0.98), rgba(15, 61, 87, 0.98));
+    box-shadow: 0 16px 34px rgba(10, 39, 56, 0.2);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+}
+
+body.public-home-page .public-footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(90deg, #0a3f63 0%, #1f7a8c 52%, #e4a11b 100%);
+}
+
+body.public-home-page .public-footer > div:not(.public-footer-brand):not(.public-footer-grid) {
+    display: none;
+}
+
+body.public-home-page .public-footer-brand {
+    position: relative;
+    z-index: 1;
+    gap: 10px;
+}
+
+body.public-home-page .public-footer-kicker {
+    background: rgba(255, 255, 255, 0.14);
+    color: #dbeaf2;
+}
+
+body.public-home-page .public-footer-brand strong {
+    color: #ffffff;
+    font-size: clamp(24px, 2.1vw, 30px);
+}
+
+body.public-home-page .public-footer-brand p {
+    color: rgba(219, 234, 242, 0.84);
+    max-width: 70ch;
+}
+
+body.public-home-page .public-footer-pills .analises-chip {
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+}
+
+body.public-home-page .public-footer-grid {
+    position: relative;
+    z-index: 1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+body.public-home-page .public-footer-card {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+body.public-home-page .public-footer-card .public-footer-kicker {
+    background: rgba(255, 255, 255, 0.16);
+    color: #e7f1f6;
+}
+
+body.public-home-page .public-footer-card p {
+    color: rgba(231, 241, 246, 0.84);
+}
+
+body.public-home-page .public-footer-card a {
+    color: #ffe29b;
+}
+
+body.public-home-page .public-footer-card a:hover,
+body.public-home-page .public-footer-card a:focus-visible {
+    color: #fff2cf;
+    text-decoration: underline;
+    outline: none;
+}
+
+@media (max-width: 1180px) {
+    body.public-home-page .public-topbar {
+        width: min(100vw - 22px, 1440px);
+        padding: 12px 14px;
+    }
+
+    body.public-home-page .public-nav {
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    body.public-home-page .public-topbar-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    body.public-home-page .public-footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 860px) {
+    body.public-home-page .public-topbar {
+        width: min(100vw - 18px, 1440px);
+        top: 8px;
+        border-radius: 14px;
+        margin-top: 8px;
+    }
+
+    body.public-home-page .public-brand img {
+        width: 48px;
+    }
+
+    body.public-home-page .public-footer {
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    body.public-home-page .public-footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    body.public-home-page .public-topbar {
+        width: min(100vw - 14px, 1440px);
+        padding: 10px 12px;
+    }
+
+    body.public-home-page .public-nav a {
+        width: 100%;
+        justify-content: flex-start;
+        padding: 0 12px;
+    }
+
+    body.public-home-page .public-topbar-actions {
+        gap: 8px;
+    }
+
+    body.public-home-page .public-topbar-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    body.public-home-page .public-footer {
+        padding: 16px;
+    }
+}
+
+/* Override exclusivo do cabecalho da pagina login/publica. */
+body.public-home-page .public-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 120;
+    width: 100vw;
+    max-width: none;
+    margin: 0;
+    margin-left: calc(50% - 50vw);
+    padding: 12px clamp(14px, 2.4vw, 34px);
+    border: 0;
+    border-bottom: 1px solid rgba(15, 61, 87, 0.22);
+    border-radius: 0;
+    background:
+        radial-gradient(circle at 12% 28%, rgba(228, 161, 27, 0.2), transparent 24%),
+        radial-gradient(circle at 88% 24%, rgba(31, 122, 140, 0.2), transparent 28%),
+        linear-gradient(135deg, rgba(7, 36, 53, 0.98), rgba(15, 61, 87, 0.98));
+    box-shadow: 0 10px 26px rgba(7, 28, 41, 0.22);
+    backdrop-filter: blur(10px);
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) auto auto;
+    align-items: center;
+    gap: 14px;
+}
+
+body.public-home-page .public-topbar::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #e4a11b 0%, #1f7a8c 42%, #0a3f63 100%);
+    pointer-events: none;
+}
+
+body.public-home-page .public-brand {
+    gap: 10px;
+    text-decoration: none;
+}
+
+body.public-home-page .public-brand img {
+    width: 52px;
+    filter: drop-shadow(0 3px 6px rgba(6, 23, 34, 0.35));
+}
+
+body.public-home-page .public-brand small {
+    color: rgba(214, 232, 242, 0.8);
+    font-size: 10px;
+}
+
+body.public-home-page .public-brand strong {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+body.public-home-page .public-brand em {
+    color: rgba(214, 232, 242, 0.84);
+    font-size: 11px;
+}
+
+body.public-home-page .public-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+body.public-home-page .public-nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+}
+
+body.public-home-page .public-nav a:hover,
+body.public-home-page .public-nav a:focus-visible {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 14px rgba(6, 23, 34, 0.24);
+    outline: none;
+}
+
+body.public-home-page .public-topbar-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+body.public-home-page .public-topbar-actions .topbar-pill {
+    min-height: 34px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+body.public-home-page .public-topbar-actions .btn {
+    min-height: 36px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    background: linear-gradient(90deg, rgba(228, 161, 27, 0.95), rgba(211, 139, 12, 0.95));
+    color: #122b3c;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+}
+
+body.public-home-page .public-topbar-actions .btn:hover,
+body.public-home-page .public-topbar-actions .btn:focus-visible {
+    filter: brightness(1.03);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 14px rgba(6, 23, 34, 0.22);
+    outline: none;
+}
+
+@media (max-width: 1180px) {
+    body.public-home-page .public-topbar {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    body.public-home-page .public-nav {
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 2px;
+    }
+
+    body.public-home-page .public-topbar-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 640px) {
+    body.public-home-page .public-topbar {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    body.public-home-page .public-brand img {
+        width: 46px;
+    }
+
+    body.public-home-page .public-nav a {
+        min-height: 34px;
+        padding: 0 12px;
+        font-size: 11px;
+    }
+
+    body.public-home-page .public-topbar-actions {
+        flex-wrap: wrap;
+    }
+
+    body.public-home-page .public-topbar-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
