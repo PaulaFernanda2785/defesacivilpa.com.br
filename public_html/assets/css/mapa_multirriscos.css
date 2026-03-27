@@ -2335,3 +2335,180 @@ main.content > .page-header {
         font-size: 20px;
     }
 }
+
+/* Refinamento visual do modal "Como usar" na tela publica. */
+body.public-home-page .modal-ajuda {
+    padding: 18px;
+    background: rgba(2, 16, 24, 0.56);
+    backdrop-filter: blur(3px);
+}
+
+body.public-home-page .modal-ajuda-conteudo {
+    position: relative;
+    width: min(1080px, calc(100vw - 36px));
+    max-height: calc(100vh - 36px);
+    border: 1px solid rgba(15, 61, 87, 0.16);
+    box-shadow: 0 30px 72px rgba(4, 30, 45, 0.34);
+}
+
+body.public-home-page .modal-ajuda-conteudo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    pointer-events: none;
+    background: linear-gradient(90deg, #0a3f63 0%, #1f7a8c 52%, #e4a11b 100%);
+}
+
+body.public-home-page .modal-ajuda-header {
+    padding: 24px 28px 18px;
+    background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 34%),
+        linear-gradient(135deg, rgba(10, 39, 56, 0.98), rgba(15, 61, 87, 0.98));
+}
+
+body.public-home-page .modal-ajuda-header h3 {
+    font-size: clamp(24px, 2.1vw, 32px);
+}
+
+body.public-home-page .modal-ajuda-header p {
+    color: rgba(228, 240, 246, 0.88);
+    line-height: 1.65;
+}
+
+body.public-home-page .modal-ajuda-body {
+    padding: 22px 28px 14px;
+    background:
+        radial-gradient(circle at top, rgba(15, 61, 87, 0.06), transparent 34%),
+        linear-gradient(180deg, #ffffff 0%, #f4f8fb 100%);
+}
+
+body.public-home-page .modal-ajuda-hero {
+    grid-template-columns: minmax(0, 1.22fr) minmax(300px, 0.78fr);
+    gap: 16px;
+    padding: 18px;
+    border: 1px solid rgba(15, 61, 87, 0.1);
+    background:
+        radial-gradient(circle at top right, rgba(31, 122, 140, 0.12), transparent 34%),
+        linear-gradient(180deg, rgba(247, 251, 253, 0.98), rgba(240, 247, 250, 0.95));
+}
+
+body.public-home-page .modal-ajuda-hero-copy strong {
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+body.public-home-page .modal-ajuda-pill-row {
+    display: grid;
+    gap: 10px;
+    align-content: start;
+}
+
+body.public-home-page .modal-ajuda-pill {
+    min-height: 38px;
+    border-radius: 12px;
+    background: rgba(10, 39, 56, 0.94);
+    border: 1px solid rgba(15, 61, 87, 0.2);
+    color: #f4f8fb;
+}
+
+body.public-home-page .modal-ajuda-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    align-items: stretch;
+}
+
+body.public-home-page .modal-ajuda-card-flow {
+    grid-column: 1 / -1;
+}
+
+body.public-home-page .modal-ajuda-card {
+    position: relative;
+    overflow: hidden;
+    border-color: rgba(15, 61, 87, 0.1);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 248, 251, 0.98));
+    box-shadow: 0 14px 34px rgba(10, 39, 56, 0.08);
+}
+
+body.public-home-page .modal-ajuda-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0a3f63 0%, #1f7a8c 52%, #e4a11b 100%);
+}
+
+body.public-home-page .modal-ajuda-card-kicker {
+    color: #1f7a8c;
+}
+
+body.public-home-page .modal-ajuda-card h4 {
+    font-size: 19px;
+    line-height: 1.28;
+}
+
+body.public-home-page .modal-ajuda-lista,
+body.public-home-page .modal-ajuda-sequencia {
+    padding-left: 20px;
+    gap: 9px;
+    line-height: 1.6;
+}
+
+body.public-home-page .modal-ajuda-footer {
+    padding: 14px 28px 18px;
+    background: rgba(255, 255, 255, 0.98);
+}
+
+body.public-home-page .modal-ajuda-footer-note {
+    color: #4d6778;
+    line-height: 1.55;
+}
+
+body.public-home-page .modal-ajuda-footer button {
+    padding: 0 20px;
+    background: linear-gradient(135deg, #0f3d57, #1f7a8c);
+}
+
+@media (max-width: 960px) {
+    body.public-home-page .modal-ajuda-hero,
+    body.public-home-page .modal-ajuda-grid {
+        grid-template-columns: 1fr;
+    }
+
+    body.public-home-page .modal-ajuda-card-flow {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    body.public-home-page .modal-ajuda {
+        padding: 10px;
+    }
+
+    body.public-home-page .modal-ajuda-conteudo {
+        width: calc(100% - 20px);
+        max-height: calc(100vh - 20px);
+        border-radius: 20px;
+    }
+
+    body.public-home-page .modal-ajuda-header,
+    body.public-home-page .modal-ajuda-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    body.public-home-page .modal-ajuda-header,
+    body.public-home-page .modal-ajuda-body,
+    body.public-home-page .modal-ajuda-footer {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    body.public-home-page .modal-ajuda-pill-row {
+        grid-template-columns: 1fr;
+    }
+}

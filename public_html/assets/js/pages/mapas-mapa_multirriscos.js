@@ -995,8 +995,13 @@
 
         lista.sort((a, b) => Number(b.pressao || 0) - Number(a.pressao || 0) || Number(b.alertas || 0) - Number(a.alertas || 0));
         el.listaRegioes.innerHTML = '';
+        const pressaoMaxima = lista.reduce((maximo, item) => Math.max(maximo, Number(item.pressao || 0)), 0);
 
         lista.forEach((item) => {
+            const pressaoAtual = Number(item.pressao || 0);
+            const larguraBarra = pressaoMaxima > 0 && pressaoAtual > 0
+                ? Math.max(6, Math.min((pressaoAtual / pressaoMaxima) * 100, 100))
+                : 0;
             const button = document.createElement('button');
             button.type = 'button';
             button.className = `regiao-item${regiaoSelecionada() === item.regiao ? ' is-selected' : ''}`;
@@ -1013,7 +1018,7 @@
                     <span>${escapeHtml(item.gravidade || 'Sem gravidade')}</span>
                 </div>
                 <div class="regiao-barra">
-                    <span style="width:${Math.max(14, Math.min(Number(item.pressao || 0) * 8, 100))}%; background:${escapeHtml(corNivel(item.gravidade))};"></span>
+                    <span style="width:${larguraBarra.toFixed(2)}%; background:${escapeHtml(corNivel(item.gravidade))};"></span>
                 </div>
             `;
 
@@ -1102,7 +1107,8 @@
         }
 
         if (el.modalIRP) {
-            el.modalIRP.style.display = 'none';
+            el.modalIRP.classList.remove('is-open');
+            el.modalIRP.setAttribute('aria-hidden', 'true');
         }
 
         if (el.modalTerritorio) {
@@ -1293,11 +1299,17 @@
     }
 
     function abrirModalIRP() {
-        if (el.modalIRP) el.modalIRP.style.display = 'block';
+        if (el.modalIRP) {
+            el.modalIRP.classList.add('is-open');
+            el.modalIRP.setAttribute('aria-hidden', 'false');
+        }
     }
 
     function fecharModalIRP() {
-        if (el.modalIRP) el.modalIRP.style.display = 'none';
+        if (el.modalIRP) {
+            el.modalIRP.classList.remove('is-open');
+            el.modalIRP.setAttribute('aria-hidden', 'true');
+        }
     }
 
     function abrirModalAjuda() {

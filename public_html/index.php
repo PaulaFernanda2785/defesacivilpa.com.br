@@ -587,7 +587,7 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
 
         <div class="alerta-form-panel">
             <div class="alerta-form-grid multirrisco-overview-grid">
-                <section class="alerta-form-section">
+                <section class="alerta-form-section multirrisco-overview-section multirrisco-overview-section-filtros">
                     <header class="alerta-section-header">
                         <span class="alerta-section-kicker">Secao 1</span>
                         <h2 class="alerta-section-title">Filtros e recorte territorial</h2>
@@ -645,7 +645,6 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
                                 <select id="municipio" name="municipio">
                                     <option value="">Todos os municipios</option>
                                 </select>
-                                <span class="field-helper">Ao selecionar uma regiao, a lista municipal e refinada automaticamente.</span>
                             </div>
                         </div>
 
@@ -662,7 +661,7 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
                     </form>
                 </section>
 
-                <section class="alerta-form-section">
+                <section class="alerta-form-section multirrisco-overview-section multirrisco-overview-section-operacional">
                     <header class="alerta-section-header">
                         <span class="alerta-section-kicker">Secao 2</span>
                         <h2 class="alerta-section-title">Leitura operacional</h2>
@@ -774,7 +773,7 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
                 </div>
 
                 <aside class="multirrisco-side-stack">
-                    <section class="alerta-form-section multirrisco-side-section">
+                    <section class="alerta-form-section multirrisco-side-section multirrisco-side-section-ranking">
                         <header class="alerta-section-header">
                             <span class="alerta-section-kicker">Ranking</span>
                             <h2 class="alerta-section-title">Regioes mais pressionadas</h2>
@@ -786,7 +785,7 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
                         </div>
                     </section>
 
-                    <section class="alerta-form-section multirrisco-side-section">
+                    <section class="alerta-form-section multirrisco-side-section multirrisco-side-section-serie">
                         <div id="filtro-dia-ativo" class="multirrisco-day-filter" hidden>
                             <span>Filtro ativo para o dia: <strong id="diaSelecionadoTxt"></strong></span>
                             <button type="button" class="btn btn-secondary" id="btnLimparFiltroDia">Limpar</button>
@@ -1030,20 +1029,52 @@ $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
     </div>
 </div>
 
-<div id="modalIRP" class="modal">
-    <div class="modal-conteudo">
-        <h3>Como o IRP e calculado</h3>
-        <p>O indice de pressao de risco mede a carga operacional causada pelos alertas ativos no territorio filtrado.</p>
-        <p>A leitura considera o peso da gravidade e a abrangencia municipal de cada alerta ativo.</p>
-        <ul>
-            <li>Baixo = 1</li>
-            <li>Moderado = 2</li>
-            <li>Alto = 3</li>
-            <li>Muito alto = 4</li>
-            <li>Extremo = 5</li>
-        </ul>
-        <p>Quanto maior o IRP, maior a pressao territorial e a necessidade de resposta.</p>
-        <button type="button" data-close-irp>Fechar</button>
+<div id="modalIRP" class="modal modal-irp" aria-hidden="true">
+    <div class="modal-conteudo irp-modal-conteudo" role="dialog" aria-modal="true" aria-labelledby="modalIrpTitulo">
+        <div class="irp-modal-header">
+            <div class="irp-modal-heading">
+                <span class="irp-modal-kicker">Indice de pressao</span>
+                <h3 id="modalIrpTitulo">Como o IRP e calculado</h3>
+                <p>O indice de pressao de risco mede a carga operacional causada pelos alertas ativos no territorio filtrado.</p>
+            </div>
+            <button type="button" class="irp-modal-close" data-close-irp aria-label="Fechar modal">X</button>
+        </div>
+
+        <div class="irp-modal-body">
+            <p>A leitura considera o peso da gravidade e a abrangencia municipal de cada alerta ativo.</p>
+
+            <div class="irp-modal-peso-grid">
+                <article class="irp-peso-item">
+                    <strong>Baixo</strong>
+                    <span>Peso 1</span>
+                </article>
+                <article class="irp-peso-item">
+                    <strong>Moderado</strong>
+                    <span>Peso 2</span>
+                </article>
+                <article class="irp-peso-item">
+                    <strong>Alto</strong>
+                    <span>Peso 3</span>
+                </article>
+                <article class="irp-peso-item">
+                    <strong>Muito alto</strong>
+                    <span>Peso 4</span>
+                </article>
+                <article class="irp-peso-item">
+                    <strong>Extremo</strong>
+                    <span>Peso 5</span>
+                </article>
+            </div>
+
+            <div class="alerta-callout irp-modal-callout">
+                <strong>Interpretacao</strong>
+                Quanto maior o IRP, maior a pressao territorial e a necessidade de resposta.
+            </div>
+        </div>
+
+        <div class="irp-modal-footer">
+            <button type="button" class="btn btn-secondary" data-close-irp>Fechar</button>
+        </div>
     </div>
 </div>
 

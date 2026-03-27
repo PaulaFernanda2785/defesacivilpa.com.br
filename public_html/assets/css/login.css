@@ -2435,3 +2435,1032 @@ body.public-home-page .public-analysis-modal-footer-copy {
         min-height: 56vh;
     }
 }
+
+/* Layout dedicado aos cards iniciais do mapa publico. */
+body.public-home-page #mapa-publico .public-section-hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+body.public-home-page #mapa-publico .public-section-hero .alerta-form-lead {
+    width: 100%;
+    min-height: clamp(320px, 36vw, 400px);
+    padding: 30px 32px;
+    border-radius: 16px;
+    box-shadow: 0 16px 36px rgba(15, 61, 87, 0.14);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+}
+
+body.public-home-page #mapa-publico .public-section-hero .alerta-form-kicker {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+}
+
+body.public-home-page #mapa-publico .public-section-hero .alerta-form-title {
+    margin-bottom: 8px;
+    font-size: clamp(30px, 2.5vw, 38px);
+    line-height: 1.1;
+    max-width: 28ch;
+}
+
+body.public-home-page #mapa-publico .public-section-hero .alerta-form-description {
+    max-width: 86ch;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+body.public-home-page #mapa-publico .public-section-hero .alerta-form-summary {
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+body.public-home-page #mapa-publico .public-section-hero .alerta-form-summary::before {
+    display: none;
+}
+
+body.public-home-page #mapa-publico .public-section-hero .alerta-summary-card {
+    min-height: 180px;
+    padding: 20px;
+    border-radius: 14px;
+    border: 1px solid rgba(15, 61, 87, 0.12);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 250, 253, 0.98));
+    box-shadow: 0 10px 24px rgba(15, 61, 87, 0.1);
+    gap: 8px;
+}
+
+body.public-home-page #mapa-publico .public-section-hero .alerta-summary-label {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+}
+
+body.public-home-page #mapa-publico .public-section-hero .alerta-summary-value {
+    font-size: clamp(20px, 1.5vw, 25px);
+    line-height: 1.25;
+}
+
+body.public-home-page #mapa-publico .public-section-hero .alerta-summary-note {
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+@media (max-width: 1024px) {
+    body.public-home-page #mapa-publico .public-section-hero .alerta-form-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    body.public-home-page #mapa-publico .public-section-hero .alerta-form-lead {
+        min-height: clamp(300px, 44vw, 380px);
+        padding: 26px;
+    }
+}
+
+@media (max-width: 640px) {
+    body.public-home-page #mapa-publico .public-section-hero .alerta-form-summary {
+        grid-template-columns: 1fr;
+    }
+
+    body.public-home-page #mapa-publico .public-section-hero .alerta-form-lead {
+        min-height: 320px;
+        padding: 22px;
+    }
+
+    body.public-home-page #mapa-publico .public-section-hero .alerta-summary-card {
+        min-height: 0;
+        padding: 18px;
+    }
+}
+
+/* Hero da central analitica no mesmo padrao do mapa em destaque. */
+body.public-home-page #analises-publicas .public-section-hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+body.public-home-page #analises-publicas .public-section-hero .alerta-form-lead {
+    width: 100%;
+    min-height: clamp(320px, 36vw, 400px);
+    padding: 30px 32px;
+    border-radius: 16px;
+    box-shadow: 0 16px 36px rgba(15, 61, 87, 0.14);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+}
+
+body.public-home-page #analises-publicas .public-section-hero .alerta-form-lead,
+body.public-home-page #analises-publicas .public-section-hero .alerta-summary-card {
+    position: relative;
+    overflow: hidden;
+}
+
+body.public-home-page #analises-publicas .public-section-hero .alerta-form-lead::before,
+body.public-home-page #analises-publicas .public-section-hero .alerta-summary-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(90deg, #0a3f63 0%, #1f7a8c 52%, #e4a11b 100%);
+}
+
+body.public-home-page #analises-publicas .public-section-hero .alerta-form-kicker {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+}
+
+body.public-home-page #analises-publicas .public-section-hero .alerta-form-title {
+    margin-bottom: 8px;
+    font-size: clamp(30px, 2.5vw, 38px);
+    line-height: 1.1;
+    max-width: 28ch;
+}
+
+body.public-home-page #analises-publicas .public-section-hero .alerta-form-description {
+    max-width: 86ch;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+body.public-home-page #analises-publicas .public-section-hero .alerta-form-summary {
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+body.public-home-page #analises-publicas .public-section-hero .alerta-form-summary::before {
+    display: none;
+}
+
+body.public-home-page #analises-publicas .public-section-hero .alerta-summary-card {
+    min-height: 180px;
+    padding: 20px;
+    border-radius: 14px;
+    border: 1px solid rgba(15, 61, 87, 0.12);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 250, 253, 0.98));
+    box-shadow: 0 10px 24px rgba(15, 61, 87, 0.1);
+    gap: 8px;
+}
+
+body.public-home-page #analises-publicas .public-section-hero .alerta-summary-label {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+}
+
+body.public-home-page #analises-publicas .public-section-hero .alerta-summary-value {
+    font-size: clamp(20px, 1.5vw, 25px);
+    line-height: 1.25;
+}
+
+body.public-home-page #analises-publicas .public-section-hero .alerta-summary-note {
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+@media (max-width: 1024px) {
+    body.public-home-page #analises-publicas .public-section-hero .alerta-form-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    body.public-home-page #analises-publicas .public-section-hero .alerta-form-lead {
+        min-height: clamp(300px, 44vw, 380px);
+        padding: 26px;
+    }
+}
+
+@media (max-width: 640px) {
+    body.public-home-page #analises-publicas .public-section-hero .alerta-form-summary {
+        grid-template-columns: 1fr;
+    }
+
+    body.public-home-page #analises-publicas .public-section-hero .alerta-form-lead {
+        min-height: 320px;
+        padding: 22px;
+    }
+
+    body.public-home-page #analises-publicas .public-section-hero .alerta-summary-card {
+        min-height: 0;
+        padding: 18px;
+    }
+}
+
+/* Padrao visual dos cards "Secao 1" e "Secao 2" no mapa publico. */
+body.public-home-page #mapa-publico .alerta-form-panel > .alerta-form-grid.multirrisco-overview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    align-items: stretch;
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-grid > .multirrisco-overview-section {
+    position: relative;
+    overflow: hidden;
+    min-height: 100%;
+    padding: 22px;
+    border-radius: 16px;
+    border: 1px solid rgba(15, 61, 87, 0.11);
+    box-shadow: 0 10px 24px rgba(15, 61, 87, 0.09);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 251, 253, 0.98));
+    gap: 18px;
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-grid > .multirrisco-overview-section .alerta-section-header {
+    gap: 8px;
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-grid > .multirrisco-overview-section .alerta-section-title {
+    margin: 2px 0 0;
+    font-size: clamp(24px, 1.55vw, 30px);
+    line-height: 1.16;
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-grid > .multirrisco-overview-section .alerta-section-text {
+    font-size: 14px;
+    line-height: 1.65;
+    max-width: none;
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-section-filtros .multirrisco-filter-form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 20px;
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-section-filtros .multirrisco-filter-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-section-filtros .multirrisco-filter-actions {
+    margin-top: auto;
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-section-filtros::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(90deg, #0a3f63 0%, #1f7a8c 52%, #e4a11b 100%);
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-section-operacional {
+    background:
+        linear-gradient(180deg, rgba(10, 39, 56, 0.96), rgba(15, 61, 87, 0.96)),
+        #0a2738;
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 16px 36px rgba(6, 24, 35, 0.34);
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-section-operacional::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(90deg, #0a3f63 0%, #1f7a8c 52%, #e4a11b 100%);
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-section-operacional .alerta-section-kicker {
+    width: fit-content;
+    min-height: 28px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 61, 87, 0.12);
+    background: rgba(15, 61, 87, 0.08);
+    color: var(--cor-secundaria);
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-section-operacional .alerta-section-header {
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(15, 61, 87, 0.12);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 251, 253, 0.95));
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-section-operacional .alerta-section-title {
+    color: var(--cor-primaria);
+    text-shadow: none;
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-section-operacional .alerta-section-text {
+    color: var(--cor-texto-suave);
+    text-shadow: none;
+    font-weight: 500;
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-section-operacional .public-operational-layout {
+    gap: 16px;
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-section-operacional .multirrisco-kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-section-operacional .public-operational-stack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-section-operacional .public-operational-card:last-child {
+    grid-column: 1 / -1;
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-section-operacional .painel-kpi-card,
+body.public-home-page #mapa-publico .multirrisco-overview-section-operacional .public-operational-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 12px 26px rgba(6, 24, 35, 0.18);
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-section-operacional .painel-kpi-card::before,
+body.public-home-page #mapa-publico .multirrisco-overview-section-operacional .public-operational-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(90deg, #0a3f63 0%, #1f7a8c 52%, #e4a11b 100%);
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-section-operacional .alerta-callout.multirrisco-callout {
+    border-color: rgba(255, 232, 165, 0.24);
+    background: rgba(10, 39, 56, 0.42);
+    color: #cfe7f3;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+body.public-home-page #mapa-publico .multirrisco-overview-section-operacional .alerta-callout.multirrisco-callout strong {
+    color: #ffd977;
+}
+
+@media (max-width: 1024px) {
+    body.public-home-page #mapa-publico .alerta-form-panel > .alerta-form-grid.multirrisco-overview-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    body.public-home-page #mapa-publico .multirrisco-overview-grid > .multirrisco-overview-section {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 760px) {
+    body.public-home-page #mapa-publico .multirrisco-overview-section-operacional .multirrisco-kpi-grid,
+    body.public-home-page #mapa-publico .multirrisco-overview-section-operacional .public-operational-stack {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    body.public-home-page #mapa-publico .multirrisco-overview-grid > .multirrisco-overview-section {
+        padding: 16px;
+        border-radius: 14px;
+        gap: 16px;
+    }
+
+    body.public-home-page #mapa-publico .multirrisco-overview-grid > .multirrisco-overview-section .alerta-section-title {
+        font-size: clamp(22px, 6vw, 26px);
+    }
+
+    body.public-home-page #mapa-publico .multirrisco-overview-section-filtros .multirrisco-filter-grid {
+        grid-template-columns: 1fr;
+    }
+
+    body.public-home-page #mapa-publico .multirrisco-overview-section-filtros .multirrisco-filter-form {
+        gap: 16px;
+    }
+}
+
+/* Refinamento da Secao 3 (mapa, ranking e serie diaria). */
+body.public-home-page #mapa-publico .multirrisco-map-panel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 1px solid rgba(15, 61, 87, 0.1);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(245, 249, 252, 0.98));
+    box-shadow: 0 14px 32px rgba(10, 39, 56, 0.1);
+    padding: 24px;
+    gap: 22px;
+}
+
+body.public-home-page #mapa-publico .multirrisco-map-panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #0a3f63 0%, #1f7a8c 52%, #e4a11b 100%);
+    pointer-events: none;
+}
+
+body.public-home-page #mapa-publico .multirrisco-map-panel > .painel-section-head {
+    padding: 16px 18px;
+    border-radius: 16px;
+    border: 1px solid rgba(15, 61, 87, 0.1);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 251, 253, 0.98));
+}
+
+body.public-home-page #mapa-publico .multirrisco-map-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 1px solid rgba(15, 61, 87, 0.1);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(245, 249, 252, 0.98));
+    box-shadow: 0 16px 34px rgba(10, 39, 56, 0.1);
+    padding: 22px;
+    gap: 18px;
+}
+
+body.public-home-page #mapa-publico .multirrisco-map-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #0a3f63 0%, #1f7a8c 52%, #e4a11b 100%);
+    pointer-events: none;
+}
+
+body.public-home-page #mapa-publico .multirrisco-map-stage,
+body.public-home-page #mapa-publico .multirrisco-map-canvas,
+body.public-home-page #mapa-publico #mapa.multirrisco-map-canvas {
+    height: clamp(620px, 70vh, 860px);
+    min-height: clamp(620px, 70vh, 860px);
+}
+
+body.public-home-page #mapa-publico .multirrisco-side-stack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+body.public-home-page #mapa-publico .multirrisco-side-section-ranking,
+body.public-home-page #mapa-publico .multirrisco-side-section-serie {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(15, 61, 87, 0.1);
+    border-radius: 18px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 251, 253, 0.98));
+    box-shadow: 0 12px 28px rgba(10, 39, 56, 0.08);
+    padding: 20px;
+}
+
+body.public-home-page #mapa-publico .multirrisco-side-section-serie {
+    border-color: rgba(217, 118, 12, 0.18);
+    background:
+        radial-gradient(circle at top right, rgba(228, 161, 27, 0.16), transparent 34%),
+        linear-gradient(180deg, rgba(255, 249, 235, 0.94), rgba(255, 255, 255, 0.98));
+}
+
+body.public-home-page #mapa-publico .multirrisco-side-section-ranking::before,
+body.public-home-page #mapa-publico .multirrisco-side-section-serie::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #0a3f63 0%, #1f7a8c 52%, #e4a11b 100%);
+    pointer-events: none;
+}
+
+body.public-home-page #mapa-publico .multirrisco-side-section-ranking .lista-regioes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+body.public-home-page #mapa-publico .regiao-item {
+    border-radius: 16px;
+    border: 1px solid rgba(15, 61, 87, 0.1);
+    box-shadow: 0 8px 18px rgba(10, 39, 56, 0.06);
+}
+
+body.public-home-page #mapa-publico .regiao-barra {
+    height: 10px;
+    background: rgba(15, 61, 87, 0.1);
+}
+
+body.public-home-page #mapa-publico .regiao-barra span {
+    transition: width 0.32s ease;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+
+body.public-home-page #mapa-publico .multirrisco-side-section-serie .multirrisco-chart-container {
+    height: clamp(320px, 36vh, 410px);
+}
+
+body.public-home-page #mapa-publico .multirrisco-side-section-serie .multirrisco-chart-actions {
+    margin-top: 4px;
+}
+
+@media (max-width: 1200px) {
+    body.public-home-page #mapa-publico .multirrisco-map-stage,
+    body.public-home-page #mapa-publico .multirrisco-map-canvas,
+    body.public-home-page #mapa-publico #mapa.multirrisco-map-canvas {
+        height: clamp(560px, 62vh, 760px);
+        min-height: clamp(560px, 62vh, 760px);
+    }
+}
+
+@media (max-width: 1080px) {
+    body.public-home-page #mapa-publico .multirrisco-side-stack {
+        grid-template-columns: 1fr;
+    }
+
+    body.public-home-page #mapa-publico .multirrisco-side-section-ranking .lista-regioes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 820px) {
+    body.public-home-page #mapa-publico .multirrisco-map-panel {
+        padding: 18px;
+    }
+
+    body.public-home-page #mapa-publico .multirrisco-side-section-ranking .lista-regioes {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    body.public-home-page #mapa-publico .multirrisco-map-stage,
+    body.public-home-page #mapa-publico .multirrisco-map-canvas,
+    body.public-home-page #mapa-publico #mapa.multirrisco-map-canvas {
+        height: 460px;
+        min-height: 460px;
+    }
+
+    body.public-home-page #mapa-publico .multirrisco-map-card,
+    body.public-home-page #mapa-publico .multirrisco-side-section-ranking,
+    body.public-home-page #mapa-publico .multirrisco-side-section-serie {
+        padding: 16px;
+    }
+}
+
+/* Modal IRP no mesmo padrao visual da pagina. */
+body.public-home-page #modalIRP {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10030;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(4, 20, 30, 0.58);
+    backdrop-filter: blur(3px);
+}
+
+body.public-home-page #modalIRP.is-open {
+    display: flex;
+}
+
+body.public-home-page #modalIRP .irp-modal-conteudo {
+    position: relative;
+    width: min(780px, 100%);
+    max-height: calc(100vh - 40px);
+    margin: 0;
+    padding: 0;
+    border-radius: 22px;
+    border: 1px solid rgba(15, 61, 87, 0.16);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(245, 249, 252, 0.99));
+    box-shadow: 0 28px 64px rgba(4, 30, 45, 0.36);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+body.public-home-page #modalIRP .irp-modal-conteudo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #0a3f63 0%, #1f7a8c 52%, #e4a11b 100%);
+    pointer-events: none;
+}
+
+body.public-home-page #modalIRP .irp-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 22px 24px 14px;
+}
+
+body.public-home-page #modalIRP .irp-modal-heading {
+    display: grid;
+    gap: 8px;
+}
+
+body.public-home-page #modalIRP .irp-modal-kicker {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    min-height: 28px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: rgba(15, 61, 87, 0.08);
+    border: 1px solid rgba(15, 61, 87, 0.12);
+    color: var(--cor-secundaria);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+body.public-home-page #modalIRP .irp-modal-header h3 {
+    margin: 0;
+    color: var(--cor-primaria);
+    font-size: clamp(24px, 2vw, 30px);
+    line-height: 1.16;
+}
+
+body.public-home-page #modalIRP .irp-modal-header p {
+    margin: 0;
+    color: var(--cor-texto-suave);
+    line-height: 1.62;
+}
+
+body.public-home-page #modalIRP .irp-modal-close {
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(15, 61, 87, 0.14);
+    border-radius: 12px;
+    background: #ffffff;
+    color: var(--cor-primaria);
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+body.public-home-page #modalIRP .irp-modal-close:hover {
+    background: rgba(15, 61, 87, 0.06);
+}
+
+body.public-home-page #modalIRP .irp-modal-body {
+    padding: 0 24px 18px;
+    display: grid;
+    gap: 16px;
+    overflow-y: auto;
+}
+
+body.public-home-page #modalIRP .irp-modal-body > p {
+    margin: 0;
+    color: var(--cor-texto-suave);
+    line-height: 1.65;
+}
+
+body.public-home-page #modalIRP .irp-modal-peso-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+body.public-home-page #modalIRP .irp-peso-item {
+    display: grid;
+    justify-items: center;
+    gap: 4px;
+    padding: 12px 10px;
+    border-radius: 14px;
+    border: 1px solid rgba(15, 61, 87, 0.1);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 251, 253, 0.98));
+}
+
+body.public-home-page #modalIRP .irp-peso-item strong {
+    color: var(--cor-primaria);
+    font-size: 13px;
+    line-height: 1.3;
+}
+
+body.public-home-page #modalIRP .irp-peso-item span {
+    color: var(--cor-texto-suave);
+    font-size: 12px;
+}
+
+body.public-home-page #modalIRP .irp-modal-callout {
+    margin: 0;
+    border-radius: 16px;
+}
+
+body.public-home-page #modalIRP .irp-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 14px 24px 20px;
+    border-top: 1px solid rgba(15, 61, 87, 0.08);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+body.public-home-page #modalIRP .irp-modal-footer .btn {
+    min-width: 140px;
+    justify-content: center;
+}
+
+@media (max-width: 980px) {
+    body.public-home-page #modalIRP .irp-modal-peso-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    body.public-home-page #modalIRP {
+        padding: 10px;
+    }
+
+    body.public-home-page #modalIRP .irp-modal-conteudo {
+        width: 100%;
+        max-height: calc(100vh - 20px);
+        border-radius: 18px;
+    }
+
+    body.public-home-page #modalIRP .irp-modal-header,
+    body.public-home-page #modalIRP .irp-modal-body,
+    body.public-home-page #modalIRP .irp-modal-footer {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    body.public-home-page #modalIRP .irp-modal-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    body.public-home-page #modalIRP .irp-modal-peso-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Modal territorial no novo padrao visual. */
+body.public-home-page .modal-territorio {
+    padding: 18px;
+    background: rgba(4, 20, 30, 0.58);
+    backdrop-filter: blur(3px);
+}
+
+body.public-home-page .modal-territorio-dialog {
+    position: relative;
+    width: min(1220px, 100%);
+    max-height: calc(100vh - 36px);
+    border: 1px solid rgba(15, 61, 87, 0.16);
+    border-radius: 22px;
+    box-shadow: 0 28px 64px rgba(4, 30, 45, 0.34);
+}
+
+body.public-home-page .modal-territorio-dialog::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #0a3f63 0%, #1f7a8c 52%, #e4a11b 100%);
+    pointer-events: none;
+}
+
+body.public-home-page .modal-territorio-header {
+    padding: 22px 24px 16px;
+    background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 34%),
+        linear-gradient(135deg, rgba(10, 39, 56, 0.98), rgba(15, 61, 87, 0.98));
+}
+
+body.public-home-page .modal-territorio-kicker {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    min-height: 28px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.1);
+    color: #d7e7ef;
+    opacity: 1;
+}
+
+body.public-home-page .modal-territorio-header h3 {
+    font-size: clamp(24px, 2vw, 30px);
+}
+
+body.public-home-page .modal-territorio-close {
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+body.public-home-page .modal-territorio-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+body.public-home-page .modal-territorio-body {
+    padding: 20px 24px 24px;
+    background:
+        radial-gradient(circle at top, rgba(15, 61, 87, 0.05), transparent 34%),
+        linear-gradient(180deg, #ffffff 0%, #f4f8fb 100%);
+}
+
+body.public-home-page .modal-territorio-summary-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+body.public-home-page .modal-territorio-summary-card {
+    position: relative;
+    overflow: hidden;
+    border-color: rgba(15, 61, 87, 0.1);
+    box-shadow: 0 10px 22px rgba(10, 39, 56, 0.07);
+}
+
+body.public-home-page .modal-territorio-summary-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0a3f63 0%, #1f7a8c 52%, #e4a11b 100%);
+    pointer-events: none;
+}
+
+body.public-home-page .multirrisco-alerta-card {
+    position: relative;
+    overflow: hidden;
+    border-color: rgba(15, 61, 87, 0.1);
+    box-shadow: 0 12px 26px rgba(10, 39, 56, 0.08);
+}
+
+body.public-home-page .multirrisco-alerta-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #0a3f63 0%, #1f7a8c 52%, #e4a11b 100%);
+    pointer-events: none;
+}
+
+body.public-home-page .multirrisco-alerta-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 1220px) {
+    body.public-home-page .modal-territorio-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    body.public-home-page .multirrisco-alerta-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 860px) {
+    body.public-home-page .modal-territorio {
+        padding: 10px;
+    }
+
+    body.public-home-page .modal-territorio-dialog {
+        max-height: calc(100vh - 20px);
+    }
+
+    body.public-home-page .modal-territorio-header,
+    body.public-home-page .modal-territorio-body {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    body.public-home-page .modal-territorio-summary-grid,
+    body.public-home-page .multirrisco-alerta-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Secoes 1 e 2 da Central analitica no mesmo padrao do layout novo. */
+body.public-home-page #analises-publicas .alerta-form-panel > .alerta-form-grid.analises-overview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    align-items: stretch;
+}
+
+body.public-home-page #analises-publicas .analises-overview-grid > .alerta-form-section {
+    position: relative;
+    overflow: hidden;
+    min-height: 100%;
+    padding: 22px;
+    border-radius: 16px;
+    border: 1px solid rgba(15, 61, 87, 0.11);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 251, 253, 0.98));
+    box-shadow: 0 10px 24px rgba(15, 61, 87, 0.09);
+    gap: 18px;
+}
+
+body.public-home-page #analises-publicas .analises-overview-grid > .alerta-form-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(90deg, #0a3f63 0%, #1f7a8c 52%, #e4a11b 100%);
+}
+
+body.public-home-page #analises-publicas .analises-overview-grid > .alerta-form-section .alerta-section-header {
+    gap: 8px;
+}
+
+body.public-home-page #analises-publicas .analises-overview-grid > .alerta-form-section .alerta-section-title {
+    margin: 2px 0 0;
+    font-size: clamp(24px, 1.55vw, 30px);
+    line-height: 1.16;
+}
+
+body.public-home-page #analises-publicas .analises-overview-grid > .alerta-form-section .alerta-section-text {
+    font-size: 14px;
+    line-height: 1.65;
+    max-width: none;
+}
+
+body.public-home-page #analises-publicas .analises-filter-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+body.public-home-page #analises-publicas .analises-filter-callout,
+body.public-home-page #analises-publicas .analises-info-callout {
+    border-color: rgba(15, 61, 87, 0.1);
+    background: linear-gradient(180deg, rgba(247, 251, 253, 0.96), rgba(255, 255, 255, 0.98));
+}
+
+body.public-home-page #analises-publicas .analises-filter-actions {
+    margin-top: auto;
+}
+
+body.public-home-page #analises-publicas .public-analises-insight-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+body.public-home-page #analises-publicas .public-analise-card {
+    min-height: 220px;
+}
+
+@media (max-width: 1024px) {
+    body.public-home-page #analises-publicas .alerta-form-panel > .alerta-form-grid.analises-overview-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    body.public-home-page #analises-publicas .analises-overview-grid > .alerta-form-section {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 640px) {
+    body.public-home-page #analises-publicas .analises-overview-grid > .alerta-form-section {
+        padding: 16px;
+        border-radius: 14px;
+        gap: 16px;
+    }
+
+    body.public-home-page #analises-publicas .analises-overview-grid > .alerta-form-section .alerta-section-title {
+        font-size: clamp(22px, 6vw, 26px);
+    }
+
+    body.public-home-page #analises-publicas .analises-filter-grid,
+    body.public-home-page #analises-publicas .public-analises-insight-grid {
+        grid-template-columns: 1fr;
+    }
+}
