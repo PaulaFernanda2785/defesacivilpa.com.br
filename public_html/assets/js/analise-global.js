@@ -114,6 +114,10 @@ document.addEventListener('DOMContentLoaded', function () {
         return '<p>' + escapeHtml(texto) + '</p>';
     }
 
+    function wrapTabela(html) {
+        return '<div class="analises-tabela-wrap">' + html + '</div>';
+    }
+
     function tabelaObjeto(obj) {
         const entries = Object.entries(obj || {});
 
@@ -125,12 +129,12 @@ document.addEventListener('DOMContentLoaded', function () {
             return '<tr><td>' + escapeHtml(label) + '</td><td>' + escapeHtml(value) + '</td></tr>';
         }).join('');
 
-        return [
+        return wrapTabela([
             '<table class="tabela-relatorio duas-colunas">',
             '<thead><tr><th>Descricao</th><th>Valor</th></tr></thead>',
             '<tbody>', linhas, '</tbody>',
             '</table>'
-        ].join('');
+        ].join(''));
     }
 
     function tabelaLista(lista, campoDescricao, campoValor) {
@@ -142,12 +146,12 @@ document.addEventListener('DOMContentLoaded', function () {
             return '<tr><td>' + escapeHtml(item[campoDescricao]) + '</td><td>' + escapeHtml(item[campoValor]) + '</td></tr>';
         }).join('');
 
-        return [
+        return wrapTabela([
             '<table class="tabela-relatorio duas-colunas">',
             '<thead><tr><th>Descricao</th><th>Valor</th></tr></thead>',
             '<tbody>', linhas, '</tbody>',
             '</table>'
-        ].join('');
+        ].join(''));
     }
 
     function tabelaListaOrdenada(lista, campoDescricao, campoValor) {
@@ -159,12 +163,12 @@ document.addEventListener('DOMContentLoaded', function () {
             return '<tr><td>' + (index + 1) + '</td><td>' + escapeHtml(item[campoDescricao]) + '</td><td>' + escapeHtml(item[campoValor]) + '</td></tr>';
         }).join('');
 
-        return [
+        return wrapTabela([
             '<table class="tabela-relatorio">',
             '<thead><tr><th>Ordem</th><th>Descricao</th><th>Valor</th></tr></thead>',
             '<tbody>', linhas, '</tbody>',
             '</table>'
-        ].join('');
+        ].join(''));
     }
 
     function tabelaMultiEvento(obj) {
@@ -190,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return '<tr><td>' + escapeHtml(evento) + '</td>' + valores + '</tr>';
         }).join('');
 
-        return '<table class="tabela-relatorio"><thead>' + header + '</thead><tbody>' + linhas + '</tbody></table>';
+        return wrapTabela('<table class="tabela-relatorio"><thead>' + header + '</thead><tbody>' + linhas + '</tbody></table>');
     }
 
     function tabelaCorrelacaoTipologia(lista) {
@@ -230,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return '<tr><td>' + escapeHtml(evento) + '</td>' + colunas + '</tr>';
         }).join('');
 
-        return '<table class="tabela-relatorio"><thead>' + header + '</thead><tbody>' + linhas + '</tbody></table>';
+        return wrapTabela('<table class="tabela-relatorio"><thead>' + header + '</thead><tbody>' + linhas + '</tbody></table>');
     }
 
     function tabelaTipologiaRegiao(lista) {
@@ -272,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return '<tr><td>' + escapeHtml(evento) + '</td>' + colunas + '</tr>';
         }).join('');
 
-        return '<table class="tabela-relatorio"><thead>' + header + '</thead><tbody>' + linhas + '</tbody></table>';
+        return wrapTabela('<table class="tabela-relatorio"><thead>' + header + '</thead><tbody>' + linhas + '</tbody></table>');
     }
 
     function blocoRelatorio(titulo, conteudo) {

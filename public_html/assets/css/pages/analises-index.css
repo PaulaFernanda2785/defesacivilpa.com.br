@@ -272,6 +272,17 @@
     border-collapse: collapse;
 }
 
+.analises-tabela-wrap {
+    border: 1px solid var(--usuarios-line);
+    border-radius: 14px;
+    overflow: auto;
+    background: #ffffff;
+}
+
+.analises-tabela-wrap .tabela-relatorio {
+    min-width: 460px;
+}
+
 .analises-modal-content th,
 .analises-modal-content td {
     padding: 10px 12px;
@@ -339,6 +350,7 @@
 .tabela-filtros td {
     padding: 4px 10px 4px 0;
 }
+
 
 @media (max-width: 1440px) {
     .analises-overview-grid {
@@ -414,6 +426,7 @@
         padding-left: 18px;
         padding-right: 18px;
     }
+
 }
 
 @media (max-width: 560px) {

@@ -385,12 +385,16 @@ $cssAlertasFormPath = __DIR__ . '/assets/css/pages/alertas-form.css';
 $cssAnalisesIndexPath = __DIR__ . '/assets/css/pages/analises-index.css';
 $cssMapaMultirriscosPath = __DIR__ . '/assets/css/mapa_multirriscos.css';
 $cssLoginPath = __DIR__ . '/assets/css/login.css';
+$jsMapaMultirriscosPath = __DIR__ . '/assets/js/pages/mapas-mapa_multirriscos.js';
+$jsAnaliseGlobalPath = __DIR__ . '/assets/js/analise-global.js';
 $cssPainelBaseVersion = (string) ((int) @filemtime($cssPainelBasePath));
 $cssPainelPageVersion = (string) ((int) @filemtime($cssPainelPagePath));
 $cssAlertasFormVersion = (string) ((int) @filemtime($cssAlertasFormPath));
 $cssAnalisesIndexVersion = (string) ((int) @filemtime($cssAnalisesIndexPath));
 $cssMapaMultirriscosVersion = (string) ((int) @filemtime($cssMapaMultirriscosPath));
 $cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
+$jsMapaMultirriscosVersion = (string) ((int) @filemtime($jsMapaMultirriscosPath));
+$jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -1686,7 +1690,7 @@ window.ANALISE_GLOBAL_CONFIG = { pdfEnabled: false };
 </script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="/assets/vendor/chartjs/chart-lite.js"></script>
-<script src="/assets/js/pages/mapas-mapa_multirriscos.js"></script>
-<script src="/assets/js/analise-global.js"></script>
+<script src="/assets/js/pages/mapas-mapa_multirriscos.js?v=<?= htmlspecialchars($jsMapaMultirriscosVersion, ENT_QUOTES, 'UTF-8') ?>"></script>
+<script src="/assets/js/analise-global.js?v=<?= htmlspecialchars($jsAnaliseGlobalVersion, ENT_QUOTES, 'UTF-8') ?>"></script>
 </body>
 </html>

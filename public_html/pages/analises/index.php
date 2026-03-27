@@ -66,6 +66,8 @@ foreach ($analises as $analise) {
 $catalogoFiltros = implode(' | ', array_values(array_unique($filtrosCatalogo)));
 $operadorNome = trim((string) ($usuario['nome'] ?? 'Nao identificado'));
 $operadorPerfil = trim((string) ($usuario['perfil'] ?? 'Nao informado'));
+$jsAnaliseGlobalPath = __DIR__ . '/../../assets/js/analise-global.js';
+$jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
 $resumoExecutivo = [
     [
         'label' => 'Modulos analiticos',
@@ -381,6 +383,6 @@ $resumoExecutivo = [
     </div>
 </div>
 
-<script src="/assets/js/analise-global.js"></script>
+<script src="/assets/js/analise-global.js?v=<?= htmlspecialchars($jsAnaliseGlobalVersion, ENT_QUOTES, 'UTF-8') ?>"></script>
 </body>
 </html>

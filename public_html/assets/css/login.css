@@ -1492,6 +1492,285 @@ body.public-modal-open {
     margin: 0;
 }
 
+/* Modal de relatorio analitico na home publica (index.php). */
+body.public-home-page #modalRelatorio.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10040;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(4, 20, 30, 0.58);
+    backdrop-filter: blur(3px);
+}
+
+body.public-home-page #modalRelatorio .analises-modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: min(1380px, 100%);
+    height: min(92vh, 1040px);
+    max-height: calc(100vh - 40px);
+    border-radius: 24px;
+    border: 1px solid rgba(15, 61, 87, 0.16);
+    box-shadow: 0 28px 64px rgba(4, 30, 45, 0.34);
+    overflow: hidden;
+    background:
+        radial-gradient(circle at top right, rgba(31, 122, 140, 0.09), transparent 30%),
+        linear-gradient(180deg, #ffffff 0%, #f4f8fb 100%);
+}
+
+body.public-home-page #modalRelatorio .analises-modal-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #0a3f63 0%, #1f7a8c 52%, #e4a11b 100%);
+    pointer-events: none;
+}
+
+body.public-home-page #modalRelatorio .analises-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 24px 16px;
+    border-bottom: 1px solid rgba(15, 61, 87, 0.08);
+    background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.16), transparent 34%),
+        linear-gradient(135deg, rgba(10, 39, 56, 0.98), rgba(15, 61, 87, 0.98));
+}
+
+body.public-home-page #modalRelatorio .analises-modal-kicker {
+    background: rgba(255, 255, 255, 0.14);
+    color: #d7e7ef;
+}
+
+body.public-home-page #modalRelatorio .analises-modal-header h2 {
+    margin: 8px 0 0;
+    color: #ffffff;
+    font-size: clamp(24px, 2vw, 30px);
+    line-height: 1.18;
+}
+
+body.public-home-page #modalRelatorio .analises-modal-close {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+body.public-home-page #modalRelatorio .analises-modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+body.public-home-page #modalRelatorio .analises-modal-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-gutter: stable both-edges;
+    padding: 18px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background:
+        radial-gradient(circle at top right, rgba(31, 122, 140, 0.06), transparent 28%),
+        linear-gradient(180deg, rgba(244, 248, 251, 0.84), rgba(255, 255, 255, 0.96));
+}
+
+body.public-home-page #modalRelatorio .analises-relatorio-bloco {
+    position: relative;
+    overflow: visible;
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 16px;
+    border-radius: 18px;
+    border: 1px solid rgba(15, 61, 87, 0.12);
+    box-shadow: 0 12px 26px rgba(10, 39, 56, 0.08);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+body.public-home-page #modalRelatorio .analises-relatorio-bloco::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0a3f63 0%, #1f7a8c 52%, #e4a11b 100%);
+    pointer-events: none;
+}
+
+body.public-home-page #modalRelatorio .analises-relatorio-bloco:first-child {
+    padding: 18px;
+    background:
+        radial-gradient(circle at top right, rgba(31, 122, 140, 0.1), transparent 36%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 248, 251, 0.96));
+}
+
+body.public-home-page #modalRelatorio .analises-relatorio-bloco h3 {
+    margin: 0;
+    color: var(--cor-primaria);
+    font-size: 18px;
+    line-height: 1.3;
+}
+
+body.public-home-page #modalRelatorio .analises-relatorio-bloco p {
+    margin: 0;
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+body.public-home-page #modalRelatorio .analises-tabela-wrap {
+    border: 1px solid rgba(15, 61, 87, 0.1);
+    border-radius: 14px;
+    overflow: auto;
+    background: #ffffff;
+}
+
+body.public-home-page #modalRelatorio .analises-modal-content table {
+    width: 100%;
+    min-width: 460px;
+    border-collapse: collapse;
+}
+
+body.public-home-page #modalRelatorio .analises-modal-content th,
+body.public-home-page #modalRelatorio .analises-modal-content td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(15, 61, 87, 0.1);
+    vertical-align: middle;
+}
+
+body.public-home-page #modalRelatorio .analises-modal-content thead th {
+    background: rgba(15, 61, 87, 0.08);
+    color: var(--cor-primaria);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+body.public-home-page #modalRelatorio .analises-modal-content tbody tr:nth-child(even) {
+    background: rgba(244, 248, 251, 0.72);
+}
+
+body.public-home-page #modalRelatorio .analises-modal-content tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+body.public-home-page #modalRelatorio .tabela-relatorio td:last-child {
+    text-align: right;
+    font-weight: 700;
+    color: var(--cor-primaria);
+}
+
+body.public-home-page #modalRelatorio .tabela-relatorio:not(.duas-colunas) th,
+body.public-home-page #modalRelatorio .tabela-relatorio:not(.duas-colunas) td {
+    text-align: center;
+}
+
+body.public-home-page #modalRelatorio .tabela-relatorio:not(.duas-colunas) th:first-child,
+body.public-home-page #modalRelatorio .tabela-relatorio:not(.duas-colunas) td:first-child {
+    text-align: left;
+    font-weight: 700;
+}
+
+body.public-home-page #modalRelatorio .analises-relatorio-bloco:first-child .tabela-filtros {
+    width: 100%;
+    min-width: 0;
+    border-collapse: separate;
+    margin: 0;
+}
+
+body.public-home-page #modalRelatorio .analises-relatorio-bloco:first-child .tabela-filtros tbody {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+}
+
+body.public-home-page #modalRelatorio .analises-relatorio-bloco:first-child .tabela-filtros tr {
+    display: grid;
+    gap: 6px;
+    padding: 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(15, 61, 87, 0.1);
+    background: rgba(255, 255, 255, 0.92);
+}
+
+body.public-home-page #modalRelatorio .analises-relatorio-bloco:first-child .tabela-filtros td {
+    padding: 0;
+    border: 0;
+    text-align: left;
+}
+
+body.public-home-page #modalRelatorio .analises-relatorio-bloco:first-child .tabela-filtros td:first-child strong {
+    display: block;
+    color: var(--cor-texto-suave);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+body.public-home-page #modalRelatorio .analises-relatorio-bloco:first-child .tabela-filtros td:last-child {
+    color: var(--cor-primaria);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+@media (max-width: 1180px) {
+    body.public-home-page #modalRelatorio .analises-relatorio-bloco:first-child .tabela-filtros tbody {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    body.public-home-page #modalRelatorio.modal {
+        padding: 10px;
+    }
+
+    body.public-home-page #modalRelatorio .analises-modal-content {
+        max-height: calc(100vh - 20px);
+        border-radius: 18px;
+    }
+
+    body.public-home-page #modalRelatorio .analises-modal-header,
+    body.public-home-page #modalRelatorio .analises-modal-body {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    body.public-home-page #modalRelatorio .analises-modal-header {
+        padding-top: 18px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    body.public-home-page #modalRelatorio .analises-modal-close {
+        align-self: flex-end;
+    }
+
+    body.public-home-page #modalRelatorio .analises-relatorio-bloco {
+        padding: 14px;
+    }
+
+    body.public-home-page #modalRelatorio .analises-relatorio-bloco:first-child {
+        padding: 14px;
+    }
+
+    body.public-home-page #modalRelatorio .analises-relatorio-bloco:first-child .tabela-filtros tbody {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (min-width: 1025px) and (max-width: 1480px), (min-width: 1025px) and (max-height: 900px) {
     .public-topbar {
         gap: 14px;
