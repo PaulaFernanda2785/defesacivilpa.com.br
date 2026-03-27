@@ -216,6 +216,28 @@ $resumoExecutivo = [
 
 <body class="<?= $modoEmbedPublico ? 'analise-embed-body' : '' ?>">
 <?php if ($modoEmbedPublico): ?>
+    <header class="analise-embed-topbar">
+        <a href="/index.php#inicio" class="analise-embed-brand">
+            <img src="/assets/images/logo-cedec.png" alt="CEDEC-PA">
+            <span>
+                <small><?= htmlspecialchars((string) ($appConfig['name'] ?? 'Sistema Multirriscos'), ENT_QUOTES, 'UTF-8') ?></small>
+                <strong><?= htmlspecialchars((string) ($appConfig['institution'] ?? 'Defesa Civil do Estado do Para'), ENT_QUOTES, 'UTF-8') ?></strong>
+                <em><?= htmlspecialchars((string) ($appConfig['department'] ?? 'Monitoramento e resposta operacional'), ENT_QUOTES, 'UTF-8') ?></em>
+            </span>
+        </a>
+
+        <nav class="analise-embed-nav" aria-label="Navegacao publica de analises">
+            <a href="/index.php#mapa-publico">Mapa ao vivo</a>
+            <a href="/index.php#analises-publicas">Analises publicas</a>
+            <a href="/index.php#alertas-ativos">Alertas ativos</a>
+        </nav>
+
+        <div class="analise-embed-topbar-meta">
+            <span class="analise-embed-pill">Versao <?= htmlspecialchars((string) ($appConfig['version'] ?? '1.0.0'), ENT_QUOTES, 'UTF-8') ?></span>
+            <a href="/index.php#analises-publicas" class="analise-embed-topbar-link">Inicio publico</a>
+        </div>
+    </header>
+
     <main class="analise-embed-shell">
 <?php else: ?>
 <div class="layout">
@@ -253,6 +275,9 @@ $resumoExecutivo = [
                         <div class="usuarios-hero-actions indice-hero-actions">
                             <a href="#indice-filtros" class="btn btn-primary">Aplicar filtros</a>
                             <a href="#indice-graficos" class="btn btn-secondary">Ver graficos</a>
+                            <?php if ($modoEmbedPublico): ?>
+                                <a href="/index.php#analises-publicas" class="btn btn-secondary">Voltar para pagina inicial</a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -430,7 +455,9 @@ $resumoExecutivo = [
 
                             <div class="alerta-form-actions-right indice-action-buttons">
                                 <button type="button" class="btn btn-secondary" data-open-metodologia>Ver metodologia</button>
-                                <a href="/pages/mapas/mapa_multirriscos.php" class="btn btn-secondary">Abrir mapa multirriscos</a>
+                                <?php if (!$modoEmbedPublico): ?>
+                                    <a href="/pages/mapas/mapa_multirriscos.php" class="btn btn-secondary">Abrir mapa multirriscos</a>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </section>
@@ -483,6 +510,19 @@ $resumoExecutivo = [
         <?php endif; ?>
 <?php if ($modoEmbedPublico): ?>
     </main>
+    <footer class="analise-embed-footer">
+        <div class="analise-embed-footer-copy">
+            <strong><?= htmlspecialchars((string) ($appConfig['institution'] ?? 'Defesa Civil do Estado do Para'), ENT_QUOTES, 'UTF-8') ?></strong>
+            <span><?= htmlspecialchars((string) ($appConfig['department'] ?? 'Central de monitoramento'), ENT_QUOTES, 'UTF-8') ?></span>
+        </div>
+        <div class="analise-embed-footer-meta">
+            <span>Painel publico de analises multirriscos</span>
+            <a href="mailto:<?= htmlspecialchars((string) ($appConfig['support_email'] ?? ''), ENT_QUOTES, 'UTF-8') ?>">
+                <?= htmlspecialchars((string) ($appConfig['support_email'] ?? 'suporte@defesacivil.pa.gov.br'), ENT_QUOTES, 'UTF-8') ?>
+            </a>
+        </div>
+        <a href="/index.php#analises-publicas" class="btn btn-secondary">Voltar para pagina inicial</a>
+    </footer>
 <?php else: ?>
     </main>
 </div>

@@ -898,24 +898,25 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                     <header class="alerta-section-header">
                         <span class="alerta-section-kicker">Secao 2</span>
                         <h2 class="alerta-section-title">Como a analise esta organizada</h2>
-                        <p class="alerta-section-text">Clique em um modulo para abrir a previa da pagina correspondente, com filtros, cards e blocos graficos no mesmo desenho da tela analitica real.</p>
+                        <p class="alerta-section-text">Clique em um modulo para abrir a pagina publica correspondente com filtros e graficos reais no mesmo padrao das telas internas.</p>
                     </header>
 
                     <div class="analises-insight-grid public-analises-insight-grid">
                         <?php foreach ($analises as $analise): ?>
-                            <button
-                                type="button"
+                            <a
+                                href="<?= htmlspecialchars((string) $analise['href'], ENT_QUOTES, 'UTF-8') ?>?embed=1"
+                                data-href-base="<?= htmlspecialchars((string) $analise['href'], ENT_QUOTES, 'UTF-8') ?>"
+                                data-analise-link="1"
                                 class="alerta-summary-card analises-mini-card public-analise-card"
-                                data-analise-preview="<?= htmlspecialchars($analise['slug'], ENT_QUOTES, 'UTF-8') ?>"
                             >
                                 <span class="alerta-summary-label"><?= htmlspecialchars($analise['kicker'], ENT_QUOTES, 'UTF-8') ?></span>
                                 <span class="alerta-summary-value"><?= htmlspecialchars($analise['titulo'], ENT_QUOTES, 'UTF-8') ?></span>
                                 <span class="alerta-summary-note"><?= htmlspecialchars($analise['descricao'], ENT_QUOTES, 'UTF-8') ?></span>
                                 <span class="public-analise-card-footer">
                                     <span class="analises-chip"><?= count($analise['graficos']) ?> graficos</span>
-                                    <span class="public-analise-card-link">Ver pagina em modal</span>
+                                    <span class="public-analise-card-link">Abrir pagina publica</span>
                                 </span>
-                            </button>
+                            </a>
                         <?php endforeach; ?>
                     </div>
 
@@ -1162,29 +1163,6 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
     </div>
 </div>
 
-<div id="modalAnalisePreview" class="modal">
-    <div class="modal-content public-analysis-modal">
-        <button type="button" class="public-modal-close" data-close-modal="modalAnalisePreview" aria-label="Fechar detalhes da analise">&times;</button>
-        <div class="public-analysis-modal-header">
-            <div class="public-analysis-modal-heading">
-                <span class="analises-modal-kicker" id="modalAnaliseKicker">Modulo analitico</span>
-                <h3 id="modalAnaliseTitulo">Painel analitico</h3>
-                <p id="modalAnaliseDescricao">Carregando informacoes do modulo selecionado.</p>
-            </div>
-        </div>
-        <div class="public-analysis-modal-body" id="modalAnalisePreviewBody"></div>
-        <div class="public-analysis-modal-footer">
-            <div class="public-analysis-modal-footer-copy" id="modalAnaliseRodape">Carregando resumo operacional do modulo selecionado.</div>
-            <?php if (is_array($usuarioAtivo) && !empty($usuarioAtivo['nome'])): ?>
-                <a id="modalAnaliseLink" href="/pages/analises/index.php" class="btn btn-primary">Abrir pagina completa</a>
-            <?php else: ?>
-                <a href="#acesso-sistema" class="btn btn-primary" data-close-modal="modalAnalisePreview">Ir para acesso protegido</a>
-            <?php endif; ?>
-            <button type="button" class="btn btn-secondary" data-close-modal="modalAnalisePreview">Fechar</button>
-        </div>
-    </div>
-</div>
-
 <div id="modalInfo" class="modal">
     <div class="modal-content public-info-modal">
         <button type="button" class="public-modal-close" data-close-modal="modalInfo" aria-label="Fechar sobre o sistema">&times;</button>
@@ -1230,48 +1208,20 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
     'municipios' => $municipiosDisponiveis,
 ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?></script>
 
-<script nonce="<?= htmlspecialchars($cspNonce, ENT_QUOTES, 'UTF-8') ?>" id="analises-preview-data" type="application/json"><?= json_encode($analises, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?></script>
-
 <script nonce="<?= htmlspecialchars($cspNonce, ENT_QUOTES, 'UTF-8') ?>">
 window.MULTIRRISCO_CONFIG = { enableCompdec: false };
 window.ANALISE_GLOBAL_CONFIG = { pdfEnabled: false };
 
 (function () {
     const modalInfo = document.getElementById('modalInfo');
-    const modalAnalisePreview = document.getElementById('modalAnalisePreview');
     const loginEmail = document.getElementById('login-email');
-    const previewDataNode = document.getElementById('analises-preview-data');
-    const previewData = previewDataNode ? JSON.parse(previewDataNode.textContent || '[]') : [];
-    const previewMap = new Map(previewData.map(function (item) {
-        return [item.slug, item];
-    }));
-    const previewEls = {
-        kicker: document.getElementById('modalAnaliseKicker'),
-        titulo: document.getElementById('modalAnaliseTitulo'),
-        descricao: document.getElementById('modalAnaliseDescricao'),
-        body: document.getElementById('modalAnalisePreviewBody'),
-        rodape: document.getElementById('modalAnaliseRodape'),
-        link: document.getElementById('modalAnaliseLink')
-    };
-    const previewLoadState = {
-        token: 0
-    };
-
-    function escapeHtml(value) {
-        return String(value ?? '')
-            .replaceAll('&', '&amp;')
-            .replaceAll('<', '&lt;')
-            .replaceAll('>', '&gt;')
-            .replaceAll('"', '&quot;')
-            .replaceAll("'", '&#039;');
-    }
 
     function modalVisivel(modal) {
         return !!modal && window.getComputedStyle(modal).display !== 'none';
     }
 
     function atualizarScrollBody() {
-        const existeModalAberto = [modalInfo, modalAnalisePreview].some(modalVisivel);
+        const existeModalAberto = [modalInfo].some(modalVisivel);
         document.body.classList.toggle('public-modal-open', existeModalAberto);
     }
 
@@ -1290,207 +1240,25 @@ window.ANALISE_GLOBAL_CONFIG = { pdfEnabled: false };
         }
 
         modal.style.display = 'none';
-
-        if (modal === modalAnalisePreview && previewEls.body) {
-            const iframeAtual = document.getElementById('modalAnaliseFrame');
-
-            if (iframeAtual) {
-                iframeAtual.setAttribute('src', 'about:blank');
-            }
-
-            previewLoadState.token += 1;
-            previewEls.body.innerHTML = '';
-
-            if (previewEls.rodape) {
-                previewEls.rodape.textContent = 'Carregando resumo operacional do modulo selecionado.';
-            }
-        }
-
         atualizarScrollBody();
     }
 
-    function textoSelecionado(id, fallback) {
+    function valorSelecionado(id) {
         const select = document.getElementById(id);
-
         if (!select) {
-            return fallback;
+            return '';
         }
 
-        const option = select.options[select.selectedIndex];
-
-        if (!option || option.value === '') {
-            return fallback;
-        }
-
-        return option.textContent || fallback;
+        return String(select.value || '').trim();
     }
 
-    function montarFiltroAtual(label, valor) {
-        return [
-            '<article class="public-analysis-form-field">',
-            '<span>', escapeHtml(label), '</span>',
-            '<strong>', escapeHtml(valor), '</strong>',
-            '</article>'
-        ].join('');
-    }
-
-    function valorFiltroPreview(nomeFiltro) {
-        switch (String(nomeFiltro || '')) {
-            case 'Ano':
-                return textoSelecionado('filtroAno', 'Todos');
-            case 'Mes':
-                return textoSelecionado('filtroMes', 'Todos');
-            case 'Regiao':
-                return textoSelecionado('filtroRegiao', 'Todas');
-            case 'Municipio':
-                return textoSelecionado('filtroMunicipio', 'Todos');
-            case 'Evento':
-                return 'Definido na propria pagina';
-            default:
-                return 'Disponivel neste painel';
-        }
-    }
-
-    function montarResumoPreview(item) {
-        return [
-            '<article class="public-analysis-summary-card">',
-            '<span>', escapeHtml(item?.label || 'Destaque'), '</span>',
-            '<strong>', escapeHtml(item?.value || 'Leitura analitica'), '</strong>',
-            '<p>', escapeHtml(item?.note || 'Resumo operacional do painel.'), '</p>',
-            '</article>'
-        ].join('');
-    }
-
-    function montarInsightPreview(item) {
-        return [
-            '<article class="public-analysis-insight-card">',
-            '<span>', escapeHtml(item?.label || 'Insight'), '</span>',
-            '<strong>', escapeHtml(item?.value || 'Leitura rapida'), '</strong>',
-            '<p>', escapeHtml(item?.note || 'Destaque operacional do painel.'), '</p>',
-            '</article>'
-        ].join('');
-    }
-
-    function montarGraficoPreview(item) {
-        const titulo = typeof item === 'string' ? item : item?.titulo;
-        const descricao = typeof item === 'string'
-            ? 'Disponivel no painel completo com o mesmo recorte territorial.'
-            : (item?.descricao || 'Disponivel no painel completo com o mesmo recorte territorial.');
-        const kicker = typeof item === 'string' ? 'Grafico' : (item?.kicker || 'Grafico');
-        const variant = typeof item === 'string' ? 'half' : (item?.variant || 'half');
-
-        return [
-            '<article class="public-analysis-chart-card public-analysis-chart-card--', escapeHtml(variant), '">',
-            '<span class="public-analysis-chart-kicker">', escapeHtml(kicker), '</span>',
-            '<strong>', escapeHtml(titulo || 'Leitura grafica'), '</strong>',
-            '<p>', escapeHtml(descricao), '</p>',
-            '<div class="public-analysis-chart-visual" aria-hidden="true">',
-            '<span></span><span></span><span></span><span></span>',
-            '</div>',
-            '</article>'
-        ].join('');
-    }
-
-    function acoesPreview(analise) {
-        switch (String(analise?.slug || '')) {
-            case 'temporal':
-                return [
-                    { label: 'Voltar para analises', tone: 'primary' },
-                    { label: 'Abrir severidade', tone: 'secondary' }
-                ];
-            case 'severidade':
-                return [
-                    { label: 'Voltar para analises', tone: 'primary' },
-                    { label: 'Abrir tipologia', tone: 'secondary' }
-                ];
-            case 'tipologia':
-                return [
-                    { label: 'Voltar para analises', tone: 'primary' },
-                    { label: 'Abrir indices', tone: 'secondary' }
-                ];
-            case 'indices':
-                return [
-                    { label: 'Entender metodologia', tone: 'secondary' },
-                    { label: 'Voltar para analises', tone: 'primary' }
-                ];
-            default:
-                return [
-                    { label: 'Abrir pagina completa', tone: 'primary' }
-                ];
-        }
-    }
-
-    function renderizarPreviewAnalise(analise) {
-        const preview = analise?.preview || {};
-        const filtrosHtml = (analise?.filtros || []).map(function (filtro) {
-            return montarFiltroAtual(filtro, valorFiltroPreview(filtro));
-        }).join('');
-        const resumoHtml = (preview.resumo || []).map(montarResumoPreview).join('');
-        const insightsHtml = (preview.insights || []).map(montarInsightPreview).join('');
-        const graficosHtml = (preview.graficos_preview || analise?.graficos || []).map(montarGraficoPreview).join('');
-        const contextoHtml = (analise?.filtros || []).map(function (filtro) {
-            return [
-                '<span class="public-preview-context-chip">',
-                '<strong>', escapeHtml(filtro), ':</strong> ',
-                escapeHtml(valorFiltroPreview(filtro)),
-                '</span>'
-            ].join('');
-        }).join('');
-        const acoesHtml = acoesPreview(analise).map(function (acao) {
-            return '<span class="public-preview-action public-preview-action--' + escapeHtml(acao.tone || 'secondary') + '">' + escapeHtml(acao.label) + '</span>';
-        }).join('');
-
-        return [
-            '<div class="public-analysis-page-preview">',
-            '<section class="public-analysis-preview-hero">',
-            '<div class="public-analysis-preview-hero-copy">',
-            '<span class="public-analysis-preview-kicker">', escapeHtml(preview.hero_kicker || analise?.kicker || 'Modulo analitico'), '</span>',
-            '<h4>', escapeHtml(preview.pagina_titulo || analise?.titulo || 'Painel analitico'), '</h4>',
-            '<p>', escapeHtml(preview.pagina_descricao || analise?.descricao || 'Painel analitico selecionado.'), '</p>',
-            '<div class="public-analysis-preview-actions">', acoesHtml, '</div>',
-            '<div class="public-analysis-preview-context">', contextoHtml, '</div>',
-            '</div>',
-            '<div class="public-analysis-preview-summary-grid">', resumoHtml, '</div>',
-            '</section>',
-
-            '<div class="public-analysis-preview-main">',
-            '<section class="public-analysis-preview-panel">',
-            '<div class="public-analysis-preview-head">',
-            '<span class="public-analysis-preview-section-kicker">Secao 1</span>',
-            '<h4>', escapeHtml(preview.filtros_titulo || 'Filtros do recorte analitico'), '</h4>',
-            '<p>', escapeHtml(preview.filtros_texto || 'Ajuste o recorte para recalcular o painel.'), '</p>',
-            '</div>',
-            '<div class="public-analysis-form-grid">', filtrosHtml, '</div>',
-            '</section>',
-
-            '<section class="public-analysis-preview-panel">',
-            '<div class="public-analysis-preview-head">',
-            '<span class="public-analysis-preview-section-kicker">Secao 2</span>',
-            '<h4>', escapeHtml(preview.insights_titulo || 'Leituras rapidas do periodo'), '</h4>',
-            '<p>', escapeHtml(preview.insights_texto || 'Destaques operacionais do painel selecionado.'), '</p>',
-            '</div>',
-            '<div class="public-analysis-insight-grid">', insightsHtml, '</div>',
-            '</section>',
-            '</div>',
-
-            '<section class="public-analysis-preview-panel">',
-            '<div class="public-analysis-preview-head">',
-            '<span class="public-analysis-preview-section-kicker">Visual da pagina</span>',
-            '<h4>Graficos e blocos analiticos</h4>',
-            '<p>Previa estrutural da tela correspondente ao card selecionado, mantendo o mesmo idioma visual do modulo original.</p>',
-            '</div>',
-            '<div class="public-analysis-chart-grid">', graficosHtml, '</div>',
-            '</section>',
-            '</div>'
-        ].join('');
-    }
-
-    function urlPreviewAnalise(analise) {
+    function urlAnalisePublica(baseHref) {
+        const url = new URL(baseHref || '/pages/analises/index.php', window.location.origin);
         const params = new URLSearchParams();
-        const ano = document.getElementById('filtroAno')?.value || '';
-        const mes = document.getElementById('filtroMes')?.value || '';
-        const regiao = document.getElementById('filtroRegiao')?.value || '';
-        const municipio = document.getElementById('filtroMunicipio')?.value || '';
+        const ano = valorSelecionado('filtroAno');
+        const mes = valorSelecionado('filtroMes');
+        const regiao = valorSelecionado('filtroRegiao');
+        const municipio = valorSelecionado('filtroMunicipio');
 
         if (ano) {
             params.set('ano', ano);
@@ -1510,139 +1278,26 @@ window.ANALISE_GLOBAL_CONFIG = { pdfEnabled: false };
 
         params.set('embed', '1');
 
-        return (analise?.href || '/pages/analises/index.php') + '?' + params.toString();
+        url.search = params.toString();
+
+        return url.pathname + url.search;
     }
 
-    function montarIframeAnalise(analise) {
-        return [
-            '<div class="public-analysis-frame-shell">',
-            '<div class="public-analysis-frame-loading" id="modalAnaliseLoading">Carregando pagina analitica com filtros e graficos reais...</div>',
-            '<iframe',
-            ' id="modalAnaliseFrame"',
-            ' class="public-analysis-iframe"',
-            ' src="about:blank"',
-            ' data-src="', escapeHtml(urlPreviewAnalise(analise)), '"',
-            ' loading="eager"',
-            ' referrerpolicy="same-origin"',
-            ' title="', escapeHtml(analise?.titulo || 'Pagina analitica'), '"',
-            '></iframe>',
-            '</div>'
-        ].join('');
-    }
+    function atualizarLinksAnaliticosPublicos() {
+        const links = document.querySelectorAll('[data-analise-link]');
 
-    function sincronizarIframeAnalise(iframe) {
-        if (!iframe || !iframe.contentWindow) {
-            return;
-        }
-
-        const emitirResize = function () {
-            try {
-                const janelaFilha = iframe.contentWindow;
-                const EventoResize = janelaFilha.Event || window.Event;
-                janelaFilha.dispatchEvent(new EventoResize('resize'));
-            } catch (error) {
-                console.warn('Nao foi possivel sincronizar o resize da analise embed.', error);
-            }
-        };
-
-        emitirResize();
-        window.setTimeout(emitirResize, 120);
-        window.setTimeout(emitirResize, 320);
-    }
-
-    function iniciarCarregamentoIframe(iframe, tokenAtual) {
-        if (!iframe || tokenAtual !== previewLoadState.token) {
-            return;
-        }
-
-        const urlDestino = iframe.getAttribute('data-src');
-
-        if (!urlDestino) {
-            return;
-        }
-
-        window.requestAnimationFrame(function () {
-            window.requestAnimationFrame(function () {
-                if (tokenAtual !== previewLoadState.token) {
-                    return;
-                }
-
-                iframe.setAttribute('src', urlDestino);
-            });
+        links.forEach(function (link) {
+            const baseHref = link.getAttribute('data-href-base') || link.getAttribute('href') || '/pages/analises/index.php';
+            link.setAttribute('href', urlAnalisePublica(baseHref));
         });
-    }
-
-    function abrirPreviewAnalise(slug) {
-        const analise = previewMap.get(slug);
-        const preview = analise?.preview || {};
-
-        if (!analise || !previewEls.titulo || !previewEls.body) {
-            return;
-        }
-
-        previewEls.kicker.textContent = preview.hero_kicker || analise.kicker || 'Modulo analitico';
-        previewEls.titulo.textContent = preview.pagina_titulo || analise.titulo || 'Painel analitico';
-        previewEls.descricao.textContent = preview.pagina_descricao || analise.descricao || 'Painel analitico selecionado.';
-
-        if (previewEls.link) {
-            previewEls.link.href = analise.href || '/pages/analises/index.php';
-            previewEls.link.textContent = 'Abrir ' + (preview.pagina_titulo || analise.titulo || 'pagina completa');
-        }
-
-        previewLoadState.token += 1;
-        const tokenAtual = previewLoadState.token;
-        previewEls.body.innerHTML = montarIframeAnalise(analise);
-
-        if (previewEls.rodape) {
-            previewEls.rodape.textContent = preview.rodape || 'A pagina abaixo e a propria analise em modo de visualizacao, com filtros e graficos reais no mesmo layout do sistema.';
-        }
-
-        abrirModal(modalAnalisePreview);
-
-        const iframe = document.getElementById('modalAnaliseFrame');
-        const loading = document.getElementById('modalAnaliseLoading');
-
-        if (iframe && loading) {
-            const timeoutCarregamento = window.setTimeout(function () {
-                if (tokenAtual === previewLoadState.token && !iframe.classList.contains('is-ready')) {
-                    loading.textContent = 'Carregando a pagina analitica real com filtros e graficos. Se demorar, aguarde mais alguns instantes.';
-                }
-            }, 2400);
-
-            const timeoutCarregamentoLento = window.setTimeout(function () {
-                if (tokenAtual === previewLoadState.token && !iframe.classList.contains('is-ready')) {
-                    loading.textContent = 'A visualizacao esta sendo preparada. O carregamento so comeca depois que o modal fica visivel para garantir que os graficos aparecam corretamente.';
-                }
-            }, 5200);
-
-            iframe.addEventListener('load', function () {
-                if (tokenAtual !== previewLoadState.token) {
-                    return;
-                }
-
-                window.clearTimeout(timeoutCarregamento);
-                window.clearTimeout(timeoutCarregamentoLento);
-                loading.hidden = true;
-                iframe.classList.add('is-ready');
-                sincronizarIframeAnalise(iframe);
-            }, { once: true });
-
-            iniciarCarregamentoIframe(iframe, tokenAtual);
-        }
     }
 
     document.addEventListener('click', function (event) {
         const openInfo = event.target.closest('[data-open-info]');
-        const previewButton = event.target.closest('[data-analise-preview]');
         const closeButton = event.target.closest('[data-close-modal]');
 
         if (openInfo) {
             abrirModal(modalInfo);
-            return;
-        }
-
-        if (previewButton) {
-            abrirPreviewAnalise(previewButton.getAttribute('data-analise-preview') || '');
             return;
         }
 
@@ -1654,10 +1309,6 @@ window.ANALISE_GLOBAL_CONFIG = { pdfEnabled: false };
         if (event.target === modalInfo) {
             fecharModalPersonalizado(modalInfo);
         }
-
-        if (event.target === modalAnalisePreview) {
-            fecharModalPersonalizado(modalAnalisePreview);
-        }
     });
 
     document.addEventListener('keydown', function (event) {
@@ -1665,15 +1316,22 @@ window.ANALISE_GLOBAL_CONFIG = { pdfEnabled: false };
             return;
         }
 
-        if (modalVisivel(modalAnalisePreview)) {
-            fecharModalPersonalizado(modalAnalisePreview);
-            return;
-        }
-
         if (modalVisivel(modalInfo)) {
             fecharModalPersonalizado(modalInfo);
         }
     });
+
+    ['filtroAno', 'filtroMes', 'filtroRegiao', 'filtroMunicipio'].forEach(function (id) {
+        const select = document.getElementById(id);
+
+        if (select) {
+            select.addEventListener('change', atualizarLinksAnaliticosPublicos);
+        }
+    });
+
+    atualizarLinksAnaliticosPublicos();
+    window.setTimeout(atualizarLinksAnaliticosPublicos, 300);
+    window.setTimeout(atualizarLinksAnaliticosPublicos, 1200);
 
     <?php if ($erro !== '' && (!is_array($usuarioAtivo) || empty($usuarioAtivo['nome']))): ?>
     const acessoSistema = document.getElementById('acesso-sistema');
