@@ -11,7 +11,7 @@
     try {
         pageData = JSON.parse(dataNode.textContent);
     } catch (error) {
-        console.error('Falha ao carregar os dados da previa do INMET.', error);
+        console.error('Falha ao carregar os dados da prévia do INMET.', error);
         return;
     }
 
@@ -21,7 +21,7 @@
         try {
             geojson = JSON.parse(geojson);
         } catch (error) {
-            console.error('Falha ao interpretar o GeoJSON da previa do INMET.', error);
+            console.error('Falha ao interpretar o GeoJSON da prévia do INMET.', error);
             geojson = null;
         }
     }
