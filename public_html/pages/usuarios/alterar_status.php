@@ -15,7 +15,7 @@ $id = (int) ($_POST['id'] ?? 0);
 $acao = $_POST['acao'] ?? '';
 
 if ($id <= 0 || !in_array($acao, ['ativar', 'inativar'], true)) {
-    header('Location: listar.php?status=erro');
+    header('Location: listar.php?status_operacao=erro');
     exit;
 }
 
@@ -30,7 +30,7 @@ $stmt->execute([$id]);
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$usuario) {
-    header('Location: listar.php?status=nao_encontrado');
+    header('Location: listar.php?status_operacao=nao_encontrado');
     exit;
 }
 
@@ -62,5 +62,5 @@ HistoricoService::registrar(
     )
 );
 
-header('Location: listar.php?status=ok');
+header('Location: listar.php?status_operacao=ok');
 exit;

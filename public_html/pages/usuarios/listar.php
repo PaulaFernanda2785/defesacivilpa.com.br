@@ -11,6 +11,9 @@ $db = Database::getConnection();
 $filtroNome = trim((string) ($_GET['nome'] ?? ''));
 $filtroPerfil = trim((string) ($_GET['perfil'] ?? ''));
 $filtroStatus = trim((string) ($_GET['status'] ?? ''));
+if ($filtroStatus !== '' && !in_array($filtroStatus, ['ATIVO', 'INATIVO'], true)) {
+    $filtroStatus = '';
+}
 
 $limite = 10;
 $pagina = isset($_GET['pagina']) ? max(1, (int) $_GET['pagina']) : 1;
