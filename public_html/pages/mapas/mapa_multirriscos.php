@@ -99,14 +99,14 @@ $totalRegioesBase = count($regioesDisponiveis);
                         <span class="alerta-form-kicker">Monitoramento territorial</span>
                         <h1 class="alerta-form-title">Mapa multirriscos com foco territorial</h1>
                         <p class="alerta-form-description">
-                            Consulte alertas ativos, destaque regioes e municipios no mapa, acompanhe a pressao de risco
-                            por territorio e abra modais detalhados com o historico ativo de cada recorte territorial.
+                            Consulte alertas ativos, destaque regiões e municípios no mapa, acompanhe a pressão de risco
+                            por território e abra modais detalhados com o histórico ativo de cada recorte territorial.
                         </p>
 
                         <div class="usuarios-hero-chip-row multirrisco-hero-chip-row">
                             <span class="usuarios-hero-chip"><?= $totalAtivos ?> alertas ativos monitorados</span>
-                            <span class="usuarios-hero-chip"><?= $totalMunicipiosBase ?> municipios na base territorial</span>
-                            <span class="usuarios-hero-chip"><?= $totalRegioesBase ?> regioes de integracao mapeadas</span>
+                            <span class="usuarios-hero-chip"><?= $totalMunicipiosBase ?> municípios na base territorial</span>
+                            <span class="usuarios-hero-chip"><?= $totalRegioesBase ?> regiões de integração mapeadas</span>
                         </div>
 
                         <div class="usuarios-hero-actions multirrisco-hero-actions">
@@ -121,15 +121,15 @@ $totalRegioesBase = count($regioesDisponiveis);
                         <span class="usuarios-summary-label">Monitoramento ativo</span>
                         <strong class="usuarios-summary-value" id="hero-alertas-ativos"><?= $totalAtivos ?> alertas</strong>
                         <span class="usuarios-summary-note">
-                            Total atual de alertas com status ativo disponiveis para leitura territorial.
+                            Total atual de alertas com status ativo disponíveis para leitura territorial.
                         </span>
                     </article>
 
                     <article class="usuarios-summary-card usuarios-summary-card-success">
                         <span class="usuarios-summary-label">Base territorial</span>
-                        <strong class="usuarios-summary-value"><?= $totalMunicipiosBase ?> municipios</strong>
+                        <strong class="usuarios-summary-value"><?= $totalMunicipiosBase ?> municípios</strong>
                         <span class="usuarios-summary-note">
-                            Cobertura completa em <?= $totalRegioesBase ?> regioes de integracao do estado.
+                            Cobertura completa em <?= $totalRegioesBase ?> regiões de integração do estado.
                         </span>
                     </article>
 
@@ -137,7 +137,7 @@ $totalRegioesBase = count($regioesDisponiveis);
                         <span class="usuarios-summary-label">Leitura executiva</span>
                         <strong class="usuarios-summary-value">Mapa + ranking + IRP</strong>
                         <span class="usuarios-summary-note">
-                            Painel unificado para leitura operacional rapida e decisao territorial.
+                            Painel unificado para leitura operacional rápida e decisão territorial.
                         </span>
                     </article>
 
@@ -145,37 +145,37 @@ $totalRegioesBase = count($regioesDisponiveis);
                         <span class="usuarios-summary-label">Foco atual</span>
                         <strong class="usuarios-summary-value" id="hero-foco-value">Sem recorte territorial</strong>
                         <span class="usuarios-summary-note" id="hero-foco-note">
-                            Selecione regiao, municipio ou clique no mapa para abrir o detalhamento operacional.
+                            Selecione região, município ou clique no mapa para abrir o detalhamento operacional.
                         </span>
                     </article>
                 </div>
 
                 <aside class="usuarios-command-card multirrisco-command-card">
                     <span class="usuarios-command-kicker">Comando operacional</span>
-                    <h2>Coordenacao territorial do multirrisco</h2>
+                    <h2>Coordenação territorial do multirrisco</h2>
                     <p>
-                        Este painel apoia a navegacao do mapa com foco em resposta rapida, priorizando o territorio
-                        que exige maior atencao operacional no momento.
+                        Este painel apoia a navegação do mapa com foco em resposta rápida, priorizando o território
+                        que exige maior atenção operacional no momento.
                     </p>
 
                     <div class="usuarios-command-grid multirrisco-command-grid">
                         <article class="usuarios-command-item">
-                            <span>Usuario responsavel</span>
+                            <span>Usuário responsável</span>
                             <strong><?= htmlspecialchars((string) ($usuario['nome'] ?? '-'), ENT_QUOTES, 'UTF-8') ?></strong>
-                            <small>Sessao com acesso para consultar, filtrar e detalhar o cenario territorial.</small>
+                            <small>Sessão com acesso para consultar, filtrar e detalhar o cenário territorial.</small>
                         </article>
 
                         <article class="usuarios-command-item">
                             <span>Carga atual monitorada</span>
                             <strong><?= $totalAtivos ?> alertas ativos</strong>
-                            <small>Distribuidos em <?= $totalMunicipiosBase ?> municipios e <?= $totalRegioesBase ?> regioes.</small>
+                            <small>Distribuídos em <?= $totalMunicipiosBase ?> municípios e <?= $totalRegioesBase ?> regiões.</small>
                         </article>
 
                         <article class="usuarios-command-item">
                             <span>Prioridade sugerida</span>
                             <strong>Aplicar recorte territorial</strong>
                             <small>
-                                Filtre por regiao ou municipio para destacar o foco, abrir o modal e acelerar a leitura.
+                                Filtre por região ou município para destacar o foco, abrir o modal e acelerar a leitura.
                             </small>
                         </article>
                     </div>
@@ -186,10 +186,10 @@ $totalRegioesBase = count($regioesDisponiveis);
                 <div class="alerta-form-grid multirrisco-overview-grid">
                     <section class="alerta-form-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 1</span>
+                            <span class="alerta-section-kicker">Seção 1</span>
                             <h2 class="alerta-section-title">Filtros e recorte territorial</h2>
                             <p class="alerta-section-text">
-                                Os filtros abaixo sincronizam mapa, indicadores, ranking regional, grafico de pressao
+                                Os filtros abaixo sincronizam mapa, indicadores, ranking regional, gráfico de pressão
                                 e modais territoriais.
                             </p>
                         </header>
@@ -197,12 +197,12 @@ $totalRegioesBase = count($regioesDisponiveis);
                         <form id="multirrisco-form" class="multirrisco-filter-form">
                             <div class="multirrisco-filter-grid">
                                 <div class="form-group">
-                                    <label for="data_inicio">Periodo inicial</label>
+                                    <label for="data_inicio">Período inicial</label>
                                     <input type="date" id="data_inicio" name="data_inicio">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="data_fim">Periodo final</label>
+                                    <label for="data_fim">Período final</label>
                                     <input type="date" id="data_fim" name="data_fim">
                                 </div>
 
@@ -243,9 +243,9 @@ $totalRegioesBase = count($regioesDisponiveis);
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="regiao">Regiao</label>
+                                    <label for="regiao">Região</label>
                                     <select id="regiao" name="regiao">
-                                        <option value="">Todas as regioes</option>
+                                        <option value="">Todas as regiões</option>
                                         <?php foreach ($regioesDisponiveis as $regiao): ?>
                                             <option value="<?= htmlspecialchars($regiao, ENT_QUOTES, 'UTF-8') ?>">
                                                 <?= htmlspecialchars($regiao, ENT_QUOTES, 'UTF-8') ?>
@@ -255,12 +255,12 @@ $totalRegioesBase = count($regioesDisponiveis);
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="municipio">Municipio</label>
+                                    <label for="municipio">Município</label>
                                     <select id="municipio" name="municipio">
-                                        <option value="">Todos os municipios</option>
+                                        <option value="">Todos os municípios</option>
                                     </select>
                                     <span class="field-helper">
-                                        Ao selecionar uma regiao, a lista de municipios e filtrada automaticamente.
+                                        Ao selecionar uma região, a lista de municípios é filtrada automaticamente.
                                     </span>
                                 </div>
                             </div>
@@ -289,7 +289,7 @@ $totalRegioesBase = count($regioesDisponiveis);
 
                     <section class="alerta-form-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 2</span>
+                            <span class="alerta-section-kicker">Seção 2</span>
                             <h2 class="alerta-section-title">Leitura operacional</h2>
                             <p class="alerta-section-text">
                                 O painel ao lado resume a carga territorial ativa e ajuda a direcionar a leitura do mapa.
@@ -304,30 +304,30 @@ $totalRegioesBase = count($regioesDisponiveis);
                             </article>
 
                             <article class="painel-kpi-card">
-                                <span class="painel-kpi-label">Municipios em risco</span>
+                                <span class="painel-kpi-label">Municípios em risco</span>
                                 <strong class="painel-kpi-value" id="kpi-municipios">-</strong>
-                                <span class="painel-kpi-note">Municipios com alertas ativos considerando os filtros.</span>
+                                <span class="painel-kpi-note">Municípios com alertas ativos considerando os filtros.</span>
                             </article>
 
                             <article class="painel-kpi-card is-neutral">
-                                <span class="painel-kpi-label">Regioes afetadas</span>
+                                <span class="painel-kpi-label">Regiões afetadas</span>
                                 <strong class="painel-kpi-value" id="kpi-regioes">-</strong>
-                                <span class="painel-kpi-note">Regioes de integracao atingidas pelo recorte consultado.</span>
+                                <span class="painel-kpi-note">Regiões de integração atingidas pelo recorte consultado.</span>
                             </article>
 
                             <article class="painel-kpi-card is-warning multirrisco-focus-card">
-                                <span class="painel-kpi-label">Territorio em foco</span>
+                                <span class="painel-kpi-label">Território em foco</span>
                                 <strong class="painel-kpi-value" id="foco-territorial-titulo">Nenhum foco definido</strong>
                                 <span class="painel-kpi-note" id="foco-territorial-texto">
-                                    Clique em um municipio ou regiao para abrir o modal detalhado com os alertas ativos.
+                                    Clique em um município ou região para abrir o modal detalhado com os alertas ativos.
                                 </span>
                             </article>
                         </div>
 
                         <div class="alerta-callout multirrisco-callout">
-                            <strong>Experiencia recomendada</strong>
-                            Comece pelo filtro territorial. Ao escolher uma regiao, o contorno regional ganha destaque no
-                            mapa; ao escolher um municipio, o recorte municipal passa a ser o foco principal da tela.
+                            <strong>Experiência recomendada</strong>
+                            Comece pelo filtro territorial. Ao escolher uma região, o contorno regional ganha destaque no
+                            mapa; ao escolher um município, o recorte municipal passa a ser o foco principal da tela.
                         </div>
                     </section>
                 </div>
@@ -336,16 +336,16 @@ $totalRegioesBase = count($regioesDisponiveis);
             <section class="alerta-form-panel multirrisco-map-panel" id="multirrisco-mapa">
                 <header class="painel-section-head">
                     <div class="alerta-section-header">
-                        <span class="alerta-section-kicker">Secao 3</span>
-                        <h2 class="alerta-section-title">Mapa territorial e pressao ativa</h2>
+                        <span class="alerta-section-kicker">Seção 3</span>
+                        <h2 class="alerta-section-title">Mapa territorial e pressão ativa</h2>
                         <p class="alerta-section-text">
-                            O mapa e o elemento central da pagina. Use camadas territoriais, alertas e o ranking regional
-                            para navegar rapidamente pelo cenario multirrisco.
+                            O mapa é o elemento central da página. Use camadas territoriais, alertas e o ranking regional
+                            para navegar rapidamente pelo cenário multirrisco.
                         </p>
                     </div>
 
                     <div class="painel-map-meta">
-                        <span class="painel-chip" id="chip-modo-territorial">Modo: municipios</span>
+                        <span class="painel-chip" id="chip-modo-territorial">Modo: municípios</span>
                         <span class="painel-chip" id="chip-filtro-territorial">Sem recorte territorial</span>
                     </div>
                 </header>
@@ -354,10 +354,10 @@ $totalRegioesBase = count($regioesDisponiveis);
                     <div class="map-card multirrisco-map-card">
                         <div class="map-card-header">
                             <div>
-                                <span class="map-card-title">Mapa multirriscos do Para</span>
+                                <span class="map-card-title">Mapa multirriscos do Pará</span>
                                 <p class="map-card-text">
-                                    Alertas ativos, pressao territorial, regioes de integracao e municipios sao atualizados
-                                    juntos, com destaque automatico a partir do filtro selecionado.
+                                    Alertas ativos, pressão territorial, regiões de integração e municípios são atualizados
+                                    juntos, com destaque automático a partir do filtro selecionado.
                                 </p>
                             </div>
 
@@ -386,12 +386,12 @@ $totalRegioesBase = count($regioesDisponiveis);
 
                                 <label class="multirrisco-segment">
                                     <input type="radio" name="modoTerritorial" value="municipios" checked>
-                                    <span>Municipios</span>
+                                    <span>Municípios</span>
                                 </label>
 
                                 <label class="multirrisco-segment">
                                     <input type="radio" name="modoTerritorial" value="regioes">
-                                    <span>Regioes</span>
+                                    <span>Regiões</span>
                                 </label>
                             </div>
                         </div>
@@ -408,9 +408,9 @@ $totalRegioesBase = count($regioesDisponiveis);
                         <section class="alerta-form-section multirrisco-side-section">
                             <header class="alerta-section-header">
                                 <span class="alerta-section-kicker">Ranking</span>
-                                <h2 class="alerta-section-title">Regioes mais pressionadas</h2>
+                                <h2 class="alerta-section-title">Regiões mais pressionadas</h2>
                                 <p class="alerta-section-text">
-                                    Clique em uma regiao da lista para centralizar o mapa e abrir o detalhamento regional.
+                                    Clique em uma região da lista para centralizar o mapa e abrir o detalhamento regional.
                                 </p>
                             </header>
 
@@ -431,10 +431,10 @@ $totalRegioesBase = count($regioesDisponiveis);
                             </div>
 
                             <header class="alerta-section-header">
-                                <span class="alerta-section-kicker">Serie diaria</span>
-                                <h2 class="alerta-section-title">Evolucao do IRP</h2>
+                                <span class="alerta-section-kicker">Série diária</span>
+                                <h2 class="alerta-section-title">Evolução do IRP</h2>
                                 <p class="alerta-section-text">
-                                    Clique em um ponto do grafico para filtrar o mapa e os modais por um dia especifico.
+                                    Clique em um ponto do gráfico para filtrar o mapa e os modais por um dia específico.
                                 </p>
                             </header>
 
@@ -445,7 +445,7 @@ $totalRegioesBase = count($regioesDisponiveis);
                             <div class="alerta-form-actions multirrisco-chart-actions">
                                 <div class="alerta-form-actions-left">
                                     <span class="alerta-inline-note">
-                                        O IRP combina gravidade e abrangencia territorial dos alertas ativos.
+                                        O IRP combina gravidade e abrangência territorial dos alertas ativos.
                                     </span>
                                 </div>
 
@@ -469,9 +469,9 @@ $totalRegioesBase = count($regioesDisponiveis);
     <div class="modal-territorio-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTerritorioTitulo">
         <div class="modal-territorio-header">
             <div class="modal-territorio-header-copy">
-                <span class="modal-territorio-kicker" id="modalTerritorioKicker">Territorio</span>
+                <span class="modal-territorio-kicker" id="modalTerritorioKicker">Território</span>
                 <h3 id="modalTerritorioTitulo">Detalhamento territorial</h3>
-                <p id="modalTerritorioResumo">Carregando detalhamento do territorio selecionado.</p>
+                <p id="modalTerritorioResumo">Carregando detalhamento do território selecionado.</p>
             </div>
 
             <button type="button" class="modal-territorio-close" data-close-territorio aria-label="Fechar modal">
@@ -485,14 +485,14 @@ $totalRegioesBase = count($regioesDisponiveis);
 
 <div id="modalIRP" class="modal">
     <div class="modal-conteudo">
-        <h3>Como o IRP e calculado</h3>
+        <h3>Como o IRP é calculado</h3>
 
         <p>
-            O indice de pressao de risco mede a carga operacional causada pelos alertas ativos no territorio filtrado.
+            O índice de pressão de risco mede a carga operacional causada pelos alertas ativos no território filtrado.
         </p>
 
         <p>
-            A leitura considera o peso da gravidade e a abrangencia municipal de cada alerta ativo.
+            A leitura considera o peso da gravidade e a abrangência municipal de cada alerta ativo.
         </p>
 
         <ul>
@@ -504,7 +504,7 @@ $totalRegioesBase = count($regioesDisponiveis);
         </ul>
 
         <p>
-            Quanto maior o IRP, maior a pressao territorial e a necessidade de resposta operacional.
+            Quanto maior o IRP, maior a pressão territorial e a necessidade de resposta operacional.
         </p>
 
         <button type="button" data-close-irp>Fechar</button>
@@ -515,7 +515,7 @@ $totalRegioesBase = count($regioesDisponiveis);
     <div class="modal-ajuda-conteudo">
         <div class="modal-ajuda-header">
             <div class="modal-ajuda-heading">
-                <span class="modal-ajuda-kicker">Guia rapido</span>
+                <span class="modal-ajuda-kicker">Guia rápido</span>
                 <h3>Como usar o mapa multirriscos</h3>
                 <p>
                     Um roteiro simples para filtrar, interpretar o mapa e abrir o detalhamento territorial com mais
@@ -530,13 +530,13 @@ $totalRegioesBase = count($regioesDisponiveis);
                 <div class="modal-ajuda-hero-copy">
                     <strong>Leitura recomendada</strong>
                     <p>
-                        Comece pelos filtros, use o mapa como referencia central e abra os modais territoriais para
-                        entender cada alerta ativo no contexto da regiao ou municipio.
+                        Comece pelos filtros, use o mapa como referência central e abra os modais territoriais para
+                        entender cada alerta ativo no contexto da região ou município.
                     </p>
                 </div>
 
                 <div class="modal-ajuda-pill-row">
-                    <span class="modal-ajuda-pill">1. Filtre o cenario</span>
+                    <span class="modal-ajuda-pill">1. Filtre o cenário</span>
                     <span class="modal-ajuda-pill">2. Observe o destaque territorial</span>
                     <span class="modal-ajuda-pill">3. Abra o detalhamento</span>
                 </div>
@@ -547,10 +547,10 @@ $totalRegioesBase = count($regioesDisponiveis);
                     <span class="modal-ajuda-card-kicker">Passo a passo</span>
                     <h4>Fluxo ideal de uso</h4>
                     <ol class="modal-ajuda-sequencia">
-                        <li>Defina periodo, evento, gravidade e fonte para reduzir o cenario.</li>
-                        <li>Selecione uma regiao para destacar o contorno regional no mapa.</li>
-                        <li>Selecione um municipio para mudar automaticamente o foco para o nivel municipal.</li>
-                        <li>Clique na regiao, municipio ou ranking para abrir o modal territorial completo.</li>
+                        <li>Defina período, evento, gravidade e fonte para reduzir o cenário.</li>
+                        <li>Selecione uma região para destacar o contorno regional no mapa.</li>
+                        <li>Selecione um município para mudar automaticamente o foco para o nível municipal.</li>
+                        <li>Clique na região, município ou ranking para abrir o modal territorial completo.</li>
                     </ol>
                 </article>
 
@@ -558,10 +558,10 @@ $totalRegioesBase = count($regioesDisponiveis);
                     <span class="modal-ajuda-card-kicker">Detalhamento</span>
                     <h4>O que aparece nos modais territoriais</h4>
                     <ul class="modal-ajuda-lista">
-                        <li>Nome do territorio consultado e pressao territorial acumulada.</li>
+                        <li>Nome do território consultado e pressão territorial acumulada.</li>
                         <li>Quantidade de alertas ativos e tipos de evento presentes no recorte.</li>
-                        <li>Numero do alerta, data, vigencia, gravidade, pressao e fonte de cada alerta ativo.</li>
-                        <li>Quando houver mais de um alerta ativo, cada alerta e exibido separadamente.</li>
+                        <li>Número do alerta, data, vigência, gravidade, pressão e fonte de cada alerta ativo.</li>
+                        <li>Quando houver mais de um alerta ativo, cada alerta é exibido separadamente.</li>
                     </ul>
                 </article>
 
@@ -569,10 +569,10 @@ $totalRegioesBase = count($regioesDisponiveis);
                     <span class="modal-ajuda-card-kicker">Camadas</span>
                     <h4>Como navegar no mapa</h4>
                     <ul class="modal-ajuda-lista">
-                        <li>O modo territorial alterna entre municipios e regioes.</li>
+                        <li>O modo territorial alterna entre municípios e regiões.</li>
                         <li>A camada de alertas pode ser ligada ou desligada sem perder o recorte atual.</li>
-                        <li>A camada de DC municipais fica disponivel como apoio operacional complementar.</li>
-                        <li>O ranking regional e o grafico do IRP ajudam a encontrar rapidamente as areas criticas.</li>
+                        <li>A camada de DC municipais fica disponível como apoio operacional complementar.</li>
+                        <li>O ranking regional e o gráfico do IRP ajudam a encontrar rapidamente as áreas críticas.</li>
                     </ul>
                 </article>
             </div>
@@ -582,7 +582,7 @@ $totalRegioesBase = count($regioesDisponiveis);
                     <span class="modal-ajuda-card-kicker">Leitura visual</span>
                     <h4>Como interpretar as cores no mapa</h4>
                     <p>
-                        Quanto mais intensa a cor, maior a pressao operacional e a gravidade predominante no territorio.
+                        Quanto mais intensa a cor, maior a pressão operacional e a gravidade predominante no território.
                     </p>
                 </div>
 
@@ -598,7 +598,7 @@ $totalRegioesBase = count($regioesDisponiveis);
 
         <div class="modal-ajuda-footer">
             <span class="modal-ajuda-footer-note">
-                Dica: se quiser entender um territorio especifico, filtre por regiao ou municipio antes de clicar no mapa.
+                Dica: se quiser entender um território específico, filtre por região ou município antes de clicar no mapa.
             </span>
             <button type="button" data-close-ajuda>Fechar</button>
         </div>
@@ -612,7 +612,7 @@ $totalRegioesBase = count($regioesDisponiveis);
                 <span class="modal-ia-kicker">Assistente operacional</span>
                 <h3>IA Multirriscos</h3>
                 <p>
-                    Converse com o mapa, entenda o recorte atual e aplique acoes diretamente na tela.
+                    Converse com o mapa, entenda o recorte atual e aplique ações diretamente na tela.
                 </p>
             </div>
             <button type="button" onclick="fecharIA()" aria-label="Fechar assistente">X</button>
@@ -631,8 +631,8 @@ $totalRegioesBase = count($regioesDisponiveis);
                     </div>
                     <div class="ia-msg-body">
                         <p>
-                            Posso resumir o recorte atual, identificar regioes ou municipios prioritarios, aplicar foco
-                            territorial, abrir o IRP e orientar sua navegacao no mapa.
+                            Posso resumir o recorte atual, identificar regiões ou municípios prioritários, aplicar foco
+                            territorial, abrir o IRP e orientar sua navegação no mapa.
                         </p>
                     </div>
                 </article>
@@ -644,7 +644,7 @@ $totalRegioesBase = count($regioesDisponiveis);
                 <textarea
                     id="iaPergunta"
                     rows="2"
-                    placeholder="Pergunte algo como: qual regiao esta mais pressionada no recorte atual?"
+                    placeholder="Pergunte algo como: qual região está mais pressionada no recorte atual?"
                 ></textarea>
 
                 <div class="modal-ia-footer-actions">

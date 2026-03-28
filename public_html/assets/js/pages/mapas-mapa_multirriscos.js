@@ -24,7 +24,7 @@
     }
 
     if (typeof L === 'undefined') {
-        renderizarFalhaMapa('Nao foi possivel carregar a biblioteca do mapa. Verifique a conexao da pagina e recarregue.');
+        renderizarFalhaMapa('Não foi possível carregar a biblioteca do mapa. Verifique a conexão da página e recarregue.');
         return;
     }
 
@@ -182,7 +182,7 @@
     function formatarVigencia(inicio, fim) {
         const inicioFormatado = formatarDataHora(inicio);
         const fimFormatado = formatarDataHora(fim);
-        return inicioFormatado === '-' && fimFormatado === '-' ? '-' : `${inicioFormatado} ate ${fimFormatado}`;
+        return inicioFormatado === '-' && fimFormatado === '-' ? '-' : `${inicioFormatado} até ${fimFormatado}`;
     }
 
     function pesoGravidade(nivel) {
@@ -274,7 +274,7 @@
             ? municipiosPorRegiao[regiao]
             : municipiosCatalogo;
 
-        el.municipio.innerHTML = '<option value="">Todos os municipios</option>';
+        el.municipio.innerHTML = '<option value="">Todos os municípios</option>';
 
         lista.forEach((item) => {
             const option = document.createElement('option');
@@ -292,13 +292,13 @@
         const filtros = obterFiltros();
         const itens = [];
 
-        if (filtros.data_inicio) itens.push(`inicio ${formatarData(filtros.data_inicio)}`);
+        if (filtros.data_inicio) itens.push(`início ${formatarData(filtros.data_inicio)}`);
         if (filtros.data_fim) itens.push(`fim ${formatarData(filtros.data_fim)}`);
         if (filtros.tipo_evento) itens.push(`evento ${filtros.tipo_evento}`);
         if (filtros.gravidade) itens.push(`gravidade ${filtros.gravidade}`);
         if (filtros.fonte) itens.push(`fonte ${filtros.fonte}`);
-        if (filtros.regiao) itens.push(`regiao ${filtros.regiao}`);
-        if (filtros.municipio) itens.push(`municipio ${(municipiosPorCodigo[filtros.municipio] || {}).municipio || filtros.municipio}`);
+        if (filtros.regiao) itens.push(`região ${filtros.regiao}`);
+        if (filtros.municipio) itens.push(`município ${(municipiosPorCodigo[filtros.municipio] || {}).municipio || filtros.municipio}`);
         if (filtroDiaSelecionado) itens.push(`dia ${formatarData(filtroDiaSelecionado)}`);
 
         return itens.length ? itens.join(' | ') : 'sem recorte adicional';
@@ -310,15 +310,15 @@
         }
 
         if (el.chipModo) {
-            el.chipModo.textContent = `Modo: ${modoAtual() === 'regioes' ? 'regioes' : 'municipios'}`;
+            el.chipModo.textContent = `Modo: ${modoAtual() === 'regioes' ? 'regiões' : 'municípios'}`;
         }
 
         if (el.chipTerritorio) {
             if (municipioSelecionado()) {
                 const municipio = municipiosPorCodigo[municipioSelecionado()];
-                el.chipTerritorio.textContent = `Municipio: ${municipio ? municipio.municipio : municipioSelecionado()}`;
+                el.chipTerritorio.textContent = `Município: ${municipio ? municipio.municipio : municipioSelecionado()}`;
             } else if (regiaoSelecionada()) {
-                el.chipTerritorio.textContent = `Regiao: ${regiaoSelecionada()}`;
+                el.chipTerritorio.textContent = `Região: ${regiaoSelecionada()}`;
             } else {
                 el.chipTerritorio.textContent = 'Sem recorte territorial';
             }
@@ -404,10 +404,10 @@
         if (municipioSelecionado()) {
             const municipio = municipiosPorCodigo[municipioSelecionado()];
             const dado = dadosMunicipios[municipioSelecionado()];
-            const titulo = municipio ? municipio.municipio : 'Municipio selecionado';
+            const titulo = municipio ? municipio.municipio : 'Município selecionado';
             const texto = dado
-                ? `${dado.alertas} alertas ativos e pressao ${formatarPressao(dado.pressao)} no recorte atual.`
-                : 'Sem alertas ativos para o municipio selecionado.';
+                ? `${dado.alertas} alertas ativos e pressão ${formatarPressao(dado.pressao)} no recorte atual.`
+                : 'Sem alertas ativos para o município selecionado.';
 
             el.heroFocoValue.textContent = titulo;
             el.heroFocoNote.textContent = texto;
@@ -419,8 +419,8 @@
         if (regiaoSelecionada()) {
             const dado = dadosRegioes[regiaoSelecionada()];
             const texto = dado
-                ? `${dado.alertas} alertas ativos, ${dado.municipios} municipios e pressao ${formatarPressao(dado.pressao)}.`
-                : 'Sem alertas ativos para a regiao selecionada.';
+                ? `${dado.alertas} alertas ativos, ${dado.municipios} municípios e pressão ${formatarPressao(dado.pressao)}.`
+                : 'Sem alertas ativos para a região selecionada.';
 
             el.heroFocoValue.textContent = regiaoSelecionada();
             el.heroFocoNote.textContent = texto;
@@ -430,9 +430,9 @@
         }
 
         el.heroFocoValue.textContent = 'Sem recorte territorial';
-        el.heroFocoNote.textContent = 'Selecione regiao, municipio ou clique no mapa para abrir o detalhamento operacional.';
+        el.heroFocoNote.textContent = 'Selecione região, município ou clique no mapa para abrir o detalhamento operacional.';
         el.focoTitulo.textContent = 'Nenhum foco definido';
-        el.focoTexto.textContent = 'Clique em um municipio ou regiao para abrir o modal detalhado com os alertas ativos.';
+        el.focoTexto.textContent = 'Clique em um município ou região para abrir o modal detalhado com os alertas ativos.';
     }
 
     function definirFocoManual(titulo, texto) {
@@ -537,7 +537,7 @@
 
         return `
             <strong>${escapeHtml(nome)}</strong><br>
-            Pressao: ${escapeHtml(formatarPressao(dado.pressao))}<br>
+            Pressão: ${escapeHtml(formatarPressao(dado.pressao))}<br>
             Alertas ativos: ${escapeHtml(dado.alertas)}
         `;
     }
@@ -551,7 +551,7 @@
 
         return `
             <strong>${escapeHtml(nome)}</strong><br>
-            Pressao: ${escapeHtml(formatarPressao(dado.pressao))}<br>
+            Pressão: ${escapeHtml(formatarPressao(dado.pressao))}<br>
             Alertas ativos: ${escapeHtml(dado.alertas)}
         `;
     }
@@ -561,7 +561,7 @@
 
         return {
             cod_ibge: codIbge,
-            municipio: municipio ? municipio.municipio : String(nomeFallback || 'Municipio'),
+            municipio: municipio ? municipio.municipio : String(nomeFallback || 'Município'),
             regiao: municipio ? municipio.regiao : '',
             alertas: 0,
             nivel: null,
@@ -768,7 +768,7 @@
                 Evento: ${escapeHtml(props.tipo_evento || '-')}<br>
                 Gravidade: <strong>${escapeHtml(props.gravidade || props.nivel_gravidade || '-')}</strong><br>
                 Data: ${escapeHtml(formatarData(props.data_alerta))}<br>
-                Vigencia: ${escapeHtml(formatarVigencia(props.inicio_alerta, props.fim_alerta))}
+                Vigência: ${escapeHtml(formatarVigencia(props.inicio_alerta, props.fim_alerta))}
             </div>
         `);
     }
@@ -841,7 +841,7 @@
         el.kpiAtivos.textContent = '-';
         el.kpiMunicipios.textContent = '-';
         el.kpiRegioes.textContent = '-';
-        el.heroAlertas.textContent = 'Dados indisponiveis';
+        el.heroAlertas.textContent = 'Dados indisponíveis';
     }
 
     function limparGraficoLinhaTempo() {
@@ -884,7 +884,7 @@
             data: {
                 labels,
                 datasets: [{
-                    label: 'IRP diario',
+                    label: 'IRP diário',
                     data: valores,
                     borderColor: '#D94F04',
                     backgroundColor: 'rgba(217, 79, 4, 0.14)',
@@ -989,7 +989,7 @@
         const lista = Object.values(dadosRegioes);
 
         if (!lista.length) {
-            el.listaRegioes.innerHTML = '<div class="multirrisco-empty-box">Nenhuma regiao com alertas ativos para os filtros atuais.</div>';
+            el.listaRegioes.innerHTML = '<div class="multirrisco-empty-box">Nenhuma região com alertas ativos para os filtros atuais.</div>';
             return;
         }
 
@@ -1009,7 +1009,7 @@
                 <div class="regiao-item-topo">
                     <div>
                         <strong>${escapeHtml(item.regiao)}</strong>
-                        <span>${escapeHtml(item.municipios)} municipios</span>
+                        <span>${escapeHtml(item.municipios)} municípios</span>
                     </div>
                     <span class="regiao-item-pressao">${escapeHtml(formatarPressao(item.pressao))}</span>
                 </div>
@@ -1075,16 +1075,16 @@
 
         el.conteudoCompdec.innerHTML = `
             <div class="multirrisco-compdec-grid">
-                <p><strong>Regiao de integracao</strong>${escapeHtml(dc.regiao_integracao || '-')}</p>
-                <p><strong>Municipio</strong>${escapeHtml(dc.municipio || '-')}</p>
+                <p><strong>Região de integração</strong>${escapeHtml(dc.regiao_integracao || '-')}</p>
+                <p><strong>Município</strong>${escapeHtml(dc.municipio || '-')}</p>
                 <p><strong>Prefeito</strong>${escapeHtml(dc.prefeito || '-')}</p>
                 <p><strong>UBM</strong>${escapeHtml(dc.ubm || '-')}</p>
                 <p><strong>Coordenador</strong>${escapeHtml(dc.coordenador || '-')}</p>
                 <p><strong>Telefone</strong>${escapeHtml(dc.telefone || '-')}</p>
                 <p><strong>Email</strong>${escapeHtml(dc.email || '-')}</p>
-                <p><strong>Endereco</strong>${escapeHtml(dc.endereco || '-')}</p>
-                <p><strong>COMPDEC</strong><span class="${temCompdec ? 'tag-sim' : 'tag-nao'}">${temCompdec ? 'SIM' : 'NAO'}</span></p>
-                <p><strong>Ultima atualizacao</strong>${escapeHtml(dc.data_atualizacao || '-')}</p>
+                <p><strong>Endereço</strong>${escapeHtml(dc.endereco || '-')}</p>
+                <p><strong>COMPDEC</strong><span class="${temCompdec ? 'tag-sim' : 'tag-nao'}">${temCompdec ? 'SIM' : 'NÃO'}</span></p>
+                <p><strong>Última atualização</strong>${escapeHtml(dc.data_atualizacao || '-')}</p>
             </div>
         `;
 
@@ -1164,7 +1164,7 @@
                         weight: 2
                     });
 
-                    marker.bindTooltip(`<strong>${escapeHtml(dc.municipio || '-')}</strong><br>COMPDEC: ${temCompdec ? 'SIM' : 'NAO'}`, { sticky: true });
+                    marker.bindTooltip(`<strong>${escapeHtml(dc.municipio || '-')}</strong><br>COMPDEC: ${temCompdec ? 'SIM' : 'NÃO'}`, { sticky: true });
                     marker.on('click', () => abrirDrawerCompdec(dc));
                     camadaCompdec.addLayer(marker);
                 });
@@ -1214,7 +1214,7 @@
                 mapa.removeLayer(camadaCompdec);
                 pane.style.pointerEvents = 'none';
                 fecharDrawerCompdec();
-                atualizarStatus('Nao foi possivel carregar a camada de DC municipais.', false);
+                atualizarStatus('Não foi possível carregar a camada de DC municipais.', false);
                 notificarContextoMapaIA();
             });
         } else {
@@ -1417,7 +1417,7 @@
     legenda.onAdd = function onAdd() {
         const div = L.DomUtil.create('div', 'legenda-mapa');
         div.innerHTML = `
-            <strong>Pressao de risco</strong>
+            <strong>Pressão de risco</strong>
             <div class="legenda-item"><span class="legenda-cor" style="background:#F1F5F7"></span> Sem alertas</div>
             <div class="legenda-item"><span class="legenda-cor" style="background:#CCC9C7"></span> Baixo</div>
             <div class="legenda-item"><span class="legenda-cor" style="background:#FFE000"></span> Moderado</div>
@@ -1436,7 +1436,7 @@
             div.innerHTML = `
                 <strong>Defesa Civil Municipal</strong>
                 <div class="legenda-item"><span class="legenda-cor" style="background:#2E7D32"></span> Tem COMPDEC: <strong id="compdec-sim">0</strong></div>
-                <div class="legenda-item"><span class="legenda-cor" style="background:#C62828"></span> Nao tem COMPDEC: <strong id="compdec-nao">0</strong></div>
+                <div class="legenda-item"><span class="legenda-cor" style="background:#C62828"></span> Não tem COMPDEC: <strong id="compdec-nao">0</strong></div>
             `;
             return div;
         };
@@ -1550,7 +1550,7 @@
         atualizarDashboard({ zoomSelection: false });
     }).catch((error) => {
         console.error('Erro ao carregar a base do mapa multirriscos.', error);
-        atualizarStatus('Nao foi possivel carregar a base territorial do mapa.', false);
-        renderizarFalhaMapa('Nao foi possivel carregar a base territorial do mapa. Tente atualizar a pagina.');
+        atualizarStatus('Não foi possível carregar a base territorial do mapa.', false);
+        renderizarFalhaMapa('Não foi possível carregar a base territorial do mapa. Tente atualizar a página.');
     });
 })();
