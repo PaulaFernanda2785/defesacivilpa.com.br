@@ -38,6 +38,11 @@ tmp_*.pdf
 public_html/uploads/
 
 # =========================
+# Distribution Packages
+# =========================
+dist/
+
+# =========================
 # Local Backups / Old Files
 # =========================
 *.bak
