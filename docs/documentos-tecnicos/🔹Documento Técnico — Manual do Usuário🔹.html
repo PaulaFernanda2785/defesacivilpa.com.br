@@ -26,7 +26,6 @@
       font-family: "Segoe UI", Tahoma, Arial, sans-serif;
       line-height: 1.5;
       font-size: 12pt;
-      counter-reset: page;
     }
 
     .print-header,
@@ -71,8 +70,27 @@
       background: #fff;
     }
 
+    .pagination-live {
+      display: inline;
+    }
+
+    .pagination-fallback-message {
+      display: none;
+    }
+
     .page-number::after {
       content: counter(page);
+    }
+
+    .page-total::after {
+      content: counter(pages);
+    }
+
+    /* Evita conflito de paginação quando o PDF é gerado por motor externo
+       com header/footer próprios (Playwright). */
+    body.pdf-distribution .print-header,
+    body.pdf-distribution .print-footer {
+      display: none !important;
     }
 
     .container {
@@ -221,8 +239,28 @@
         padding-top: 8px;
       }
 
-      .page-number::after {
-        content: "(visualização em tela)";
+      .pagination-live {
+        display: none;
+      }
+
+      .pagination-fallback-message {
+        display: inline;
+        color: #4a5b6d;
+      }
+    }
+
+    @media print {
+      .pagination-fallback-message {
+        display: none;
+      }
+
+      body.print-counter-fallback .pagination-live {
+        display: none !important;
+      }
+
+      body.print-counter-fallback .pagination-fallback-message {
+        display: inline !important;
+        font-style: italic;
       }
     }
   </style>
@@ -238,7 +276,8 @@
 
   <footer class="print-footer">
     <span>Defesa Civil do Estado do Pará</span>
-    <span>Página <span class="page-number"></span></span>
+    <span class="pagination-live">Página <span class="page-number"></span> de <span class="page-total"></span></span>
+    <span class="pagination-fallback-message">Paginação aplicada na versão PDF de distribuição.</span>
   </footer>
 
   <main class="container">
@@ -447,5 +486,50 @@
       <div class="note">Documento preparado para impressão em A4, com capa, índice, cabeçalho, rodapé e paginação.</div>
     </section>
   </main>
+  <script>
+    (function () {
+      function parseCounter(raw) {
+        return (raw || "").replace(/^["']|["']$/g, "").trim();
+      }
+
+      function readCounter(selector) {
+        var element = document.querySelector(selector);
+        if (!element) return "";
+        return parseCounter(window.getComputedStyle(element, "::after").content);
+      }
+
+      function applyPrintFallback() {
+        document.body.classList.remove("print-counter-fallback");
+
+        var page = readCounter(".page-number");
+        var total = readCounter(".page-total");
+
+        if (page === "0" || total === "0" || page === "" || total === "") {
+          document.body.classList.add("print-counter-fallback");
+        }
+      }
+
+      window.addEventListener("beforeprint", function () {
+        window.setTimeout(applyPrintFallback, 0);
+      });
+
+      if (window.matchMedia) {
+        var media = window.matchMedia("print");
+        if (media.addEventListener) {
+          media.addEventListener("change", function (event) {
+            if (event.matches) {
+              window.setTimeout(applyPrintFallback, 0);
+            }
+          });
+        } else if (media.addListener) {
+          media.addListener(function (event) {
+            if (event.matches) {
+              window.setTimeout(applyPrintFallback, 0);
+            }
+          });
+        }
+      }
+    })();
+  </script>
 </body>
 </html>
