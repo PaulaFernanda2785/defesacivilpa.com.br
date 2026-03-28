@@ -1,0 +1,451 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manual do Usuário — Sistema Inteligente Multirriscos</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 22mm 16mm 20mm 16mm;
+    }
+
+    :root {
+      --primaria: #0b3c68;
+      --secundaria: #0f5e9c;
+      --texto: #1f2937;
+      --suave: #f3f6fa;
+      --borda: #d7e0ea;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--texto);
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      line-height: 1.5;
+      font-size: 12pt;
+      counter-reset: page;
+    }
+
+    .print-header,
+    .print-footer {
+      position: fixed;
+      left: 0;
+      right: 0;
+      color: #3a4a5a;
+      font-size: 9.5pt;
+    }
+
+    .print-header {
+      top: -17mm;
+      border-bottom: 1px solid var(--borda);
+      padding: 3mm 16mm 2mm 16mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+    }
+
+    .print-header .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--primaria);
+    }
+
+    .print-header img {
+      height: 16px;
+      width: auto;
+    }
+
+    .print-footer {
+      bottom: -15mm;
+      border-top: 1px solid var(--borda);
+      padding: 2mm 16mm 0 16mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+    }
+
+    .page-number::after {
+      content: counter(page);
+    }
+
+    .container {
+      max-width: 180mm;
+      margin: 0 auto;
+    }
+
+    .cover {
+      min-height: 250mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 18mm 12mm;
+      background: linear-gradient(180deg, #ffffff 0%, #f3f7fb 100%);
+      border: 1px solid var(--borda);
+    }
+
+    .cover-logos {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .cover-logos img {
+      height: 56px;
+      width: auto;
+    }
+
+    h1 {
+      font-size: 24pt;
+      line-height: 1.25;
+      margin: 0;
+      color: var(--primaria);
+    }
+
+    h2 {
+      margin: 24px 0 10px;
+      color: var(--primaria);
+      border-bottom: 2px solid #e6edf5;
+      padding-bottom: 4px;
+      font-size: 16pt;
+    }
+
+    h3 {
+      margin: 16px 0 8px;
+      color: var(--secundaria);
+      font-size: 13pt;
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      font-size: 13pt;
+      color: #4b6075;
+    }
+
+    .meta {
+      margin-top: 20px;
+      font-size: 11pt;
+      color: #4a5b6d;
+      background: #fff;
+      border: 1px solid var(--borda);
+      padding: 12px 16px;
+      border-radius: 8px;
+    }
+
+    .section {
+      margin-top: 14px;
+      page-break-inside: avoid;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+
+    .toc {
+      background: var(--suave);
+      border: 1px solid var(--borda);
+      padding: 14px 16px;
+      border-radius: 8px;
+    }
+
+    .toc a {
+      color: #0d4f82;
+      text-decoration: none;
+    }
+
+    ul, ol {
+      margin: 8px 0 10px 22px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 14px;
+      font-size: 11pt;
+    }
+
+    th, td {
+      border: 1px solid #cfd8e3;
+      padding: 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #eaf1f8;
+      color: #173b5f;
+    }
+
+    .note {
+      border-left: 4px solid #5b84ad;
+      background: #f5f9fd;
+      padding: 8px 10px;
+      margin: 10px 0;
+      font-size: 10.5pt;
+    }
+
+    @media screen {
+      body {
+        background: #e9eef4;
+        padding: 10px 0;
+      }
+
+      .container {
+        background: #fff;
+        padding: 18mm 16mm 16mm;
+        box-shadow: 0 2px 14px rgba(0, 0, 0, 0.08);
+      }
+
+      .print-header,
+      .print-footer {
+        position: static;
+        border: none;
+        padding: 0;
+        margin-bottom: 12px;
+      }
+
+      .print-footer {
+        margin-top: 18px;
+        border-top: 1px solid var(--borda);
+        padding-top: 8px;
+      }
+
+      .page-number::after {
+        content: "(visualização em tela)";
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="print-header">
+    <div class="brand">
+      <img src="../../public_html/assets/images/logo-cedec.png" alt="Logo CEDEC">
+      <span>Sistema Inteligente Multirriscos — Manual do Usuário</span>
+    </div>
+    <div>Referência: 28/03/2026</div>
+  </header>
+
+  <footer class="print-footer">
+    <span>Defesa Civil do Estado do Pará</span>
+    <span>Página <span class="page-number"></span></span>
+  </footer>
+
+  <main class="container">
+    <section class="cover" id="capa">
+      <div class="cover-logos">
+        <img src="../../public_html/assets/images/logo-cedec.png" alt="CEDEC-PA">
+        <img src="../../public_html/assets/images/logo.gov.pa.png" alt="Governo do Pará">
+      </div>
+      <h1>Manual do Usuário</h1>
+      <p class="subtitle">Sistema Inteligente Multirriscos</p>
+      <div class="meta">
+        <div><strong>Instituição:</strong> Defesa Civil do Estado do Pará</div>
+        <div><strong>Versão de referência:</strong> 1.1.0</div>
+        <div><strong>Data de consolidação:</strong> 28 de março de 2026</div>
+        <div><strong>Público:</strong> Operadores, analistas, gestores e administradores</div>
+      </div>
+    </section>
+
+    <section class="page-break" id="indice">
+      <h2>Índice</h2>
+      <div class="toc">
+        <ol>
+          <li><a href="#visao-geral">Visão geral do sistema</a></li>
+          <li><a href="#acesso">Acesso e autenticação</a></li>
+          <li><a href="#painel">Painel operacional</a></li>
+          <li><a href="#alertas">Gestão de alertas</a></li>
+          <li><a href="#inmet">Importação INMET</a></li>
+          <li><a href="#mapa">Mapa multirriscos</a></li>
+          <li><a href="#analises">Módulo de análises</a></li>
+          <li><a href="#historico">Histórico de usuários</a></li>
+          <li><a href="#usuarios">Gestão de usuários</a></li>
+          <li><a href="#exportacoes">Exportações e relatórios</a></li>
+          <li><a href="#boas-praticas">Boas práticas de operação</a></li>
+          <li><a href="#suporte">Suporte</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="visao-geral">
+      <h2>1. Visão Geral do Sistema</h2>
+      <p>O Sistema Inteligente Multirriscos centraliza o ciclo operacional de alertas hidrometeorológicos e territoriais do Estado do Pará. A plataforma permite:</p>
+      <ul>
+        <li>Registrar alertas manuais com área geográfica (desenho ou KML).</li>
+        <li>Importar alertas oficiais do INMET com validação prévia.</li>
+        <li>Visualizar pressão de risco no mapa multirriscos.</li>
+        <li>Executar análises temporal, severidade, tipologia e índices (IRP/IPT).</li>
+        <li>Gerar documentos operacionais (PDF, CSV, KML) e trilha de auditoria.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="acesso">
+      <h2>2. Acesso e Autenticação</h2>
+      <h3>2.1 Login</h3>
+      <ol>
+        <li>Acesse a tela inicial do sistema.</li>
+        <li>Informe e-mail e senha cadastrados.</li>
+        <li>Clique em entrar para abrir o painel.</li>
+      </ol>
+
+      <h3>2.2 Perfis de acesso</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Perfil</th>
+            <th>Escopo operacional</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>ADMIN</td><td>Acesso total, incluindo gestão de usuários.</td></tr>
+          <tr><td>GESTOR</td><td>Operação de alertas, análises e histórico.</td></tr>
+          <tr><td>ANALISTA</td><td>Operação de alertas, mapa e análises.</td></tr>
+          <tr><td>OPERACOES</td><td>Consulta operacional (painel, mapa, análises e detalhes).</td></tr>
+        </tbody>
+      </table>
+
+      <div class="note">A sessão possui controle de inatividade e pode ser encerrada automaticamente por segurança.</div>
+    </section>
+
+    <section class="section" id="painel">
+      <h2>3. Painel Operacional</h2>
+      <p>O painel exibe visão executiva dos alertas em andamento:</p>
+      <ul>
+        <li>Total de alertas ativos.</li>
+        <li>Alertas expirados que exigem revisão de vigência.</li>
+        <li>Distribuição por gravidade e tipo de evento.</li>
+        <li>Cobertura territorial dos alertas mapeados.</li>
+      </ul>
+      <p>Use o painel como ponto de partida para abrir o módulo de alertas, mapa ou análises.</p>
+    </section>
+
+    <section class="section" id="alertas">
+      <h2>4. Gestão de Alertas</h2>
+
+      <h3>4.1 Listagem</h3>
+      <ul>
+        <li>Consulta por vigência, gravidade, evento e período.</li>
+        <li>Ações rápidas: detalhar, editar, encerrar/cancelar, baixar PDF/KML.</li>
+      </ul>
+
+      <h3>4.2 Cadastro manual</h3>
+      <ol>
+        <li>Acesse <em>Alertas &gt; Cadastrar</em>.</li>
+        <li>Preencha evento, gravidade, período, riscos e recomendações.</li>
+        <li>Defina área por desenho no mapa ou upload KML.</li>
+        <li>Salve para gerar número sequencial do alerta.</li>
+      </ol>
+
+      <h3>4.3 Edição e encerramento</h3>
+      <ul>
+        <li>Edição disponível para ADMIN, GESTOR e ANALISTA.</li>
+        <li>Encerramento/cancelamento disponível para ADMIN e GESTOR.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="inmet">
+      <h2>5. Importação INMET</h2>
+      <ol>
+        <li>Informe a URL oficial do aviso INMET.</li>
+        <li>Revise a prévia (evento, gravidade, vigência e área).</li>
+        <li>Confirme a importação para criar o alerta local.</li>
+      </ol>
+      <p>O sistema bloqueia duplicidade por identificador INMET já importado.</p>
+    </section>
+
+    <section class="section" id="mapa">
+      <h2>6. Mapa Multirriscos</h2>
+      <p>O módulo integra filtros operacionais, camadas no mapa e rankings territoriais.</p>
+      <ul>
+        <li>Filtros por período, evento, gravidade, fonte, região e município.</li>
+        <li>KPIs dinâmicos de pressão de risco.</li>
+        <li>Ranking por região e município.</li>
+        <li>Modal territorial com detalhes e contatos COMPDEC.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="analises">
+      <h2>7. Módulo de Análises</h2>
+      <p>A central analítica é formada por quatro painéis:</p>
+      <ul>
+        <li><strong>Temporal:</strong> sazonalidade, distribuição por período e evolução anual.</li>
+        <li><strong>Severidade:</strong> distribuição de gravidade e duração média.</li>
+        <li><strong>Tipologia:</strong> correlação evento x severidade e distribuição territorial.</li>
+        <li><strong>Índices:</strong> indicadores IRP/IPT para apoio à priorização.</li>
+      </ul>
+      <p>Também é possível gerar relatório analítico consolidado em PDF.</p>
+    </section>
+
+    <section class="section" id="historico">
+      <h2>8. Histórico de Usuários</h2>
+      <p>Módulo de auditoria para ADMIN e GESTOR:</p>
+      <ul>
+        <li>Busca por usuário, ação e período.</li>
+        <li>Rastreio de operações críticas (login, criação, edição, envio e exportação).</li>
+        <li>Exportação de relatório de histórico em PDF.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="usuarios">
+      <h2>9. Gestão de Usuários</h2>
+      <p>Funcionalidade exclusiva do perfil ADMIN:</p>
+      <ul>
+        <li>Cadastrar usuário com perfil e status.</li>
+        <li>Editar dados cadastrais e perfil.</li>
+        <li>Ativar/inativar conta.</li>
+        <li>Redefinir senha de usuários.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="exportacoes">
+      <h2>10. Exportações e Relatórios</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Saída</th>
+            <th>Uso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>PDF de alerta</td><td>Compartilhamento oficial com mapa e municípios por região.</td></tr>
+          <tr><td>CSV da listagem</td><td>Conferência operacional em planilha.</td></tr>
+          <tr><td>KML do alerta</td><td>Interoperabilidade geoespacial.</td></tr>
+          <tr><td>PDF analítico</td><td>Consolidação de indicadores e leitura estratégica.</td></tr>
+          <tr><td>PDF de histórico</td><td>Auditoria de ações de usuários.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="boas-praticas">
+      <h2>11. Boas Práticas de Operação</h2>
+      <ul>
+        <li>Verifique vigência e território antes de enviar alertas para COMPDEC.</li>
+        <li>Padronize riscos e recomendações com linguagem objetiva e acionável.</li>
+        <li>Use filtros de período para evitar leitura fora de contexto.</li>
+        <li>Finalize sempre com logout em estações compartilhadas.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="suporte">
+      <h2>12. Suporte</h2>
+      <p>Em caso de falha operacional:</p>
+      <ol>
+        <li>Registre data/hora, tela e ação executada.</li>
+        <li>Informe perfil do usuário e mensagem de erro apresentada.</li>
+        <li>Acione o suporte técnico institucional da Defesa Civil.</li>
+      </ol>
+      <div class="note">Documento preparado para impressão em A4, com capa, índice, cabeçalho, rodapé e paginação.</div>
+    </section>
+  </main>
+</body>
+</html>
