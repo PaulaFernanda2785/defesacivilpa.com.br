@@ -220,15 +220,15 @@ if ($filtro['ano'] !== null) {
 }
 
 if ($filtro['mes'] !== null && isset($meses[$filtro['mes']])) {
-    $filtrosResumo[] = 'Mes: ' . $meses[$filtro['mes']];
+    $filtrosResumo[] = 'Mês: ' . $meses[$filtro['mes']];
 }
 
 if ($filtro['regiao'] !== null) {
-    $filtrosResumo[] = 'Regiao: ' . $filtro['regiao'];
+    $filtrosResumo[] = 'Região: ' . $filtro['regiao'];
 }
 
 if ($filtro['municipio'] !== null) {
-    $filtrosResumo[] = 'Municipio: ' . $filtro['municipio'];
+    $filtrosResumo[] = 'Município: ' . $filtro['municipio'];
 }
 
 $contextoPeriodo = $filtrosResumo !== []
@@ -236,14 +236,14 @@ $contextoPeriodo = $filtrosResumo !== []
     : 'Sem recorte temporal adicional';
 $contextoTerritorial = $filtro['municipio']
     ?? $filtro['regiao']
-    ?? 'Estado do Para';
-$operadorNome = trim((string) ($usuario['nome'] ?? ($modoEmbedPublico ? 'Visitante publico' : 'Nao identificado')));
-$operadorPerfil = trim((string) ($usuario['perfil'] ?? ($modoEmbedPublico ? 'Publico' : 'Nao informado')));
+    ?? 'Estado do Pará';
+$operadorNome = trim((string) ($usuario['nome'] ?? ($modoEmbedPublico ? 'Visitante público' : 'Não identificado')));
+$operadorPerfil = trim((string) ($usuario['perfil'] ?? ($modoEmbedPublico ? 'Público' : 'Não informado')));
 $quantidadeFaixas = count($labelsSeveridade);
 $quantidadeEventosDuracao = count($labelsDuracao);
 $resumoMunicipiosSecao7 = $exibirTopMunicipiosNacional
-    ? 'Top 10 municipios mais afetados no recorte geral'
-    : (string) $quantidadeMunicipiosExibidos . ' municipios no recorte filtrado';
+    ? 'Top 10 municípios mais afetados no recorte geral'
+    : (string) $quantidadeMunicipiosExibidos . ' municípios no recorte filtrado';
 $resumoExecutivo = [
     [
         'label' => 'Alertas no recorte',
@@ -256,15 +256,15 @@ $resumoExecutivo = [
         'value' => $severidadePrincipal,
         'note' => $severidadePrincipalTotal > 0
             ? $severidadePrincipalTotal . ' alertas concentrados nesta faixa.'
-            : 'Sem concentracao de severidade identificada no recorte atual.',
+            : 'Sem concentração de severidade identificada no recorte atual.',
         'tone' => 'success',
     ],
     [
         'label' => 'Evento mais recorrente',
         'value' => $eventoMaisRecorrente,
         'note' => $eventoMaisRecorrenteTotal > 0
-            ? $eventoMaisRecorrenteTotal . ' ocorrencias do tipo dominante.'
-            : 'Sem recorrencia tipificada no periodo atual.',
+            ? $eventoMaisRecorrenteTotal . ' ocorrências do tipo dominante.'
+            : 'Sem recorrência tipificada no período atual.',
         'tone' => 'neutral',
     ],
     [
@@ -279,7 +279,7 @@ $resumoExecutivo = [
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<title>Analise de Severidade</title>
+<title>Análise de Severidade</title>
 <link rel="icon" type="image/x-icon" href="/assets/images/logo.cbmpa.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logo.cbmpa.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo.cbmpa.ico">
@@ -299,20 +299,20 @@ $resumoExecutivo = [
             <img src="/assets/images/logo-cedec.png" alt="CEDEC-PA">
             <span>
                 <small><?= htmlspecialchars((string) ($appConfig['name'] ?? 'Sistema Multirriscos'), ENT_QUOTES, 'UTF-8') ?></small>
-                <strong><?= htmlspecialchars((string) ($appConfig['institution'] ?? 'Defesa Civil do Estado do Para'), ENT_QUOTES, 'UTF-8') ?></strong>
+                <strong><?= htmlspecialchars((string) ($appConfig['institution'] ?? 'Defesa Civil do Estado do Pará'), ENT_QUOTES, 'UTF-8') ?></strong>
                 <em><?= htmlspecialchars((string) ($appConfig['department'] ?? 'Monitoramento e resposta operacional'), ENT_QUOTES, 'UTF-8') ?></em>
             </span>
         </a>
 
-        <nav class="analise-embed-nav" aria-label="Navegacao publica de analises">
+        <nav class="analise-embed-nav" aria-label="Navegação pública de análises">
             <a href="/index.php#mapa-publico">Mapa ao vivo</a>
-            <a href="/index.php#analises-publicas">Analises publicas</a>
+            <a href="/index.php#analises-publicas">Análises públicas</a>
             <a href="/index.php#alertas-ativos">Alertas ativos</a>
         </nav>
 
         <div class="analise-embed-topbar-meta">
-            <span class="analise-embed-pill">Versao <?= htmlspecialchars((string) ($appConfig['version'] ?? '1.0.0'), ENT_QUOTES, 'UTF-8') ?></span>
-            <a href="/index.php#analises-publicas" class="analise-embed-topbar-link">Inicio publico</a>
+            <span class="analise-embed-pill">Versão <?= htmlspecialchars((string) ($appConfig['version'] ?? '1.0.0'), ENT_QUOTES, 'UTF-8') ?></span>
+            <a href="/index.php#analises-publicas" class="analise-embed-topbar-link">Início público</a>
         </div>
     </header>
 
@@ -327,7 +327,7 @@ $resumoExecutivo = [
         <?php
         $breadcrumb = [
             'Painel' => '/pages/painel.php',
-            'Analise de severidade' => null,
+            'Análise de severidade' => null,
         ];
         include __DIR__ . '/../_breadcrumb.php';
         ?>
@@ -337,11 +337,11 @@ $resumoExecutivo = [
             <div class="usuarios-hero-grid severidade-hero-grid">
                 <div class="alerta-form-hero usuarios-hero-panel severidade-hero-panel">
                     <div class="alerta-form-lead usuarios-hero-copy severidade-hero-copy">
-                        <span class="alerta-form-kicker">Analise operacional</span>
+                        <span class="alerta-form-kicker">Análise operacional</span>
                         <h1 class="alerta-form-title">Severidade e impacto dos alertas</h1>
                         <p class="alerta-form-description">
-                            Consolide a distribuicao de gravidade, a duracao media dos eventos e o impacto territorial
-                            no mesmo padrao visual aplicado na analise temporal.
+                            Consolide a distribuição de gravidade, a duração média dos eventos e o impacto territorial
+                            no mesmo padrão visual aplicado na análise temporal.
                         </p>
 
                         <div class="usuarios-hero-chip-row severidade-hero-chip-row">
@@ -352,9 +352,9 @@ $resumoExecutivo = [
 
                         <div class="usuarios-hero-actions severidade-hero-actions">
                             <a href="#severidade-filtros" class="btn btn-primary">Aplicar filtros</a>
-                            <a href="#severidade-graficos" class="btn btn-secondary">Ver graficos</a>
+                            <a href="#severidade-graficos" class="btn btn-secondary">Ver gráficos</a>
                             <?php if ($modoEmbedPublico): ?>
-                                <a href="/index.php#analises-publicas" class="btn btn-secondary">Voltar para pagina inicial</a>
+                                <a href="/index.php#analises-publicas" class="btn btn-secondary">Voltar para página inicial</a>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -372,15 +372,15 @@ $resumoExecutivo = [
 
                 <aside class="usuarios-command-card severidade-command-card">
                     <span class="usuarios-command-kicker">Comando de severidade</span>
-                    <h2>Coordenacao da leitura de impacto</h2>
+                    <h2>Coordenação da leitura de impacto</h2>
                     <p>
-                        Use este painel para validar operador, foco territorial e prioridade analitica antes de navegar
-                        pelas secoes de gravidade, duracao e impacto territorial.
+                        Use este painel para validar operador, foco territorial e prioridade analítica antes de navegar
+                        pelas seções de gravidade, duração e impacto territorial.
                     </p>
 
                     <div class="usuarios-command-grid severidade-command-grid">
                         <article class="usuarios-command-item">
-                            <span>Operador da sessao</span>
+                            <span>Operador da sessão</span>
                             <strong><?= htmlspecialchars($operadorNome, ENT_QUOTES, 'UTF-8') ?></strong>
                             <small>Perfil atual: <?= htmlspecialchars($operadorPerfil, ENT_QUOTES, 'UTF-8') ?>.</small>
                         </article>
@@ -388,13 +388,13 @@ $resumoExecutivo = [
                         <article class="usuarios-command-item">
                             <span>Foco territorial</span>
                             <strong><?= htmlspecialchars((string) $contextoTerritorial, ENT_QUOTES, 'UTF-8') ?></strong>
-                            <small>Recorte ativo para todos os graficos desta analise.</small>
+                            <small>Recorte ativo para todos os gráficos desta análise.</small>
                         </article>
 
                         <article class="usuarios-command-item">
                             <span>Prioridade sugerida</span>
-                            <strong>Da gravidade ao territorio</strong>
-                            <small>Comece pela distribuicao de severidade e finalize com a pressao por municipio.</small>
+                            <strong>Da gravidade ao território</strong>
+                            <small>Comece pela distribuição de severidade e finalize com a pressão por município.</small>
                         </article>
                     </div>
                 </aside>
@@ -404,11 +404,11 @@ $resumoExecutivo = [
                 <div class="usuarios-control-grid severidade-overview-grid">
                     <section id="severidade-filtros" class="alerta-form-section usuarios-filter-panel severidade-filter-panel">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 1</span>
-                            <h2 class="alerta-section-title">Filtros do recorte analitico</h2>
+                            <span class="alerta-section-kicker">Seção 1</span>
+                            <h2 class="alerta-section-title">Filtros do recorte analítico</h2>
                             <p class="alerta-section-text">
-                                Ajuste ano, mes, regiao de integracao e municipio para recalcular a leitura de severidade
-                                e impacto com o mesmo fluxo das outras analises.
+                                Ajuste ano, mês, região de integração e município para recalcular a leitura de severidade
+                                e impacto com o mesmo fluxo das outras análises.
                             </p>
                         </header>
 
@@ -430,7 +430,7 @@ $resumoExecutivo = [
                             </div>
 
                             <div class="form-group">
-                                <label for="mes">Mes</label>
+                                <label for="mes">Mês</label>
                                 <select id="mes" name="mes" data-auto-submit>
                                     <option value="">Todos</option>
                                     <?php foreach ($meses as $numeroMes => $nomeMes): ?>
@@ -442,7 +442,7 @@ $resumoExecutivo = [
                             </div>
 
                             <div class="form-group">
-                                <label for="filtro-regiao">Regiao de integracao</label>
+                                <label for="filtro-regiao">Região de integração</label>
                                 <select id="filtro-regiao" name="regiao" data-auto-submit>
                                     <option value="">Todas</option>
                                     <?php foreach ($regioes as $regiao): ?>
@@ -454,9 +454,9 @@ $resumoExecutivo = [
                             </div>
 
                             <div class="form-group">
-                                <label for="filtro-municipio">Municipio</label>
+                                <label for="filtro-municipio">Município</label>
                                 <select id="filtro-municipio" name="municipio" disabled>
-                                    <option value=""><?= $filtro['regiao'] !== null ? 'Carregando municipios...' : 'Selecione uma regiao' ?></option>
+                                    <option value=""><?= $filtro['regiao'] !== null ? 'Carregando municípios...' : 'Selecione uma região' ?></option>
                                 </select>
                             </div>
 
@@ -474,8 +474,8 @@ $resumoExecutivo = [
                             </div>
 
                             <div class="alerta-callout severidade-filter-callout form-group field-span-2">
-                                <strong>Atualizacao imediata</strong>
-                                Ano, mes e regiao reaplicam o recorte automaticamente. O municipio e carregado de forma relacionada apos a selecao da regiao correspondente.
+                                <strong>Atualização imediata</strong>
+                                Ano, mês e região reaplicam o recorte automaticamente. O município é carregado de forma relacionada após a seleção da região correspondente.
                             </div>
 
                             <div class="alerta-form-actions severidade-filter-actions usuarios-filter-actions form-group field-span-2">
@@ -492,11 +492,11 @@ $resumoExecutivo = [
 
                     <section class="alerta-form-section usuarios-governance-panel severidade-governance-panel">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 2</span>
-                            <h2 class="alerta-section-title">Leituras rapidas do periodo</h2>
+                            <span class="alerta-section-kicker">Seção 2</span>
+                            <h2 class="alerta-section-title">Leituras rápidas do período</h2>
                             <p class="alerta-section-text">
                                 Use os indicadores abaixo para identificar gravidade predominante, evento mais recorrente,
-                                maior duracao media e o municipio com maior pressao operacional.
+                                maior duração média e o município com maior pressão operacional.
                             </p>
                         </header>
 
@@ -505,7 +505,7 @@ $resumoExecutivo = [
                                 <span class="usuarios-insight-kicker">Severidade predominante</span>
                                 <strong><?= htmlspecialchars($severidadePrincipal, ENT_QUOTES, 'UTF-8') ?></strong>
                                 <p>
-                                    <?= $severidadePrincipalTotal > 0 ? $severidadePrincipalTotal . ' alertas concentrados nessa faixa.' : 'Sem predominancia de severidade no recorte atual.' ?>
+                                    <?= $severidadePrincipalTotal > 0 ? $severidadePrincipalTotal . ' alertas concentrados nessa faixa.' : 'Sem predominância de severidade no recorte atual.' ?>
                                 </p>
                             </article>
 
@@ -513,41 +513,41 @@ $resumoExecutivo = [
                                 <span class="usuarios-insight-kicker">Evento mais recorrente</span>
                                 <strong><?= htmlspecialchars($eventoMaisRecorrente, ENT_QUOTES, 'UTF-8') ?></strong>
                                 <p>
-                                    <?= $eventoMaisRecorrenteTotal > 0 ? $eventoMaisRecorrenteTotal . ' ocorrencias deste tipo de evento.' : 'Sem recorrencia tipificada no periodo atual.' ?>
+                                    <?= $eventoMaisRecorrenteTotal > 0 ? $eventoMaisRecorrenteTotal . ' ocorrências deste tipo de evento.' : 'Sem recorrência tipificada no período atual.' ?>
                                 </p>
                             </article>
 
                             <article class="usuarios-insight-card severidade-mini-card">
-                                <span class="usuarios-insight-kicker">Maior duracao media</span>
+                                <span class="usuarios-insight-kicker">Maior duração média</span>
                                 <strong><?= htmlspecialchars($eventoMaiorDuracao, ENT_QUOTES, 'UTF-8') ?></strong>
                                 <p>
-                                    <?= $eventoMaiorDuracaoHoras > 0 ? number_format($eventoMaiorDuracaoHoras, 1, ',', '.') . ' horas de media neste evento.' : 'Sem duracao media consolidada no recorte atual.' ?>
+                                    <?= $eventoMaiorDuracaoHoras > 0 ? number_format($eventoMaiorDuracaoHoras, 1, ',', '.') . ' horas de média neste evento.' : 'Sem duração média consolidada no recorte atual.' ?>
                                 </p>
                             </article>
 
                             <article class="usuarios-insight-card severidade-mini-card">
-                                <span class="usuarios-insight-kicker">Municipio mais impactado</span>
+                                <span class="usuarios-insight-kicker">Município mais impactado</span>
                                 <strong><?= htmlspecialchars((string) $municipioMaisImpactado, ENT_QUOTES, 'UTF-8') ?></strong>
                                 <p>
-                                    <?= $municipioMaisImpactadoTotal > 0 ? $municipioMaisImpactadoTotal . ' alertas registrados neste municipio.' : 'Sem concentracao municipal identificada.' ?>
+                                    <?= $municipioMaisImpactadoTotal > 0 ? $municipioMaisImpactadoTotal . ' alertas registrados neste município.' : 'Sem concentração municipal identificada.' ?>
                                 </p>
                             </article>
                         </div>
 
                         <div class="alerta-callout severidade-info-callout">
                             <strong>Como interpretar</strong>
-                            Cruze a distribuicao de gravidade com a duracao media e os municipios mais impactados para
-                            entender onde a operacao tende a ficar mais pressionada.
+                            Cruze a distribuição de gravidade com a duração média e os municípios mais impactados para
+                            entender onde a operação tende a ficar mais pressionada.
                         </div>
 
                         <div class="alerta-form-actions severidade-actions usuarios-filter-actions">
                             <div class="alerta-form-actions-left">
-                                <span class="alerta-inline-note">Os paineis abaixo permanecem sincronizados com o mesmo recorte temporal e territorial.</span>
+                                <span class="alerta-inline-note">Os painéis abaixo permanecem sincronizados com o mesmo recorte temporal e territorial.</span>
                             </div>
 
                             <?php if (!$modoEmbedPublico): ?>
                                 <div class="alerta-form-actions-right severidade-action-buttons">
-                                    <a href="/pages/analises/indice_risco.php" class="btn btn-secondary">Abrir indices</a>
+                                    <a href="/pages/analises/indice_risco.php" class="btn btn-secondary">Abrir índices</a>
                                     <a href="/pages/mapas/mapa_multirriscos.php" class="btn btn-secondary">Abrir mapa multirriscos</a>
                                 </div>
                             <?php endif; ?>
@@ -560,15 +560,15 @@ $resumoExecutivo = [
                 <header class="usuarios-table-head severidade-section-head">
                     <div class="alerta-section-header">
                         <span class="alerta-section-kicker">Painel principal</span>
-                        <h2 class="alerta-section-title">Distribuicao final de severidade</h2>
+                        <h2 class="alerta-section-title">Distribuição final de severidade</h2>
                         <p class="alerta-section-text">
-                            Veja a quantidade absoluta por faixa de gravidade para identificar a concentracao operacional
+                            Veja a quantidade absoluta por faixa de gravidade para identificar a concentração operacional
                             do recorte selecionado.
                         </p>
                     </div>
 
                     <div class="usuarios-table-head-actions">
-                        <span class="usuarios-result-chip"><?= (int) $quantidadeFaixas ?> faixas no grafico</span>
+                        <span class="usuarios-result-chip"><?= (int) $quantidadeFaixas ?> faixas no gráfico</span>
                     </div>
                 </header>
 
@@ -581,7 +581,7 @@ $resumoExecutivo = [
                     <div class="usuarios-table-toolbar-pills">
                         <span class="usuarios-toolbar-pill"><?= (int) $totalAlertasNoRecorte ?> alertas contabilizados</span>
                         <span class="usuarios-toolbar-pill"><?= (int) max(1, $faixasAtivas) ?> faixas ativas</span>
-                        <span class="usuarios-toolbar-pill"><?= (int) $abrangenciaRegioes ?> regioes / <?= (int) $abrangenciaMunicipios ?> municipios</span>
+                        <span class="usuarios-toolbar-pill"><?= (int) $abrangenciaRegioes ?> regiões / <?= (int) $abrangenciaMunicipios ?> municípios</span>
                     </div>
                 </div>
 
@@ -596,10 +596,10 @@ $resumoExecutivo = [
                 <div class="severidade-analytics-grid">
                     <section class="alerta-form-section severidade-chart-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 4</span>
-                            <h2 class="alerta-section-title">Proporcao por grau de severidade</h2>
+                            <span class="alerta-section-kicker">Seção 4</span>
+                            <h2 class="alerta-section-title">Proporção por grau de severidade</h2>
                             <p class="alerta-section-text">
-                                Compare o peso percentual de cada faixa para entender a composicao relativa da severidade.
+                                Compare o peso percentual de cada faixa para entender a composição relativa da severidade.
                             </p>
                         </header>
 
@@ -616,17 +616,17 @@ $resumoExecutivo = [
 
                     <section class="alerta-form-section severidade-chart-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 5</span>
-                            <h2 class="alerta-section-title">Duracao media por tipo de evento</h2>
+                            <span class="alerta-section-kicker">Seção 5</span>
+                            <h2 class="alerta-section-title">Duração média por tipo de evento</h2>
                             <p class="alerta-section-text">
-                                Identifique quais eventos tendem a permanecer ativos por mais tempo na operacao.
+                                Identifique quais eventos tendem a permanecer ativos por mais tempo na operação.
                             </p>
                         </header>
 
                         <div class="severidade-chart-card severidade-chart-card--tall">
                             <div class="severidade-chart-meta">
                                 <span class="severidade-chart-chip"><?= (int) $quantidadeEventosDuracao ?> eventos comparados</span>
-                                <span class="severidade-chart-chip">Media calculada em horas</span>
+                                <span class="severidade-chart-chip">Média calculada em horas</span>
                             </div>
                             <div class="severidade-chart-stage severidade-chart-stage--tall">
                                 <canvas class="severidade-chart-canvas" id="graficoDuracao"></canvas>
@@ -640,17 +640,17 @@ $resumoExecutivo = [
                 <div class="severidade-analytics-grid">
                     <section class="alerta-form-section severidade-chart-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 6</span>
+                            <span class="alerta-section-kicker">Seção 6</span>
                             <h2 class="alerta-section-title">Alertas emitidos por tipo de evento</h2>
                             <p class="alerta-section-text">
-                                Acompanhe o volume de emissoes por tipologia no mesmo recorte aplicado aos outros graficos.
+                                Acompanhe o volume de emissões por tipologia no mesmo recorte aplicado aos outros gráficos.
                             </p>
                         </header>
 
                         <div class="severidade-chart-card">
                             <div class="severidade-chart-meta">
                                 <span class="severidade-chart-chip"><?= (int) max(1, $totalTiposEvento) ?> tipos de evento</span>
-                                <span class="severidade-chart-chip">Leitura de emissao operacional</span>
+                                <span class="severidade-chart-chip">Leitura de emissão operacional</span>
                             </div>
                             <div class="severidade-chart-stage">
                                 <canvas class="severidade-chart-canvas" id="graficoAlertasEvento"></canvas>
@@ -660,8 +660,8 @@ $resumoExecutivo = [
 
                     <section class="alerta-form-section severidade-chart-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 7</span>
-                            <h2 class="alerta-section-title">Municipios mais impactados</h2>
+                            <span class="alerta-section-kicker">Seção 7</span>
+                            <h2 class="alerta-section-title">Municípios mais impactados</h2>
                             <p class="alerta-section-text">
                                 Visualize onde os alertas se concentraram com maior intensidade dentro do recorte selecionado.
                             </p>
@@ -669,7 +669,7 @@ $resumoExecutivo = [
 
                         <div class="severidade-chart-card severidade-chart-card--tall">
                             <div class="severidade-chart-meta">
-                                <span class="severidade-chart-chip"><?= (int) $quantidadeMunicipiosExibidos ?> municipios analisados</span>
+                                <span class="severidade-chart-chip"><?= (int) $quantidadeMunicipiosExibidos ?> municípios analisados</span>
                                 <span class="severidade-chart-chip"><?= htmlspecialchars($resumoMunicipiosSecao7, ENT_QUOTES, 'UTF-8') ?></span>
                             </div>
                             <div class="severidade-chart-stage severidade-chart-stage--tall">
@@ -688,16 +688,16 @@ $resumoExecutivo = [
     </main>
     <footer class="analise-embed-footer">
         <div class="analise-embed-footer-copy">
-            <strong><?= htmlspecialchars((string) ($appConfig['institution'] ?? 'Defesa Civil do Estado do Para'), ENT_QUOTES, 'UTF-8') ?></strong>
+            <strong><?= htmlspecialchars((string) ($appConfig['institution'] ?? 'Defesa Civil do Estado do Pará'), ENT_QUOTES, 'UTF-8') ?></strong>
             <span><?= htmlspecialchars((string) ($appConfig['department'] ?? 'Central de monitoramento'), ENT_QUOTES, 'UTF-8') ?></span>
         </div>
         <div class="analise-embed-footer-meta">
-            <span>Painel publico de analises multirriscos</span>
+            <span>Painel público de análises multirriscos</span>
             <a href="mailto:<?= htmlspecialchars((string) ($appConfig['support_email'] ?? ''), ENT_QUOTES, 'UTF-8') ?>">
                 <?= htmlspecialchars((string) ($appConfig['support_email'] ?? 'suporte@defesacivil.pa.gov.br'), ENT_QUOTES, 'UTF-8') ?>
             </a>
         </div>
-        <a href="/index.php#analises-publicas" class="btn btn-secondary">Voltar para pagina inicial</a>
+        <a href="/index.php#analises-publicas" class="btn btn-secondary">Voltar para página inicial</a>
     </footer>
 <?php else: ?>
     </main>

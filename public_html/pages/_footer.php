@@ -14,7 +14,7 @@ $appConfig = AppConfig::get();
 
         <div class="footer-sistema-info">
             <?= htmlspecialchars($appConfig['name']) ?> &bull;
-            Versao <strong><?= htmlspecialchars($appConfig['version']) ?></strong> &bull;
+            Versão <strong><?= htmlspecialchars($appConfig['version']) ?></strong> &bull;
             <span class="ambiente <?= htmlspecialchars($appConfig['environment_class']) ?>">
                 <?= htmlspecialchars($appConfig['environment_label']) ?>
             </span>

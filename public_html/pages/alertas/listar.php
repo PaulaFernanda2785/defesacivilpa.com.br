@@ -304,16 +304,16 @@ if ($dataInicio !== '') {
 }
 
 if ($dataFim !== '') {
-    $filtrosAplicados[] = 'Ate: ' . $dataFim;
+    $filtrosAplicados[] = 'Até: ' . $dataFim;
 }
 
 $filtrosResumo = $filtrosAplicados !== []
     ? implode(' | ', $filtrosAplicados)
     : 'Sem filtros adicionais';
-$operadorNome = trim((string) ($usuario['nome'] ?? 'Nao identificado'));
-$operadorPerfil = trim((string) ($usuario['perfil'] ?? 'Nao informado'));
+$operadorNome = trim((string) ($usuario['nome'] ?? 'Não identificado'));
+$operadorPerfil = trim((string) ($usuario['perfil'] ?? 'Não informado'));
 $resumoFaixa = $totalAlertas > 0
-    ? "Exibindo {$inicioRegistro} a {$fimRegistro} nesta pagina."
+    ? "Exibindo {$inicioRegistro} a {$fimRegistro} nesta página."
     : 'Nenhum alerta localizado com o filtro atual.';
 
 $csvQueryString = http_build_query(array_filter(
@@ -355,10 +355,10 @@ function vigenciaAlerta(array $a): string
     );
 
     if ($expirado) {
-       return "<span class='vigencia-expirada'>{$inicio} ate {$fim}</span>";
+       return "<span class='vigencia-expirada'>{$inicio} até {$fim}</span>";
     }
 
-    return "{$inicio} ate {$fim}";
+    return "{$inicio} até {$fim}";
 }
 
 function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
@@ -413,8 +413,8 @@ function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
                         <span class="alerta-form-kicker">Monitoramento operacional</span>
                         <h1 class="alerta-form-title">Alertas cadastrados</h1>
                         <p class="alerta-form-description">
-                            Consulte a base operacional de alertas, aplique filtros por gravidade e vigencia e siga para as
-                            acoes de detalhe, edicao, encerramento, cancelamento, envio e exportacao no mesmo padrao visual das telas mais recentes.
+                            Consulte a base operacional de alertas, aplique filtros por gravidade e vigência e siga para as
+                            ações de detalhe, edição, encerramento, cancelamento, envio e exportação no mesmo padrão visual das telas mais recentes.
                         </p>
 
                         <div class="usuarios-hero-chip-row alerta-lista-hero-chip-row">
@@ -440,33 +440,33 @@ function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
                     <article class="usuarios-summary-card usuarios-summary-card-success">
                         <span class="usuarios-summary-label">Monitoramento ativo</span>
                         <strong class="usuarios-summary-value"><?= (int) $totalVigentes ?> alertas ativos</strong>
-                        <span class="usuarios-summary-note">Indicador geral da base local usada nesta homologacao do Wamp.</span>
+                        <span class="usuarios-summary-note">Indicador geral da base local usada nesta homologação do Wamp.</span>
                     </article>
 
                     <article class="usuarios-summary-card usuarios-summary-card-neutral">
                         <span class="usuarios-summary-label">Contexto</span>
-                        <strong class="usuarios-summary-value">Pagina <?= (int) $pagina ?> de <?= (int) $totalPaginasExibicao ?></strong>
+                        <strong class="usuarios-summary-value">Página <?= (int) $pagina ?> de <?= (int) $totalPaginasExibicao ?></strong>
                         <span class="usuarios-summary-note"><?= htmlspecialchars($filtrosResumo, ENT_QUOTES, 'UTF-8') ?></span>
                     </article>
 
                     <article class="usuarios-summary-card usuarios-summary-card-warning">
                         <span class="usuarios-summary-label">Cobertura da consulta</span>
                         <strong class="usuarios-summary-value"><?= (int) $totalEmTela ?> alerta(s) em tela</strong>
-                        <span class="usuarios-summary-note">Resultados paginados com filtros reaproveitados na exportacao CSV.</span>
+                        <span class="usuarios-summary-note">Resultados paginados com filtros reaproveitados na exportação CSV.</span>
                     </article>
                 </div>
 
                 <aside class="usuarios-command-card alerta-lista-command-card">
                     <span class="usuarios-command-kicker">Comando de alertas</span>
-                    <h2>Coordenacao da fila operacional</h2>
+                    <h2>Coordenação da fila operacional</h2>
                     <p>
                         Use este painel para validar operador, recorte ativo e fluxo recomendado antes de executar as
-                        acoes de envio, edicao, encerramento, cancelamento e exportacao.
+                        ações de envio, edição, encerramento, cancelamento e exportação.
                     </p>
 
                     <div class="usuarios-command-grid alerta-lista-command-grid">
                         <article class="usuarios-command-item">
-                            <span>Operador da sessao</span>
+                            <span>Operador da sessão</span>
                             <strong><?= htmlspecialchars($operadorNome, ENT_QUOTES, 'UTF-8') ?></strong>
                             <small>Perfil atual: <?= htmlspecialchars($operadorPerfil, ENT_QUOTES, 'UTF-8') ?>.</small>
                         </article>
@@ -474,13 +474,13 @@ function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
                         <article class="usuarios-command-item">
                             <span>Recorte ativo</span>
                             <strong><?= htmlspecialchars($filtrosResumo, ENT_QUOTES, 'UTF-8') ?></strong>
-                            <small>Filtros aplicados para tabela, acoes e exportacao.</small>
+                            <small>Filtros aplicados para tabela, ações e exportação.</small>
                         </article>
 
                         <article class="usuarios-command-item">
                             <span>Prioridade sugerida</span>
                             <strong>Filtrar, agir e registrar</strong>
-                            <small>Filtre a base, execute as acoes no registro e exporte o consolidado quando necessario.</small>
+                            <small>Filtre a base, execute as ações no registro e exporte o consolidado quando necessário.</small>
                         </article>
                     </div>
                 </aside>
@@ -488,10 +488,10 @@ function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
 
             <?php if (isset($_GET['erro']) && $_GET['erro'] === 'inmet_duplicado'): ?>
                 <div class="alerta-callout alerta-lista-callout-alert">
-                    <strong>Alerta do INMET ja importado</strong>
-                    O aviso oficial informado ja existe nesta base local.
+                    <strong>Alerta do INMET já importado</strong>
+                    O aviso oficial informado já existe nesta base local.
                     <?php if (!empty($_GET['numero'])): ?>
-                        Numero relacionado: <?= htmlspecialchars((string) $_GET['numero'], ENT_QUOTES, 'UTF-8') ?>
+                        Número relacionado: <?= htmlspecialchars((string) $_GET['numero'], ENT_QUOTES, 'UTF-8') ?>
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
@@ -500,10 +500,10 @@ function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
                 <div class="usuarios-control-grid alerta-lista-overview-grid">
                     <section id="alerta-lista-filtros" class="alerta-form-section usuarios-filter-panel alerta-lista-filter-panel">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 1</span>
-                            <h2 class="alerta-section-title">Filtros e localizacao</h2>
+                            <span class="alerta-section-kicker">Seção 1</span>
+                            <h2 class="alerta-section-title">Filtros e localização</h2>
                             <p class="alerta-section-text">
-                                Refine a consulta por gravidade e vigencia. Os filtros abaixo permanecem compativeis com a exportacao e com a navegacao paginada.
+                                Refine a consulta por gravidade e vigência. Os filtros abaixo permanecem compatíveis com a exportação e com a navegação paginada.
                             </p>
                         </header>
 
@@ -514,11 +514,11 @@ function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
                                         <input type="checkbox" id="vigentes" name="vigentes" value="1" <?= $somenteVigentes ? 'checked' : '' ?>>
                                         <span>Mostrar somente alertas ativos</span>
                                     </label>
-                                    <span class="field-helper">Use este atalho para exibir apenas alertas ainda vigentes na operacao.</span>
+                                    <span class="field-helper">Use este atalho para exibir apenas alertas ainda vigentes na operação.</span>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="gravidade">Nivel de gravidade</label>
+                                    <label for="gravidade">Nível de gravidade</label>
                                     <select id="gravidade" name="gravidade">
                                         <option value="">Todas as gravidades</option>
                                         <?php foreach (['BAIXO', 'MODERADO', 'ALTO', 'MUITO ALTO', 'EXTREMO'] as $g): ?>
@@ -542,7 +542,7 @@ function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="data_inicio">Vigencia a partir de</label>
+                                    <label for="data_inicio">Vigência a partir de</label>
                                     <input
                                         type="date"
                                         id="data_inicio"
@@ -553,7 +553,7 @@ function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="data_fim">Vigencia ate</label>
+                                    <label for="data_fim">Vigência até</label>
                                     <input
                                         type="date"
                                         id="data_fim"
@@ -592,8 +592,8 @@ function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
 
                     <section class="alerta-form-section usuarios-governance-panel alerta-lista-governance-panel">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 2</span>
-                            <h2 class="alerta-section-title">Acoes operacionais</h2>
+                            <span class="alerta-section-kicker">Seção 2</span>
+                            <h2 class="alerta-section-title">Ações operacionais</h2>
                             <p class="alerta-section-text">
                                 Inicie novas entradas, importe avisos oficiais do INMET e exporte a listagem atual sem sair deste painel.
                             </p>
@@ -603,24 +603,24 @@ function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
                             <article class="usuarios-insight-card usuarios-insight-card-emphasis alerta-lista-mini-card">
                                 <span class="usuarios-insight-kicker">Perfil atual</span>
                                 <strong><?= htmlspecialchars((string) $usuario['perfil'], ENT_QUOTES, 'UTF-8') ?></strong>
-                                <p>As acoes abaixo respeitam as permissoes configuradas para este usuario.</p>
+                                <p>As ações abaixo respeitam as permissões configuradas para este usuário.</p>
                             </article>
 
                             <article class="usuarios-insight-card alerta-lista-mini-card">
-                                <span class="usuarios-insight-kicker">Exportacao</span>
+                                <span class="usuarios-insight-kicker">Exportação</span>
                                 <strong>CSV filtrado</strong>
-                                <p>O arquivo considera a combinacao de filtros atualmente aplicada na pagina.</p>
+                                <p>O arquivo considera a combinação de filtros atualmente aplicada na página.</p>
                             </article>
                         </div>
 
                         <div class="alerta-callout alerta-lista-actions-note">
                             <strong>Fluxo recomendado</strong>
-                            Use a importacao do INMET para avisos oficiais e o cadastro manual para cenarios operacionais internos ou integrados.
+                            Use a importação do INMET para avisos oficiais e o cadastro manual para cenários operacionais internos ou integrados.
                         </div>
 
                         <div class="alerta-form-actions usuarios-filter-actions alerta-lista-action-buttons">
                             <div class="alerta-form-actions-left">
-                                <span class="alerta-inline-note">A exportacao fica disponivel mesmo quando as acoes de criacao estiverem bloqueadas por perfil.</span>
+                                <span class="alerta-inline-note">A exportação fica disponível mesmo quando as ações de criação estiverem bloqueadas por perfil.</span>
                             </div>
 
                             <div class="alerta-form-actions-right alerta-lista-action-buttons-group">
@@ -644,10 +644,10 @@ function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
             <section id="alerta-lista-tabela" class="alerta-form-panel usuarios-table-panel alerta-lista-table-panel">
                 <header class="usuarios-table-head alerta-lista-table-head">
                     <div class="alerta-section-header">
-                        <span class="alerta-section-kicker">Secao 3</span>
+                        <span class="alerta-section-kicker">Seção 3</span>
                         <h2 class="alerta-section-title">Lista operacional de alertas</h2>
                         <p class="alerta-section-text">
-                            A tabela abaixo consolida gravidade, status, vigencia, comunicacao e atalhos de acao para cada alerta cadastrado.
+                            A tabela abaixo consolida gravidade, status, vigência, comunicação e atalhos de ação para cada alerta cadastrado.
                         </p>
                     </div>
 
@@ -660,13 +660,13 @@ function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
                     <table class="tabela-alertas">
                         <thead>
                             <tr>
-                                <th>Numero</th>
+                                <th>Número</th>
                                 <th>Evento</th>
                                 <th>Gravidade</th>
                                 <th>Status</th>
-                                <th>Vigencia</th>
-                                <th>Comunicacao</th>
-                                <th>Acoes</th>
+                                <th>Vigência</th>
+                                <th>Comunicação</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -696,7 +696,7 @@ function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
                                 $ativo = $a['status'] === 'ATIVO';
                             ?>
                                 <tr>
-                                    <td data-label="Numero"><?= htmlspecialchars($a['numero'], ENT_QUOTES, 'UTF-8') ?></td>
+                                    <td data-label="Número"><?= htmlspecialchars($a['numero'], ENT_QUOTES, 'UTF-8') ?></td>
                                     <td data-label="Evento"><?= htmlspecialchars($a['tipo_evento'], ENT_QUOTES, 'UTF-8') ?></td>
 
                                     <td data-label="Gravidade">
@@ -711,17 +711,17 @@ function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
                                         </span>
                                     </td>
 
-                                    <td data-label="Vigencia"><?= vigenciaAlerta($a) ?></td>
+                                    <td data-label="Vigência"><?= vigenciaAlerta($a) ?></td>
 
-                                    <td data-label="Comunicacao">
+                                    <td data-label="Comunicação">
                                         <?php if ($a['status'] !== 'ATIVO'): ?>
-                                            <span class="tag tag-inativa">Indisponivel</span>
+                                            <span class="tag tag-inativa">Indisponível</span>
                                         <?php elseif (empty($a['imagem_mapa'])): ?>
                                             <span
                                                 class="tag tag-alerta"
-                                                title="O mapa do alerta ainda nao foi gerado. Acesse o detalhe do alerta para gerar o mapa antes de enviar."
+                                                title="O mapa do alerta ainda não foi gerado. Acesse o detalhe do alerta para gerar o mapa antes de enviar."
                                             >
-                                                Mapa nao gerado
+                                                Mapa não gerado
                                             </span>
                                         <?php elseif ((int) $a['alerta_enviado_compdec'] === 1):
                                             $dataEnvioLocal = TimeHelper::formatDateTime($a['data_envio_compdec'] ?? null, '');
@@ -740,17 +740,17 @@ function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
                                                     type="button"
                                                     class="btn btn-warning btn-enviar-alerta"
                                                     data-alerta-id="<?= $a['id'] ?>"
-                                                    title="Enviar alerta para as COMPDEC dos municipios afetados"
+                                                    title="Enviar alerta para as COMPDEC dos municípios afetados"
                                                 >
                                                     Enviar alerta
                                                 </button>
                                             <?php else: ?>
-                                                <span class="tag tag-inativa">Sem permissao de envio</span>
+                                                <span class="tag tag-inativa">Sem permissão de envio</span>
                                             <?php endif; ?>
                                         <?php endif; ?>
                                     </td>
 
-                                    <td data-label="Acoes">
+                                    <td data-label="Ações">
                                         <div class="acoes">
                                             <a href="/pages/alertas/detalhe.php?id=<?= $a['id'] ?>" class="btn-acao btn-detalhe">Detalhes</a>
 
@@ -782,7 +782,7 @@ function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
                                                         <input type="hidden" name="acao" value="encerrar">
                                                         <button
                                                             class="btn-acao btn-encerrar"
-                                                            onclick="return confirm('Deseja encerrar este alerta? Ao encerrar, a vigencia sera finalizada.')"
+                                                            onclick="return confirm('Deseja encerrar este alerta? Ao encerrar, a vigência será finalizada.')"
                                                         >
                                                             Encerrar
                                                         </button>
@@ -801,10 +801,13 @@ function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
                                                     type="button"
                                                     class="btn-acao btn-pdf btn-disabled"
                                                     disabled
-                                                    title="<?= $cancelado ? 'Alerta cancelado' : 'A imagem do mapa ainda nao foi gerada. Acesse o detalhe do alerta.' ?>"
+                                                    title="PDF não disponível. Para gerar o PDF do alerta, acesse o detalhe do alerta."
                                                 >
-                                                    <?= $cancelado ? 'PDF' : 'Gerando PDF' ?>
+                                                    PDF não disponível
                                                 </button>
+                                                <span class="acao-aviso-pdf">
+                                                    Para gerar o PDF do alerta, acesse o detalhe do alerta.
+                                                </span>
                                             <?php endif; ?>
 
                                             <?php if (!$cancelado): ?>
@@ -834,7 +837,7 @@ function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
                 <?php if ($totalPaginas > 1): ?>
                     <div class="paginacao">
                         <?php if ($pagina > 1): ?>
-                            <a href="?<?= http_build_query(array_merge($queryBase, ['pagina' => $pagina - 1])) ?>" aria-label="Pagina anterior" title="Pagina anterior">
+                            <a href="?<?= http_build_query(array_merge($queryBase, ['pagina' => $pagina - 1])) ?>" aria-label="Página anterior" title="Página anterior">
                                 &laquo;
                             </a>
                         <?php endif; ?>
@@ -853,7 +856,7 @@ function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
                         <?php endforeach; ?>
 
                         <?php if ($pagina < $totalPaginas): ?>
-                            <a href="?<?= http_build_query(array_merge($queryBase, ['pagina' => $pagina + 1])) ?>" aria-label="Proxima pagina" title="Proxima pagina">
+                            <a href="?<?= http_build_query(array_merge($queryBase, ['pagina' => $pagina + 1])) ?>" aria-label="Próxima página" title="Próxima página">
                                 &raquo;
                             </a>
                         <?php endif; ?>

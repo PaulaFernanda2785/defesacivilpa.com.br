@@ -8,34 +8,34 @@ $usuario = $_SESSION['usuario'] ?? [];
 $analises = [
     [
         'kicker' => 'Temporal',
-        'titulo' => 'Analise temporal de alertas',
-        'descricao' => 'Avalie sazonalidade, frequencia por periodo do dia, comparativos mensais e evolucao historica dos alertas.',
-        'nivel' => 'Operacional / Tatico',
-        'filtros' => 'Ano, mes, regiao, municipio e evento',
+        'titulo' => 'Análise temporal de alertas',
+        'descricao' => 'Avalie sazonalidade, frequência por período do dia, comparativos mensais e evolução histórica dos alertas.',
+        'nivel' => 'Operacional / Tático',
+        'filtros' => 'Ano, mês, região, município e evento',
         'href' => '/pages/analises/temporal.php',
     ],
     [
         'kicker' => 'Severidade',
         'titulo' => 'Severidade e impacto',
-        'descricao' => 'Consolide gravidade, duracao media, volume por evento e concentracao territorial dos alertas.',
-        'nivel' => 'Operacional / Tatico',
-        'filtros' => 'Ano, mes, regiao e municipio',
+        'descricao' => 'Consolide gravidade, duração média, volume por evento e concentração territorial dos alertas.',
+        'nivel' => 'Operacional / Tático',
+        'filtros' => 'Ano, mês, região e município',
         'href' => '/pages/analises/severidade.php',
     ],
     [
         'kicker' => 'Tipologia',
         'titulo' => 'Tipologia de eventos',
-        'descricao' => 'Leia correlacao com severidade, distribuicao por regiao e recorrencia municipal por tipo de evento.',
+        'descricao' => 'Leia correlação com severidade, distribuição por região e recorrência municipal por tipo de evento.',
         'nivel' => 'Operacional',
-        'filtros' => 'Ano, mes, regiao e municipio',
+        'filtros' => 'Ano, mês, região e município',
         'href' => '/pages/analises/tipologia.php',
     ],
     [
-        'kicker' => 'Indices',
-        'titulo' => 'Indices de risco (IRP / IPT)',
-        'descricao' => 'Acompanhe a pressao operacional regional e territorial a partir dos indicadores sinteticos do sistema.',
-        'nivel' => 'Estrategico',
-        'filtros' => 'Ano, mes, regiao e municipio',
+        'kicker' => 'Índices',
+        'titulo' => 'Índices de risco (IRP / IPT)',
+        'descricao' => 'Acompanhe a pressão operacional regional e territorial a partir dos indicadores sintéticos do sistema.',
+        'nivel' => 'Estratégico',
+        'filtros' => 'Ano, mês, região e município',
         'href' => '/pages/analises/indice_risco.php',
     ],
 ];
@@ -64,35 +64,35 @@ foreach ($analises as $analise) {
 }
 
 $catalogoFiltros = implode(' | ', array_values(array_unique($filtrosCatalogo)));
-$operadorNome = trim((string) ($usuario['nome'] ?? 'Nao identificado'));
-$operadorPerfil = trim((string) ($usuario['perfil'] ?? 'Nao informado'));
+$operadorNome = trim((string) ($usuario['nome'] ?? 'Não identificado'));
+$operadorPerfil = trim((string) ($usuario['perfil'] ?? 'Não informado'));
 $cssAnalisesIndexPath = __DIR__ . '/../../assets/css/pages/analises-index.css';
 $cssAnalisesIndexVersion = (string) ((int) @filemtime($cssAnalisesIndexPath));
 $jsAnaliseGlobalPath = __DIR__ . '/../../assets/js/analise-global.js';
 $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
 $resumoExecutivo = [
     [
-        'label' => 'Modulos analiticos',
-        'value' => $totalModulos . ' paineis',
-        'note' => 'Central unica com analises temporal, severidade, tipologia e indices.',
+        'label' => 'Módulos analíticos',
+        'value' => $totalModulos . ' painéis',
+        'note' => 'Central única com análises temporal, severidade, tipologia e índices.',
         'tone' => 'primary',
     ],
     [
         'label' => 'Cobertura operacional',
         'value' => $totalOperacionais . ' frentes',
-        'note' => 'Leituras aplicadas ao monitoramento tatico e operacional.',
+        'note' => 'Leituras aplicadas ao monitoramento tático e operacional.',
         'tone' => 'success',
     ],
     [
-        'label' => 'Foco estrategico',
+        'label' => 'Foco estratégico',
         'value' => $totalEstrategicos . ' modulo(s)',
-        'note' => 'Indices sinteticos para priorizacao territorial e planejamento.',
+        'note' => 'Índices sintéticos para priorização territorial e planejamento.',
         'tone' => 'neutral',
     ],
     [
         'label' => 'Recorte consolidado',
-        'value' => 'Ano, mes, regiao e municipio',
-        'note' => 'Mesmo conjunto de filtros para gerar o relatorio analitico completo.',
+        'value' => 'Ano, mês, região e município',
+        'note' => 'Mesmo conjunto de filtros para gerar o relatório analítico completo.',
         'tone' => 'warning',
     ],
 ];
@@ -101,7 +101,7 @@ $resumoExecutivo = [
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<title>Analises Multirriscos</title>
+<title>Análises Multirriscos</title>
 <link rel="icon" type="image/x-icon" href="/assets/images/logo.cbmpa.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logo.cbmpa.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo.cbmpa.ico">
@@ -123,7 +123,7 @@ $resumoExecutivo = [
         <?php
         $breadcrumb = [
             'Painel' => '/pages/painel.php',
-            'Analises multirriscos' => null,
+            'Análises multirriscos' => null,
         ];
         include __DIR__ . '/../_breadcrumb.php';
         ?>
@@ -132,23 +132,23 @@ $resumoExecutivo = [
             <div class="usuarios-hero-grid analises-hero-grid">
                 <div class="alerta-form-hero usuarios-hero-panel analises-hero-panel">
                     <div class="alerta-form-lead usuarios-hero-copy analises-hero-copy">
-                        <span class="alerta-form-kicker">Inteligencia analitica</span>
-                        <h1 class="alerta-form-title">Central de analises multirriscos</h1>
+                        <span class="alerta-form-kicker">Inteligência analítica</span>
+                        <h1 class="alerta-form-title">Central de análises multirriscos</h1>
                         <p class="alerta-form-description">
-                            Reuna leituras temporal, severidade, tipologia e indices em um unico comando analitico.
-                            Configure um recorte global para o relatorio consolidado e aprofunde a investigacao nos
-                            paineis especializados mantendo o layout unificado das telas de usuarios e historico.
+                            Reúna leituras temporal, severidade, tipologia e índices em um único comando analítico.
+                            Configure um recorte global para o relatório consolidado e aprofunde a investigação nos
+                            painéis especializados mantendo o layout unificado das telas de usuários e histórico.
                         </p>
 
                         <div class="usuarios-hero-chip-row analises-hero-chip-row">
-                            <span class="usuarios-hero-chip"><?= $totalModulos ?> modulos ativos</span>
+                            <span class="usuarios-hero-chip"><?= $totalModulos ?> módulos ativos</span>
                             <span class="usuarios-hero-chip"><?= $totalOperacionais ?> frentes operacionais</span>
-                            <span class="usuarios-hero-chip">Relatorio consolidado com exportacao em PDF</span>
+                            <span class="usuarios-hero-chip">Relatório consolidado com exportação em PDF</span>
                         </div>
 
                         <div class="usuarios-hero-actions analises-hero-actions">
                             <a href="#analises-filtros" class="btn btn-primary">Configurar recorte global</a>
-                            <a href="#analises-modulos" class="btn btn-secondary">Ver modulos de analise</a>
+                            <a href="#analises-modulos" class="btn btn-secondary">Ver módulos de análise</a>
                         </div>
                     </div>
                 </div>
@@ -164,30 +164,30 @@ $resumoExecutivo = [
                 </div>
 
                 <aside class="usuarios-command-card analises-command-card">
-                    <span class="usuarios-command-kicker">Comando analitico</span>
-                    <h2>Coordenacao da central multirriscos</h2>
+                    <span class="usuarios-command-kicker">Comando analítico</span>
+                    <h2>Coordenação da central multirriscos</h2>
                     <p>
-                        Este painel conecta o operador da sessao, o recorte consolidado e a navegacao entre os modulos
-                        para acelerar a leitura estrategica e a tomada de decisao.
+                        Este painel conecta o operador da sessão, o recorte consolidado e a navegação entre os módulos
+                        para acelerar a leitura estratégica e a tomada de decisão.
                     </p>
 
                     <div class="usuarios-command-grid analises-command-grid">
                         <article class="usuarios-command-item">
-                            <span>Operador da sessao</span>
+                            <span>Operador da sessão</span>
                             <strong><?= htmlspecialchars($operadorNome, ENT_QUOTES, 'UTF-8') ?></strong>
                             <small>Perfil atual: <?= htmlspecialchars($operadorPerfil, ENT_QUOTES, 'UTF-8') ?>.</small>
                         </article>
 
                         <article class="usuarios-command-item">
                             <span>Recorte consolidado</span>
-                            <strong>Ano, mes, regiao e municipio</strong>
-                            <small>Mesmo padrao de filtros para gerar o relatorio analitico integrado.</small>
+                            <strong>Ano, mês, região e município</strong>
+                            <small>Mesmo padrão de filtros para gerar o relatório analítico integrado.</small>
                         </article>
 
                         <article class="usuarios-command-item">
                             <span>Prioridade sugerida</span>
-                            <strong>Do geral ao especifico</strong>
-                            <small>Comece pelo relatorio global e avance para os paineis especializados.</small>
+                            <strong>Do geral ao específico</strong>
+                            <small>Comece pelo relatório global e avance para os painéis especializados.</small>
                         </article>
                     </div>
                 </aside>
@@ -198,10 +198,10 @@ $resumoExecutivo = [
                     <section id="analises-filtros" class="alerta-form-section usuarios-filter-panel analises-filter-panel">
                         <header class="alerta-section-header">
                             <span class="alerta-section-kicker">Consulta consolidada</span>
-                            <h2 class="alerta-section-title">Recorte global do relatorio analitico</h2>
+                            <h2 class="alerta-section-title">Recorte global do relatório analítico</h2>
                             <p class="alerta-section-text">
-                                Configure o recorte desejado para abrir o relatorio consolidado do sistema com a mesma base de
-                                ano, mes, regiao de integracao e municipio.
+                                Configure o recorte desejado para abrir o relatório consolidado do sistema com a mesma base de
+                                ano, mês, região de integração e município.
                             </p>
                         </header>
 
@@ -213,17 +213,17 @@ $resumoExecutivo = [
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="filtroMes">Mes</label>
+                                    <label for="filtroMes">Mês</label>
                                     <select id="filtroMes"></select>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="filtroRegiao">Regiao de integracao</label>
+                                    <label for="filtroRegiao">Região de integração</label>
                                     <select id="filtroRegiao"></select>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="filtroMunicipio">Municipio</label>
+                                    <label for="filtroMunicipio">Município</label>
                                     <select id="filtroMunicipio">
                                         <option value="">Todos</option>
                                     </select>
@@ -233,28 +233,28 @@ $resumoExecutivo = [
                             <div class="usuarios-filter-meta analises-filter-meta">
                                 <span class="usuarios-filter-meta-label">Recorte consolidado</span>
                                 <div class="usuarios-filter-pill-row">
-                                    <span class="usuarios-filter-pill">Ano, mes, regiao e municipio</span>
+                                    <span class="usuarios-filter-pill">Ano, mês, região e município</span>
                                     <span class="usuarios-filter-pill is-neutral">
-                                        O relatorio integra temporal, severidade, tipologia e indices.
+                                        O relatório integra temporal, severidade, tipologia e índices.
                                     </span>
                                 </div>
                             </div>
 
                             <div class="alerta-callout analises-filter-callout">
-                                <strong>Relatorio consolidado</strong>
-                                O botao abaixo usa este recorte para montar a sintese analitica integrada e liberar a exportacao em PDF.
+                                <strong>Relatório consolidado</strong>
+                                O botão abaixo usa este recorte para montar a síntese analítica integrada e liberar a exportação em PDF.
                             </div>
 
                             <div class="alerta-form-actions usuarios-filter-actions analises-filter-actions">
                                 <div class="alerta-form-actions-left">
                                     <span class="alerta-inline-note">
-                                        Use a selecao territorial para gerar um panorama consolidado antes de entrar nos paineis detalhados.
+                                        Use a seleção territorial para gerar um panorama consolidado antes de entrar nos painéis detalhados.
                                     </span>
                                 </div>
 
                                 <div class="alerta-form-actions-right">
                                     <button id="btnGerarRelatorio" type="button" class="btn btn-primary">
-                                        Gerar relatorio analitico
+                                        Gerar relatório analítico
                                     </button>
                                 </div>
                             </div>
@@ -266,45 +266,45 @@ $resumoExecutivo = [
                             <span class="alerta-section-kicker">Leitura executiva</span>
                             <h2 class="alerta-section-title">Como usar esta central</h2>
                             <p class="alerta-section-text">
-                                Combine o relatorio integrado com os paineis especializados para aprofundar a leitura
+                                Combine o relatório integrado com os painéis especializados para aprofundar a leitura
                                 conforme a necessidade operacional.
                             </p>
                         </header>
 
                         <div class="usuarios-insight-grid analises-insight-grid">
                             <article class="usuarios-insight-card usuarios-insight-card-emphasis">
-                                <span class="usuarios-insight-kicker">Visao integrada</span>
-                                <strong>Relatorio unico</strong>
-                                <p>Resume temporal, severidade, tipologia, municipios impactados e indices no mesmo fluxo.</p>
+                                <span class="usuarios-insight-kicker">Visão integrada</span>
+                                <strong>Relatório único</strong>
+                                <p>Resume temporal, severidade, tipologia, municípios impactados e índices no mesmo fluxo.</p>
                             </article>
 
                             <article class="usuarios-insight-card">
                                 <span class="usuarios-insight-kicker">Aprofundamento</span>
                                 <strong><?= $totalModulos ?> paineis especializados</strong>
-                                <p>Cada modulo segue o layout novo para leitura rapida, consistente e responsiva.</p>
+                                <p>Cada módulo segue o layout novo para leitura rápida, consistente e responsiva.</p>
                             </article>
 
                             <article class="usuarios-insight-card">
                                 <span class="usuarios-insight-kicker">Filtros priorizados</span>
                                 <strong><?= htmlspecialchars($catalogoFiltros, ENT_QUOTES, 'UTF-8') ?></strong>
-                                <p>Padrao unico de recorte para manter comparabilidade entre os modulos.</p>
+                                <p>Padrão único de recorte para manter comparabilidade entre os módulos.</p>
                             </article>
 
                             <article class="usuarios-insight-card analises-insight-card-action">
-                                <span class="usuarios-insight-kicker">Navegacao rapida</span>
-                                <strong>Do geral ao especifico</strong>
-                                <p>Comece pelo consolidado e aprofunde nos paineis mais aderentes ao contexto territorial.</p>
+                                <span class="usuarios-insight-kicker">Navegação rápida</span>
+                                <strong>Do geral ao específico</strong>
+                                <p>Comece pelo consolidado e aprofunde nos painéis mais aderentes ao contexto territorial.</p>
                                 <div class="analises-action-buttons">
                                     <a href="/pages/analises/temporal.php" class="btn btn-secondary">Abrir temporal</a>
-                                    <a href="/pages/analises/indice_risco.php" class="btn btn-secondary">Abrir indices</a>
+                                    <a href="/pages/analises/indice_risco.php" class="btn btn-secondary">Abrir índices</a>
                                 </div>
                             </article>
                         </div>
 
                         <div class="alerta-callout analises-info-callout">
                             <strong>Leitura orientada</strong>
-                            Use a analise temporal para identificar janelas criticas, a severidade para medir carga operacional,
-                            a tipologia para reconhecer padroes de evento e os indices para priorizar territorios.
+                            Use a análise temporal para identificar janelas críticas, a severidade para medir carga operacional,
+                            a tipologia para reconhecer padrões de evento e os índices para priorizar territórios.
                         </div>
                     </section>
                 </div>
@@ -313,16 +313,16 @@ $resumoExecutivo = [
             <section id="analises-modulos" class="alerta-form-panel usuarios-table-panel analises-modules-panel">
                 <header class="usuarios-table-head analises-section-head">
                     <div class="alerta-section-header">
-                        <span class="alerta-section-kicker">Catalogo analitico</span>
-                        <h2 class="alerta-section-title">Modulos de analise disponiveis</h2>
+                        <span class="alerta-section-kicker">Catálogo analítico</span>
+                        <h2 class="alerta-section-title">Módulos de análise disponíveis</h2>
                         <p class="alerta-section-text">
-                            Navegue pelos paineis especializados mantendo o mesmo padrao de layout,
+                            Navegue pelos painéis especializados mantendo o mesmo padrão de layout,
                             responsividade e leitura operacional.
                         </p>
                     </div>
 
                     <div class="usuarios-table-head-actions">
-                        <span class="usuarios-result-chip"><?= $totalModulos ?> modulos prontos</span>
+                        <span class="usuarios-result-chip"><?= $totalModulos ?> módulos prontos</span>
                         <a href="/pages/mapas/mapa_multirriscos.php" class="btn btn-secondary">Abrir mapa multirriscos</a>
                     </div>
                 </header>
@@ -330,12 +330,12 @@ $resumoExecutivo = [
                 <div class="usuarios-table-toolbar analises-table-toolbar">
                     <div class="usuarios-table-toolbar-copy">
                         <strong>Recorte recomendado:</strong>
-                        <span>Gere o consolidado e avance para o modulo de maior aderencia ao cenario atual.</span>
+                        <span>Gere o consolidado e avance para o módulo de maior aderência ao cenário atual.</span>
                     </div>
 
                     <div class="usuarios-table-toolbar-pills">
                         <span class="usuarios-toolbar-pill"><?= $totalOperacionais ?> operacionais</span>
-                        <span class="usuarios-toolbar-pill"><?= $totalEstrategicos ?> estrategico(s)</span>
+                        <span class="usuarios-toolbar-pill"><?= $totalEstrategicos ?> estratégico(s)</span>
                         <span class="usuarios-toolbar-pill">Layout unificado</span>
                     </div>
                 </div>
@@ -348,12 +348,12 @@ $resumoExecutivo = [
                             <p class="analises-card-text"><?= htmlspecialchars($analise['descricao'], ENT_QUOTES, 'UTF-8') ?></p>
 
                             <div class="analises-card-meta">
-                                <span class="analises-chip">Nivel: <?= htmlspecialchars($analise['nivel'], ENT_QUOTES, 'UTF-8') ?></span>
+                                <span class="analises-chip">Nível: <?= htmlspecialchars($analise['nivel'], ENT_QUOTES, 'UTF-8') ?></span>
                                 <span class="analises-chip">Filtros: <?= htmlspecialchars($analise['filtros'], ENT_QUOTES, 'UTF-8') ?></span>
                             </div>
 
                             <div class="analises-card-actions">
-                                <a href="<?= htmlspecialchars($analise['href'], ENT_QUOTES, 'UTF-8') ?>" class="btn btn-primary">Acessar analise</a>
+                                <a href="<?= htmlspecialchars($analise['href'], ENT_QUOTES, 'UTF-8') ?>" class="btn btn-primary">Acessar análise</a>
                             </div>
                         </article>
                     <?php endforeach; ?>
@@ -369,10 +369,10 @@ $resumoExecutivo = [
     <div class="modal-content analises-modal-content">
         <div class="modal-header analises-modal-header">
             <div>
-                <span class="analises-modal-kicker">Relatorio consolidado</span>
-                <h2>Relatorio analitico multirriscos</h2>
+                <span class="analises-modal-kicker">Relatório consolidado</span>
+                <h2>Relatório analítico multirriscos</h2>
             </div>
-            <button id="fecharModal" type="button" class="analises-modal-close" aria-label="Fechar relatorio">&times;</button>
+            <button id="fecharModal" type="button" class="analises-modal-close" aria-label="Fechar relatório">&times;</button>
         </div>
 
         <div id="conteudoRelatorio" class="analises-modal-body"></div>

@@ -596,7 +596,7 @@
 
     function renderizarLista(lista) {
         if (!Array.isArray(lista) || !lista.length) {
-            return '<span class="multirrisco-inline-muted">Nenhum municipio ativo neste recorte.</span>';
+            return '<span class="multirrisco-inline-muted">Nenhum município ativo neste recorte.</span>';
         }
 
         return `<div class="multirrisco-inline-list">${lista.map((item) => `<span class="multirrisco-pill multirrisco-pill-soft">${escapeHtml(item)}</span>`).join('')}</div>`;
@@ -619,7 +619,7 @@
         const gravidade = String(detalhe.gravidade || 'Sem gravidade');
         const extraMunicipios = exibirMunicipios ? `
             <div class="multirrisco-alerta-extra">
-                <span class="multirrisco-alerta-extra-label">Municipios cobertos neste alerta</span>
+                <span class="multirrisco-alerta-extra-label">Municípios cobertos neste alerta</span>
                 ${renderizarLista(detalhe.municipios || [])}
             </div>
         ` : '';
@@ -629,16 +629,16 @@
                 <div class="multirrisco-alerta-card-head">
                     <div>
                         <span class="multirrisco-alerta-kicker">Alerta ${escapeHtml(detalhe.numero || '-')}</span>
-                        <strong class="multirrisco-alerta-title">${escapeHtml(detalhe.tipo_evento || 'Evento nao informado')}</strong>
+                        <strong class="multirrisco-alerta-title">${escapeHtml(detalhe.tipo_evento || 'Evento não informado')}</strong>
                     </div>
                     <span class="multirrisco-alerta-badge" style="background:${escapeHtml(corNivel(gravidade))}22;border-color:${escapeHtml(corNivel(gravidade))}55;">${escapeHtml(gravidade)}</span>
                 </div>
                 <div class="multirrisco-alerta-grid">
-                    <div class="multirrisco-alerta-item"><span>Numero do alerta</span><strong>${escapeHtml(detalhe.numero || '-')}</strong></div>
+                    <div class="multirrisco-alerta-item"><span>Número do alerta</span><strong>${escapeHtml(detalhe.numero || '-')}</strong></div>
                     <div class="multirrisco-alerta-item"><span>Data do alerta</span><strong>${escapeHtml(formatarData(detalhe.data_alerta))}</strong></div>
-                    <div class="multirrisco-alerta-item"><span>Vigencia</span><strong>${escapeHtml(formatarVigencia(detalhe.inicio_alerta, detalhe.fim_alerta))}</strong></div>
+                    <div class="multirrisco-alerta-item"><span>Vigência</span><strong>${escapeHtml(formatarVigencia(detalhe.inicio_alerta, detalhe.fim_alerta))}</strong></div>
                     <div class="multirrisco-alerta-item"><span>Gravidade</span><strong>${escapeHtml(gravidade)}</strong></div>
-                    <div class="multirrisco-alerta-item"><span>Pressao</span><strong>${escapeHtml(formatarPressao(detalhe.pressao))}</strong></div>
+                    <div class="multirrisco-alerta-item"><span>Pressão</span><strong>${escapeHtml(formatarPressao(detalhe.pressao))}</strong></div>
                     <div class="multirrisco-alerta-item"><span>Fonte</span><strong>${escapeHtml(detalhe.fonte || '-')}</strong></div>
                     <div class="multirrisco-alerta-item"><span>${escapeHtml(territorioLabel)}</span><strong>${escapeHtml(territorioValor)}</strong></div>
                 </div>
@@ -657,7 +657,7 @@
         const cardsHtml = resumoTerritorialHtml(config.cards);
         const detalhesHtml = config.detalhes.length
             ? `<div class="multirrisco-alerta-list">${config.detalhes.map((detalhe) => cardAlertaHtml(detalhe, config.territorioLabel, config.territorioValor, config.exibirMunicipios)).join('')}</div>`
-            : '<div class="multirrisco-empty-box multirrisco-empty-box-modal">Nenhum alerta ativo encontrado para este territorio com os filtros atuais.</div>';
+            : '<div class="multirrisco-empty-box multirrisco-empty-box-modal">Nenhum alerta ativo encontrado para este território com os filtros atuais.</div>';
 
         el.modalTerritorioBody.innerHTML = `${cardsHtml}${detalhesHtml}`;
         el.modalTerritorio.classList.add('ativo');
@@ -673,23 +673,23 @@
     function abrirModalMunicipio(codIbge, nomeFallback = '') {
         const registro = dadosMunicipios[codIbge] || criarMunicipioVazio(codIbge, nomeFallback);
         const resumo = registro.alertas
-            ? `${registro.alertas} alertas ativos e pressao territorial ${formatarPressao(registro.pressao)} neste municipio.`
-            : 'Nenhum alerta ativo localizado neste municipio para o recorte atual.';
+            ? `${registro.alertas} alertas ativos e pressão territorial ${formatarPressao(registro.pressao)} neste município.`
+            : 'Nenhum alerta ativo localizado neste município para o recorte atual.';
 
         definirFocoManual(registro.municipio, resumo);
 
         abrirModalTerritorio({
-            kicker: 'Municipio',
+            kicker: 'Município',
             titulo: registro.municipio,
             resumo,
             cards: [
-                { label: 'Regiao', value: escapeHtml(registro.regiao || 'Nao informada') },
+                { label: 'Região', value: escapeHtml(registro.regiao || 'Não informada') },
                 { label: 'Alertas ativos', value: escapeHtml(registro.quantidade_alertas_ativos || 0) },
-                { label: 'Pressao territorial', value: escapeHtml(formatarPressao(registro.pressao)) },
+                { label: 'Pressão territorial', value: escapeHtml(formatarPressao(registro.pressao)) },
                 { label: 'Tipos de evento', value: renderizarChips(registro.tipos_evento || []) }
             ],
             detalhes: registro.detalhes || [],
-            territorioLabel: 'Municipio',
+            territorioLabel: 'Município',
             territorioValor: registro.municipio,
             exibirMunicipios: false
         });
@@ -698,23 +698,23 @@
     function abrirModalRegiao(nomeRegiao) {
         const registro = dadosRegioes[nomeRegiao] || criarRegiaoVazia(nomeRegiao);
         const resumo = registro.alertas
-            ? `${registro.alertas} alertas ativos, ${registro.municipios} municipios em risco e pressao ${formatarPressao(registro.pressao)} nesta regiao.`
-            : 'Nenhum alerta ativo localizado nesta regiao para o recorte atual.';
+            ? `${registro.alertas} alertas ativos, ${registro.municipios} municípios em risco e pressão ${formatarPressao(registro.pressao)} nesta região.`
+            : 'Nenhum alerta ativo localizado nesta região para o recorte atual.';
 
         definirFocoManual(registro.regiao, resumo);
 
         abrirModalTerritorio({
-            kicker: 'Regiao',
+            kicker: 'Região',
             titulo: registro.regiao,
             resumo,
             cards: [
-                { label: 'Municipios em risco', value: escapeHtml(registro.municipios || 0) },
+                { label: 'Municípios em risco', value: escapeHtml(registro.municipios || 0) },
                 { label: 'Alertas ativos', value: escapeHtml(registro.quantidade_alertas_ativos || 0) },
-                { label: 'Pressao territorial', value: escapeHtml(formatarPressao(registro.pressao)) },
+                { label: 'Pressão territorial', value: escapeHtml(formatarPressao(registro.pressao)) },
                 { label: 'Tipos de evento', value: renderizarChips(registro.tipos_evento || []) }
             ],
             detalhes: registro.detalhes || [],
-            territorioLabel: 'Regiao',
+            territorioLabel: 'Região',
             territorioValor: registro.regiao,
             exibirMunicipios: true
         });

@@ -9,7 +9,7 @@ $usuarioTopo = $_SESSION['usuario'] ?? [];
         type="button"
         class="sidebar-toggle"
         data-sidebar-toggle
-        aria-label="Abrir menu de navegacao"
+        aria-label="Abrir menu de navegação"
         aria-expanded="false"
     >
         <span></span>
@@ -20,7 +20,7 @@ $usuarioTopo = $_SESSION['usuario'] ?? [];
     <div class="topbar-brand">
         <span class="topbar-kicker"><?= htmlspecialchars($appConfig['name']) ?></span>
         <strong class="topbar-institution topbar-institution-desktop"><?= htmlspecialchars($appConfig['institution']) ?></strong>
-        <strong class="topbar-institution topbar-institution-mobile">Defesa Civil do Par&aacute;</strong>
+        <strong class="topbar-institution topbar-institution-mobile"><?= htmlspecialchars($appConfig['institution']) ?></strong>
         <small><?= htmlspecialchars($appConfig['department']) ?></small>
     </div>
 
@@ -32,7 +32,7 @@ $usuarioTopo = $_SESSION['usuario'] ?? [];
     </div>
 
     <div class="user-info">
-        <span><?= htmlspecialchars($usuarioTopo['nome'] ?? 'Usuario autenticado') ?></span>
+        <span><?= htmlspecialchars($usuarioTopo['nome'] ?? 'Usuário autenticado') ?></span>
         <small><?= htmlspecialchars($usuarioTopo['perfil'] ?? '') ?></small>
         <a href="/logout.php" class="logout">Sair</a>
     </div>

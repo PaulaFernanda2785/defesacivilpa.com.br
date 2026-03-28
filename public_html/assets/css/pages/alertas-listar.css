@@ -296,6 +296,20 @@ button[disabled].btn-enviar-alerta {
     pointer-events: none;
 }
 
+.acao-aviso-pdf {
+    display: inline-flex;
+    width: 100%;
+    margin-top: 2px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    border: 1px solid #f5c67a;
+    background: linear-gradient(135deg, #fff4e5, #fff9f3);
+    color: #9a4f00;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
 .status {
     display: inline-flex;
     align-items: center;

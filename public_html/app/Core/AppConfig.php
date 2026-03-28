@@ -21,8 +21,8 @@ class AppConfig
         self::$config = [
             'name' => self::value('APP_NAME', 'Sistema Inteligente Multirriscos'),
             'version' => self::value('APP_VERSION', '1.1.0'),
-            'organization' => self::value('APP_ORG_NAME', 'Defesa Civil do Estado do Para'),
-            'institution' => self::value('APP_INSTITUTION', 'Corpo de Bombeiros Militar do Para'),
+            'organization' => self::value('APP_ORG_NAME', 'Defesa Civil do Estado do Pará'),
+            'institution' => self::value('APP_INSTITUTION', 'Defesa Civil do Estado do Pará'),
             'department' => self::value('APP_DEPARTMENT', 'Coordenadoria Estadual de Protecao e Defesa Civil'),
             'support_email' => self::value('SUPPORT_EMAIL', 'dgr.cedecpa@gmail.com'),
             'environment' => $environment,

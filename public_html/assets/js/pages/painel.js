@@ -60,12 +60,12 @@
 
     function preencherTopoTerritorio(props) {
         if (!props) {
-            console.warn('Propriedades do alerta nao informadas.');
+            console.warn('Propriedades do alerta não informadas.');
             return;
         }
 
         document.getElementById('t-alerta-numero').textContent =
-            props.numero ? `N do alerta: ${props.numero}` : 'Alerta -';
+            props.numero ? `Nº do alerta: ${props.numero}` : 'Alerta -';
 
         document.getElementById('t-evento').textContent = props.evento ?? '-';
 
@@ -103,7 +103,7 @@
 
         drawer.classList.add('aberto');
         overlay.classList.add('ativo');
-        conteudo.innerHTML = '<p class="loading">Carregando regioes e municipios...</p>';
+        conteudo.innerHTML = '<p class="loading">Carregando regiões e municípios...</p>';
 
         fetch(`/pages/alertas/territorio_alerta.php?alerta_id=${alertaId}`)
             .then(function (response) {
@@ -115,7 +115,7 @@
             })
             .then(function (dados) {
                 if (!dados || Object.keys(dados).length === 0) {
-                    conteudo.innerHTML = '<p>Nenhuma informacao territorial encontrada.</p>';
+                    conteudo.innerHTML = '<p>Nenhuma informação territorial encontrada.</p>';
                     return;
                 }
 
@@ -133,7 +133,7 @@
             })
             .catch(function (error) {
                 console.error(error);
-                conteudo.innerHTML = '<p>Erro ao carregar o territorio do alerta.</p>';
+                conteudo.innerHTML = '<p>Erro ao carregar o território do alerta.</p>';
             });
     }
 

@@ -56,7 +56,7 @@ $anoAtual = TimeHelper::currentYear();
 $perfilUsuarioExibicao = trim((string) ($usuario['perfil'] ?? ''));
 
 if ($perfilUsuarioExibicao === '') {
-    $perfilUsuarioExibicao = $modoEmbedPublico ? 'Visitante publico' : 'Nao informado';
+    $perfilUsuarioExibicao = $modoEmbedPublico ? 'Visitante público' : 'Não informado';
 }
 
 $filtroAno = isset($_GET['ano']) && $_GET['ano'] !== '' ? (int) $_GET['ano'] : null;
@@ -146,15 +146,15 @@ if ($filtroAno !== null) {
 }
 
 if ($filtroMes !== null && isset($meses[$filtroMes])) {
-    $filtrosResumo[] = 'Mes: ' . $meses[$filtroMes];
+    $filtrosResumo[] = 'Mês: ' . $meses[$filtroMes];
 }
 
 if ($filtro['regiao'] !== null) {
-    $filtrosResumo[] = 'Regiao: ' . $filtro['regiao'];
+    $filtrosResumo[] = 'Região: ' . $filtro['regiao'];
 }
 
 if ($filtro['municipio'] !== null) {
-    $filtrosResumo[] = 'Municipio: ' . $filtro['municipio'];
+    $filtrosResumo[] = 'Município: ' . $filtro['municipio'];
 }
 
 $contextoPeriodo = $filtrosResumo !== []
@@ -162,36 +162,36 @@ $contextoPeriodo = $filtrosResumo !== []
     : 'Sem recorte temporal adicional';
 $contextoTerritorial = $filtro['municipio']
     ?? $filtro['regiao']
-    ?? 'Estado do Para';
-$operadorNome = trim((string) ($usuario['nome'] ?? ($modoEmbedPublico ? 'Visitante publico' : 'Nao identificado')));
+    ?? 'Estado do Pará';
+$operadorNome = trim((string) ($usuario['nome'] ?? ($modoEmbedPublico ? 'Visitante público' : 'Não identificado')));
 $quantidadeRegioes = count($rankingIRP);
 $quantidadeMunicipios = count($rankingIPTCompleto);
 $resumoMunicipiosSecao4 = $exibirTopMunicipiosNacional
-    ? 'Top 10 municipios com maior IPT'
-    : (count($rankingIPT) . ' municipios no recorte filtrado');
+    ? 'Top 10 municípios com maior IPT'
+    : (count($rankingIPT) . ' municípios no recorte filtrado');
 
 $resumoExecutivo = [
     [
-        'label' => 'Media IRP',
+        'label' => 'Média IRP',
         'value' => number_format($mediaIRP, 1, ',', '.'),
-        'note' => 'Pressao operacional regional media no recorte atual.',
+        'note' => 'Pressão operacional regional média no recorte atual.',
         'tone' => 'primary',
     ],
     [
-        'label' => 'Media IPT',
+        'label' => 'Média IPT',
         'value' => number_format($mediaIPT, 1, ',', '.'),
-        'note' => 'Carga territorial media observada entre os municipios.',
+        'note' => 'Carga territorial média observada entre os municípios.',
         'tone' => 'success',
     ],
     [
         'label' => 'Cobertura territorial',
-        'value' => $quantidadeRegioes . ' regioes / ' . $quantidadeMunicipios . ' municipios',
-        'note' => 'Abrangencia atual dos indices no recorte aplicado.',
+        'value' => $quantidadeRegioes . ' regiões / ' . $quantidadeMunicipios . ' municípios',
+        'note' => 'Abrangência atual dos índices no recorte aplicado.',
         'tone' => 'neutral',
     ],
     [
         'label' => 'Recorte consolidado',
-        'value' => 'Ano, mes, regiao e municipio',
+        'value' => 'Ano, mês, região e município',
         'note' => (string) $contextoTerritorial,
         'tone' => 'warning',
     ],
@@ -201,7 +201,7 @@ $resumoExecutivo = [
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<title>Indices de Risco - IRP / IPT</title>
+<title>Índices de Risco - IRP / IPT</title>
 <link rel="icon" type="image/x-icon" href="/assets/images/logo.cbmpa.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logo.cbmpa.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo.cbmpa.ico">
@@ -221,20 +221,20 @@ $resumoExecutivo = [
             <img src="/assets/images/logo-cedec.png" alt="CEDEC-PA">
             <span>
                 <small><?= htmlspecialchars((string) ($appConfig['name'] ?? 'Sistema Multirriscos'), ENT_QUOTES, 'UTF-8') ?></small>
-                <strong><?= htmlspecialchars((string) ($appConfig['institution'] ?? 'Defesa Civil do Estado do Para'), ENT_QUOTES, 'UTF-8') ?></strong>
+                <strong><?= htmlspecialchars((string) ($appConfig['institution'] ?? 'Defesa Civil do Estado do Pará'), ENT_QUOTES, 'UTF-8') ?></strong>
                 <em><?= htmlspecialchars((string) ($appConfig['department'] ?? 'Monitoramento e resposta operacional'), ENT_QUOTES, 'UTF-8') ?></em>
             </span>
         </a>
 
-        <nav class="analise-embed-nav" aria-label="Navegacao publica de analises">
+        <nav class="analise-embed-nav" aria-label="Navegação pública de análises">
             <a href="/index.php#mapa-publico">Mapa ao vivo</a>
-            <a href="/index.php#analises-publicas">Analises publicas</a>
+            <a href="/index.php#analises-publicas">Análises públicas</a>
             <a href="/index.php#alertas-ativos">Alertas ativos</a>
         </nav>
 
         <div class="analise-embed-topbar-meta">
-            <span class="analise-embed-pill">Versao <?= htmlspecialchars((string) ($appConfig['version'] ?? '1.0.0'), ENT_QUOTES, 'UTF-8') ?></span>
-            <a href="/index.php#analises-publicas" class="analise-embed-topbar-link">Inicio publico</a>
+            <span class="analise-embed-pill">Versão <?= htmlspecialchars((string) ($appConfig['version'] ?? '1.0.0'), ENT_QUOTES, 'UTF-8') ?></span>
+            <a href="/index.php#analises-publicas" class="analise-embed-topbar-link">Início público</a>
         </div>
     </header>
 
@@ -249,7 +249,7 @@ $resumoExecutivo = [
         <?php
         $breadcrumb = [
             'Painel' => '/pages/painel.php',
-            'Indices de risco' => null,
+            'Índices de risco' => null,
         ];
         include __DIR__ . '/../_breadcrumb.php';
         ?>
@@ -259,24 +259,24 @@ $resumoExecutivo = [
             <div class="usuarios-hero-grid indice-hero-grid">
                 <div class="alerta-form-hero usuarios-hero-panel indice-hero-panel">
                     <div class="alerta-form-lead usuarios-hero-copy indice-hero-copy">
-                        <span class="alerta-form-kicker">Analise operacional</span>
-                        <h1 class="alerta-form-title">Indices de risco IRP e IPT</h1>
+                        <span class="alerta-form-kicker">Análise operacional</span>
+                        <h1 class="alerta-form-title">Índices de risco IRP e IPT</h1>
                         <p class="alerta-form-description">
-                            Acompanhe a pressao regional e territorial provocada pelos alertas multirriscos, com leitura
-                            consolidada por periodo, destaques de lideranca e acesso rapido a metodologia usada no calculo.
+                            Acompanhe a pressão regional e territorial provocada pelos alertas multirriscos, com leitura
+                            consolidada por período, destaques de liderança e acesso rápido à metodologia usada no cálculo.
                         </p>
 
                         <div class="usuarios-hero-chip-row indice-hero-chip-row">
-                            <span class="usuarios-hero-chip"><?= number_format($mediaIRP, 1, ',', '.') ?> media IRP</span>
-                            <span class="usuarios-hero-chip"><?= number_format($mediaIPT, 1, ',', '.') ?> media IPT</span>
+                            <span class="usuarios-hero-chip"><?= number_format($mediaIRP, 1, ',', '.') ?> média IRP</span>
+                            <span class="usuarios-hero-chip"><?= number_format($mediaIPT, 1, ',', '.') ?> média IPT</span>
                             <span class="usuarios-hero-chip"><?= htmlspecialchars($contextoPeriodo, ENT_QUOTES, 'UTF-8') ?></span>
                         </div>
 
                         <div class="usuarios-hero-actions indice-hero-actions">
                             <a href="#indice-filtros" class="btn btn-primary">Aplicar filtros</a>
-                            <a href="#indice-graficos" class="btn btn-secondary">Ver graficos</a>
+                            <a href="#indice-graficos" class="btn btn-secondary">Ver gráficos</a>
                             <?php if ($modoEmbedPublico): ?>
-                                <a href="/index.php#analises-publicas" class="btn btn-secondary">Voltar para pagina inicial</a>
+                                <a href="/index.php#analises-publicas" class="btn btn-secondary">Voltar para página inicial</a>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -293,16 +293,16 @@ $resumoExecutivo = [
                 </div>
 
                 <aside class="usuarios-command-card indice-command-card">
-                    <span class="usuarios-command-kicker">Comando de indices</span>
-                    <h2>Coordenacao da leitura de pressao</h2>
+                    <span class="usuarios-command-kicker">Comando de índices</span>
+                    <h2>Coordenação da leitura de pressão</h2>
                     <p>
-                        Use este painel para validar operador, recorte territorial e prioridade analitica
+                        Use este painel para validar operador, recorte territorial e prioridade analítica
                         antes de comparar os rankings IRP e IPT.
                     </p>
 
                     <div class="usuarios-command-grid indice-command-grid">
                         <article class="usuarios-command-item">
-                            <span>Operador da sessao</span>
+                            <span>Operador da sessão</span>
                             <strong><?= htmlspecialchars($operadorNome, ENT_QUOTES, 'UTF-8') ?></strong>
                             <small>Perfil atual: <?= htmlspecialchars($perfilUsuarioExibicao, ENT_QUOTES, 'UTF-8') ?>.</small>
                         </article>
@@ -310,13 +310,13 @@ $resumoExecutivo = [
                         <article class="usuarios-command-item">
                             <span>Foco territorial</span>
                             <strong><?= htmlspecialchars((string) $contextoTerritorial, ENT_QUOTES, 'UTF-8') ?></strong>
-                            <small>Recorte aplicado aos dois indices no mesmo painel.</small>
+                            <small>Recorte aplicado aos dois índices no mesmo painel.</small>
                         </article>
 
                         <article class="usuarios-command-item">
                             <span>Prioridade sugerida</span>
-                            <strong>Da regiao ao municipio</strong>
-                            <small>Comece pelo IRP para visao macro e aprofunde no IPT para priorizacao territorial.</small>
+                            <strong>Da região ao município</strong>
+                            <small>Comece pelo IRP para visão macro e aprofunde no IPT para priorização territorial.</small>
                         </article>
                     </div>
                 </aside>
@@ -326,10 +326,10 @@ $resumoExecutivo = [
                 <div class="usuarios-control-grid indice-overview-grid">
                     <section id="indice-filtros" class="alerta-form-section usuarios-filter-panel indice-filter-panel">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 1</span>
-                            <h2 class="alerta-section-title">Filtros do recorte analitico</h2>
+                            <span class="alerta-section-kicker">Seção 1</span>
+                            <h2 class="alerta-section-title">Filtros do recorte analítico</h2>
                             <p class="alerta-section-text">
-                                Selecione o periodo para recalcular automaticamente o IRP e o IPT no mesmo painel.
+                                Selecione o período para recalcular automaticamente o IRP e o IPT no mesmo painel.
                             </p>
                         </header>
 
@@ -350,7 +350,7 @@ $resumoExecutivo = [
                             </div>
 
                             <div class="form-group">
-                                <label for="mes">Mes</label>
+                                <label for="mes">Mês</label>
                                 <select id="mes" name="mes" data-auto-submit>
                                     <option value="">Todos</option>
                                     <?php foreach ($meses as $numeroMes => $nomeMes): ?>
@@ -362,7 +362,7 @@ $resumoExecutivo = [
                             </div>
 
                             <div class="form-group">
-                                <label for="filtro-regiao">Regiao de integracao</label>
+                                <label for="filtro-regiao">Região de integração</label>
                                 <select id="filtro-regiao" name="regiao" data-auto-submit>
                                     <option value="">Todas</option>
                                     <?php foreach ($regioes as $regiao): ?>
@@ -374,9 +374,9 @@ $resumoExecutivo = [
                             </div>
 
                             <div class="form-group">
-                                <label for="filtro-municipio">Municipio</label>
+                                <label for="filtro-municipio">Município</label>
                                 <select id="filtro-municipio" name="municipio" disabled>
-                                    <option value=""><?= $filtro['regiao'] !== null ? 'Carregando municipios...' : 'Selecione uma regiao' ?></option>
+                                    <option value=""><?= $filtro['regiao'] !== null ? 'Carregando municípios...' : 'Selecione uma região' ?></option>
                                 </select>
                             </div>
 
@@ -394,8 +394,8 @@ $resumoExecutivo = [
                             </div>
 
                             <div class="alerta-callout indice-filter-callout form-group field-span-2">
-                                <strong>Atualizacao imediata</strong>
-                                Ano, mes, regiao e municipio reaplicam o recorte automaticamente. O municipio so fica disponivel depois da selecao da regiao correspondente.
+                                <strong>Atualização imediata</strong>
+                                Ano, mês, região e município reaplicam o recorte automaticamente. O município só fica disponível depois da seleção da região correspondente.
                             </div>
 
                             <div class="alerta-form-actions indice-filter-actions usuarios-filter-actions form-group field-span-2">
@@ -412,45 +412,45 @@ $resumoExecutivo = [
 
                     <section class="alerta-form-section usuarios-governance-panel indice-governance-panel">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 2</span>
-                            <h2 class="alerta-section-title">Leituras rapidas do periodo</h2>
+                            <span class="alerta-section-kicker">Seção 2</span>
+                            <h2 class="alerta-section-title">Leituras rápidas do período</h2>
                             <p class="alerta-section-text">
-                                Use os destaques abaixo para identificar os lideres de pressao e interpretar rapidamente o comportamento do recorte selecionado.
+                                Use os destaques abaixo para identificar os líderes de pressão e interpretar rapidamente o comportamento do recorte selecionado.
                             </p>
                         </header>
 
                         <div class="usuarios-insight-grid indice-insight-grid">
                             <article class="usuarios-insight-card usuarios-insight-card-emphasis indice-mini-card">
-                                <span class="usuarios-insight-kicker">Regiao com maior IRP</span>
+                                <span class="usuarios-insight-kicker">Região com maior IRP</span>
                                 <strong><?= htmlspecialchars($regiaoLider, ENT_QUOTES, 'UTF-8') ?></strong>
                                 <p>
-                                    <?= $valorRegiaoLider > 0 ? 'Indice atual: ' . number_format($valorRegiaoLider, 1, ',', '.') : 'Sem pressao regional registrada no recorte atual.' ?>
+                                    <?= $valorRegiaoLider > 0 ? 'Índice atual: ' . number_format($valorRegiaoLider, 1, ',', '.') : 'Sem pressão regional registrada no recorte atual.' ?>
                                 </p>
                             </article>
 
                             <article class="usuarios-insight-card indice-mini-card">
-                                <span class="usuarios-insight-kicker">Municipio com maior IPT</span>
+                                <span class="usuarios-insight-kicker">Município com maior IPT</span>
                                 <strong><?= htmlspecialchars($municipioLider, ENT_QUOTES, 'UTF-8') ?></strong>
                                 <p>
-                                    <?= $valorMunicipioLider > 0 ? 'Indice atual: ' . number_format($valorMunicipioLider, 1, ',', '.') : 'Sem pressao territorial registrada no recorte atual.' ?>
+                                    <?= $valorMunicipioLider > 0 ? 'Índice atual: ' . number_format($valorMunicipioLider, 1, ',', '.') : 'Sem pressão territorial registrada no recorte atual.' ?>
                                 </p>
                             </article>
 
                             <article class="usuarios-insight-card indice-mini-card">
                                 <span class="usuarios-insight-kicker">Perfil conectado</span>
                                 <strong><?= htmlspecialchars($perfilUsuarioExibicao, ENT_QUOTES, 'UTF-8') ?></strong>
-                                <p>Leitura analitica com acesso liberado para este perfil.</p>
+                                <p>Leitura analítica com acesso liberado para este perfil.</p>
                             </article>
                         </div>
 
                         <div class="alerta-callout indice-info-callout">
                             <strong>Como interpretar</strong>
-                            O IRP evidencia a pressao operacional por regiao, enquanto o IPT mostra a carga acumulada sobre cada municipio com base em severidade e duracao dos alertas.
+                            O IRP evidencia a pressão operacional por região, enquanto o IPT mostra a carga acumulada sobre cada município com base em severidade e duração dos alertas.
                         </div>
 
                         <div class="alerta-form-actions indice-actions usuarios-filter-actions">
                             <div class="alerta-form-actions-left">
-                                <span class="alerta-inline-note">A metodologia detalhada fica disponivel em modal sem sair da tela.</span>
+                                <span class="alerta-inline-note">A metodologia detalhada fica disponível em modal sem sair da tela.</span>
                             </div>
 
                             <div class="alerta-form-actions-right indice-action-buttons">
@@ -468,16 +468,16 @@ $resumoExecutivo = [
                 <div class="indice-analytics-grid">
                     <section class="alerta-form-section indice-chart-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 3</span>
-                            <h2 class="alerta-section-title">Ranking regional de pressao</h2>
+                            <span class="alerta-section-kicker">Seção 3</span>
+                            <h2 class="alerta-section-title">Ranking regional de pressão</h2>
                             <p class="alerta-section-text">
-                                Compare as regioes de integracao e identifique onde a pressao operacional esta mais concentrada no recorte atual.
+                                Compare as regiões de integração e identifique onde a pressão operacional está mais concentrada no recorte atual.
                             </p>
                         </header>
 
                         <div class="indice-chart-card">
                             <div class="indice-chart-meta">
-                                <span class="indice-chart-chip"><?= count($rankingIRP) ?> regioes analisadas</span>
+                                <span class="indice-chart-chip"><?= count($rankingIRP) ?> regiões analisadas</span>
                                 <span class="indice-chart-chip">Soma IRP: <?= number_format($totalIRP, 1, ',', '.') ?></span>
                             </div>
                             <canvas id="graficoIRP"></canvas>
@@ -486,10 +486,10 @@ $resumoExecutivo = [
 
                     <section class="alerta-form-section indice-chart-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 4</span>
-                            <h2 class="alerta-section-title">Ranking territorial de pressao</h2>
+                            <span class="alerta-section-kicker">Seção 4</span>
+                            <h2 class="alerta-section-title">Ranking territorial de pressão</h2>
                             <p class="alerta-section-text">
-                                Observe os municipios com maior acumulado de pressao para apoiar priorizacao de monitoramento e resposta.
+                                Observe os municípios com maior acumulado de pressão para apoiar priorização de monitoramento e resposta.
                             </p>
                         </header>
 
@@ -512,16 +512,16 @@ $resumoExecutivo = [
     </main>
     <footer class="analise-embed-footer">
         <div class="analise-embed-footer-copy">
-            <strong><?= htmlspecialchars((string) ($appConfig['institution'] ?? 'Defesa Civil do Estado do Para'), ENT_QUOTES, 'UTF-8') ?></strong>
+            <strong><?= htmlspecialchars((string) ($appConfig['institution'] ?? 'Defesa Civil do Estado do Pará'), ENT_QUOTES, 'UTF-8') ?></strong>
             <span><?= htmlspecialchars((string) ($appConfig['department'] ?? 'Central de monitoramento'), ENT_QUOTES, 'UTF-8') ?></span>
         </div>
         <div class="analise-embed-footer-meta">
-            <span>Painel publico de analises multirriscos</span>
+            <span>Painel público de análises multirriscos</span>
             <a href="mailto:<?= htmlspecialchars((string) ($appConfig['support_email'] ?? ''), ENT_QUOTES, 'UTF-8') ?>">
                 <?= htmlspecialchars((string) ($appConfig['support_email'] ?? 'suporte@defesacivil.pa.gov.br'), ENT_QUOTES, 'UTF-8') ?>
             </a>
         </div>
-        <a href="/index.php#analises-publicas" class="btn btn-secondary">Voltar para pagina inicial</a>
+        <a href="/index.php#analises-publicas" class="btn btn-secondary">Voltar para página inicial</a>
     </footer>
 <?php else: ?>
     </main>
@@ -533,30 +533,30 @@ $resumoExecutivo = [
         <div class="indice-modal-header">
             <div>
                 <span class="alerta-section-kicker">Metodologia</span>
-                <h2>Como os indices IRP e IPT sao calculados</h2>
+                <h2>Como os índices IRP e IPT são calculados</h2>
             </div>
             <button type="button" class="indice-modal-close" data-close-metodologia>X</button>
         </div>
 
         <div class="indice-modal-body">
             <article class="indice-modal-block">
-                <h3>IPT - Indice de Pressao Territorial</h3>
+                <h3>IPT - Índice de Pressão Territorial</h3>
                 <p>
-                    Mede a intensidade da pressao sofrida por um municipio considerando a severidade do alerta e o tempo de duracao do evento.
+                    Mede a intensidade da pressão sofrida por um município considerando a severidade do alerta e o tempo de duração do evento.
                 </p>
                 <ul>
-                    <li>IPT = soma de alertas x peso da severidade x duracao em horas.</li>
+                    <li>IPT = soma de alertas x peso da severidade x duração em horas.</li>
                     <li>Pesos: Baixo = 1, Moderado = 2, Alto = 3, Muito Alto = 4 e Extremo = 5.</li>
                 </ul>
             </article>
 
             <article class="indice-modal-block">
-                <h3>IRP - Indice Regional de Pressao</h3>
+                <h3>IRP - Índice Regional de Pressão</h3>
                 <p>
-                    Avalia a pressao operacional sobre uma regiao de integracao considerando a severidade do alerta e o numero de municipios afetados.
+                    Avalia a pressão operacional sobre uma região de integração considerando a severidade do alerta e o número de municípios afetados.
                 </p>
                 <ul>
-                    <li>IRP = soma de alertas x peso da severidade x municipios afetados.</li>
+                    <li>IRP = soma de alertas x peso da severidade x municípios afetados.</li>
                     <li>Pesos: Baixo = 1, Moderado = 2, Alto = 3, Muito Alto = 4 e Extremo = 5.</li>
                 </ul>
             </article>

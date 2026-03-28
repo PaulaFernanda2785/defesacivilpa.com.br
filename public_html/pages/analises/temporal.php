@@ -152,15 +152,15 @@ $filtrosResumo = [
 ];
 
 if ($filtroTemporal['mes'] !== null && isset($meses[$filtroTemporal['mes']])) {
-    $filtrosResumo[] = 'Mes: ' . $meses[$filtroTemporal['mes']];
+    $filtrosResumo[] = 'Mês: ' . $meses[$filtroTemporal['mes']];
 }
 
 if ($filtroTemporal['regiao'] !== null) {
-    $filtrosResumo[] = 'Regiao: ' . $filtroTemporal['regiao'];
+    $filtrosResumo[] = 'Região: ' . $filtroTemporal['regiao'];
 }
 
 if ($filtroTemporal['municipio'] !== null) {
-    $filtrosResumo[] = 'Municipio: ' . $filtroTemporal['municipio'];
+    $filtrosResumo[] = 'Município: ' . $filtroTemporal['municipio'];
 }
 
 if ($eventoSelecionado !== '') {
@@ -170,12 +170,12 @@ if ($eventoSelecionado !== '') {
 $contextoPeriodo = implode(' | ', $filtrosResumo);
 $contextoTerritorial = $filtroTemporal['municipio']
     ?? $filtroTemporal['regiao']
-    ?? 'Estado do Para';
+    ?? 'Estado do Pará';
 $quantidadeEventosComparados = count($dadosMultiEvento);
 $quantidadeAnosComparados = count($evolucaoAnual);
 $quantidadeSeriesAnuais = count($dadosEvolucaoAnual);
-$operadorNome = trim((string) ($usuario['nome'] ?? ($modoEmbedPublico ? 'Visitante publico' : 'Nao identificado')));
-$operadorPerfil = trim((string) ($usuario['perfil'] ?? ($modoEmbedPublico ? 'Publico' : 'Nao informado')));
+$operadorNome = trim((string) ($usuario['nome'] ?? ($modoEmbedPublico ? 'Visitante público' : 'Não identificado')));
+$operadorPerfil = trim((string) ($usuario['perfil'] ?? ($modoEmbedPublico ? 'Público' : 'Não informado')));
 $resumoExecutivo = [
     [
         'label' => 'Alertas no recorte',
@@ -187,7 +187,7 @@ $resumoExecutivo = [
         'label' => 'Pico sazonal',
         'value' => $mesPico,
         'note' => $mesPicoTotal > 0
-            ? $mesPicoTotal . ' alertas no mes mais critico do recorte.'
+            ? $mesPicoTotal . ' alertas no mês mais crítico do recorte.'
             : 'Sem pico sazonal identificado no recorte atual.',
         'tone' => 'success',
     ],
@@ -195,8 +195,8 @@ $resumoExecutivo = [
         'label' => 'Turno predominante',
         'value' => $periodoPico,
         'note' => $periodoPicoTotal > 0
-            ? $periodoPicoTotal . ' ocorrencias na faixa horaria dominante.'
-            : 'Sem concentracao por periodo do dia no recorte.',
+            ? $periodoPicoTotal . ' ocorrências na faixa horária dominante.'
+            : 'Sem concentração por período do dia no recorte.',
         'tone' => 'neutral',
     ],
     [
@@ -211,7 +211,7 @@ $resumoExecutivo = [
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<title>Analise Temporal de Alertas</title>
+<title>Análise Temporal de Alertas</title>
 <link rel="icon" type="image/x-icon" href="/assets/images/logo.cbmpa.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logo.cbmpa.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo.cbmpa.ico">
@@ -231,20 +231,20 @@ $resumoExecutivo = [
             <img src="/assets/images/logo-cedec.png" alt="CEDEC-PA">
             <span>
                 <small><?= htmlspecialchars((string) ($appConfig['name'] ?? 'Sistema Multirriscos'), ENT_QUOTES, 'UTF-8') ?></small>
-                <strong><?= htmlspecialchars((string) ($appConfig['institution'] ?? 'Defesa Civil do Estado do Para'), ENT_QUOTES, 'UTF-8') ?></strong>
+                <strong><?= htmlspecialchars((string) ($appConfig['institution'] ?? 'Defesa Civil do Estado do Pará'), ENT_QUOTES, 'UTF-8') ?></strong>
                 <em><?= htmlspecialchars((string) ($appConfig['department'] ?? 'Monitoramento e resposta operacional'), ENT_QUOTES, 'UTF-8') ?></em>
             </span>
         </a>
 
-        <nav class="analise-embed-nav" aria-label="Navegacao publica de analises">
+        <nav class="analise-embed-nav" aria-label="Navegação pública de análises">
             <a href="/index.php#mapa-publico">Mapa ao vivo</a>
-            <a href="/index.php#analises-publicas">Analises publicas</a>
+            <a href="/index.php#analises-publicas">Análises públicas</a>
             <a href="/index.php#alertas-ativos">Alertas ativos</a>
         </nav>
 
         <div class="analise-embed-topbar-meta">
-            <span class="analise-embed-pill">Versao <?= htmlspecialchars((string) ($appConfig['version'] ?? '1.0.0'), ENT_QUOTES, 'UTF-8') ?></span>
-            <a href="/index.php#analises-publicas" class="analise-embed-topbar-link">Inicio publico</a>
+            <span class="analise-embed-pill">Versão <?= htmlspecialchars((string) ($appConfig['version'] ?? '1.0.0'), ENT_QUOTES, 'UTF-8') ?></span>
+            <a href="/index.php#analises-publicas" class="analise-embed-topbar-link">Início público</a>
         </div>
     </header>
 
@@ -259,7 +259,7 @@ $resumoExecutivo = [
         <?php
         $breadcrumb = [
             'Painel' => '/pages/painel.php',
-            'Analise temporal' => null,
+            'Análise temporal' => null,
         ];
         include __DIR__ . '/../_breadcrumb.php';
         ?>
@@ -269,11 +269,11 @@ $resumoExecutivo = [
             <div class="usuarios-hero-grid temporal-hero-grid">
                 <div class="alerta-form-hero usuarios-hero-panel temporal-hero-panel">
                     <div class="alerta-form-lead usuarios-hero-copy temporal-hero-copy">
-                        <span class="alerta-form-kicker">Analise operacional</span>
-                        <h1 class="alerta-form-title">Analise temporal de alertas</h1>
+                        <span class="alerta-form-kicker">Análise operacional</span>
+                        <h1 class="alerta-form-title">Análise temporal de alertas</h1>
                         <p class="alerta-form-description">
-                            Organize a leitura de sazonalidade, recorrencia por periodo do dia e evolucao historica
-                            dos alertas com o mesmo layout novo aplicado na central de analises multirriscos.
+                            Organize a leitura de sazonalidade, recorrência por período do dia e evolução histórica
+                            dos alertas com o mesmo layout novo aplicado na central de análises multirriscos.
                         </p>
 
                         <div class="usuarios-hero-chip-row temporal-hero-chip-row">
@@ -284,9 +284,9 @@ $resumoExecutivo = [
 
                         <div class="usuarios-hero-actions temporal-hero-actions">
                             <a href="#temporal-filtros" class="btn btn-primary">Aplicar filtros</a>
-                            <a href="#temporal-graficos" class="btn btn-secondary">Ver graficos</a>
+                            <a href="#temporal-graficos" class="btn btn-secondary">Ver gráficos</a>
                             <?php if ($modoEmbedPublico): ?>
-                                <a href="/index.php#analises-publicas" class="btn btn-secondary">Voltar para pagina inicial</a>
+                                <a href="/index.php#analises-publicas" class="btn btn-secondary">Voltar para página inicial</a>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -304,15 +304,15 @@ $resumoExecutivo = [
 
                 <aside class="usuarios-command-card temporal-command-card">
                     <span class="usuarios-command-kicker">Comando temporal</span>
-                    <h2>Coordenacao da leitura cronologica</h2>
+                    <h2>Coordenação da leitura cronológica</h2>
                     <p>
                         Use este painel para alinhar operador, foco territorial e prioridade de leitura antes de navegar
-                        pelos graficos de sazonalidade e evolucao historica.
+                        pelos gráficos de sazonalidade e evolução histórica.
                     </p>
 
                     <div class="usuarios-command-grid temporal-command-grid">
                         <article class="usuarios-command-item">
-                            <span>Operador da sessao</span>
+                            <span>Operador da sessão</span>
                             <strong><?= htmlspecialchars($operadorNome, ENT_QUOTES, 'UTF-8') ?></strong>
                             <small>Perfil atual: <?= htmlspecialchars($operadorPerfil, ENT_QUOTES, 'UTF-8') ?>.</small>
                         </article>
@@ -320,13 +320,13 @@ $resumoExecutivo = [
                         <article class="usuarios-command-item">
                             <span>Foco territorial</span>
                             <strong><?= htmlspecialchars((string) $contextoTerritorial, ENT_QUOTES, 'UTF-8') ?></strong>
-                            <small>Recorte ativo para todos os graficos desta analise.</small>
+                            <small>Recorte ativo para todos os gráficos desta análise.</small>
                         </article>
 
                         <article class="usuarios-command-item">
                             <span>Prioridade sugerida</span>
-                            <strong>Do pico ao historico</strong>
-                            <small>Comece por sazonalidade e depois valide tendencia anual por evento.</small>
+                            <strong>Do pico ao histórico</strong>
+                            <small>Comece por sazonalidade e depois valide tendência anual por evento.</small>
                         </article>
                     </div>
                 </aside>
@@ -336,11 +336,11 @@ $resumoExecutivo = [
                 <div class="usuarios-control-grid temporal-overview-grid">
                     <section id="temporal-filtros" class="alerta-form-section usuarios-filter-panel temporal-filter-panel">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 1</span>
+                            <span class="alerta-section-kicker">Seção 1</span>
                             <h2 class="alerta-section-title">Filtros do recorte temporal</h2>
                             <p class="alerta-section-text">
-                                Ajuste ano, mes, regiao, municipio e evento para recalcular a leitura temporal e manter
-                                a comparacao historica coerente com o recorte selecionado.
+                                Ajuste ano, mês, região, município e evento para recalcular a leitura temporal e manter
+                                a comparação histórica coerente com o recorte selecionado.
                             </p>
                         </header>
 
@@ -360,7 +360,7 @@ $resumoExecutivo = [
                             </div>
 
                             <div class="form-group">
-                                <label for="mes">Mes</label>
+                                <label for="mes">Mês</label>
                                 <select id="mes" name="mes" data-auto-submit>
                                     <option value="">Todos</option>
                                     <?php foreach ($meses as $numeroMes => $nomeMes): ?>
@@ -372,7 +372,7 @@ $resumoExecutivo = [
                             </div>
 
                             <div class="form-group">
-                                <label for="filtro-regiao">Regiao de integracao</label>
+                                <label for="filtro-regiao">Região de integração</label>
                                 <select id="filtro-regiao" name="regiao" data-auto-submit>
                                     <option value="">Todas</option>
                                     <?php foreach ($regioes as $regiao): ?>
@@ -384,9 +384,9 @@ $resumoExecutivo = [
                             </div>
 
                             <div class="form-group">
-                                <label for="filtro-municipio">Municipio</label>
+                                <label for="filtro-municipio">Município</label>
                                 <select id="filtro-municipio" name="municipio" disabled>
-                                    <option value=""><?= $filtroTemporal['regiao'] !== null ? 'Carregando municipios...' : 'Selecione uma regiao' ?></option>
+                                    <option value=""><?= $filtroTemporal['regiao'] !== null ? 'Carregando municípios...' : 'Selecione uma região' ?></option>
                                 </select>
                             </div>
 
@@ -412,9 +412,9 @@ $resumoExecutivo = [
                             </div>
 
                             <div class="alerta-callout temporal-filter-callout form-group field-span-2">
-                                <strong>Atualizacao imediata</strong>
-                                Ano, mes, regiao e evento reaplicam o recorte automaticamente. O municipio fica disponivel somente
-                                apos a selecao da regiao correspondente.
+                                <strong>Atualização imediata</strong>
+                                Ano, mês, região e evento reaplicam o recorte automaticamente. O município fica disponível somente
+                                após a seleção da região correspondente.
                             </div>
 
                             <div class="alerta-form-actions temporal-filter-actions form-group field-span-2">
@@ -431,28 +431,28 @@ $resumoExecutivo = [
 
                     <section class="alerta-form-section usuarios-governance-panel temporal-governance-panel">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 2</span>
-                            <h2 class="alerta-section-title">Leituras rapidas do periodo</h2>
+                            <span class="alerta-section-kicker">Seção 2</span>
+                            <h2 class="alerta-section-title">Leituras rápidas do período</h2>
                             <p class="alerta-section-text">
                                 Use os indicadores abaixo para identificar picos sazonais, turno mais frequente,
-                                evento dominante e referencia historica do recorte atual.
+                                evento dominante e referência histórica do recorte atual.
                             </p>
                         </header>
 
                         <div class="usuarios-insight-grid temporal-insight-grid">
                             <article class="usuarios-insight-card usuarios-insight-card-emphasis temporal-mini-card">
-                                <span class="usuarios-insight-kicker">Mes com maior volume</span>
+                                <span class="usuarios-insight-kicker">Mês com maior volume</span>
                                 <strong><?= htmlspecialchars($mesPico, ENT_QUOTES, 'UTF-8') ?></strong>
                                 <p>
-                                    <?= $mesPicoTotal > 0 ? $mesPicoTotal . ' alertas registrados neste mes do recorte.' : 'Sem pico sazonal identificado no recorte atual.' ?>
+                                    <?= $mesPicoTotal > 0 ? $mesPicoTotal . ' alertas registrados neste mês do recorte.' : 'Sem pico sazonal identificado no recorte atual.' ?>
                                 </p>
                             </article>
 
                             <article class="usuarios-insight-card temporal-mini-card">
-                                <span class="usuarios-insight-kicker">Periodo do dia predominante</span>
+                                <span class="usuarios-insight-kicker">Período do dia predominante</span>
                                 <strong><?= htmlspecialchars($periodoPico, ENT_QUOTES, 'UTF-8') ?></strong>
                                 <p>
-                                    <?= $periodoPicoTotal > 0 ? $periodoPicoTotal . ' alertas iniciados nesta faixa horaria.' : 'Sem concentracao horaria identificada.' ?>
+                                    <?= $periodoPicoTotal > 0 ? $periodoPicoTotal . ' alertas iniciados nesta faixa horária.' : 'Sem concentração horária identificada.' ?>
                                 </p>
                             </article>
 
@@ -460,7 +460,7 @@ $resumoExecutivo = [
                                 <span class="usuarios-insight-kicker">Evento dominante</span>
                                 <strong><?= htmlspecialchars($eventoLider, ENT_QUOTES, 'UTF-8') ?></strong>
                                 <p>
-                                    <?= $eventoLiderTotal > 0 ? $eventoLiderTotal . ' ocorrencias acumuladas neste recorte temporal.' : 'Sem evento dominante identificado.' ?>
+                                    <?= $eventoLiderTotal > 0 ? $eventoLiderTotal . ' ocorrências acumuladas neste recorte temporal.' : 'Sem evento dominante identificado.' ?>
                                 </p>
                             </article>
 
@@ -468,19 +468,19 @@ $resumoExecutivo = [
                                 <span class="usuarios-insight-kicker">Ano historicamente mais ativo</span>
                                 <strong><?= htmlspecialchars($anoPico, ENT_QUOTES, 'UTF-8') ?></strong>
                                 <p>
-                                    <?= $anoPicoTotal > 0 ? $anoPicoTotal . ' alertas somados na comparacao anual filtrada.' : 'Sem historico suficiente para comparacao anual.' ?>
+                                    <?= $anoPicoTotal > 0 ? $anoPicoTotal . ' alertas somados na comparação anual filtrada.' : 'Sem histórico suficiente para comparação anual.' ?>
                                 </p>
                             </article>
                         </div>
 
                         <div class="alerta-callout temporal-info-callout">
                             <strong>Como interpretar</strong>
-                            Relacione a sazonalidade mensal com o periodo do dia e a evolucao historica para antecipar janelas de maior pressao operacional.
+                            Relacione a sazonalidade mensal com o período do dia e a evolução histórica para antecipar janelas de maior pressão operacional.
                         </div>
 
                         <div class="alerta-form-actions temporal-actions usuarios-filter-actions">
                             <div class="alerta-form-actions-left">
-                                <span class="alerta-inline-note">Os paineis abaixo se mantem sincronizados com o mesmo recorte temporal, territorial e tipologico.</span>
+                                <span class="alerta-inline-note">Os painéis abaixo se mantêm sincronizados com o mesmo recorte temporal, territorial e tipológico.</span>
                             </div>
 
                             <?php if (!$modoEmbedPublico): ?>
@@ -532,7 +532,7 @@ $resumoExecutivo = [
                 <div class="temporal-analytics-grid">
                     <section class="alerta-form-section temporal-chart-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 4</span>
+                            <span class="alerta-section-kicker">Seção 4</span>
                             <h2 class="alerta-section-title">Comparativo mensal de eventos</h2>
                             <p class="alerta-section-text">
                                 Compare o comportamento mensal das principais tipologias dentro do recorte selecionado.
@@ -552,10 +552,10 @@ $resumoExecutivo = [
 
                     <section class="alerta-form-section temporal-chart-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 5</span>
+                            <span class="alerta-section-kicker">Seção 5</span>
                             <h2 class="alerta-section-title">Sazonalidade do evento selecionado</h2>
                             <p class="alerta-section-text">
-                                Quando um evento for escolhido no filtro, o grafico ao lado mostra a distribuicao mensal desse tipo de alerta no recorte atual.
+                                Quando um evento for escolhido no filtro, o gráfico ao lado mostra a distribuição mensal desse tipo de alerta no recorte atual.
                             </p>
                         </header>
 
@@ -583,17 +583,17 @@ $resumoExecutivo = [
                 <div class="temporal-analytics-grid">
                     <section class="alerta-form-section temporal-chart-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 6</span>
-                            <h2 class="alerta-section-title">Evolucao anual de alertas</h2>
+                            <span class="alerta-section-kicker">Seção 6</span>
+                            <h2 class="alerta-section-title">Evolução anual de alertas</h2>
                             <p class="alerta-section-text">
-                                Compare a variacao anual do volume de alertas preservando os filtros de mes, regiao e municipio quando aplicados.
+                                Compare a variação anual do volume de alertas preservando os filtros de mês, região e município quando aplicados.
                             </p>
                         </header>
 
                         <div class="temporal-chart-card">
                             <div class="temporal-chart-meta">
                                 <span class="temporal-chart-chip"><?= (int) $quantidadeAnosComparados ?> anos comparados</span>
-                                <span class="temporal-chart-chip">Historico consolidado</span>
+                                <span class="temporal-chart-chip">Histórico consolidado</span>
                             </div>
                             <div class="temporal-chart-stage">
                                 <canvas class="temporal-chart-canvas" id="graficoEvolucao"></canvas>
@@ -603,17 +603,17 @@ $resumoExecutivo = [
 
                     <section class="alerta-form-section temporal-chart-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 7</span>
-                            <h2 class="alerta-section-title">Evolucao anual por tipo de evento</h2>
+                            <span class="alerta-section-kicker">Seção 7</span>
+                            <h2 class="alerta-section-title">Evolução anual por tipo de evento</h2>
                             <p class="alerta-section-text">
-                                Veja como cada tipologia evolui ao longo do historico filtrado para reconhecer tendencias de medio prazo.
+                                Veja como cada tipologia evolui ao longo do histórico filtrado para reconhecer tendências de médio prazo.
                             </p>
                         </header>
 
                         <div class="temporal-chart-card temporal-chart-card--tall">
                             <div class="temporal-chart-meta">
-                                <span class="temporal-chart-chip"><?= (int) $quantidadeSeriesAnuais ?> series anuais</span>
-                                <span class="temporal-chart-chip">Comparacao por tipologia</span>
+                                <span class="temporal-chart-chip"><?= (int) $quantidadeSeriesAnuais ?> séries anuais</span>
+                                <span class="temporal-chart-chip">Comparação por tipologia</span>
                             </div>
                             <div class="temporal-chart-stage temporal-chart-stage--tall">
                                 <canvas class="temporal-chart-canvas" id="graficoEvolucaoAnual"></canvas>
@@ -627,17 +627,17 @@ $resumoExecutivo = [
                 <div class="temporal-analytics-grid">
                     <section class="alerta-form-section temporal-chart-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 8</span>
+                            <span class="alerta-section-kicker">Seção 8</span>
                             <h2 class="alerta-section-title">Alertas cancelados por ano</h2>
                             <p class="alerta-section-text">
-                                Acompanhe o historico de cancelamentos dentro do mesmo recorte territorial e mensal aplicado a esta tela.
+                                Acompanhe o histórico de cancelamentos dentro do mesmo recorte territorial e mensal aplicado a esta tela.
                             </p>
                         </header>
 
                         <div class="temporal-chart-card">
                             <div class="temporal-chart-meta">
                                 <span class="temporal-chart-chip"><?= count($canceladosPorAno) ?> anos com cancelamentos</span>
-                                <span class="temporal-chart-chip">Indicador de revisao operacional</span>
+                                <span class="temporal-chart-chip">Indicador de revisão operacional</span>
                             </div>
                             <div class="temporal-chart-stage">
                                 <canvas class="temporal-chart-canvas" id="graficoCancelados"></canvas>
@@ -647,17 +647,17 @@ $resumoExecutivo = [
 
                     <section class="alerta-form-section temporal-chart-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 9</span>
-                            <h2 class="alerta-section-title">Frequencia por periodo do dia</h2>
+                            <span class="alerta-section-kicker">Seção 9</span>
+                            <h2 class="alerta-section-title">Frequência por período do dia</h2>
                             <p class="alerta-section-text">
-                                Identifique em que faixa horaria os alertas costumam iniciar para apoiar o planejamento operacional.
+                                Identifique em que faixa horária os alertas costumam iniciar para apoiar o planejamento operacional.
                             </p>
                         </header>
 
                         <div class="temporal-chart-card">
                             <div class="temporal-chart-meta">
-                                <span class="temporal-chart-chip"><?= count($frequenciaHora) ?> faixas horarias</span>
-                                <span class="temporal-chart-chip">Distribuicao de inicio dos alertas</span>
+                                <span class="temporal-chart-chip"><?= count($frequenciaHora) ?> faixas horárias</span>
+                                <span class="temporal-chart-chip">Distribuição de início dos alertas</span>
                             </div>
                             <div class="temporal-chart-stage">
                                 <canvas class="temporal-chart-canvas" id="graficoHora"></canvas>
@@ -675,16 +675,16 @@ $resumoExecutivo = [
     </main>
     <footer class="analise-embed-footer">
         <div class="analise-embed-footer-copy">
-            <strong><?= htmlspecialchars((string) ($appConfig['institution'] ?? 'Defesa Civil do Estado do Para'), ENT_QUOTES, 'UTF-8') ?></strong>
+            <strong><?= htmlspecialchars((string) ($appConfig['institution'] ?? 'Defesa Civil do Estado do Pará'), ENT_QUOTES, 'UTF-8') ?></strong>
             <span><?= htmlspecialchars((string) ($appConfig['department'] ?? 'Central de monitoramento'), ENT_QUOTES, 'UTF-8') ?></span>
         </div>
         <div class="analise-embed-footer-meta">
-            <span>Painel publico de analises multirriscos</span>
+            <span>Painel público de análises multirriscos</span>
             <a href="mailto:<?= htmlspecialchars((string) ($appConfig['support_email'] ?? ''), ENT_QUOTES, 'UTF-8') ?>">
                 <?= htmlspecialchars((string) ($appConfig['support_email'] ?? 'suporte@defesacivil.pa.gov.br'), ENT_QUOTES, 'UTF-8') ?>
             </a>
         </div>
-        <a href="/index.php#analises-publicas" class="btn btn-secondary">Voltar para pagina inicial</a>
+        <a href="/index.php#analises-publicas" class="btn btn-secondary">Voltar para página inicial</a>
     </footer>
 <?php else: ?>
     </main>

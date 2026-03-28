@@ -165,8 +165,8 @@ foreach ($stmtMapa as $alerta) {
 
 $alertasSemArea = max(0, $totalAtivos - $totalAlertasMapeados);
 $monitoramentoVigencia = $totalExpirados > 0
-    ? $totalExpirados . ' alertas ativos exigem revisao de vigencia imediata.'
-    : 'Todos os alertas ativos estao dentro da vigencia registrada.';
+    ? $totalExpirados . ' alertas ativos exigem revisão de vigência imediata.'
+    : 'Todos os alertas ativos estão dentro da vigência registrada.';
 $cssBasePainelPath = __DIR__ . '/../assets/css/painel.css';
 $cssAlertasFormPath = __DIR__ . '/../assets/css/pages/alertas-form.css';
 $cssUsuariosListarPath = __DIR__ . '/../assets/css/pages/usuarios-listar.css';
@@ -216,20 +216,20 @@ $chartLiteVersion = (string) ((int) @filemtime($chartLitePath));
                         <span class="alerta-form-kicker">Monitoramento operacional</span>
                         <h1 class="alerta-form-title">Painel operacional multirriscos</h1>
                         <p class="alerta-form-description">
-                            Acompanhe o panorama atual dos alertas ativos, vigencias, severidade e cobertura territorial
-                            no mesmo layout novo aplicado nas demais telas de operacao.
+                            Acompanhe o panorama atual dos alertas ativos, vigências, severidade e cobertura territorial
+                            no mesmo layout novo aplicado nas demais telas de operação.
                         </p>
 
                         <div class="usuarios-hero-chip-row painel-hero-chip-row">
                             <span class="usuarios-hero-chip"><?= $totalAtivos ?> alertas ativos</span>
-                            <span class="usuarios-hero-chip"><?= $totalAlertasMapeados ?> com area georreferenciada</span>
+                            <span class="usuarios-hero-chip"><?= $totalAlertasMapeados ?> com área georreferenciada</span>
                             <span class="usuarios-hero-chip"><?= $totalTiposEventoAtivos ?> tipologias ativas</span>
                         </div>
 
                         <div class="usuarios-hero-actions painel-hero-actions">
                             <a href="#painel-indicadores" class="btn btn-primary">Indicadores</a>
                             <a href="#painel-mapa" class="btn btn-secondary">Mapa operacional</a>
-                            <a href="#painel-analises" class="btn btn-secondary">Graficos</a>
+                            <a href="#painel-analises" class="btn btn-secondary">Gráficos</a>
                         </div>
                     </div>
                 </div>
@@ -242,10 +242,10 @@ $chartLiteVersion = (string) ((int) @filemtime($chartLitePath));
                     </article>
 
                     <article class="usuarios-summary-card usuarios-summary-card-success">
-                        <span class="usuarios-summary-label">Cobertura cartografica</span>
+                        <span class="usuarios-summary-label">Cobertura cartográfica</span>
                         <strong class="usuarios-summary-value"><?= $totalAlertasMapeados ?> mapeados</strong>
                         <span class="usuarios-summary-note">
-                            <?= $alertasSemArea > 0 ? $alertasSemArea . ' alertas ativos ainda sem area georreferenciada.' : 'Todos os alertas ativos possuem area georreferenciada.' ?>
+                            <?= $alertasSemArea > 0 ? $alertasSemArea . ' alertas ativos ainda sem área georreferenciada.' : 'Todos os alertas ativos possuem área georreferenciada.' ?>
                         </span>
                     </article>
 
@@ -253,7 +253,7 @@ $chartLiteVersion = (string) ((int) @filemtime($chartLitePath));
                         <span class="usuarios-summary-label">Gravidade dominante</span>
                         <strong class="usuarios-summary-value"><?= htmlspecialchars($gravidadeDominante, ENT_QUOTES, 'UTF-8') ?></strong>
                         <span class="usuarios-summary-note">
-                            <?= $gravidadeDominanteTotal > 0 ? $gravidadeDominanteTotal . ' alertas ativos nesta faixa.' : 'Sem alertas ativos distribuidos por gravidade.' ?>
+                            <?= $gravidadeDominanteTotal > 0 ? $gravidadeDominanteTotal . ' alertas ativos nesta faixa.' : 'Sem alertas ativos distribuídos por gravidade.' ?>
                         </span>
                     </article>
 
@@ -268,29 +268,29 @@ $chartLiteVersion = (string) ((int) @filemtime($chartLitePath));
 
                 <aside class="usuarios-command-card painel-command-card">
                     <span class="usuarios-command-kicker">Comando do painel</span>
-                    <h2>Coordenacao operacional</h2>
+                    <h2>Coordenação operacional</h2>
                     <p>
-                        Use o painel para priorizar revisao de vigencias, validar cobertura territorial no mapa e
-                        direcionar a equipe para cadastro, listagem ou analises.
+                        Use o painel para priorizar revisão de vigências, validar cobertura territorial no mapa e
+                        direcionar a equipe para cadastro, listagem ou análises.
                     </p>
 
                     <div class="usuarios-command-grid painel-command-grid">
                         <article class="usuarios-command-item">
-                            <span>Operador da sessao</span>
-                            <strong><?= htmlspecialchars((string) ($usuario['nome'] ?? 'Nao identificado'), ENT_QUOTES, 'UTF-8') ?></strong>
-                            <small>Perfil atual: <?= htmlspecialchars((string) ($usuario['perfil'] ?? 'Nao informado'), ENT_QUOTES, 'UTF-8') ?>.</small>
+                            <span>Operador da sessão</span>
+                            <strong><?= htmlspecialchars((string) ($usuario['nome'] ?? 'Não identificado'), ENT_QUOTES, 'UTF-8') ?></strong>
+                            <small>Perfil atual: <?= htmlspecialchars((string) ($usuario['perfil'] ?? 'Não informado'), ENT_QUOTES, 'UTF-8') ?>.</small>
                         </article>
 
                         <article class="usuarios-command-item">
-                            <span>Vigencia</span>
+                            <span>Vigência</span>
                             <strong><?= htmlspecialchars($monitoramentoVigencia, ENT_QUOTES, 'UTF-8') ?></strong>
-                            <small>Monitoramento automatico baseado no horario local da operacao.</small>
+                            <small>Monitoramento automático baseado no horário local da operação.</small>
                         </article>
 
                         <article class="usuarios-command-item">
                             <span>Fluxo sugerido</span>
                             <strong>Mapear, priorizar e agir</strong>
-                            <small>Valide o mapa, abra os alertas e avance para analises de apoio tatico.</small>
+                            <small>Valide o mapa, abra os alertas e avance para análises de apoio tático.</small>
                         </article>
                     </div>
                 </aside>
@@ -300,10 +300,10 @@ $chartLiteVersion = (string) ((int) @filemtime($chartLitePath));
                 <div class="alerta-form-grid painel-overview-grid">
                     <section class="alerta-form-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 1</span>
+                            <span class="alerta-section-kicker">Seção 1</span>
                             <h2 class="alerta-section-title">Indicadores operacionais</h2>
                             <p class="alerta-section-text">
-                                Consolide o cenario atual de alertas, vigencias e historico anual em uma leitura executiva imediata.
+                                Consolide o cenário atual de alertas, vigências e histórico anual em uma leitura executiva imediata.
                             </p>
                         </header>
 
@@ -315,21 +315,21 @@ $chartLiteVersion = (string) ((int) @filemtime($chartLitePath));
                             </article>
 
                             <article class="painel-kpi-card is-warning">
-                                <span class="painel-kpi-label">Vigencia vencida</span>
+                                <span class="painel-kpi-label">Vigência vencida</span>
                                 <strong class="painel-kpi-value"><?= $totalExpirados ?></strong>
-                                <span class="painel-kpi-note">Alertas ativos que precisam de revisao operacional.</span>
+                                <span class="painel-kpi-note">Alertas ativos que precisam de revisão operacional.</span>
                             </article>
 
                             <article class="painel-kpi-card">
-                                <span class="painel-kpi-label">Registros no mes</span>
+                                <span class="painel-kpi-label">Registros no mês</span>
                                 <strong class="painel-kpi-value"><?= $totalMes ?></strong>
-                                <span class="painel-kpi-note">Cadastros realizados no mes corrente.</span>
+                                <span class="painel-kpi-note">Cadastros realizados no mês corrente.</span>
                             </article>
 
                             <article class="painel-kpi-card is-neutral">
                                 <span class="painel-kpi-label">Encerrados no ano</span>
                                 <strong class="painel-kpi-value"><?= $totalEncerrados ?></strong>
-                                <span class="painel-kpi-note">Historico anual de alertas finalizados.</span>
+                                <span class="painel-kpi-note">Histórico anual de alertas finalizados.</span>
                             </article>
 
                             <article class="painel-kpi-card is-danger">
@@ -340,17 +340,17 @@ $chartLiteVersion = (string) ((int) @filemtime($chartLitePath));
                         </div>
 
                         <div class="alerta-callout painel-callout">
-                            <strong>Estado atual da vigencia</strong>
+                            <strong>Estado atual da vigência</strong>
                             <?= htmlspecialchars($monitoramentoVigencia, ENT_QUOTES, 'UTF-8') ?>
                         </div>
                     </section>
 
                     <section class="alerta-form-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 2</span>
-                            <h2 class="alerta-section-title">Leituras rapidas e atalhos</h2>
+                            <span class="alerta-section-kicker">Seção 2</span>
+                            <h2 class="alerta-section-title">Leituras rápidas e atalhos</h2>
                             <p class="alerta-section-text">
-                                Use estes destaques para decidir o proximo passo entre listagem, cadastro, mapa detalhado e analises.
+                                Use estes destaques para decidir o próximo passo entre listagem, cadastro, mapa detalhado e análises.
                             </p>
                         </header>
 
@@ -359,7 +359,7 @@ $chartLiteVersion = (string) ((int) @filemtime($chartLitePath));
                                 <span class="alerta-summary-label">Gravidade dominante</span>
                                 <span class="alerta-summary-value"><?= htmlspecialchars($gravidadeDominante, ENT_QUOTES, 'UTF-8') ?></span>
                                 <span class="alerta-summary-note">
-                                    <?= $gravidadeDominanteTotal > 0 ? $gravidadeDominanteTotal . ' alertas ativos nesta faixa.' : 'Sem alertas ativos distribuidos por gravidade.' ?>
+                                    <?= $gravidadeDominanteTotal > 0 ? $gravidadeDominanteTotal . ' alertas ativos nesta faixa.' : 'Sem alertas ativos distribuídos por gravidade.' ?>
                                 </span>
                             </article>
 
@@ -374,13 +374,13 @@ $chartLiteVersion = (string) ((int) @filemtime($chartLitePath));
                             <article class="alerta-summary-card painel-mini-card">
                                 <span class="alerta-summary-label">Perfil conectado</span>
                                 <span class="alerta-summary-value"><?= htmlspecialchars((string) ($usuario['perfil'] ?? ''), ENT_QUOTES, 'UTF-8') ?></span>
-                                <span class="alerta-summary-note">Os atalhos abaixo respeitam as permissoes operacionais deste perfil.</span>
+                                <span class="alerta-summary-note">Os atalhos abaixo respeitam as permissões operacionais deste perfil.</span>
                             </article>
                         </div>
 
                         <div class="alerta-callout painel-callout">
                             <strong>Fluxo recomendado</strong>
-                            Use o mapa abaixo para localizar rapidamente territorios em risco e siga para a lista de alertas quando precisar detalhar, editar ou exportar.
+                            Use o mapa abaixo para localizar rapidamente territórios em risco e siga para a lista de alertas quando precisar detalhar, editar ou exportar.
                         </div>
 
                         <div class="alerta-form-actions painel-actions">
@@ -391,7 +391,7 @@ $chartLiteVersion = (string) ((int) @filemtime($chartLitePath));
                             <div class="alerta-form-actions-right painel-action-buttons">
                                 <a href="/pages/alertas/listar.php" class="btn btn-secondary">Ver alertas</a>
                                 <a href="/pages/mapas/mapa_multirriscos.php" class="btn btn-secondary">Abrir mapa</a>
-                                <a href="/pages/analises/index.php" class="btn btn-primary">Abrir analises</a>
+                                <a href="/pages/analises/index.php" class="btn btn-primary">Abrir análises</a>
                                 <?php if ($podeCadastrar): ?>
                                     <a href="/pages/alertas/cadastrar.php" class="btn btn-secondary">Cadastrar alerta</a>
                                 <?php endif; ?>
@@ -404,16 +404,16 @@ $chartLiteVersion = (string) ((int) @filemtime($chartLitePath));
             <section id="painel-mapa" class="alerta-form-panel usuarios-control-panel painel-map-panel">
                 <header class="painel-section-head">
                     <div class="alerta-section-header">
-                        <span class="alerta-section-kicker">Secao 3</span>
+                        <span class="alerta-section-kicker">Seção 3</span>
                         <h2 class="alerta-section-title">Mapa e cobertura territorial</h2>
                         <p class="alerta-section-text">
-                            Selecione uma geometria para abrir o territorio do alerta no painel lateral e verificar regioes e municipios associados.
+                            Selecione uma geometria para abrir o território do alerta no painel lateral e verificar regiões e municípios associados.
                         </p>
                     </div>
 
                     <div class="painel-map-meta">
-                        <span class="painel-chip"><?= $totalAlertasMapeados ?> alertas com area</span>
-                        <span class="painel-chip"><?= $alertasSemArea ?> sem area georreferenciada</span>
+                        <span class="painel-chip"><?= $totalAlertasMapeados ?> alertas com área</span>
+                        <span class="painel-chip"><?= $alertasSemArea ?> sem área georreferenciada</span>
                     </div>
                 </header>
 
@@ -423,7 +423,7 @@ $chartLiteVersion = (string) ((int) @filemtime($chartLitePath));
                             <div>
                                 <span class="map-card-title">Mapa operacional dos alertas ativos</span>
                                 <p class="map-card-text">
-                                    O painel mostra apenas alertas ativos com area valida. Clique no poligono para abrir o territorio e destacar a abrangencia regional.
+                                    O painel mostra apenas alertas ativos com área válida. Clique no polígono para abrir o território e destacar a abrangência regional.
                                 </p>
                             </div>
                         </div>
@@ -436,19 +436,19 @@ $chartLiteVersion = (string) ((int) @filemtime($chartLitePath));
                             <span class="alerta-summary-label">Cobertura de mapa</span>
                             <span class="alerta-summary-value"><?= $totalAlertasMapeados ?> alertas</span>
                             <span class="alerta-summary-note">
-                                <?= $alertasSemArea > 0 ? 'Ha alertas ativos fora do mapa por ausencia de geometria salva.' : 'Toda a operacao ativa esta refletida no mapa atual.' ?>
+                                <?= $alertasSemArea > 0 ? 'Há alertas ativos fora do mapa por ausência de geometria salva.' : 'Toda a operação ativa está refletida no mapa atual.' ?>
                             </span>
                         </article>
 
                         <article class="alerta-summary-card painel-mini-card">
-                            <span class="alerta-summary-label">Territorio interativo</span>
+                            <span class="alerta-summary-label">Território interativo</span>
                             <span class="alerta-summary-value">Clique no mapa</span>
-                            <span class="alerta-summary-note">O painel lateral mostra evento, vigencia, municipios afetados e distribuicao regional.</span>
+                            <span class="alerta-summary-note">O painel lateral mostra evento, vigência, municípios afetados e distribuição regional.</span>
                         </article>
 
                         <div class="alerta-callout painel-side-note">
                             <strong>Dica operacional</strong>
-                            Use este mapa para validar rapidamente se o alerta ja possui geometria adequada antes de seguir para PDF, envio ou acompanhamento territorial.
+                            Use este mapa para validar rapidamente se o alerta já possui geometria adequada antes de seguir para PDF, envio ou acompanhamento territorial.
                         </div>
                     </aside>
                 </div>
@@ -458,10 +458,10 @@ $chartLiteVersion = (string) ((int) @filemtime($chartLitePath));
                 <div class="alerta-form-grid painel-analytics-grid">
                     <section class="alerta-form-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 4</span>
-                            <h2 class="alerta-section-title">Distribuicao por gravidade</h2>
+                            <span class="alerta-section-kicker">Seção 4</span>
+                            <h2 class="alerta-section-title">Distribuição por gravidade</h2>
                             <p class="alerta-section-text">
-                                Visualize a concentracao dos alertas ativos por nivel de gravidade para identificar a carga de severidade do cenario atual.
+                                Visualize a concentração dos alertas ativos por nível de gravidade para identificar a carga de severidade do cenário atual.
                             </p>
                         </header>
 
@@ -472,8 +472,8 @@ $chartLiteVersion = (string) ((int) @filemtime($chartLitePath));
 
                     <section class="alerta-form-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 5</span>
-                            <h2 class="alerta-section-title">Distribuicao por evento</h2>
+                            <span class="alerta-section-kicker">Seção 5</span>
+                            <h2 class="alerta-section-title">Distribuição por evento</h2>
                             <p class="alerta-section-text">
                                 Compare as tipologias ativas para identificar o tipo de evento predominante no monitoramento operacional.
                             </p>
@@ -504,7 +504,7 @@ $chartLiteVersion = (string) ((int) @filemtime($chartLitePath));
 
 <div id="drawer-territorio" class="drawer-territorio">
     <div class="drawer-header">
-        <h3>Territorio do alerta</h3>
+        <h3>Território do alerta</h3>
         <button onclick="fecharTerritorio()">X</button>
     </div>
 
@@ -530,19 +530,19 @@ $chartLiteVersion = (string) ((int) @filemtime($chartLitePath));
             </div>
 
             <div class="dado">
-                <span class="rotulo">Vigencia</span>
+                <span class="rotulo">Vigência</span>
                 <span class="valor" id="t-vigencia">-</span>
             </div>
 
             <div class="dado destaque">
-                <span class="rotulo">Municipios afetados</span>
+                <span class="rotulo">Municípios afetados</span>
                 <span class="valor" id="t-total-municipios">-</span>
             </div>
         </div>
 
         <hr class="divisor">
 
-        <h4 class="titulo-territorio">Regioes e municipios</h4>
+        <h4 class="titulo-territorio">Regiões e municípios</h4>
     </div>
 
     <div id="conteudo-territorio" class="drawer-body"></div>

@@ -287,15 +287,15 @@ if ($filtro['ano'] !== null) {
 }
 
 if ($filtro['mes'] !== null && isset($meses[$filtro['mes']])) {
-    $filtrosResumo[] = 'Mes: ' . $meses[$filtro['mes']];
+    $filtrosResumo[] = 'Mês: ' . $meses[$filtro['mes']];
 }
 
 if ($filtro['regiao'] !== null) {
-    $filtrosResumo[] = 'Regiao: ' . $filtro['regiao'];
+    $filtrosResumo[] = 'Região: ' . $filtro['regiao'];
 }
 
 if ($filtro['municipio'] !== null) {
-    $filtrosResumo[] = 'Municipio: ' . $filtro['municipio'];
+    $filtrosResumo[] = 'Município: ' . $filtro['municipio'];
 }
 
 $contextoPeriodo = $filtrosResumo !== []
@@ -303,9 +303,9 @@ $contextoPeriodo = $filtrosResumo !== []
     : 'Sem recorte temporal adicional';
 $contextoTerritorial = $filtro['municipio']
     ?? $filtro['regiao']
-    ?? 'Estado do Para';
-$operadorNome = trim((string) ($usuario['nome'] ?? ($modoEmbedPublico ? 'Visitante publico' : 'Nao identificado')));
-$operadorPerfil = trim((string) ($usuario['perfil'] ?? ($modoEmbedPublico ? 'Publico' : 'Nao informado')));
+    ?? 'Estado do Pará';
+$operadorNome = trim((string) ($usuario['nome'] ?? ($modoEmbedPublico ? 'Visitante público' : 'Não identificado')));
+$operadorPerfil = trim((string) ($usuario['perfil'] ?? ($modoEmbedPublico ? 'Público' : 'Não informado')));
 $quantidadeEventos = count($labelsEventos);
 $quantidadeEventosCorrelacao = count($labelsEventosCorrelacao);
 $quantidadeSeveridadesAtivas = count($severidadesAtivas);
@@ -326,12 +326,12 @@ $resumoExecutivo = [
         'value' => (string) $eventoPrincipal,
         'note' => $eventoPrincipalTotal > 0
             ? $eventoPrincipalTotal . ' alertas concentrados nessa tipologia.'
-            : 'Sem predominancia tipologica identificada no recorte atual.',
+            : 'Sem predominância tipológica identificada no recorte atual.',
         'tone' => 'success',
     ],
     [
         'label' => 'Cobertura territorial',
-        'value' => (int) $quantidadeRegioes . ' regioes / ' . (int) $quantidadeMunicipios . ' municipios',
+        'value' => (int) $quantidadeRegioes . ' regiões / ' . (int) $quantidadeMunicipios . ' municípios',
         'note' => 'Alcance consolidado da leitura territorial da tipologia.',
         'tone' => 'neutral',
     ],
@@ -347,7 +347,7 @@ $resumoExecutivo = [
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<title>Analise de Tipologia de Alertas</title>
+<title>Análise de Tipologia de Alertas</title>
 <link rel="icon" type="image/x-icon" href="/assets/images/logo.cbmpa.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logo.cbmpa.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo.cbmpa.ico">
@@ -367,20 +367,20 @@ $resumoExecutivo = [
             <img src="/assets/images/logo-cedec.png" alt="CEDEC-PA">
             <span>
                 <small><?= htmlspecialchars((string) ($appConfig['name'] ?? 'Sistema Multirriscos'), ENT_QUOTES, 'UTF-8') ?></small>
-                <strong><?= htmlspecialchars((string) ($appConfig['institution'] ?? 'Defesa Civil do Estado do Para'), ENT_QUOTES, 'UTF-8') ?></strong>
+                <strong><?= htmlspecialchars((string) ($appConfig['institution'] ?? 'Defesa Civil do Estado do Pará'), ENT_QUOTES, 'UTF-8') ?></strong>
                 <em><?= htmlspecialchars((string) ($appConfig['department'] ?? 'Monitoramento e resposta operacional'), ENT_QUOTES, 'UTF-8') ?></em>
             </span>
         </a>
 
-        <nav class="analise-embed-nav" aria-label="Navegacao publica de analises">
+        <nav class="analise-embed-nav" aria-label="Navegação pública de análises">
             <a href="/index.php#mapa-publico">Mapa ao vivo</a>
-            <a href="/index.php#analises-publicas">Analises publicas</a>
+            <a href="/index.php#analises-publicas">Análises públicas</a>
             <a href="/index.php#alertas-ativos">Alertas ativos</a>
         </nav>
 
         <div class="analise-embed-topbar-meta">
-            <span class="analise-embed-pill">Versao <?= htmlspecialchars((string) ($appConfig['version'] ?? '1.0.0'), ENT_QUOTES, 'UTF-8') ?></span>
-            <a href="/index.php#analises-publicas" class="analise-embed-topbar-link">Inicio publico</a>
+            <span class="analise-embed-pill">Versão <?= htmlspecialchars((string) ($appConfig['version'] ?? '1.0.0'), ENT_QUOTES, 'UTF-8') ?></span>
+            <a href="/index.php#analises-publicas" class="analise-embed-topbar-link">Início público</a>
         </div>
     </header>
 
@@ -405,11 +405,11 @@ $resumoExecutivo = [
             <div class="usuarios-hero-grid tipologia-hero-grid">
                 <div class="alerta-form-hero usuarios-hero-panel tipologia-hero-panel">
                     <div class="alerta-form-lead usuarios-hero-copy tipologia-hero-copy">
-                        <span class="alerta-form-kicker">Analise operacional</span>
+                        <span class="alerta-form-kicker">Análise operacional</span>
                         <h1 class="alerta-form-title">Tipologia de alertas</h1>
                         <p class="alerta-form-description">
-                            Observe os tipos de evento mais recorrentes, sua correlacao com a severidade e a distribuicao territorial
-                            por regioes e municipios no mesmo padrao visual das telas analiticas mais recentes.
+                            Observe os tipos de evento mais recorrentes, sua correlação com a severidade e a distribuição territorial
+                            por regiões e municípios no mesmo padrão visual das telas analíticas mais recentes.
                         </p>
 
                         <div class="usuarios-hero-chip-row tipologia-hero-chip-row">
@@ -420,9 +420,9 @@ $resumoExecutivo = [
 
                         <div class="usuarios-hero-actions tipologia-hero-actions">
                             <a href="#tipologia-filtros" class="btn btn-primary">Aplicar filtros</a>
-                            <a href="#tipologia-graficos" class="btn btn-secondary">Ver graficos</a>
+                            <a href="#tipologia-graficos" class="btn btn-secondary">Ver gráficos</a>
                             <?php if ($modoEmbedPublico): ?>
-                                <a href="/index.php#analises-publicas" class="btn btn-secondary">Voltar para pagina inicial</a>
+                                <a href="/index.php#analises-publicas" class="btn btn-secondary">Voltar para página inicial</a>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -432,13 +432,13 @@ $resumoExecutivo = [
                     <span class="usuarios-command-kicker">Comando de tipologia</span>
                     <h2>Leitura integrada de eventos</h2>
                     <p>
-                        Use este painel para validar operador, foco territorial e prioridades da analise
-                        antes de comparar distribuicao por evento, severidade e territorio.
+                        Use este painel para validar operador, foco territorial e prioridades da análise
+                        antes de comparar distribuição por evento, severidade e território.
                     </p>
 
                     <div class="usuarios-command-grid tipologia-command-grid">
                         <article class="usuarios-command-item">
-                            <span>Operador da sessao</span>
+                            <span>Operador da sessão</span>
                             <strong><?= htmlspecialchars($operadorNome, ENT_QUOTES, 'UTF-8') ?></strong>
                             <small>Perfil atual: <?= htmlspecialchars($operadorPerfil, ENT_QUOTES, 'UTF-8') ?>.</small>
                         </article>
@@ -446,13 +446,13 @@ $resumoExecutivo = [
                         <article class="usuarios-command-item">
                             <span>Foco territorial</span>
                             <strong><?= htmlspecialchars((string) $contextoTerritorial, ENT_QUOTES, 'UTF-8') ?></strong>
-                            <small>Recorte aplicado em todos os graficos desta analise.</small>
+                            <small>Recorte aplicado em todos os gráficos desta análise.</small>
                         </article>
 
                         <article class="usuarios-command-item">
                             <span>Prioridade sugerida</span>
-                            <strong>Do evento para o territorio</strong>
-                            <small>Comece pelo volume de tipologias e finalize nas concentracoes por regiao e municipio.</small>
+                            <strong>Do evento para o território</strong>
+                            <small>Comece pelo volume de tipologias e finalize nas concentrações por região e município.</small>
                         </article>
                     </div>
                 </aside>
@@ -472,10 +472,10 @@ $resumoExecutivo = [
                 <div class="usuarios-control-grid tipologia-overview-grid">
                     <section id="tipologia-filtros" class="alerta-form-section usuarios-filter-panel tipologia-filter-panel">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 1</span>
-                            <h2 class="alerta-section-title">Filtros do recorte analitico</h2>
+                            <span class="alerta-section-kicker">Seção 1</span>
+                            <h2 class="alerta-section-title">Filtros do recorte analítico</h2>
                             <p class="alerta-section-text">
-                                Ajuste ano, mes, regiao e municipio para recalcular automaticamente a leitura tipologica.
+                                Ajuste ano, mês, região e município para recalcular automaticamente a leitura tipológica.
                             </p>
                         </header>
 
@@ -496,7 +496,7 @@ $resumoExecutivo = [
                             </div>
 
                             <div class="form-group">
-                                <label for="mes">Mes</label>
+                                <label for="mes">Mês</label>
                                 <select id="mes" name="mes" data-auto-submit>
                                     <option value="">Todos</option>
                                     <?php foreach ($meses as $numeroMes => $nomeMes): ?>
@@ -508,7 +508,7 @@ $resumoExecutivo = [
                             </div>
 
                             <div class="form-group">
-                                <label for="filtro-regiao">Regiao de integracao</label>
+                                <label for="filtro-regiao">Região de integração</label>
                                 <select id="filtro-regiao" name="regiao" data-auto-submit>
                                     <option value="">Todas</option>
                                     <?php foreach ($regioes as $regiao): ?>
@@ -520,9 +520,9 @@ $resumoExecutivo = [
                             </div>
 
                             <div class="form-group">
-                                <label for="filtro-municipio">Municipio</label>
+                                <label for="filtro-municipio">Município</label>
                                 <select id="filtro-municipio" name="municipio" disabled>
-                                    <option value=""><?= $filtro['regiao'] !== null ? 'Carregando municipios...' : 'Selecione uma regiao' ?></option>
+                                    <option value=""><?= $filtro['regiao'] !== null ? 'Carregando municípios...' : 'Selecione uma região' ?></option>
                                 </select>
                             </div>
 
@@ -540,8 +540,8 @@ $resumoExecutivo = [
                             </div>
 
                             <div class="alerta-callout tipologia-filter-callout form-group field-span-2">
-                                <strong>Atualizacao imediata</strong>
-                                Ano, mes e regiao reaplicam o recorte automaticamente. O municipio e carregado apos a selecao da regiao correspondente.
+                                <strong>Atualização imediata</strong>
+                                Ano, mês e região reaplicam o recorte automaticamente. O município é carregado após a seleção da região correspondente.
                             </div>
 
                             <div class="alerta-form-actions tipologia-filter-actions usuarios-filter-actions form-group field-span-2">
@@ -558,10 +558,10 @@ $resumoExecutivo = [
 
                     <section class="alerta-form-section usuarios-governance-panel tipologia-governance-panel">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 2</span>
-                            <h2 class="alerta-section-title">Leituras rapidas do periodo</h2>
+                            <span class="alerta-section-kicker">Seção 2</span>
+                            <h2 class="alerta-section-title">Leituras rápidas do período</h2>
                             <p class="alerta-section-text">
-                                Use os destaques abaixo para identificar a tipologia dominante e os territorios com maior recorrencia.
+                                Use os destaques abaixo para identificar a tipologia dominante e os territórios com maior recorrência.
                             </p>
                         </header>
 
@@ -575,18 +575,18 @@ $resumoExecutivo = [
                             </article>
 
                             <article class="usuarios-insight-card tipologia-mini-card">
-                                <span class="usuarios-insight-kicker">Regiao com maior recorrencia</span>
+                                <span class="usuarios-insight-kicker">Região com maior recorrência</span>
                                 <strong><?= htmlspecialchars($regiaoLider, ENT_QUOTES, 'UTF-8') ?></strong>
                                 <p>
-                                    <?= $regiaoLiderTotal > 0 ? $regiaoLiderTotal . ' ocorrencias tipologicas somadas nesta regiao.' : 'Sem concentracao regional identificada.' ?>
+                                    <?= $regiaoLiderTotal > 0 ? $regiaoLiderTotal . ' ocorrências tipológicas somadas nesta região.' : 'Sem concentração regional identificada.' ?>
                                 </p>
                             </article>
 
                             <article class="usuarios-insight-card tipologia-mini-card">
-                                <span class="usuarios-insight-kicker">Municipio com maior recorrencia</span>
+                                <span class="usuarios-insight-kicker">Município com maior recorrência</span>
                                 <strong><?= htmlspecialchars($municipioLider, ENT_QUOTES, 'UTF-8') ?></strong>
                                 <p>
-                                    <?= $municipioLiderTotal > 0 ? $municipioLiderTotal . ' ocorrencias tipologicas somadas neste municipio.' : 'Sem concentracao municipal identificada.' ?>
+                                    <?= $municipioLiderTotal > 0 ? $municipioLiderTotal . ' ocorrências tipológicas somadas neste município.' : 'Sem concentração municipal identificada.' ?>
                                 </p>
                             </article>
 
@@ -594,14 +594,14 @@ $resumoExecutivo = [
                                 <span class="usuarios-insight-kicker">Base comparativa</span>
                                 <strong><?= (int) max(1, $quantidadeSeveridadesAtivas) ?> severidades</strong>
                                 <p>
-                                    <?= (int) max(1, $quantidadeEventosCorrelacao) ?> eventos considerados na correlacao com gravidade.
+                                    <?= (int) max(1, $quantidadeEventosCorrelacao) ?> eventos considerados na correlação com gravidade.
                                 </p>
                             </article>
                         </div>
 
                         <div class="alerta-callout tipologia-info-callout">
                             <strong>Como interpretar</strong>
-                            Combine a correlacao com severidade e a distribuicao territorial para entender quais eventos aparecem com mais frequencia e onde eles pressionam mais a operacao.
+                            Combine a correlação com severidade e a distribuição territorial para entender quais eventos aparecem com mais frequência e onde eles pressionam mais a operação.
                         </div>
 
                         <div class="alerta-form-actions tipologia-actions usuarios-filter-actions">
@@ -631,7 +631,7 @@ $resumoExecutivo = [
                     </div>
 
                     <div class="usuarios-table-head-actions">
-                        <span class="usuarios-result-chip"><?= (int) max(1, $quantidadeEventos) ?> eventos no grafico</span>
+                        <span class="usuarios-result-chip"><?= (int) max(1, $quantidadeEventos) ?> eventos no gráfico</span>
                     </div>
                 </header>
 
@@ -644,7 +644,7 @@ $resumoExecutivo = [
                     <div class="usuarios-table-toolbar-pills">
                         <span class="usuarios-toolbar-pill"><?= (int) $totalAlertasEventos ?> alertas contabilizados</span>
                         <span class="usuarios-toolbar-pill"><?= (int) max(1, $quantidadeEventosCorrelacao) ?> eventos correlacionados</span>
-                        <span class="usuarios-toolbar-pill"><?= (int) $quantidadeRegioes ?> regioes / <?= (int) $quantidadeMunicipios ?> municipios</span>
+                        <span class="usuarios-toolbar-pill"><?= (int) $quantidadeRegioes ?> regiões / <?= (int) $quantidadeMunicipios ?> municípios</span>
                     </div>
                 </div>
 
@@ -659,7 +659,7 @@ $resumoExecutivo = [
                 <div class="tipologia-analytics-grid">
                     <section class="alerta-form-section tipologia-chart-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 4</span>
+                            <span class="alerta-section-kicker">Seção 4</span>
                             <h2 class="alerta-section-title">Percentual por tipologia</h2>
                             <p class="alerta-section-text">
                                 Compare o peso relativo de cada tipo de evento no total de alertas do recorte.
@@ -679,10 +679,10 @@ $resumoExecutivo = [
 
                     <section class="alerta-form-section tipologia-chart-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 5</span>
-                            <h2 class="alerta-section-title">Correlacao entre evento e severidade</h2>
+                            <span class="alerta-section-kicker">Seção 5</span>
+                            <h2 class="alerta-section-title">Correlação entre evento e severidade</h2>
                             <p class="alerta-section-text">
-                                Observe como cada tipologia se distribui nas faixas de gravidade para identificar padroes recorrentes.
+                                Observe como cada tipologia se distribui nas faixas de gravidade para identificar padrões recorrentes.
                             </p>
                         </header>
 
@@ -703,16 +703,16 @@ $resumoExecutivo = [
                 <div class="tipologia-analytics-grid">
                     <section class="alerta-form-section tipologia-chart-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 6</span>
-                            <h2 class="alerta-section-title">Tipologia por regiao de integracao</h2>
+                            <span class="alerta-section-kicker">Seção 6</span>
+                            <h2 class="alerta-section-title">Tipologia por região de integração</h2>
                             <p class="alerta-section-text">
-                                Compare como as tipologias se distribuem entre as regioes contempladas no recorte atual.
+                                Compare como as tipologias se distribuem entre as regiões contempladas no recorte atual.
                             </p>
                         </header>
 
                         <div class="tipologia-chart-card tipologia-chart-card--tall">
                             <div class="tipologia-chart-meta">
-                                <span class="tipologia-chart-chip"><?= (int) $quantidadeRegioes ?> regioes analisadas</span>
+                                <span class="tipologia-chart-chip"><?= (int) $quantidadeRegioes ?> regiões analisadas</span>
                                 <span class="tipologia-chart-chip"><?= (int) max(1, $quantidadeTipologiasRegiao) ?> tipologias territoriais</span>
                             </div>
                             <div class="tipologia-chart-stage tipologia-chart-stage--tall">
@@ -723,16 +723,16 @@ $resumoExecutivo = [
 
                     <section class="alerta-form-section tipologia-chart-section">
                         <header class="alerta-section-header">
-                            <span class="alerta-section-kicker">Secao 7</span>
-                            <h2 class="alerta-section-title">Tipologia por municipio</h2>
+                            <span class="alerta-section-kicker">Seção 7</span>
+                            <h2 class="alerta-section-title">Tipologia por município</h2>
                             <p class="alerta-section-text">
-                                Visualize os municipios com maior recorrencia tipologica e os tipos de evento associados.
+                                Visualize os municípios com maior recorrência tipológica e os tipos de evento associados.
                             </p>
                         </header>
 
                         <div class="tipologia-chart-card tipologia-chart-card--tall">
                             <div class="tipologia-chart-meta">
-                                <span class="tipologia-chart-chip"><?= (int) $quantidadeMunicipios ?> municipios analisados</span>
+                                <span class="tipologia-chart-chip"><?= (int) $quantidadeMunicipios ?> municípios analisados</span>
                                 <span class="tipologia-chart-chip"><?= (int) max(1, $quantidadeTipologiasMunicipio) ?> tipologias territoriais</span>
                             </div>
                             <div class="tipologia-chart-stage tipologia-chart-stage--tall">
@@ -751,16 +751,16 @@ $resumoExecutivo = [
     </main>
     <footer class="analise-embed-footer">
         <div class="analise-embed-footer-copy">
-            <strong><?= htmlspecialchars((string) ($appConfig['institution'] ?? 'Defesa Civil do Estado do Para'), ENT_QUOTES, 'UTF-8') ?></strong>
+            <strong><?= htmlspecialchars((string) ($appConfig['institution'] ?? 'Defesa Civil do Estado do Pará'), ENT_QUOTES, 'UTF-8') ?></strong>
             <span><?= htmlspecialchars((string) ($appConfig['department'] ?? 'Central de monitoramento'), ENT_QUOTES, 'UTF-8') ?></span>
         </div>
         <div class="analise-embed-footer-meta">
-            <span>Painel publico de analises multirriscos</span>
+            <span>Painel público de análises multirriscos</span>
             <a href="mailto:<?= htmlspecialchars((string) ($appConfig['support_email'] ?? ''), ENT_QUOTES, 'UTF-8') ?>">
                 <?= htmlspecialchars((string) ($appConfig['support_email'] ?? 'suporte@defesacivil.pa.gov.br'), ENT_QUOTES, 'UTF-8') ?>
             </a>
         </div>
-        <a href="/index.php#analises-publicas" class="btn btn-secondary">Voltar para pagina inicial</a>
+        <a href="/index.php#analises-publicas" class="btn btn-secondary">Voltar para página inicial</a>
     </footer>
 <?php else: ?>
     </main>
