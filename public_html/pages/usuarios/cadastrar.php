@@ -6,6 +6,14 @@ Protect::check(['ADMIN']);
 $usuario = $_SESSION['usuario'] ?? [];
 $perfis = ['ADMIN', 'GESTOR', 'ANALISTA', 'OPERACOES'];
 $statusDisponiveis = ['ATIVO', 'INATIVO'];
+$totalPerfis = count($perfis);
+$statusInicialPadrao = (string) ($statusDisponiveis[0] ?? 'ATIVO');
+$cssUsuariosListarPath = __DIR__ . '/../../assets/css/pages/usuarios-listar.css';
+$cssUsuariosFormPath = __DIR__ . '/../../assets/css/pages/usuarios-form.css';
+$cssUsuariosCadastrarPath = __DIR__ . '/../../assets/css/pages/usuarios-cadastrar.css';
+$cssUsuariosListarVersion = (string) ((int) @filemtime($cssUsuariosListarPath));
+$cssUsuariosFormVersion = (string) ((int) @filemtime($cssUsuariosFormPath));
+$cssUsuariosCadastrarVersion = (string) ((int) @filemtime($cssUsuariosCadastrarPath));
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -19,7 +27,9 @@ $statusDisponiveis = ['ATIVO', 'INATIVO'];
 <link rel="stylesheet" href="/assets/css/base.css">
 <link rel="stylesheet" href="/assets/css/painel.css">
 <link rel="stylesheet" href="/assets/css/pages/alertas-form.css">
-<link rel="stylesheet" href="/assets/css/pages/usuarios-form.css">
+<link rel="stylesheet" href="/assets/css/pages/usuarios-listar.css?v=<?= htmlspecialchars($cssUsuariosListarVersion, ENT_QUOTES, 'UTF-8') ?>">
+<link rel="stylesheet" href="/assets/css/pages/usuarios-form.css?v=<?= htmlspecialchars($cssUsuariosFormVersion, ENT_QUOTES, 'UTF-8') ?>">
+<link rel="stylesheet" href="/assets/css/pages/usuarios-cadastrar.css?v=<?= htmlspecialchars($cssUsuariosCadastrarVersion, ENT_QUOTES, 'UTF-8') ?>">
 </head>
 
 <body>
@@ -40,43 +50,92 @@ $breadcrumb = [
 include __DIR__ . '/../_breadcrumb.php';
 ?>
 
-<section class="dashboard alerta-form-shell usuarios-form-shell">
-    <div class="alerta-form-hero">
-        <div class="alerta-form-lead">
-            <span class="alerta-form-kicker">Cadastro administrativo</span>
-            <h1 class="alerta-form-title">Novo usuário do sistema</h1>
-            <p class="alerta-form-description">
-                Cadastre um novo acesso administrativo no mesmo fluxo visual das telas operacionais do sistema.
-                Defina os dados principais, configure o perfil e estabeleça a situação inicial da conta antes de salvar.
+<section class="dashboard alerta-form-shell usuarios-shell usuarios-form-shell usuarios-cadastrar-shell">
+    <div class="usuarios-hero-grid usuarios-cadastrar-hero-grid">
+        <div class="alerta-form-hero usuarios-hero-panel usuarios-cadastrar-hero-panel">
+            <div class="alerta-form-lead usuarios-hero-copy usuarios-cadastrar-hero-copy">
+                <span class="alerta-form-kicker">Cadastro administrativo</span>
+                <h1 class="alerta-form-title">Novo usuário do sistema</h1>
+                <p class="alerta-form-description">
+                    Cadastre um novo acesso administrativo com o mesmo padrão visual e operacional
+                    das telas de edição de usuário e alteração de senha.
+                </p>
+
+                <div class="usuarios-hero-chip-row usuarios-cadastrar-hero-chip-row">
+                    <span class="usuarios-hero-chip">Operador: <?= htmlspecialchars((string) ($usuario['nome'] ?? '-'), ENT_QUOTES, 'UTF-8') ?></span>
+                    <span class="usuarios-hero-chip"><?= $totalPerfis ?> perfis disponíveis</span>
+                    <span class="usuarios-hero-chip">Status inicial sugerido: <?= htmlspecialchars($statusInicialPadrao, ENT_QUOTES, 'UTF-8') ?></span>
+                </div>
+
+                <div class="usuarios-hero-actions usuarios-cadastrar-hero-actions">
+                    <a href="#cadastro-dados" class="btn btn-primary">Dados da conta</a>
+                    <a href="#cadastro-acesso" class="btn btn-secondary">Perfil e acesso</a>
+                    <a href="/pages/usuarios/listar.php" class="btn btn-secondary">Voltar para usuários</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="usuarios-summary-grid usuarios-cadastrar-summary-grid">
+            <article class="usuarios-summary-card usuarios-summary-card-primary">
+                <span class="usuarios-summary-label">Criação</span>
+                <strong class="usuarios-summary-value"><?= htmlspecialchars((string) ($usuario['nome'] ?? '-'), ENT_QUOTES, 'UTF-8') ?></strong>
+                <span class="usuarios-summary-note">Operação registrada com rastreabilidade no histórico administrativo.</span>
+            </article>
+
+            <article class="usuarios-summary-card usuarios-summary-card-success">
+                <span class="usuarios-summary-label">Perfis permitidos</span>
+                <strong class="usuarios-summary-value"><?= $totalPerfis ?> perfis</strong>
+                <span class="usuarios-summary-note">ADMIN, GESTOR, ANALISTA e OPERACOES disponíveis para configuração.</span>
+            </article>
+
+            <article class="usuarios-summary-card usuarios-summary-card-neutral">
+                <span class="usuarios-summary-label">Status inicial</span>
+                <strong class="usuarios-summary-value"><?= htmlspecialchars($statusInicialPadrao, ENT_QUOTES, 'UTF-8') ?></strong>
+                <span class="usuarios-summary-note">A conta pode ser ajustada para ATIVO ou INATIVO durante o cadastro.</span>
+            </article>
+
+            <article class="usuarios-summary-card usuarios-summary-card-warning">
+                <span class="usuarios-summary-label">Estrutura</span>
+                <strong class="usuarios-summary-value">2 seções</strong>
+                <span class="usuarios-summary-note">Dados da conta e parâmetros de acesso no mesmo fluxo guiado.</span>
+            </article>
+        </div>
+
+        <aside class="usuarios-command-card usuarios-cadastrar-command-card">
+            <span class="usuarios-command-kicker">Comando de cadastro</span>
+            <h2>Fluxo de criação da conta</h2>
+            <p>
+                Preencha os dados essenciais, configure perfil e status e finalize o cadastro com revisão completa.
+                O processo segue o mesmo padrão visual das telas de edição e redefinição de senha.
             </p>
-        </div>
 
-        <div class="alerta-form-summary">
-            <div class="alerta-summary-card">
-                <span class="alerta-summary-label">Estrutura</span>
-                <span class="alerta-summary-value">2 seções organizadas</span>
-                <span class="alerta-summary-note">Dados da conta de um lado e regras de acesso do outro.</span>
-            </div>
+            <div class="usuarios-command-grid usuarios-cadastrar-command-grid">
+                <article class="usuarios-command-item">
+                    <span>Etapa 1</span>
+                    <strong>Identificar usuário</strong>
+                    <small>Informe nome completo e e-mail institucional para garantir identificação correta.</small>
+                </article>
 
-            <div class="alerta-summary-card">
-                <span class="alerta-summary-label">Perfis permitidos</span>
-                <span class="alerta-summary-value"><?= count($perfis) ?> perfis</span>
-                <span class="alerta-summary-note">ADMIN, GESTOR, ANALISTA e OPERACOES disponíveis para configuração.</span>
-            </div>
+                <article class="usuarios-command-item">
+                    <span>Etapa 2</span>
+                    <strong>Definir acesso</strong>
+                    <small>Selecione perfil operacional e status inicial conforme necessidade da equipe.</small>
+                </article>
 
-            <div class="alerta-summary-card">
-                <span class="alerta-summary-label">Criação</span>
-                <span class="alerta-summary-value"><?= htmlspecialchars((string) ($usuario['nome'] ?? '-'), ENT_QUOTES, 'UTF-8') ?></span>
-                <span class="alerta-summary-note">O cadastro será registrado com rastreabilidade no histórico administrativo.</span>
+                <article class="usuarios-command-item">
+                    <span>Etapa 3</span>
+                    <strong>Salvar com segurança</strong>
+                    <small>Revise os campos antes de concluir para evitar retrabalho administrativo.</small>
+                </article>
             </div>
-        </div>
+        </aside>
     </div>
 
-    <form class="alerta-form-panel" method="post" action="salvar.php">
+    <form class="alerta-form-panel usuarios-control-panel usuarios-cadastrar-form-panel" method="post" action="salvar.php">
         <?= Csrf::inputField() ?>
 
-        <div class="alerta-form-grid usuarios-form-grid">
-            <section class="alerta-form-section">
+        <div class="alerta-form-grid usuarios-form-grid usuarios-cadastrar-form-grid">
+            <section id="cadastro-dados" class="alerta-form-section">
                 <header class="alerta-section-header">
                     <span class="alerta-section-kicker">Seção 1</span>
                     <h2 class="alerta-section-title">Dados da conta</h2>
@@ -109,7 +168,7 @@ include __DIR__ . '/../_breadcrumb.php';
                 </div>
             </section>
 
-            <section class="alerta-form-section">
+            <section id="cadastro-acesso" class="alerta-form-section">
                 <header class="alerta-section-header">
                     <span class="alerta-section-kicker">Seção 2</span>
                     <h2 class="alerta-section-title">Perfil e liberação de acesso</h2>

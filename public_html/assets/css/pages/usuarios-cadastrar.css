@@ -1,0 +1,88 @@
+.usuarios-cadastrar-shell {
+    gap: 24px;
+}
+
+.usuarios-cadastrar-shell #cadastro-dados,
+.usuarios-cadastrar-shell #cadastro-acesso {
+    scroll-margin-top: 96px;
+}
+
+.usuarios-cadastrar-hero-grid {
+    gap: 22px;
+}
+
+.usuarios-cadastrar-hero-panel {
+    min-width: 0;
+    order: 1;
+}
+
+.usuarios-cadastrar-hero-panel.alerta-form-hero {
+    grid-template-columns: 1fr;
+    gap: 0;
+}
+
+.usuarios-cadastrar-hero-copy.alerta-form-lead {
+    max-width: none;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.usuarios-cadastrar-hero-copy .alerta-form-title {
+    max-width: none;
+    white-space: normal;
+}
+
+.usuarios-cadastrar-hero-copy .alerta-form-description {
+    max-width: 72ch;
+}
+
+.usuarios-cadastrar-summary-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    order: 2;
+}
+
+.usuarios-cadastrar-command-card {
+    width: 100%;
+    grid-column: 1 / -1;
+    order: 3;
+}
+
+.usuarios-cadastrar-command-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.usuarios-cadastrar-form-panel {
+    gap: 20px;
+}
+
+.usuarios-cadastrar-form-grid {
+    align-items: start;
+}
+
+@media (max-width: 1280px) {
+    .usuarios-cadastrar-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .usuarios-cadastrar-command-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .usuarios-cadastrar-command-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .usuarios-cadastrar-shell {
+        gap: 20px;
+    }
+
+    .usuarios-cadastrar-summary-grid {
+        grid-template-columns: 1fr;
+    }
+}
