@@ -135,6 +135,18 @@
 
 .mapa-detalhe {
     height: 520px;
+    position: relative;
+    z-index: 1;
+    isolation: isolate;
+}
+
+main.content > .topbar {
+    z-index: 1400;
+}
+
+main.content > .page-header {
+    position: relative;
+    z-index: 20;
 }
 
 .alerta-detail-loading {

@@ -201,7 +201,9 @@
 /* ===== ROSA DOS VENTOS ===== */
 .rosa-ventos img {
     width: 60px;
-    opacity: 0.9;
+    opacity: 1;
+    display: block;
+    background: transparent;
 }
 
 
@@ -2132,17 +2134,19 @@ main.content > .page-header {
 }
 
 .rosa-ventos {
-    background: rgba(255, 255, 255, 0.96);
-    padding: 8px;
-    border-radius: 14px;
-    border: 1px solid rgba(15, 61, 87, 0.12);
-    box-shadow: 0 8px 22px rgba(10, 39, 56, 0.12);
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    border: 0;
+    box-shadow: none;
 }
 
 .rosa-ventos img {
     width: 56px;
     height: auto;
     display: block;
+    opacity: 1;
+    background: transparent;
 }
 
 @media (min-width: 1025px) and (max-width: 1480px), (min-width: 1025px) and (max-height: 900px) {

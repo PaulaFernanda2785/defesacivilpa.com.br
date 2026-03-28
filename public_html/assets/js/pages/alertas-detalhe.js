@@ -86,7 +86,7 @@
     if (typeof leafletImage !== 'function') {
         if (loading) {
             loading.style.display = 'block';
-            loading.textContent = 'Nao foi possivel carregar o gerador do mapa para PDF. Recarregue a pagina e tente novamente.';
+            loading.textContent = 'Não foi possível carregar o gerador do mapa para PDF. Recarregue a página e tente novamente.';
         }
         return;
     }
@@ -101,7 +101,7 @@
             leafletImage(map, function (error, canvas) {
                 if (error) {
                     if (loading) {
-                        loading.textContent = 'Nao foi possivel gerar a imagem do mapa.';
+                        loading.textContent = 'Não foi possível gerar a imagem do mapa.';
                     }
                     return;
                 }
@@ -112,7 +112,7 @@
                     imagemPng = canvas.toDataURL('image/png');
                 } catch (canvasError) {
                     if (loading) {
-                        loading.textContent = 'Nao foi possivel preparar a imagem do mapa para o PDF.';
+                        loading.textContent = 'Não foi possível preparar a imagem do mapa para o PDF.';
                     }
                     return;
                 }
@@ -143,7 +143,7 @@
                         }
 
                         if (loading) {
-                            loading.textContent = 'Imagem do mapa gerada. Atualizando a pagina...';
+                            loading.textContent = 'Imagem do mapa gerada. Atualizando a página...';
                         }
 
                         window.location.reload();

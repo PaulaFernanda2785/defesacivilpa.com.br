@@ -805,13 +805,16 @@ function paginacaoProfissional(int $paginaAtual, int $totalPaginas): array
                                                 >
                                                     PDF não disponível
                                                 </button>
-                                                <span class="acao-aviso-pdf">
-                                                    Para gerar o PDF do alerta, acesse o detalhe do alerta.
-                                                </span>
                                             <?php endif; ?>
 
                                             <?php if (!$cancelado): ?>
                                                 <a href="/pages/alertas/kml.php?id=<?= $a['id'] ?>" class="btn-acao btn-kml">KML</a>
+                                            <?php endif; ?>
+
+                                            <?php if (empty($a['imagem_mapa']) && !$cancelado): ?>
+                                                <span class="acao-aviso-pdf">
+                                                    Para gerar o PDF do alerta, acesse o detalhe do alerta.
+                                                </span>
                                             <?php endif; ?>
 
                                             <?php if ($cancelado): ?>

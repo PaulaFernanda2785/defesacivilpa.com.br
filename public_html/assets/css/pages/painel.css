@@ -237,17 +237,18 @@
 }
 
 .rosa-dos-ventos {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 8px;
-    border-radius: 14px;
-    border: 1px solid rgba(15, 61, 87, 0.12);
-    box-shadow: 0 8px 22px rgba(10, 39, 56, 0.12);
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    border: 0;
+    box-shadow: none;
 }
 
 .rosa-dos-ventos img {
     width: 56px;
     height: auto;
     display: block;
+    background: transparent;
 }
 
 .drawer-territorio {

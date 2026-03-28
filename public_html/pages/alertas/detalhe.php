@@ -76,14 +76,14 @@ $totalRegioes = count($municipiosPorRegiao);
 $totalMunicipios = array_sum(array_map('count', $municipiosPorRegiao));
 
 $statusPdf = $cancelado
-    ? 'Indisponivel'
+    ? 'Indisponível'
     : ($imagemGerada ? 'Pronto' : 'Gerando');
 
 $notaPdf = $cancelado
-    ? 'O alerta foi cancelado, por isso o PDF nao fica disponivel para download.'
+    ? 'O alerta foi cancelado, por isso o PDF não fica disponível para download.'
     : ($imagemGerada
-        ? 'A imagem do mapa ja foi gerada e o PDF pode ser baixado imediatamente.'
-        : 'A imagem do mapa ainda esta sendo gerada. O PDF sera liberado assim que o processo terminar.');
+        ? 'A imagem do mapa já foi gerada e o PDF pode ser baixado imediatamente.'
+        : 'A imagem do mapa ainda está sendo gerada. O PDF será liberado assim que o processo terminar.');
 
 $cssDetalhePath = __DIR__ . '/../../assets/css/pages/alertas-detalhe.css';
 $cssDetalheVersion = (string) ((int) @filemtime($cssDetalhePath));
@@ -103,7 +103,7 @@ function formatarVigenciaResumo(array $alerta): string
     $inicio = formatarDataHora($alerta['inicio_alerta'] ?? null);
     $fim = formatarDataHora($alerta['fim_alerta'] ?? null);
 
-    return $inicio . ' ate ' . $fim;
+    return $inicio . ' até ' . $fim;
 }
 ?>
 <!DOCTYPE html>
@@ -149,26 +149,26 @@ include __DIR__ . '/../_breadcrumb.php';
                 <span class="alerta-form-kicker">Consulta operacional</span>
                 <h1 class="alerta-form-title">Detalhes do alerta <?= htmlspecialchars($alerta['numero']) ?></h1>
                 <p class="alerta-form-description">
-                    Consulte o conteudo tecnico do alerta, acompanhe a abrangencia territorial e baixe o PDF assim que a imagem
-                    do mapa estiver disponivel.
+                    Consulte o conteúdo técnico do alerta, acompanhe a abrangência territorial e baixe o PDF assim que a imagem
+                    do mapa estiver disponível.
                 </p>
 
                 <div class="usuarios-hero-chip-row alerta-detalhe-hero-chip-row">
                     <span class="usuarios-hero-chip">Status: <?= htmlspecialchars((string) ($alerta['status'] ?? 'ATIVO'), ENT_QUOTES, 'UTF-8') ?></span>
-                    <span class="usuarios-hero-chip"><?= $totalRegioes ?> regioes / <?= $totalMunicipios ?> municipios</span>
-                    <span class="usuarios-hero-chip">Origem da area: <?= htmlspecialchars($origemArea, ENT_QUOTES, 'UTF-8') ?></span>
+                    <span class="usuarios-hero-chip"><?= $totalRegioes ?> regiões / <?= $totalMunicipios ?> municípios</span>
+                    <span class="usuarios-hero-chip">Origem da área: <?= htmlspecialchars($origemArea, ENT_QUOTES, 'UTF-8') ?></span>
                 </div>
 
                 <div class="usuarios-hero-actions alerta-detalhe-hero-actions">
                     <a href="#detalhe-informacoes" class="btn btn-primary">Dados do alerta</a>
-                    <a href="#detalhe-mapa" class="btn btn-secondary">Mapa e territorios</a>
+                    <a href="#detalhe-mapa" class="btn btn-secondary">Mapa e territórios</a>
                 </div>
             </div>
         </div>
 
         <div class="usuarios-summary-grid alerta-detalhe-summary-grid">
             <article class="usuarios-summary-card usuarios-summary-card-primary">
-                <span class="usuarios-summary-label">Numero</span>
+                <span class="usuarios-summary-label">Número</span>
                 <strong class="usuarios-summary-value"><?= htmlspecialchars((string) ($alerta['numero'] ?? '-'), ENT_QUOTES, 'UTF-8') ?></strong>
                 <span class="usuarios-summary-note">Identificador oficial do alerta no sistema.</span>
             </article>
@@ -178,18 +178,18 @@ include __DIR__ . '/../_breadcrumb.php';
                 <strong class="usuarios-summary-value">
                     <span class="status-chip <?= $statusClass ?>"><?= htmlspecialchars((string) ($alerta['status'] ?? 'ATIVO'), ENT_QUOTES, 'UTF-8') ?></span>
                 </strong>
-                <span class="usuarios-summary-note">Situacao atual do alerta e disponibilidade operacional.</span>
+                <span class="usuarios-summary-note">Situação atual do alerta e disponibilidade operacional.</span>
             </article>
 
             <article class="usuarios-summary-card usuarios-summary-card-neutral">
-                <span class="usuarios-summary-label">Vigencia</span>
+                <span class="usuarios-summary-label">Vigência</span>
                 <strong class="usuarios-summary-value"><?= htmlspecialchars(formatarVigenciaResumo($alerta), ENT_QUOTES, 'UTF-8') ?></strong>
-                <span class="usuarios-summary-note">Periodo considerado para monitoramento e resposta.</span>
+                <span class="usuarios-summary-note">Período considerado para monitoramento e resposta.</span>
             </article>
 
             <article class="usuarios-summary-card usuarios-summary-card-warning">
-                <span class="usuarios-summary-label">Abrangencia</span>
-                <strong class="usuarios-summary-value"><?= $totalRegioes ?> regioes / <?= $totalMunicipios ?> municipios</strong>
+                <span class="usuarios-summary-label">Abrangência</span>
+                <strong class="usuarios-summary-value"><?= $totalRegioes ?> regiões / <?= $totalMunicipios ?> municípios</strong>
                 <span class="usuarios-summary-note">Origem da geometria: <?= htmlspecialchars($origemArea, ENT_QUOTES, 'UTF-8') ?>.</span>
             </article>
         </div>
@@ -198,27 +198,27 @@ include __DIR__ . '/../_breadcrumb.php';
             <span class="usuarios-command-kicker">Comando de consulta</span>
             <h2>Leitura recomendada</h2>
             <p>
-                Revise metadados, vigencia e gravidade, depois valide a area afetada no mapa e finalize com a leitura
-                territorial por regiao de integracao.
+                Revise metadados, vigência e gravidade, depois valide a área afetada no mapa e finalize com a leitura
+                territorial por região de integração.
             </p>
 
             <div class="usuarios-command-grid alerta-detalhe-command-grid">
                 <article class="usuarios-command-item">
                     <span>Etapa 1</span>
                     <strong>Metadados</strong>
-                    <small>Confirme fonte, evento, nivel de gravidade e status do PDF.</small>
+                    <small>Confirme fonte, evento, nível de gravidade e status do PDF.</small>
                 </article>
 
                 <article class="usuarios-command-item">
                     <span>Etapa 2</span>
                     <strong>Geometria</strong>
-                    <small>Valide a area no mapa e a origem da geometria usada no alerta.</small>
+                    <small>Valide a área no mapa e a origem da geometria usada no alerta.</small>
                 </article>
 
                 <article class="usuarios-command-item">
                     <span>Etapa 3</span>
-                    <strong>Territorio</strong>
-                    <small>Confira os municipios por regiao e use o PDF quando liberado.</small>
+                    <strong>Território</strong>
+                    <small>Confira os municípios por região e use o PDF quando liberado.</small>
                 </article>
             </div>
         </aside>
@@ -234,7 +234,7 @@ include __DIR__ . '/../_breadcrumb.php';
     <?php elseif (!$imagemGerada): ?>
         <div class="alerta-callout alerta-detail-callout-info">
             <strong>Imagem do mapa em processamento</strong>
-            O PDF ainda nao foi liberado porque a imagem do mapa esta sendo preparada automaticamente nesta pagina.
+            O PDF ainda não foi liberado porque a imagem do mapa está sendo preparada automaticamente nesta página.
         </div>
     <?php endif; ?>
 
@@ -276,10 +276,10 @@ include __DIR__ . '/../_breadcrumb.php';
         <div class="alerta-form-grid">
             <section id="detalhe-informacoes" class="alerta-form-section">
                 <header class="alerta-section-header">
-                    <span class="alerta-section-kicker">Secao 1</span>
-                    <h2 class="alerta-section-title">Informacoes do alerta</h2>
+                    <span class="alerta-section-kicker">Seção 1</span>
+                    <h2 class="alerta-section-title">Informações do alerta</h2>
                     <p class="alerta-section-text">
-                        Visao consolidada dos dados tecnicos, classificacao de gravidade, vigencia e conteudo operacional do alerta.
+                        Visão consolidada dos dados técnicos, classificação de gravidade, vigência e conteúdo operacional do alerta.
                     </p>
                 </header>
 
@@ -312,17 +312,17 @@ include __DIR__ . '/../_breadcrumb.php';
                     </article>
 
                     <article class="alerta-detail-item">
-                        <span class="alerta-detail-label">Origem da area</span>
+                        <span class="alerta-detail-label">Origem da área</span>
                         <span class="alerta-detail-value"><?= htmlspecialchars($origemArea) ?></span>
                     </article>
 
                     <article class="alerta-detail-item">
-                        <span class="alerta-detail-label">Inicio da vigencia</span>
+                        <span class="alerta-detail-label">Início da vigência</span>
                         <span class="alerta-detail-value"><?= htmlspecialchars(formatarDataHora($alerta['inicio_alerta'] ?? null)) ?></span>
                     </article>
 
                     <article class="alerta-detail-item">
-                        <span class="alerta-detail-label">Fim da vigencia</span>
+                        <span class="alerta-detail-label">Fim da vigência</span>
                         <span class="alerta-detail-value"><?= htmlspecialchars(formatarDataHora($alerta['fim_alerta'] ?? null)) ?></span>
                     </article>
                 </div>
@@ -333,24 +333,24 @@ include __DIR__ . '/../_breadcrumb.php';
                 </article>
 
                 <article class="alerta-detail-text-card">
-                    <h3>Recomendacoes</h3>
+                    <h3>Recomendações</h3>
                     <p><?= nl2br(htmlspecialchars((string) ($alerta['recomendacoes'] ?? '-'))) ?></p>
                 </article>
             </section>
 
             <section id="detalhe-mapa" class="alerta-form-section">
                 <header class="alerta-section-header">
-                    <span class="alerta-section-kicker">Secao 2</span>
-                    <h2 class="alerta-section-title">Mapa, territorios e anexos</h2>
+                    <span class="alerta-section-kicker">Seção 2</span>
+                    <h2 class="alerta-section-title">Mapa, territórios e anexos</h2>
                     <p class="alerta-section-text">
-                        Acompanhe a area afetada no mapa, confira os municipios agrupados por regiao de integracao e consulte a imagem informativa vinculada ao alerta.
+                        Acompanhe a área afetada no mapa, confira os municípios agrupados por região de integração e consulte a imagem informativa vinculada ao alerta.
                     </p>
                 </header>
 
                 <div class="upload-stack">
                     <div class="kml-status-card">
                         <div class="kml-status-row">
-                            <strong class="kml-status-title">Preparacao do PDF</strong>
+                            <strong class="kml-status-title">Preparação do PDF</strong>
                             <span class="area-source-chip"><?= htmlspecialchars($statusPdf) ?></span>
                         </div>
                         <div class="kml-status-text"><?= htmlspecialchars($notaPdf) ?></div>
@@ -359,8 +359,8 @@ include __DIR__ . '/../_breadcrumb.php';
                     <div class="map-card">
                         <div class="map-card-header">
                             <div>
-                                <div class="map-card-title">Area afetada</div>
-                                <div class="map-card-text">A geometria usada no PDF e a mesma exibida abaixo nesta visualizacao de detalhe.</div>
+                                <div class="map-card-title">Área afetada</div>
+                                <div class="map-card-text">A geometria usada no PDF é a mesma exibida abaixo nesta visualização de detalhe.</div>
                             </div>
                             <span class="area-source-chip">Origem: <?= htmlspecialchars($origemArea) ?></span>
                         </div>
@@ -373,20 +373,20 @@ include __DIR__ . '/../_breadcrumb.php';
                     <div class="territorio-preview-card">
                         <div class="territorio-preview-header">
                             <div>
-                                <strong>Municipios por regiao</strong>
-                                <span>Distribuicao territorial reconhecida para este alerta a partir da geometria salva.</span>
+                                <strong>Municípios por região</strong>
+                                <span>Distribuição territorial reconhecida para este alerta a partir da geometria salva.</span>
                             </div>
-                            <div class="territorio-preview-summary"><?= $totalRegioes ?> regioes / <?= $totalMunicipios ?> municipios</div>
+                            <div class="territorio-preview-summary"><?= $totalRegioes ?> regiões / <?= $totalMunicipios ?> municípios</div>
                         </div>
 
                         <div class="territorio-preview-list">
                             <?php if ($municipiosPorRegiao === []): ?>
-                                <div class="territorio-preview-empty">Nenhum municipio associado ao alerta foi encontrado.</div>
+                                <div class="territorio-preview-empty">Nenhum município associado ao alerta foi encontrado.</div>
                             <?php else: ?>
                                 <?php foreach ($municipiosPorRegiao as $regiao => $lista): ?>
                                     <article class="territorio-region-block">
                                         <div class="territorio-region-title"><?= htmlspecialchars($regiao) ?></div>
-                                        <div class="territorio-region-meta"><?= count($lista) ?> municipios identificados</div>
+                                        <div class="territorio-region-meta"><?= count($lista) ?> municípios identificados</div>
                                         <div class="territorio-region-municipios"><?= htmlspecialchars(implode(', ', $lista)) ?></div>
                                     </article>
                                 <?php endforeach; ?>
@@ -397,7 +397,7 @@ include __DIR__ . '/../_breadcrumb.php';
                     <div class="upload-preview-card alerta-detail-image-card">
                         <div class="upload-preview">
                             <?php if (!empty($alerta['informacoes'])): ?>
-                                <img src="<?= htmlspecialchars((string) $alerta['informacoes']) ?>" alt="Imagem de informacoes do alerta">
+                                <img src="<?= htmlspecialchars((string) $alerta['informacoes']) ?>" alt="Imagem de informações do alerta">
                             <?php else: ?>
                                 <div class="upload-preview-empty">
                                     Nenhuma imagem informativa foi vinculada a este alerta.
@@ -409,9 +409,9 @@ include __DIR__ . '/../_breadcrumb.php';
                             <strong>Imagem informativa</strong>
                             <span>
                                 <?php if (!empty($alerta['informacoes'])): ?>
-                                    Arquivo vinculado ao alerta para apoio visual e comunicacao.
+                                    Arquivo vinculado ao alerta para apoio visual e comunicação.
                                 <?php else: ?>
-                                    O alerta nao possui imagem adicional cadastrada neste momento.
+                                    O alerta não possui imagem adicional cadastrada neste momento.
                                 <?php endif; ?>
                             </span>
                         </div>
