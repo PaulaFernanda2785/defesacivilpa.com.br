@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { value: '', label: 'Todos' },
         { value: '1', label: 'Janeiro' },
         { value: '2', label: 'Fevereiro' },
-        { value: '3', label: 'Marco' },
+        { value: '3', label: 'Março' },
         { value: '4', label: 'Abril' },
         { value: '5', label: 'Maio' },
         { value: '6', label: 'Junho' },
@@ -103,11 +103,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function mostrarCarregando() {
-        el.conteudo.innerHTML = '<p style="text-align:center;padding:30px;">Gerando analise...</p>';
+        el.conteudo.innerHTML = '<p style="text-align:center;padding:30px;">Gerando análise...</p>';
     }
 
     function mostrarErro() {
-        el.conteudo.innerHTML = '<p style="color:#bf3434;text-align:center;padding:30px;">Nao foi possivel gerar o relatorio agora.</p>';
+        el.conteudo.innerHTML = '<p style="color:#bf3434;text-align:center;padding:30px;">Não foi possível gerar o relatório agora.</p>';
     }
 
     function tabelaVazia(texto) {
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         return wrapTabela([
             '<table class="tabela-relatorio duas-colunas">',
-            '<thead><tr><th>Descricao</th><th>Valor</th></tr></thead>',
+            '<thead><tr><th>Descrição</th><th>Valor</th></tr></thead>',
             '<tbody>', linhas, '</tbody>',
             '</table>'
         ].join(''));
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         return wrapTabela([
             '<table class="tabela-relatorio duas-colunas">',
-            '<thead><tr><th>Descricao</th><th>Valor</th></tr></thead>',
+            '<thead><tr><th>Descrição</th><th>Valor</th></tr></thead>',
             '<tbody>', linhas, '</tbody>',
             '</table>'
         ].join(''));
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         return wrapTabela([
             '<table class="tabela-relatorio">',
-            '<thead><tr><th>Ordem</th><th>Descricao</th><th>Valor</th></tr></thead>',
+            '<thead><tr><th>Ordem</th><th>Descrição</th><th>Valor</th></tr></thead>',
             '<tbody>', linhas, '</tbody>',
             '</table>'
         ].join(''));
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function tabelaCorrelacaoTipologia(lista) {
         if (!Array.isArray(lista) || !lista.length) {
-            return tabelaVazia('Sem dados de correlacao no recorte selecionado.');
+            return tabelaVazia('Sem dados de correlação no recorte selecionado.');
         }
 
         const severidades = ['BAIXO', 'MODERADO', 'ALTO', 'MUITO ALTO', 'EXTREMO'];
@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function tabelaTipologiaRegiao(lista) {
         if (!Array.isArray(lista) || !lista.length) {
-            return tabelaVazia('Sem dados de tipologia por regiao no recorte selecionado.');
+            return tabelaVazia('Sem dados de tipologia por região no recorte selecionado.');
         }
 
         const regioes = Array.from(new Set(lista.map(function (item) {
@@ -286,9 +286,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function montarRelatorio(dados, filtros) {
         const resumoFiltros = [
             ['Ano', filtros.ano || 'Todos'],
-            ['Mes', (meses.find(function (item) { return item.value === filtros.mes; }) || {}).label || 'Todos'],
-            ['Regiao', filtros.regiao || 'Todas'],
-            ['Municipio', filtros.municipio || 'Todos']
+            ['Mês', (meses.find(function (item) { return item.value === filtros.mes; }) || {}).label || 'Todos'],
+            ['Região', filtros.regiao || 'Todas'],
+            ['Município', filtros.municipio || 'Todos']
         ];
 
         const linhasFiltro = resumoFiltros.map(function (item) {
@@ -296,20 +296,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }).join('');
 
         return [
-            blocoRelatorio('Parametros do relatorio', '<table class="tabela-filtros">' + linhasFiltro + '</table>'),
-            blocoRelatorio('Evolucao anual de alertas', tabelaObjeto(dados?.temporal?.evolucao_anual || {})),
+            blocoRelatorio('Parâmetros do relatório', '<table class="tabela-filtros">' + linhasFiltro + '</table>'),
+            blocoRelatorio('Evolução anual de alertas', tabelaObjeto(dados?.temporal?.evolucao_anual || {})),
             blocoRelatorio('Alertas cancelados por ano', tabelaObjeto(dados?.temporal?.cancelados_por_ano || {})),
-            blocoRelatorio('Distribuicao por severidade', tabelaLista(dados?.severidade || [], 'nivel_gravidade', 'total')),
-            blocoRelatorio('Municipios mais impactados', tabelaListaOrdenada(dados?.municipios || [], 'municipio', 'total_alertas')),
+            blocoRelatorio('Distribuição por severidade', tabelaLista(dados?.severidade || [], 'nivel_gravidade', 'total')),
+            blocoRelatorio('Municípios mais impactados', tabelaListaOrdenada(dados?.municipios || [], 'municipio', 'total_alertas')),
             blocoRelatorio('Quantidade de alertas por evento', tabelaLista(dados?.eventos_qtd || [], 'tipo_evento', 'total')),
-            blocoRelatorio('Duracao media por evento', tabelaLista(dados?.duracao_media || [], 'tipo_evento', 'duracao_media_horas')),
+            blocoRelatorio('Duração média por evento', tabelaLista(dados?.duracao_media || [], 'tipo_evento', 'duracao_media_horas')),
             blocoRelatorio('Sazonalidade mensal', tabelaObjeto(dados?.temporal?.sazonalidade || {})),
             blocoRelatorio('Sazonalidade mensal por evento', tabelaMultiEvento(dados?.temporal?.multi_evento || {})),
-            blocoRelatorio('Frequencia por periodo do dia', tabelaObjeto(dados?.temporal?.frequencia_hora || {})),
-            blocoRelatorio('Correlacao entre evento e severidade', tabelaCorrelacaoTipologia(dados?.tipologia?.correlacao || [])),
-            blocoRelatorio('Tipologia por regiao de integracao', tabelaTipologiaRegiao(dados?.tipologia?.por_regiao || [])),
-            blocoRelatorio('Indice regional de pressao', tabelaListaOrdenada(dados?.indice_risco?.ranking_irp || [], 'regiao_integracao', 'irp')),
-            blocoRelatorio('Indice de pressao territorial', tabelaListaOrdenada(dados?.indice_risco?.ranking_ipt || [], 'municipio', 'ipt'))
+            blocoRelatorio('Frequência por período do dia', tabelaObjeto(dados?.temporal?.frequencia_hora || {})),
+            blocoRelatorio('Correlação entre evento e severidade', tabelaCorrelacaoTipologia(dados?.tipologia?.correlacao || [])),
+            blocoRelatorio('Tipologia por região de integração', tabelaTipologiaRegiao(dados?.tipologia?.por_regiao || [])),
+            blocoRelatorio('Índice regional de pressão', tabelaListaOrdenada(dados?.indice_risco?.ranking_irp || [], 'regiao_integracao', 'irp')),
+            blocoRelatorio('Índice de pressão territorial', tabelaListaOrdenada(dados?.indice_risco?.ranking_ipt || [], 'municipio', 'ipt'))
         ].join('');
     }
 
@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded', function () {
         carregarJson(url)
             .then(function (dados) {
                 if (dados?.erro) {
-                    throw new Error(String(dados.msg || 'Falha ao gerar relatorio.'));
+                    throw new Error(String(dados.msg || 'Falha ao gerar relatório.'));
                 }
 
                 el.conteudo.innerHTML = montarRelatorio(dados, filtros);

@@ -85,7 +85,7 @@ $resumoExecutivo = [
     ],
     [
         'label' => 'Foco estratégico',
-        'value' => $totalEstrategicos . ' modulo(s)',
+        'value' => $totalEstrategicos . ' módulo(s)',
         'note' => 'Índices sintéticos para priorização territorial e planejamento.',
         'tone' => 'neutral',
     ],

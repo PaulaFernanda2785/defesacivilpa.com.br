@@ -211,7 +211,7 @@
             const reader = new FileReader();
 
             reader.onerror = function () {
-                reject(new Error('Nao foi possivel ler o arquivo KML.'));
+                reject(new Error('Não foi possível ler o arquivo KML.'));
             };
 
             reader.onload = function () {
@@ -219,14 +219,14 @@
                 const xml = parser.parseFromString(String(reader.result || ''), 'text/xml');
 
                 if (xml.querySelector('parsererror')) {
-                    reject(new Error('O arquivo enviado nao contem um KML valido.'));
+                    reject(new Error('O arquivo enviado não contém um KML válido.'));
                     return;
                 }
 
                 const normalized = parseKmlDocument(xml);
 
                 if (!normalized.features.length) {
-                    reject(new Error('O KML precisa conter pelo menos uma geometria de area.'));
+                    reject(new Error('O KML precisa conter pelo menos uma geometria de área.'));
                     return;
                 }
 
@@ -308,7 +308,7 @@
             dropzone.classList.remove('has-file');
             preview.innerHTML = '<div class="upload-preview-empty">' + emptyText + '</div>';
             title.textContent = 'Imagem informativa';
-            details.textContent = 'Arraste, cole ou selecione uma imagem JPG, PNG ou WEBP com ate 5 MB.';
+            details.textContent = 'Arraste, cole ou selecione uma imagem JPG, PNG ou WEBP com até 5 MB.';
             clearButton.hidden = true;
         }
 
@@ -319,7 +319,7 @@
             }
 
             if (!IMAGE_ALLOWED_MIMES.includes(file.type)) {
-                window.alert('Formato de imagem invalido. Envie JPG, PNG ou WEBP.');
+                window.alert('Formato de imagem inválido. Envie JPG, PNG ou WEBP.');
                 return;
             }
 
@@ -329,7 +329,7 @@
             }
 
             if (!setInputFile(input, file)) {
-                window.alert('Nao foi possivel anexar a imagem arrastada neste navegador. Use o seletor de arquivo.');
+                window.alert('Não foi possível anexar a imagem arrastada neste navegador. Use o seletor de arquivo.');
                 return;
             }
 
@@ -414,14 +414,14 @@
 
         function setEmpty(message) {
             card.classList.remove('is-loading');
-            summary.textContent = 'Aguardando area valida.';
+            summary.textContent = 'Aguardando área válida.';
             list.innerHTML = '<div class="territorio-preview-empty">' + message + '</div>';
         }
 
         function setLoading() {
             card.classList.add('is-loading');
             summary.textContent = 'Atualizando impacto territorial...';
-            list.innerHTML = '<div class="territorio-preview-empty">Identificando regioes e municipios afetados...</div>';
+            list.innerHTML = '<div class="territorio-preview-empty">Identificando regiões e municípios afetados...</div>';
         }
 
         function renderResult(payload) {
@@ -429,11 +429,11 @@
             card.classList.remove('is-loading');
 
             if (!regioes.length) {
-                setEmpty('Nenhum municipio do Para foi identificado para a geometria atual.');
+                setEmpty('Nenhum município do Pará foi identificado para a geometria atual.');
                 return;
             }
 
-            summary.textContent = payload.total_regioes + ' regioes e ' + payload.total_municipios + ' municipios mapeados.';
+            summary.textContent = payload.total_regioes + ' regiões e ' + payload.total_municipios + ' municípios mapeados.';
             list.innerHTML = '';
 
             regioes.forEach(function (item) {
@@ -446,7 +446,7 @@
 
                 const meta = document.createElement('div');
                 meta.className = 'territorio-region-meta';
-                meta.textContent = (item.municipios || []).length + ' municipios';
+                meta.textContent = (item.municipios || []).length + ' municípios';
 
                 const municipalities = document.createElement('div');
                 municipalities.className = 'territorio-region-municipios';
@@ -464,7 +464,7 @@
             const currentRequest = requestToken;
 
             if (!geojson || !geojson.features || !geojson.features.length) {
-                setEmpty('Desenhe no mapa ou carregue um KML para identificar as regioes afetadas.');
+                setEmpty('Desenhe no mapa ou carregue um KML para identificar as regiões afetadas.');
                 return;
             }
 
@@ -495,7 +495,7 @@
                     }
 
                     if (!result.ok || !result.payload || result.payload.ok === false) {
-                        throw new Error(result.payload && result.payload.erro ? result.payload.erro : 'Nao foi possivel identificar o territorio.');
+                        throw new Error(result.payload && result.payload.erro ? result.payload.erro : 'Não foi possível identificar o território.');
                     }
 
                     renderResult(result.payload);
@@ -506,12 +506,12 @@
                     }
 
                     card.classList.remove('is-loading');
-                    summary.textContent = 'Falha ao identificar territorio.';
+                    summary.textContent = 'Falha ao identificar território.';
                     list.innerHTML = '<div class="territorio-preview-empty">' + error.message + '</div>';
                 });
         }
 
-        setEmpty('Desenhe no mapa ou carregue um KML para identificar as regioes afetadas.');
+        setEmpty('Desenhe no mapa ou carregue um KML para identificar as regiões afetadas.');
 
         return {
             refresh: refresh
@@ -563,7 +563,7 @@
             renderStatus({
                 active: false,
                 title: 'KML opcional',
-                details: 'Arraste ou selecione um arquivo KML para carregar a area automaticamente.',
+                details: 'Arraste ou selecione um arquivo KML para carregar a área automaticamente.',
                 pills: []
             });
         }
@@ -582,7 +582,7 @@
             parseKml(file)
                 .then(function (geojson) {
                     if (!setInputFile(input, file)) {
-                        window.alert('Nao foi possivel anexar o KML arrastado neste navegador. Use o seletor de arquivo.');
+                        window.alert('Não foi possível anexar o KML arrastado neste navegador. Use o seletor de arquivo.');
                         return;
                     }
 
@@ -601,9 +601,9 @@
                         title: 'KML carregado no mapa',
                         details: file.name + ' - ' + formatBytes(file.size),
                         pills: [
-                            geojson.features.length + ' geometrias de area',
-                            polygonCount + ' poligonos',
-                            multiPolygonCount + ' multipoligonos'
+                            geojson.features.length + ' geometrias de área',
+                            polygonCount + ' polígonos',
+                            multiPolygonCount + ' multipolígonos'
                         ]
                     });
                 })
@@ -785,7 +785,7 @@
         const fimField = document.getElementById(config.fimFieldId);
 
         if (!geojsonField || !geojsonField.value) {
-            window.alert('Desenhe a area afetada no mapa ou carregue um arquivo KML valido.');
+            window.alert('Desenhe a área afetada no mapa ou carregue um arquivo KML válido.');
             return false;
         }
 
@@ -793,7 +793,7 @@
         const fim = fimField ? fimField.value : '';
 
         if (inicio && fim && new Date(inicio) > new Date(fim)) {
-            window.alert('A vigencia inicial nao pode ser maior que a vigencia final.');
+            window.alert('A vigência inicial não pode ser maior que a vigência final.');
             return false;
         }
 

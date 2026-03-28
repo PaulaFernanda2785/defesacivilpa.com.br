@@ -56,13 +56,13 @@ include __DIR__ . '/../_breadcrumb.php';
                 <span class="alerta-form-kicker">Cadastro operacional</span>
                 <h1 class="alerta-form-title">Novo alerta multirriscos</h1>
                 <p class="alerta-form-description">
-                    Registre o evento, defina a vigencia, anexe a imagem informativa e monte a area afetada com desenho manual
-                    ou com arquivo KML. O numero do alerta sera gerado automaticamente quando o cadastro for concluido.
+                    Registre o evento, defina a vigência, anexe a imagem informativa e monte a área afetada com desenho manual
+                    ou com arquivo KML. O número do alerta será gerado automaticamente quando o cadastro for concluído.
                 </p>
 
                 <div class="usuarios-hero-chip-row alerta-cadastro-hero-chip-row">
                     <span class="usuarios-hero-chip"><?= count($eventos) ?> tipos de evento</span>
-                    <span class="usuarios-hero-chip"><?= count($niveis) ?> niveis de gravidade</span>
+                    <span class="usuarios-hero-chip"><?= count($niveis) ?> níveis de gravidade</span>
                     <span class="usuarios-hero-chip"><?= count($fontes) ?> fontes habilitadas</span>
                 </div>
 
@@ -76,26 +76,26 @@ include __DIR__ . '/../_breadcrumb.php';
         <div class="usuarios-summary-grid alerta-cadastro-summary-grid">
             <article class="usuarios-summary-card usuarios-summary-card-primary">
                 <span class="usuarios-summary-label">Estrutura</span>
-                <strong class="usuarios-summary-value">2 secoes organizadas</strong>
-                <span class="usuarios-summary-note">Informacoes do alerta de um lado, anexos e mapa do outro.</span>
+                <strong class="usuarios-summary-value">2 seções organizadas</strong>
+                <span class="usuarios-summary-note">Informações do alerta de um lado, anexos e mapa do outro.</span>
             </article>
 
             <article class="usuarios-summary-card usuarios-summary-card-success">
                 <span class="usuarios-summary-label">Uploads</span>
                 <strong class="usuarios-summary-value">Imagem e KML</strong>
-                <span class="usuarios-summary-note">Arraste, solte, cole ou selecione arquivos com validacao imediata.</span>
+                <span class="usuarios-summary-note">Arraste, solte, cole ou selecione arquivos com validação imediata.</span>
             </article>
 
             <article class="usuarios-summary-card usuarios-summary-card-neutral">
                 <span class="usuarios-summary-label">Mapa</span>
-                <strong class="usuarios-summary-value">Area obrigatoria</strong>
-                <span class="usuarios-summary-note">O alerta so sera salvo quando houver uma geometria valida no mapa.</span>
+                <strong class="usuarios-summary-value">Área obrigatória</strong>
+                <span class="usuarios-summary-note">O alerta só será salvo quando houver uma geometria válida no mapa.</span>
             </article>
 
             <article class="usuarios-summary-card usuarios-summary-card-warning">
                 <span class="usuarios-summary-label">Operador</span>
-                <strong class="usuarios-summary-value"><?= htmlspecialchars((string) ($usuario['nome'] ?? 'Nao identificado'), ENT_QUOTES, 'UTF-8') ?></strong>
-                <span class="usuarios-summary-note">Perfil atual: <?= htmlspecialchars((string) ($usuario['perfil'] ?? 'Nao informado'), ENT_QUOTES, 'UTF-8') ?>.</span>
+                <strong class="usuarios-summary-value"><?= htmlspecialchars((string) ($usuario['nome'] ?? 'Não identificado'), ENT_QUOTES, 'UTF-8') ?></strong>
+                <span class="usuarios-summary-note">Perfil atual: <?= htmlspecialchars((string) ($usuario['perfil'] ?? 'Não informado'), ENT_QUOTES, 'UTF-8') ?>.</span>
             </article>
         </div>
 
@@ -103,27 +103,27 @@ include __DIR__ . '/../_breadcrumb.php';
             <span class="usuarios-command-kicker">Comando de cadastro</span>
             <h2>Fluxo recomendado</h2>
             <p>
-                Preencha os dados tecnicos, valide a cobertura territorial e finalize o envio somente apos revisar riscos,
-                recomendacoes e geometria no mapa.
+                Preencha os dados técnicos, valide a cobertura territorial e finalize o envio somente após revisar riscos,
+                recomendações e geometria no mapa.
             </p>
 
             <div class="usuarios-command-grid alerta-cadastro-command-grid">
                 <article class="usuarios-command-item">
                     <span>Etapa 1</span>
-                    <strong>Dados tecnicos</strong>
-                    <small>Defina data, vigencia, tipo de evento, gravidade e texto operacional.</small>
+                    <strong>Dados técnicos</strong>
+                    <small>Defina data, vigência, tipo de evento, gravidade e texto operacional.</small>
                 </article>
 
                 <article class="usuarios-command-item">
                     <span>Etapa 2</span>
                     <strong>Anexos e mapa</strong>
-                    <small>Carregue imagem e KML ou desenhe manualmente a area afetada.</small>
+                    <small>Carregue imagem e KML ou desenhe manualmente a área afetada.</small>
                 </article>
 
                 <article class="usuarios-command-item">
                     <span>Etapa 3</span>
                     <strong>Salvar alerta</strong>
-                    <small>O numero do alerta sera gerado automaticamente no fechamento do cadastro.</small>
+                    <small>O número do alerta será gerado automaticamente no fechamento do cadastro.</small>
                 </article>
             </div>
         </aside>
@@ -137,10 +137,10 @@ include __DIR__ . '/../_breadcrumb.php';
         <div class="alerta-form-grid alerta-cadastro-form-grid">
             <section id="cadastro-dados" class="alerta-form-section">
                 <header class="alerta-section-header">
-                    <span class="alerta-section-kicker">Secao 1</span>
-                    <h2 class="alerta-section-title">Informacoes do alerta</h2>
+                    <span class="alerta-section-kicker">Seção 1</span>
+                    <h2 class="alerta-section-title">Informações do alerta</h2>
                     <p class="alerta-section-text">
-                        Preencha os dados tecnicos do evento com atencao. Os campos abaixo seguem as regras operacionais do sistema.
+                        Preencha os dados técnicos do evento com atenção. Os campos abaixo seguem as regras operacionais do sistema.
                     </p>
                 </header>
 
@@ -163,12 +163,12 @@ include __DIR__ . '/../_breadcrumb.php';
                     </div>
 
                     <div class="form-group">
-                        <label for="inicio_alerta">Inicio da vigencia</label>
+                        <label for="inicio_alerta">Início da vigência</label>
                         <input type="datetime-local" id="inicio_alerta" name="inicio_alerta" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="fim_alerta">Fim da vigencia</label>
+                        <label for="fim_alerta">Fim da vigência</label>
                         <input type="datetime-local" id="fim_alerta" name="fim_alerta" required>
                     </div>
 
@@ -183,7 +183,7 @@ include __DIR__ . '/../_breadcrumb.php';
                     </div>
 
                     <div class="form-group">
-                        <label for="nivel_gravidade">Nivel de gravidade</label>
+                        <label for="nivel_gravidade">Nível de gravidade</label>
                         <select id="nivel_gravidade" name="nivel_gravidade" required>
                             <option value="">Selecione</option>
                             <?php foreach ($niveis as $nivel): ?>
@@ -207,7 +207,7 @@ include __DIR__ . '/../_breadcrumb.php';
                     </div>
 
                     <div class="form-group field-span-2">
-                        <label for="recomendacoes">Recomendacoes</label>
+                        <label for="recomendacoes">Recomendações</label>
                         <textarea
                             id="recomendacoes"
                             name="recomendacoes"
@@ -215,7 +215,7 @@ include __DIR__ . '/../_breadcrumb.php';
                             required
                         ></textarea>
                         <div class="field-footer">
-                            <span class="field-helper">Informe orientacoes praticas e objetivas para resposta e protecao.</span>
+                            <span class="field-helper">Informe orientações práticas e objetivas para resposta e proteção.</span>
                             <span class="char-counter" data-char-target="recomendacoes"></span>
                         </div>
                     </div>
@@ -223,13 +223,13 @@ include __DIR__ . '/../_breadcrumb.php';
                     <div class="territorio-preview-card field-span-2" id="territorioPreviewCard">
                         <div class="territorio-preview-header">
                             <div>
-                                <strong>Regioes de integracao e municipios afetados</strong>
+                                <strong>Regiões de integração e municípios afetados</strong>
                                 <span>Atualizado automaticamente quando houver desenho no mapa ou KML carregado.</span>
                             </div>
-                            <div class="territorio-preview-summary" id="territorioResumo">Aguardando area valida.</div>
+                            <div class="territorio-preview-summary" id="territorioResumo">Aguardando área válida.</div>
                         </div>
                         <div class="territorio-preview-list" id="territorioLista">
-                            <div class="territorio-preview-empty">Desenhe no mapa ou carregue um KML para identificar as regioes afetadas.</div>
+                            <div class="territorio-preview-empty">Desenhe no mapa ou carregue um KML para identificar as regiões afetadas.</div>
                         </div>
                     </div>
                 </div>
@@ -237,17 +237,17 @@ include __DIR__ . '/../_breadcrumb.php';
 
             <section id="cadastro-anexos" class="alerta-form-section">
                 <header class="alerta-section-header">
-                    <span class="alerta-section-kicker">Secao 2</span>
+                    <span class="alerta-section-kicker">Seção 2</span>
                     <h2 class="alerta-section-title">Anexos, imagem, mapa e KML</h2>
                     <p class="alerta-section-text">
-                        Envie materiais de apoio, visualize a imagem antes de confirmar e use KML com geometrias de area para popular o mapa.
+                        Envie materiais de apoio, visualize a imagem antes de confirmar e use KML com geometrias de área para popular o mapa.
                     </p>
                 </header>
 
                 <div class="upload-stack">
                     <div class="alerta-callout">
                         <strong>Fluxo recomendado</strong>
-                        Carregue a imagem informativa se houver, depois envie um KML ou desenhe manualmente a area afetada. O sistema grava apenas geometrias de area.
+                        Carregue a imagem informativa se houver, depois envie um KML ou desenhe manualmente a área afetada. O sistema grava apenas geometrias de área.
                     </div>
 
                     <div class="form-group">
@@ -263,7 +263,7 @@ include __DIR__ . '/../_breadcrumb.php';
                         <div class="upload-preview" id="informacoesPreview"></div>
                         <div class="upload-meta">
                             <strong id="informacoesTitle">Imagem informativa</strong>
-                            <span id="informacoesDetails">Arraste, cole ou selecione uma imagem JPG, PNG ou WEBP com ate 5 MB.</span>
+                            <span id="informacoesDetails">Arraste, cole ou selecione uma imagem JPG, PNG ou WEBP com até 5 MB.</span>
                         </div>
                         <div class="upload-actions">
                             <button type="button" class="btn btn-secondary" id="informacoesClear" hidden>Descartar nova imagem</button>
@@ -274,8 +274,8 @@ include __DIR__ . '/../_breadcrumb.php';
                         <label for="kmlInput">Arquivo KML</label>
                         <div class="upload-dropzone" id="kmlDropzone" tabindex="0">
                             <input type="file" id="kmlInput" name="kml" accept=".kml,.xml,application/vnd.google-earth.kml+xml,text/xml,application/xml">
-                            <span class="upload-dropzone-title">Carregue o KML da area afetada</span>
-                            <span class="upload-dropzone-text">O mapa aceita KML com multiplas geometrias de area, incluindo poligonos e multipoligonos.</span>
+                            <span class="upload-dropzone-title">Carregue o KML da área afetada</span>
+                            <span class="upload-dropzone-text">O mapa aceita KML com múltiplas geometrias de área, incluindo polígonos e multipolígonos.</span>
                         </div>
                     </div>
 
@@ -284,15 +284,15 @@ include __DIR__ . '/../_breadcrumb.php';
                             <strong class="kml-status-title" id="kmlTitle">KML opcional</strong>
                             <button type="button" class="btn btn-secondary" id="kmlClear" hidden>Remover KML</button>
                         </div>
-                        <div class="kml-status-text" id="kmlDetails">Arraste ou selecione um arquivo KML para carregar a area automaticamente.</div>
+                        <div class="kml-status-text" id="kmlDetails">Arraste ou selecione um arquivo KML para carregar a área automaticamente.</div>
                         <div class="kml-status-list" id="kmlPills"></div>
                     </div>
 
                     <div class="map-card">
                         <div class="map-card-header">
                             <div>
-                                <div class="map-card-title">Area afetada</div>
-                                <div class="map-card-text">Use desenho manual ou edite a area carregada via KML antes de salvar.</div>
+                                <div class="map-card-title">Área afetada</div>
+                                <div class="map-card-text">Use desenho manual ou edite a área carregada via KML antes de salvar.</div>
                             </div>
                             <span class="area-source-chip" id="areaOrigemBadge">Origem atual: desenho/manual</span>
                         </div>
@@ -305,7 +305,7 @@ include __DIR__ . '/../_breadcrumb.php';
 
         <div class="alerta-form-actions">
             <div class="alerta-form-actions-left">
-                <span class="alerta-inline-note">Ao salvar, o numero do alerta sera criado automaticamente pelo sistema.</span>
+                <span class="alerta-inline-note">Ao salvar, o número do alerta será criado automaticamente pelo sistema.</span>
             </div>
 
             <div class="alerta-form-actions-right">

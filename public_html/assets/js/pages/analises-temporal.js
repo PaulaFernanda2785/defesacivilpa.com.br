@@ -10,7 +10,7 @@
     try {
         pageData = JSON.parse(dataNode.textContent);
     } catch (error) {
-        console.error('Falha ao carregar os dados da analise temporal.', error);
+        console.error('Falha ao carregar os dados da análise temporal.', error);
         return;
     }
 
@@ -721,7 +721,7 @@
         const regiao = regiaoSelect.value;
 
         if (!regiao) {
-            municipioSelect.innerHTML = '<option value="">Selecione uma regiao</option>';
+            municipioSelect.innerHTML = '<option value="">Selecione uma região</option>';
             municipioSelect.disabled = true;
             return;
         }
@@ -731,7 +731,7 @@
 
     function carregarMunicipios(regiao, municipioSelecionado) {
         municipioSelect.disabled = true;
-        municipioSelect.innerHTML = '<option value="">Carregando municipios...</option>';
+        municipioSelect.innerHTML = '<option value="">Carregando municípios...</option>';
 
         fetch('/pages/analises/ajax_municipios.php?regiao=' + encodeURIComponent(regiao))
             .then(function (response) {
@@ -763,7 +763,7 @@
                 };
             })
             .catch(function () {
-                municipioSelect.innerHTML = '<option value="">Erro ao carregar municipios</option>';
+                municipioSelect.innerHTML = '<option value="">Erro ao carregar municípios</option>';
             });
     }
 })();

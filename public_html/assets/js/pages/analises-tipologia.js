@@ -10,7 +10,7 @@
     try {
         pageData = JSON.parse(dataNode.textContent);
     } catch (error) {
-        console.error('Falha ao carregar os dados da analise de tipologia.', error);
+        console.error('Falha ao carregar os dados da análise de tipologia.', error);
         return;
     }
 
@@ -649,7 +649,7 @@
                     },
                     title: {
                         display: false,
-                        text: 'Municipio'
+                        text: 'Município'
                     }
                 }
             },
@@ -686,7 +686,7 @@
         const regiao = regiaoSelect.value;
 
         if (!regiao) {
-            municipioSelect.innerHTML = '<option value="">Selecione uma regiao</option>';
+            municipioSelect.innerHTML = '<option value="">Selecione uma região</option>';
             municipioSelect.disabled = true;
             return;
         }
@@ -696,19 +696,19 @@
 
     function carregarMunicipios(regiao, municipioSelecionado) {
         municipioSelect.disabled = true;
-        municipioSelect.innerHTML = '<option value="">Carregando municipios...</option>';
+        municipioSelect.innerHTML = '<option value="">Carregando municípios...</option>';
 
         fetch('/pages/analises/ajax_municipios.php?regiao=' + encodeURIComponent(regiao))
             .then(function (response) {
                 if (!response.ok) {
-                    throw new Error('Falha HTTP ao buscar municipios: ' + response.status);
+                    throw new Error('Falha HTTP ao buscar municípios: ' + response.status);
                 }
 
                 return response.json();
             })
             .then(function (lista) {
                 if (!Array.isArray(lista)) {
-                    throw new Error('Resposta invalida para lista de municipios.');
+                    throw new Error('Resposta inválida para lista de municípios.');
                 }
 
                 municipioSelect.innerHTML = '<option value="">Todos</option>';
@@ -742,7 +742,7 @@
                 };
             })
             .catch(function () {
-                municipioSelect.innerHTML = '<option value="">Erro ao carregar municipios</option>';
+                municipioSelect.innerHTML = '<option value="">Erro ao carregar municípios</option>';
                 municipioSelect.disabled = true;
             });
     }
