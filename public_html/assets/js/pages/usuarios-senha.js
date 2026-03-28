@@ -45,7 +45,7 @@
 
         senhaInput.classList.add('is-invalid');
         confirmacaoInput.classList.add('is-invalid');
-        abrirModalSenhaErro('A confirmacao da nova senha nao confere com a senha digitada. Revise os dois campos e tente novamente.');
+        abrirModalSenhaErro('A confirmação da nova senha não confere com a senha digitada. Revise os dois campos e tente novamente.');
         confirmacaoInput.focus();
         confirmacaoInput.select();
         return false;

@@ -33,22 +33,22 @@ $statusAtual = (string) ($usuarioEdit['status'] ?? '');
 $classeStatusAtual = $statusAtual === 'ATIVO' ? 'usuarios-status-pill-ativo' : 'usuarios-status-pill-inativo';
 $erroCodigo = trim((string) ($_GET['erro'] ?? ''));
 $isEdicaoPropriaSenha = (int) ($usuarioLogado['id'] ?? 0) === (int) ($usuarioEdit['id'] ?? 0);
-$tituloPaginaSenha = $isEdicaoPropriaSenha ? 'Alterar minha senha' : 'Redefinir senha do usuario';
-$kickerPaginaSenha = $isEdicaoPropriaSenha ? 'Seguranca da conta' : 'Seguranca administrativa';
+$tituloPaginaSenha = $isEdicaoPropriaSenha ? 'Alterar minha senha' : 'Redefinir senha do usuário';
+$kickerPaginaSenha = $isEdicaoPropriaSenha ? 'Segurança da conta' : 'Segurança administrativa';
 $descricaoPaginaSenha = $isEdicaoPropriaSenha
-    ? 'Atualize sua credencial de acesso com seguranca mantendo o mesmo padrao visual adotado nas telas de usuarios.'
-    : 'Atualize a senha do usuario selecionado mantendo o mesmo padrao visual das telas de cadastro e edicao. Esta operacao deve ser usada com cuidado para preservar o controle de acessos do sistema.';
-$labelContaResumo = $isEdicaoPropriaSenha ? 'Minha conta' : 'Usuario alvo';
+    ? 'Atualize sua credencial de acesso com segurança mantendo o mesmo padrão visual adotado nas telas de usuários.'
+    : 'Atualize a senha do usuário selecionado mantendo o mesmo padrão visual das telas de cadastro e edição. Esta operação deve ser usada com cuidado para preservar o controle de acessos do sistema.';
+$labelContaResumo = $isEdicaoPropriaSenha ? 'Minha conta' : 'Usuário alvo';
 $descricaoOperacaoResumo = $isEdicaoPropriaSenha
-    ? 'A troca da senha sera registrada no historico da sua conta para rastreabilidade operacional.'
-    : 'A redefinicao sera registrada no historico administrativo da plataforma.';
+    ? 'A troca da senha será registrada no histórico da sua conta para rastreabilidade operacional.'
+    : 'A redefinição será registrada no histórico administrativo da plataforma.';
 $tituloSecaoConta = $isEdicaoPropriaSenha ? 'Resumo da conta' : 'Contexto da conta';
 $textoSecaoConta = $isEdicaoPropriaSenha
-    ? 'Confira os dados da sua conta antes de atualizar a credencial de acesso. Os campos abaixo sao exibidos apenas para referencia.'
-    : 'Confirme o usuario correto antes de redefinir a senha. Os dados abaixo sao apenas para conferencia e nao serao alterados nesta tela.';
+    ? 'Confira os dados da sua conta antes de atualizar a credencial de acesso. Os campos abaixo são exibidos apenas para referência.'
+    : 'Confirme o usuário correto antes de redefinir a senha. Os dados abaixo são apenas para conferência e não serão alterados nesta tela.';
 $textoPermissaoSenha = ($usuarioLogado['perfil'] ?? '') === 'ADMIN'
-    ? 'Administradores podem redefinir senhas de outras contas. Perfis nao administrativos so podem redefinir a propria senha.'
-    : 'Voce esta autorizado a redefinir apenas a propria senha dentro deste modulo.';
+    ? 'Administradores podem redefinir senhas de outras contas. Perfis não administrativos só podem redefinir a própria senha.'
+    : 'Você está autorizado a redefinir apenas a própria senha dentro deste módulo.';
 $cssUsuariosListarPath = __DIR__ . '/../../assets/css/pages/usuarios-listar.css';
 $cssUsuariosFormPath = __DIR__ . '/../../assets/css/pages/usuarios-form.css';
 $cssUsuariosSenhaPath = __DIR__ . '/../../assets/css/pages/usuarios-senha.css';
@@ -57,9 +57,9 @@ $cssUsuariosFormVersion = (string) ((int) @filemtime($cssUsuariosFormPath));
 $cssUsuariosSenhaVersion = (string) ((int) @filemtime($cssUsuariosSenhaPath));
 
 $mensagensErro = [
-    'confirmacao' => 'A confirmacao da nova senha nao confere com a senha digitada. Revise os dois campos e tente novamente.',
-    'senha_curta' => 'A nova senha precisa ter pelo menos 8 caracteres para atender a regra de seguranca do sistema.',
-    'dados_invalidos' => 'Nao foi possivel processar a redefinicao de senha com os dados enviados. Revise o formulario e tente novamente.',
+    'confirmacao' => 'A confirmação da nova senha não confere com a senha digitada. Revise os dois campos e tente novamente.',
+    'senha_curta' => 'A nova senha precisa ter pelo menos 8 caracteres para atender à regra de segurança do sistema.',
+    'dados_invalidos' => 'Não foi possível processar a redefinição de senha com os dados enviados. Revise o formulário e tente novamente.',
 ];
 
 $mensagemErro = $mensagensErro[$erroCodigo] ?? '';
@@ -96,7 +96,7 @@ $breadcrumb = [
 ];
 
 if (($usuarioLogado['perfil'] ?? '') === 'ADMIN') {
-    $breadcrumb['Usuarios'] = '/pages/usuarios/listar.php';
+    $breadcrumb['Usuários'] = '/pages/usuarios/listar.php';
 }
 
 $breadcrumb['Alterar senha'] = null;
@@ -140,43 +140,43 @@ include __DIR__ . '/../_breadcrumb.php';
             </article>
 
             <article class="usuarios-summary-card usuarios-summary-card-neutral">
-                <span class="usuarios-summary-label">Operacao</span>
+                <span class="usuarios-summary-label">Operação</span>
                 <strong class="usuarios-summary-value"><?= htmlspecialchars((string) ($usuarioLogado['nome'] ?? '-'), ENT_QUOTES, 'UTF-8') ?></strong>
                 <span class="usuarios-summary-note"><?= htmlspecialchars($descricaoOperacaoResumo, ENT_QUOTES, 'UTF-8') ?></span>
             </article>
 
             <article class="usuarios-summary-card usuarios-summary-card-warning">
-                <span class="usuarios-summary-label">Permissao aplicada</span>
+                <span class="usuarios-summary-label">Permissão aplicada</span>
                 <strong class="usuarios-summary-value"><?= htmlspecialchars((string) ($usuarioLogado['perfil'] ?? '-'), ENT_QUOTES, 'UTF-8') ?></strong>
                 <span class="usuarios-summary-note"><?= htmlspecialchars($textoPermissaoSenha, ENT_QUOTES, 'UTF-8') ?></span>
             </article>
         </div>
 
         <aside class="usuarios-command-card usuarios-senha-command-card">
-            <span class="usuarios-command-kicker">Comando de seguranca</span>
-            <h2>Fluxo de redefinicao</h2>
+            <span class="usuarios-command-kicker">Comando de segurança</span>
+            <h2>Fluxo de redefinição</h2>
             <p>
                 Confira a conta alvo, defina a nova senha e confirme os campos antes de salvar.
-                A operacao e registrada no historico para rastreabilidade.
+                A operação é registrada no histórico para rastreabilidade.
             </p>
 
             <div class="usuarios-command-grid usuarios-senha-command-grid">
                 <article class="usuarios-command-item">
                     <span>Etapa 1</span>
                     <strong>Validar conta</strong>
-                    <small>Confirme nome, e-mail, perfil e status do usuario antes da redefinicao.</small>
+                    <small>Confirme nome, e-mail, perfil e status do usuário antes da redefinição.</small>
                 </article>
 
                 <article class="usuarios-command-item">
                     <span>Etapa 2</span>
                     <strong>Aplicar nova senha</strong>
-                    <small>Preencha os dois campos com a mesma senha e no minimo 8 caracteres.</small>
+                    <small>Preencha os dois campos com a mesma senha e no mínimo 8 caracteres.</small>
                 </article>
 
                 <article class="usuarios-command-item">
                     <span>Etapa 3</span>
-                    <strong>Salvar com seguranca</strong>
-                    <small>Finalize apenas apos revisar a conta correta para evitar alteracao indevida.</small>
+                    <strong>Salvar com segurança</strong>
+                    <small>Finalize apenas após revisar a conta correta para evitar alteração indevida.</small>
                 </article>
             </div>
         </aside>
@@ -189,7 +189,7 @@ include __DIR__ . '/../_breadcrumb.php';
         <div class="alerta-form-grid usuarios-form-grid usuarios-senha-form-grid">
             <section id="senha-conta" class="alerta-form-section">
                 <header class="alerta-section-header">
-                    <span class="alerta-section-kicker">Secao 1</span>
+                    <span class="alerta-section-kicker">Seção 1</span>
                     <h2 class="alerta-section-title"><?= htmlspecialchars($tituloSecaoConta, ENT_QUOTES, 'UTF-8') ?></h2>
                     <p class="alerta-section-text">
                         <?= htmlspecialchars($textoSecaoConta, ENT_QUOTES, 'UTF-8') ?>
@@ -198,14 +198,14 @@ include __DIR__ . '/../_breadcrumb.php';
 
                 <div class="alerta-fields-grid">
                     <div class="form-group field-span-2">
-                        <label for="usuario_nome">Usuario</label>
+                        <label for="usuario_nome">Usuário</label>
                         <input
                             type="text"
                             id="usuario_nome"
                             value="<?= htmlspecialchars((string) ($usuarioEdit['nome'] ?? ''), ENT_QUOTES, 'UTF-8') ?>"
                             disabled
                         >
-                        <span class="field-helper">Identificacao principal da conta selecionada para a redefinicao de senha.</span>
+                        <span class="field-helper">Identificação principal da conta selecionada para a redefinição de senha.</span>
                     </div>
 
                     <div class="form-group field-span-2">
@@ -216,17 +216,17 @@ include __DIR__ . '/../_breadcrumb.php';
                             value="<?= htmlspecialchars((string) ($usuarioEdit['email'] ?? ''), ENT_QUOTES, 'UTF-8') ?>"
                             disabled
                         >
-                        <span class="field-helper">E-mail de autenticacao atualmente vinculado a esta conta.</span>
+                        <span class="field-helper">E-mail de autenticação atualmente vinculado a esta conta.</span>
                     </div>
                 </div>
             </section>
 
             <section id="senha-redefinicao" class="alerta-form-section">
                 <header class="alerta-section-header">
-                    <span class="alerta-section-kicker">Secao 2</span>
-                    <h2 class="alerta-section-title">Nova senha e confirmacao</h2>
+                    <span class="alerta-section-kicker">Seção 2</span>
+                    <h2 class="alerta-section-title">Nova senha e confirmação</h2>
                     <p class="alerta-section-text">
-                        Defina uma nova senha segura e repita a informacao no campo de confirmacao para evitar erros de digitacao.
+                        Defina uma nova senha segura e repita a informação no campo de confirmação para evitar erros de digitação.
                     </p>
                 </header>
 
@@ -241,7 +241,7 @@ include __DIR__ . '/../_breadcrumb.php';
                             autocomplete="new-password"
                             required
                         >
-                        <span class="field-helper">A senha deve ter no minimo 8 caracteres e ser compartilhada apenas com o usuario autorizado.</span>
+                        <span class="field-helper">A senha deve ter no mínimo 8 caracteres e ser compartilhada apenas com o usuário autorizado.</span>
                     </div>
 
                     <div class="form-group">
@@ -254,13 +254,13 @@ include __DIR__ . '/../_breadcrumb.php';
                             autocomplete="new-password"
                             required
                         >
-                        <span class="field-helper">Repita exatamente a mesma senha para validar a redefinicao antes do envio.</span>
+                        <span class="field-helper">Repita exatamente a mesma senha para validar a redefinição antes do envio.</span>
                     </div>
                 </div>
 
                 <div class="usuarios-note-stack">
                     <article class="usuarios-note-card">
-                        <strong>Situacao da conta</strong>
+                        <strong>Situação da conta</strong>
                         <div class="usuarios-role-list">
                             <span class="usuarios-role-pill"><?= htmlspecialchars((string) ($usuarioEdit['perfil'] ?? '-'), ENT_QUOTES, 'UTF-8') ?></span>
                             <span class="usuarios-status-pill <?= $classeStatusAtual ?>"><?= htmlspecialchars($statusAtual !== '' ? $statusAtual : '-', ENT_QUOTES, 'UTF-8') ?></span>
@@ -268,12 +268,12 @@ include __DIR__ . '/../_breadcrumb.php';
                     </article>
 
                     <article class="usuarios-note-card">
-                        <strong>Boa pratica de seguranca</strong>
-                        <span>Depois da redefinicao, oriente o usuario a trocar a senha no proximo ciclo administrativo sempre que houver suspeita de compartilhamento indevido.</span>
+                        <strong>Boa prática de segurança</strong>
+                        <span>Depois da redefinição, oriente o usuário a trocar a senha no próximo ciclo administrativo sempre que houver suspeita de compartilhamento indevido.</span>
                     </article>
 
                     <article class="usuarios-note-card">
-                        <strong>Permissao aplicada</strong>
+                        <strong>Permissão aplicada</strong>
                         <span><?= htmlspecialchars($textoPermissaoSenha, ENT_QUOTES, 'UTF-8') ?></span>
                     </article>
                 </div>
@@ -282,7 +282,7 @@ include __DIR__ . '/../_breadcrumb.php';
 
         <div class="alerta-form-actions">
             <div class="alerta-form-actions-left">
-                <span class="alerta-inline-note">Confirme o usuario alvo antes de salvar para evitar redefinicao indevida de credenciais.</span>
+                <span class="alerta-inline-note">Confirme o usuário alvo antes de salvar para evitar redefinição indevida de credenciais.</span>
             </div>
 
             <div class="alerta-form-actions-right">
@@ -303,12 +303,12 @@ include __DIR__ . '/../_breadcrumb.php';
 >
     <div class="modal-ajuda-conteudo usuarios-feedback-modal-content">
         <div class="modal-ajuda-header usuarios-feedback-modal-header">
-            <h3>Erro na confirmacao da senha</h3>
+            <h3>Erro na confirmação da senha</h3>
             <button type="button" aria-label="Fechar" onclick="fecharModalSenhaErro()">X</button>
         </div>
 
         <div class="modal-ajuda-body" id="modalSenhaErroBody">
-            Revise os campos de senha e confirmacao antes de tentar novamente.
+            Revise os campos de senha e confirmação antes de tentar novamente.
         </div>
 
         <div class="modal-ajuda-footer">

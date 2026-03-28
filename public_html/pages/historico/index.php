@@ -100,7 +100,7 @@ foreach ($registros as &$registro) {
     $referencia = trim((string) ($registro['referencia'] ?? ''));
     $registro['referencia_resumo'] = $referencia !== ''
         ? mb_strimwidth($referencia, 0, 92, '...')
-        : 'Sem referencia complementar';
+        : 'Sem referência complementar';
 }
 unset($registro);
 
@@ -132,15 +132,15 @@ $queryBase = array_filter([
 $filtrosAplicados = [];
 
 if ($dataInicio !== '' || $dataFim !== '') {
-    $filtrosAplicados[] = 'Periodo: ' . ($dataInicio !== '' ? $dataInicio : '-') . ' ate ' . ($dataFim !== '' ? $dataFim : '-');
+    $filtrosAplicados[] = 'Período: ' . ($dataInicio !== '' ? $dataInicio : '-') . ' até ' . ($dataFim !== '' ? $dataFim : '-');
 }
 
 if ($usuarioNome !== '') {
-    $filtrosAplicados[] = 'Usuario: ' . $usuarioNome;
+    $filtrosAplicados[] = 'Usuário: ' . $usuarioNome;
 }
 
 if ($acaoCodigo !== '') {
-    $filtrosAplicados[] = 'Acao: ' . HistoricoService::labelAcao($acaoCodigo);
+    $filtrosAplicados[] = 'Ação: ' . HistoricoService::labelAcao($acaoCodigo);
 }
 
 $filtrosResumo = $filtrosAplicados !== []
@@ -160,7 +160,7 @@ $limitePdf = HistoricoPdfConfig::MAX_REGISTROS_EXPORTACAO;
 $registrosPdf = min($totalRegistros, $limitePdf);
 $pdfOtimizado = $totalRegistros > $limitePdf;
 $janelaAuditoria = ($primeiraAcao !== 'Sem dados' || $ultimaAcao !== 'Sem dados')
-    ? $primeiraAcao . ' ate ' . $ultimaAcao
+    ? $primeiraAcao . ' até ' . $ultimaAcao
     : 'Sem dados no recorte atual';
 
 $resumoExecutivo = [
@@ -168,26 +168,26 @@ $resumoExecutivo = [
         'label' => 'Trilha auditada',
         'value' => $totalRegistros . ' registros',
         'note' => $totalRegistros > 0
-            ? "Exibindo {$inicioRegistro} a {$fimRegistro} nesta pagina."
+            ? "Exibindo {$inicioRegistro} a {$fimRegistro} nesta página."
             : 'Nenhum registro localizado com os filtros atuais.',
         'tone' => 'primary',
     ],
     [
-        'label' => 'Usuarios monitorados',
-        'value' => $totalUsuariosFiltrados . ' usuarios',
-        'note' => 'Pessoas distintas com movimentacao no recorte atual da auditoria.',
+        'label' => 'Usuários monitorados',
+        'value' => $totalUsuariosFiltrados . ' usuários',
+        'note' => 'Pessoas distintas com movimentação no recorte atual da auditoria.',
         'tone' => 'success',
     ],
     [
-        'label' => 'Tipos de acao',
+        'label' => 'Tipos de ação',
         'value' => $totalAcoesFiltradas . ' eventos',
         'note' => $totalAcoesFiltradas > 0
-            ? 'Panorama consolidado das operacoes registradas no filtro.'
-            : 'Sem tipos de acao distintos no recorte atual.',
+            ? 'Panorama consolidado das operações registradas no filtro.'
+            : 'Sem tipos de ação distintos no recorte atual.',
         'tone' => 'neutral',
     ],
     [
-        'label' => 'Ultima acao',
+        'label' => 'Última ação',
         'value' => $ultimaAcao,
         'note' => 'Referencial temporal mais recente encontrado no filtro aplicado.',
         'tone' => 'warning',
@@ -203,7 +203,7 @@ function paginacaoProfissionalHistorico(int $paginaAtual, int $totalPaginas): ar
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<title>Historico do Usuario</title>
+<title>Histórico do Usuário</title>
 <link rel="icon" type="image/x-icon" href="/assets/images/logo.cbmpa.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logo.cbmpa.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo.cbmpa.ico">
@@ -223,7 +223,7 @@ function paginacaoProfissionalHistorico(int $paginaAtual, int $totalPaginas): ar
         <?php
         $breadcrumb = [
             'Painel' => '/pages/painel.php',
-            'Historico dos usuarios' => null,
+            'Histórico dos usuários' => null,
         ];
         include __DIR__ . '/../_breadcrumb.php';
         ?>
@@ -233,15 +233,15 @@ function paginacaoProfissionalHistorico(int $paginaAtual, int $totalPaginas): ar
                 <div class="alerta-form-hero usuarios-hero-panel historico-hero-panel">
                     <div class="alerta-form-lead usuarios-hero-copy historico-hero-copy">
                         <span class="alerta-form-kicker">Auditoria operacional</span>
-                        <h1 class="alerta-form-title">Historico dos usuarios</h1>
+                        <h1 class="alerta-form-title">Histórico dos usuários</h1>
                         <p class="alerta-form-description">
-                            Consolide autenticacao, operacoes de alerta, gestao de usuarios e relatorios em uma
-                            trilha unica de auditoria, com leitura mais clara para consulta, filtro e exportacao.
+                            Consolide autenticação, operações de alerta, gestão de usuários e relatórios em uma
+                            trilha única de auditoria, com leitura mais clara para consulta, filtro e exportação.
                         </p>
 
                         <div class="usuarios-hero-chip-row">
-                            <span class="usuarios-hero-chip">Pagina <?= $pagina ?> de <?= $totalPaginasExibicao ?></span>
-                            <span class="usuarios-hero-chip"><?= $totalAcoesFiltradas ?> tipos de acao</span>
+                            <span class="usuarios-hero-chip">Página <?= $pagina ?> de <?= $totalPaginasExibicao ?></span>
+                            <span class="usuarios-hero-chip"><?= $totalAcoesFiltradas ?> tipos de ação</span>
                             <span class="usuarios-hero-chip"><?= htmlspecialchars($filtrosResumo, ENT_QUOTES, 'UTF-8') ?></span>
                         </div>
 
@@ -268,31 +268,31 @@ function paginacaoProfissionalHistorico(int $paginaAtual, int $totalPaginas): ar
 
                 <aside class="usuarios-command-card historico-command-card">
                     <span class="usuarios-command-kicker">Painel de auditoria</span>
-                    <h2>Comando rapido do historico institucional</h2>
+                    <h2>Comando rápido do histórico institucional</h2>
                     <p>
-                        Esta area resume o operador da sessao, a janela temporal consultada e a politica de exportacao
-                        otimizada para manter a leitura estavel com bases extensas.
+                        Esta área resume o operador da sessão, a janela temporal consultada e a política de exportação
+                        otimizada para manter a leitura estável com bases extensas.
                     </p>
 
                     <div class="usuarios-command-grid historico-command-grid">
                         <article class="usuarios-command-item">
-                            <span>Operador da sessao</span>
+                            <span>Operador da sessão</span>
                             <strong><?= htmlspecialchars((string) ($usuario['nome'] ?? '-'), ENT_QUOTES, 'UTF-8') ?></strong>
-                            <small>Responsavel pela navegacao, filtros ativos e exportacoes do recorte atual.</small>
+                            <small>Responsável pela navegação, filtros ativos e exportações do recorte atual.</small>
                         </article>
 
                         <article class="usuarios-command-item">
                             <span>Janela auditada</span>
                             <strong><?= htmlspecialchars($janelaAuditoria, ENT_QUOTES, 'UTF-8') ?></strong>
-                            <small>Combinacao entre o primeiro e o ultimo registro encontrados no filtro aplicado.</small>
+                            <small>Combinação entre o primeiro e o último registro encontrados no filtro aplicado.</small>
                         </article>
 
                         <article class="usuarios-command-item">
-                            <span>Exportacao PDF</span>
+                            <span>Exportação PDF</span>
                             <strong><?= $pdfOtimizado ? 'Modo otimizado ativo' : 'Recorte completo no PDF' ?></strong>
                             <small>
                                 <?= $pdfOtimizado
-                                    ? "O relatorio exporta os {$registrosPdf} registros mais recentes para acelerar a geracao."
+                                    ? "O relatório exporta os {$registrosPdf} registros mais recentes para acelerar a geração."
                                     : 'O recorte atual cabe integralmente no PDF sem reduzir o volume exportado.' ?>
                             </small>
                         </article>
@@ -307,8 +307,8 @@ function paginacaoProfissionalHistorico(int $paginaAtual, int $totalPaginas): ar
                             <span class="alerta-section-kicker">Consulta administrativa</span>
                             <h2 class="alerta-section-title">Filtrar, localizar e reduzir o recorte</h2>
                             <p class="alerta-section-text">
-                                Refine a consulta por periodo, usuario e tipo de acao. O recorte permanece sincronizado
-                                com a paginacao, os indicadores executivos e a exportacao do relatorio em PDF.
+                                Refine a consulta por período, usuário e tipo de ação. O recorte permanece sincronizado
+                                com a paginação, os indicadores executivos e a exportação do relatório em PDF.
                             </p>
                         </header>
 
@@ -325,21 +325,21 @@ function paginacaoProfissionalHistorico(int $paginaAtual, int $totalPaginas): ar
                                 </div>
 
                                 <div class="form-group historico-field-span-2">
-                                    <label for="usuario_nome">Usuario</label>
+                                    <label for="usuario_nome">Usuário</label>
                                     <input
                                         type="text"
                                         id="usuario_nome"
                                         name="usuario_nome"
                                         list="lista-usuarios"
-                                        placeholder="Digite o nome do usuario"
+                                        placeholder="Digite o nome do usuário"
                                         value="<?= htmlspecialchars($usuarioNome, ENT_QUOTES, 'UTF-8') ?>"
                                     >
                                 </div>
 
                                 <div class="form-group historico-field-span-2">
-                                    <label for="acao_codigo">Tipo de acao</label>
+                                    <label for="acao_codigo">Tipo de ação</label>
                                     <select id="acao_codigo" name="acao_codigo">
-                                        <option value="">Todas as acoes</option>
+                                        <option value="">Todas as ações</option>
                                         <?php foreach ($acoesDisponiveis as $acao): ?>
                                             <option value="<?= htmlspecialchars($acao['codigo'], ENT_QUOTES, 'UTF-8') ?>" <?= $acaoCodigo === $acao['codigo'] ? 'selected' : '' ?>>
                                                 <?= htmlspecialchars($acao['label'], ENT_QUOTES, 'UTF-8') ?>
@@ -370,7 +370,7 @@ function paginacaoProfissionalHistorico(int $paginaAtual, int $totalPaginas): ar
 
                             <div class="alerta-form-actions usuarios-filter-actions historico-filter-actions">
                                 <div class="alerta-form-actions-left">
-                                    <span class="alerta-inline-note">A consulta preserva pagina, resumo executivo e politica de exportacao do PDF.</span>
+                                    <span class="alerta-inline-note">A consulta preserva página, resumo executivo e política de exportação do PDF.</span>
                                 </div>
 
                                 <div class="alerta-form-actions-right usuarios-filter-actions-group">
@@ -384,10 +384,10 @@ function paginacaoProfissionalHistorico(int $paginaAtual, int $totalPaginas): ar
                     <section class="alerta-form-section usuarios-governance-panel historico-governance-panel">
                         <header class="alerta-section-header">
                             <span class="alerta-section-kicker">Leitura executiva</span>
-                            <h2 class="alerta-section-title">Cobertura temporal, exportacao e rastreabilidade</h2>
+                            <h2 class="alerta-section-title">Cobertura temporal, exportação e rastreabilidade</h2>
                             <p class="alerta-section-text">
                                 Use os cards abaixo para entender a janela auditada, a intensidade do recorte e a forma
-                                como o PDF responde quando o historico cresce demais.
+                                como o PDF responde quando o histórico cresce demais.
                             </p>
                         </header>
 
@@ -395,29 +395,29 @@ function paginacaoProfissionalHistorico(int $paginaAtual, int $totalPaginas): ar
                             <article class="usuarios-insight-card usuarios-insight-card-emphasis">
                                 <span class="usuarios-insight-kicker">Janela auditada</span>
                                 <strong><?= htmlspecialchars($janelaAuditoria, ENT_QUOTES, 'UTF-8') ?></strong>
-                                <p>Leitura temporal do recorte ativo considerando o primeiro e o ultimo evento encontrados.</p>
+                                <p>Leitura temporal do recorte ativo considerando o primeiro e o último evento encontrado.</p>
                             </article>
 
                             <article class="usuarios-insight-card">
-                                <span class="usuarios-insight-kicker">Volume do relatorio</span>
+                                <span class="usuarios-insight-kicker">Volume do relatório</span>
                                 <strong><?= $registrosPdf ?> registro<?= $registrosPdf === 1 ? '' : 's' ?> no PDF</strong>
                                 <p>
                                     <?= $pdfOtimizado
-                                        ? "Para acelerar a geracao, o PDF usa os {$registrosPdf} registros mais recentes do recorte."
-                                        : 'O recorte atual cabe integralmente no PDF sem necessidade de limitar a exportacao.' ?>
+                                        ? "Para acelerar a geração, o PDF usa os {$registrosPdf} registros mais recentes do recorte."
+                                        : 'O recorte atual cabe integralmente no PDF sem necessidade de limitar a exportação.' ?>
                                 </p>
                             </article>
 
                             <article class="usuarios-insight-card">
-                                <span class="usuarios-insight-kicker">Primeira ocorrencia</span>
+                                <span class="usuarios-insight-kicker">Primeira ocorrência</span>
                                 <strong><?= htmlspecialchars($primeiraAcao, ENT_QUOTES, 'UTF-8') ?></strong>
-                                <p>Marco inicial encontrado na auditoria atual para orientar a leitura do periodo coberto.</p>
+                                <p>Marco inicial encontrado na auditoria atual para orientar a leitura do período coberto.</p>
                             </article>
 
                             <article class="usuarios-insight-card historico-export-card">
-                                <span class="usuarios-insight-kicker">Exportacao otimizada</span>
+                                <span class="usuarios-insight-kicker">Exportação otimizada</span>
                                 <strong>PDF alinhado ao filtro ativo</strong>
-                                <p>O relatorio preserva o mesmo recorte aplicado nesta tela e prioriza desempenho em bases extensas.</p>
+                                <p>O relatório preserva o mesmo recorte aplicado nesta tela e prioriza desempenho em bases extensas.</p>
                                 <a href="/pages/historico/relatorio_pdf.php?<?= htmlspecialchars($pdfQueryString, ENT_QUOTES, 'UTF-8') ?>" class="btn btn-primary" target="_blank">
                                     Gerar PDF agora
                                 </a>
@@ -433,8 +433,8 @@ function paginacaoProfissionalHistorico(int $paginaAtual, int $totalPaginas): ar
                         <span class="alerta-section-kicker">Base de auditoria</span>
                         <h2 class="alerta-section-title">Lista de eventos registrados</h2>
                         <p class="alerta-section-text">
-                            A tabela abaixo consolida data e hora, usuario, acao registrada, referencia contextual e acesso
-                            ao detalhe completo de cada operacao em um desenho mais consistente com a pagina de usuarios.
+                            A tabela abaixo consolida data e hora, usuário, ação registrada, referência contextual e acesso
+                            ao detalhe completo de cada operação em um desenho mais consistente com a página de usuários.
                         </p>
                     </div>
 
@@ -452,8 +452,8 @@ function paginacaoProfissionalHistorico(int $paginaAtual, int $totalPaginas): ar
                     </div>
 
                     <div class="usuarios-table-toolbar-pills">
-                        <span class="usuarios-toolbar-pill"><?= $totalUsuariosFiltrados ?> usuarios</span>
-                        <span class="usuarios-toolbar-pill"><?= $totalAcoesFiltradas ?> acoes</span>
+                        <span class="usuarios-toolbar-pill"><?= $totalUsuariosFiltrados ?> usuários</span>
+                        <span class="usuarios-toolbar-pill"><?= $totalAcoesFiltradas ?> ações</span>
                         <span class="usuarios-toolbar-pill"><?= $registrosPdf ?> no PDF</span>
                     </div>
                 </div>
@@ -463,9 +463,9 @@ function paginacaoProfissionalHistorico(int $paginaAtual, int $totalPaginas): ar
                         <thead>
                             <tr>
                                 <th>Data/Hora</th>
-                                <th>Usuario</th>
-                                <th>Acao</th>
-                                <th>Referencia</th>
+                                <th>Usuário</th>
+                                <th>Ação</th>
+                                <th>Referência</th>
                                 <th>Detalhes</th>
                             </tr>
                         </thead>
@@ -479,14 +479,14 @@ function paginacaoProfissionalHistorico(int $paginaAtual, int $totalPaginas): ar
                             <?php foreach ($registros as $registro): ?>
                                 <tr>
                                     <td data-label="Data/Hora"><?= htmlspecialchars($registro['data_hora_local'], ENT_QUOTES, 'UTF-8') ?></td>
-                                    <td data-label="Usuario"><?= htmlspecialchars((string) $registro['usuario_nome'], ENT_QUOTES, 'UTF-8') ?></td>
-                                    <td data-label="Acao">
+                                    <td data-label="Usuário"><?= htmlspecialchars((string) $registro['usuario_nome'], ENT_QUOTES, 'UTF-8') ?></td>
+                                    <td data-label="Ação">
                                         <div class="historico-acao-cell">
                                             <span class="historico-acao-label"><?= htmlspecialchars((string) $registro['acao_label'], ENT_QUOTES, 'UTF-8') ?></span>
                                             <span class="historico-acao-code"><?= htmlspecialchars((string) $registro['acao_codigo'], ENT_QUOTES, 'UTF-8') ?></span>
                                         </div>
                                     </td>
-                                    <td data-label="Referencia"><?= htmlspecialchars((string) $registro['referencia_resumo'], ENT_QUOTES, 'UTF-8') ?></td>
+                                    <td data-label="Referência"><?= htmlspecialchars((string) $registro['referencia_resumo'], ENT_QUOTES, 'UTF-8') ?></td>
                                     <td data-label="Detalhes">
                                         <button
                                             type="button"
@@ -505,13 +505,13 @@ function paginacaoProfissionalHistorico(int $paginaAtual, int $totalPaginas): ar
                 <?php if ($totalPaginas > 1): ?>
                     <div class="usuarios-pagination-wrap historico-pagination-wrap">
                         <div class="usuarios-pagination-copy">
-                            <strong>Paginacao da auditoria</strong>
-                            <span>Navegue pelo historico sem perder o recorte aplicado.</span>
+                            <strong>Paginação da auditoria</strong>
+                            <span>Navegue pelo histórico sem perder o recorte aplicado.</span>
                         </div>
 
                         <div class="paginacao">
                             <?php if ($pagina > 1): ?>
-                                <a href="?<?= http_build_query(array_merge($queryBase, ['page' => $pagina - 1])) ?>" aria-label="Pagina anterior" title="Pagina anterior">
+                                <a href="?<?= http_build_query(array_merge($queryBase, ['page' => $pagina - 1])) ?>" aria-label="Página anterior" title="Página anterior">
                                     &laquo;
                                 </a>
                             <?php endif; ?>
@@ -530,7 +530,7 @@ function paginacaoProfissionalHistorico(int $paginaAtual, int $totalPaginas): ar
                             <?php endforeach; ?>
 
                             <?php if ($pagina < $totalPaginas): ?>
-                                <a href="?<?= http_build_query(array_merge($queryBase, ['page' => $pagina + 1])) ?>" aria-label="Proxima pagina" title="Proxima pagina">
+                                <a href="?<?= http_build_query(array_merge($queryBase, ['page' => $pagina + 1])) ?>" aria-label="Próxima página" title="Próxima página">
                                     &raquo;
                                 </a>
                             <?php endif; ?>
@@ -547,7 +547,7 @@ function paginacaoProfissionalHistorico(int $paginaAtual, int $totalPaginas): ar
 <div id="modalHistorico" class="modal-ajuda">
     <div class="modal-ajuda-conteudo historico-modal-conteudo">
         <div class="modal-ajuda-header">
-            <h3>Detalhe da acao registrada</h3>
+            <h3>Detalhe da ação registrada</h3>
             <button type="button" onclick="fecharModalHistorico()">X</button>
         </div>
 
