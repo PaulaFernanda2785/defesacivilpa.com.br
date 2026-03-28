@@ -5,12 +5,12 @@
     const loading = document.getElementById('loadingImportacao');
     const hint = document.getElementById('loadingImportacaoHint');
 
-    const idleMessage = 'Cole a URL oficial do INMET para abrir a previa de confirmacao.';
+    const idleMessage = 'Cole a URL oficial do INMET para abrir a prévia de confirmação.';
     const loadingMessages = [
         'Validando a URL oficial do INMET...',
         'Consultando o XML oficial do alerta...',
         'Interpretando a geometria e os dados do aviso...',
-        'Preparando a previa para confirmacao...'
+        'Preparando a prévia para confirmação...'
     ];
 
     let loadingTimer = null;
@@ -27,7 +27,7 @@
 
         if (loading) {
             loading.hidden = true;
-            loading.textContent = 'Aguardando o inicio da importacao.';
+            loading.textContent = 'Aguardando o início da importação.';
         }
 
         if (hint) {
@@ -64,7 +64,7 @@
         const url = input ? input.value.trim() : '';
 
         if (!url.includes('inmet.gov.br')) {
-            alert('URL invalida. Informe um alerta oficial do INMET.');
+            alert('URL inválida. Informe um alerta oficial do INMET.');
             return false;
         }
 
@@ -88,7 +88,7 @@
             }
 
             if (hint) {
-                hint.textContent = 'URL preenchida. Quando quiser, clique em Importar alerta para consultar a previa oficial.';
+                hint.textContent = 'URL preenchida. Quando quiser, clique em Importar alerta para consultar a prévia oficial.';
             }
         });
     }
