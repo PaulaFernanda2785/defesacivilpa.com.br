@@ -37,7 +37,7 @@ $cssUsuariosEditarVersion = (string) ((int) @filemtime($cssUsuariosEditarPath));
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<title>Editar Usuario</title>
+<title>Editar Usuário</title>
 <link rel="icon" type="image/x-icon" href="/assets/images/logo.cbmpa.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logo.cbmpa.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo.cbmpa.ico">
@@ -62,8 +62,8 @@ $cssUsuariosEditarVersion = (string) ((int) @filemtime($cssUsuariosEditarPath));
 <?php
 $breadcrumb = [
     'Painel' => '/pages/painel.php',
-    'Usuarios' => '/pages/usuarios/listar.php',
-    'Editar usuario' => null,
+    'Usuários' => '/pages/usuarios/listar.php',
+    'Editar usuário' => null,
 ];
 include __DIR__ . '/../_breadcrumb.php';
 ?>
@@ -72,15 +72,15 @@ include __DIR__ . '/../_breadcrumb.php';
     <div class="usuarios-hero-grid usuarios-editar-hero-grid">
         <div class="alerta-form-hero usuarios-hero-panel usuarios-editar-hero-panel">
             <div class="alerta-form-lead usuarios-hero-copy usuarios-editar-hero-copy">
-                <span class="alerta-form-kicker">Edicao administrativa</span>
-                <h1 class="alerta-form-title">Editar usuario do sistema</h1>
+                <span class="alerta-form-kicker">Edição administrativa</span>
+                <h1 class="alerta-form-title">Editar usuário do sistema</h1>
                 <p class="alerta-form-description">
-                    Atualize os dados cadastrais, revise o perfil operacional e mantenha a situacao da conta alinhada
+                    Atualize os dados cadastrais, revise o perfil operacional e mantenha a situação da conta alinhada
                     com a necessidade atual da equipe.
                 </p>
 
                 <div class="usuarios-hero-chip-row">
-                    <span class="usuarios-hero-chip">Usuario alvo: <?= htmlspecialchars((string) ($usuarioEdit['nome'] ?? '-'), ENT_QUOTES, 'UTF-8') ?></span>
+                    <span class="usuarios-hero-chip">Usuário alvo: <?= htmlspecialchars((string) ($usuarioEdit['nome'] ?? '-'), ENT_QUOTES, 'UTF-8') ?></span>
                     <span class="usuarios-hero-chip">Perfil atual: <?= htmlspecialchars((string) ($usuarioEdit['perfil'] ?? '-'), ENT_QUOTES, 'UTF-8') ?></span>
                     <span class="usuarios-hero-chip">Status: <?= htmlspecialchars($statusAtual !== '' ? $statusAtual : '-', ENT_QUOTES, 'UTF-8') ?></span>
                 </div>
@@ -95,7 +95,7 @@ include __DIR__ . '/../_breadcrumb.php';
 
         <div class="usuarios-summary-grid usuarios-editar-summary-grid">
             <article class="usuarios-summary-card usuarios-summary-card-primary">
-                <span class="usuarios-summary-label">Usuario alvo</span>
+                <span class="usuarios-summary-label">Usuário alvo</span>
                 <strong class="usuarios-summary-value"><?= htmlspecialchars((string) ($usuarioEdit['nome'] ?? '-'), ENT_QUOTES, 'UTF-8') ?></strong>
                 <span class="usuarios-summary-note"><?= htmlspecialchars((string) ($usuarioEdit['email'] ?? '-'), ENT_QUOTES, 'UTF-8') ?></span>
             </article>
@@ -109,41 +109,41 @@ include __DIR__ . '/../_breadcrumb.php';
             <article class="usuarios-summary-card usuarios-summary-card-neutral">
                 <span class="usuarios-summary-label">Cadastro original</span>
                 <strong class="usuarios-summary-value"><?= htmlspecialchars(TimeHelper::formatUtcDateTime($usuarioEdit['criado_em'] ?? null, 'Sem dados'), ENT_QUOTES, 'UTF-8') ?></strong>
-                <span class="usuarios-summary-note">Referencia temporal da criacao da conta.</span>
+                <span class="usuarios-summary-note">Referência temporal da criação da conta.</span>
             </article>
 
             <article class="usuarios-summary-card usuarios-summary-card-warning">
-                <span class="usuarios-summary-label">Operacao</span>
+                <span class="usuarios-summary-label">Operação</span>
                 <strong class="usuarios-summary-value"><?= htmlspecialchars((string) ($usuario['nome'] ?? '-'), ENT_QUOTES, 'UTF-8') ?></strong>
-                <span class="usuarios-summary-note">Edicao com rastreabilidade no historico administrativo.</span>
+                <span class="usuarios-summary-note">Edição com rastreabilidade no histórico administrativo.</span>
             </article>
         </div>
 
         <aside class="usuarios-command-card usuarios-editar-command-card">
-            <span class="usuarios-command-kicker">Comando de edicao</span>
-            <h2>Fluxo de atualizacao da conta</h2>
+            <span class="usuarios-command-kicker">Comando de edição</span>
+            <h2>Fluxo de atualização da conta</h2>
             <p>
-                Revise os dados principais, ajuste perfil e status e salve somente apos validar a conta correta.
-                As alteracoes ficam registradas para auditoria administrativa.
+                Revise os dados principais, ajuste perfil e status e salve somente após validar a conta correta.
+                As alterações ficam registradas para auditoria administrativa.
             </p>
 
             <div class="usuarios-command-grid usuarios-editar-command-grid">
                 <article class="usuarios-command-item">
                     <span>Etapa 1</span>
                     <strong>Validar identidade</strong>
-                    <small>Confirme nome e e-mail da conta antes de aplicar qualquer alteracao.</small>
+                    <small>Confirme nome e e-mail da conta antes de aplicar qualquer alteração.</small>
                 </article>
 
                 <article class="usuarios-command-item">
                     <span>Etapa 2</span>
-                    <strong>Revisar permissao</strong>
+                    <strong>Revisar permissão</strong>
                     <small>Ajuste perfil e status conforme o escopo operacional atual.</small>
                 </article>
 
                 <article class="usuarios-command-item">
                     <span>Etapa 3</span>
-                    <strong>Salvar com seguranca</strong>
-                    <small>Finalize apenas apos revisar os campos para evitar alteracoes indevidas.</small>
+                    <strong>Salvar com segurança</strong>
+                    <small>Finalize apenas após revisar os campos para evitar alterações indevidas.</small>
                 </article>
             </div>
         </aside>
@@ -156,10 +156,10 @@ include __DIR__ . '/../_breadcrumb.php';
         <div class="alerta-form-grid usuarios-form-grid usuarios-editar-form-grid">
             <section id="edicao-dados" class="alerta-form-section">
                 <header class="alerta-section-header">
-                    <span class="alerta-section-kicker">Secao 1</span>
+                    <span class="alerta-section-kicker">Seção 1</span>
                     <h2 class="alerta-section-title">Dados da conta</h2>
                     <p class="alerta-section-text">
-                        Revise as informacoes principais do usuario e mantenha os dados de identificacao atualizados para a operacao.
+                        Revise as informações principais do usuário e mantenha os dados de identificação atualizados para a operação.
                     </p>
                 </header>
 
@@ -174,7 +174,7 @@ include __DIR__ . '/../_breadcrumb.php';
                             value="<?= htmlspecialchars((string) ($usuarioEdit['nome'] ?? ''), ENT_QUOTES, 'UTF-8') ?>"
                             required
                         >
-                        <span class="field-helper">Atualize o nome sempre que houver necessidade de correcao cadastral ou mudanca de identificacao operacional.</span>
+                        <span class="field-helper">Atualize o nome sempre que houver necessidade de correção cadastral ou mudança de identificação operacional.</span>
                     </div>
 
                     <div class="form-group field-span-2">
@@ -187,17 +187,17 @@ include __DIR__ . '/../_breadcrumb.php';
                             value="<?= htmlspecialchars((string) ($usuarioEdit['email'] ?? ''), ENT_QUOTES, 'UTF-8') ?>"
                             required
                         >
-                        <span class="field-helper">O e-mail continua sendo o identificador principal da conta para autenticacao e administracao.</span>
+                        <span class="field-helper">O e-mail continua sendo o identificador principal da conta para autenticação e administração.</span>
                     </div>
                 </div>
             </section>
 
             <section id="edicao-acesso" class="alerta-form-section">
                 <header class="alerta-section-header">
-                    <span class="alerta-section-kicker">Secao 2</span>
-                    <h2 class="alerta-section-title">Perfil e manutencao de acesso</h2>
+                    <span class="alerta-section-kicker">Seção 2</span>
+                    <h2 class="alerta-section-title">Perfil e manutenção de acesso</h2>
                     <p class="alerta-section-text">
-                        Ajuste o perfil operacional, revise o status da conta e use os atalhos de manutencao para manter o acesso sob controle.
+                        Ajuste o perfil operacional, revise o status da conta e use os atalhos de manutenção para manter o acesso sob controle.
                     </p>
                 </header>
 
@@ -211,7 +211,7 @@ include __DIR__ . '/../_breadcrumb.php';
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <span class="field-helper">Altere o perfil somente quando houver mudanca real de responsabilidade ou escopo de acesso.</span>
+                        <span class="field-helper">Altere o perfil somente quando houver mudança real de responsabilidade ou escopo de acesso.</span>
                     </div>
 
                     <div class="form-group">
@@ -229,7 +229,7 @@ include __DIR__ . '/../_breadcrumb.php';
 
                 <div class="usuarios-note-stack">
                     <article class="usuarios-note-card">
-                        <strong>Situacao atual da conta</strong>
+                        <strong>Situação atual da conta</strong>
                         <div class="usuarios-role-list">
                             <span class="usuarios-role-pill"><?= htmlspecialchars((string) ($usuarioEdit['perfil'] ?? '-'), ENT_QUOTES, 'UTF-8') ?></span>
                             <span class="usuarios-status-pill <?= $classeStatusAtual ?>"><?= htmlspecialchars($statusAtual !== '' ? $statusAtual : '-', ENT_QUOTES, 'UTF-8') ?></span>
@@ -237,13 +237,13 @@ include __DIR__ . '/../_breadcrumb.php';
                     </article>
 
                     <article class="usuarios-note-card">
-                        <strong>Manutencao de senha</strong>
-                        <span>Se houver necessidade de redefinicao, utilize o atalho de alterar senha sem interferir nos demais dados cadastrais da conta.</span>
+                        <strong>Manutenção de senha</strong>
+                        <span>Se houver necessidade de redefinição, utilize o atalho de alterar senha sem interferir nos demais dados cadastrais da conta.</span>
                     </article>
 
                     <article class="usuarios-note-card">
                         <strong>Rastreabilidade administrativa</strong>
-                        <span>Toda alteracao de perfil, status e dados principais permanece registrada no historico administrativo do sistema.</span>
+                        <span>Toda alteração de perfil, status e dados principais permanece registrada no histórico administrativo do sistema.</span>
                     </article>
                 </div>
             </section>
@@ -251,13 +251,13 @@ include __DIR__ . '/../_breadcrumb.php';
 
         <div class="alerta-form-actions">
             <div class="alerta-form-actions-left">
-                <span class="alerta-inline-note">Revise as alteracoes antes de salvar para manter coerencia no controle de acessos.</span>
+                <span class="alerta-inline-note">Revise as alterações antes de salvar para manter coerência no controle de acessos.</span>
             </div>
 
             <div class="alerta-form-actions-right">
                 <a href="/pages/usuarios/listar.php" class="btn btn-secondary">Voltar</a>
                 <a href="/pages/usuarios/senha.php?id=<?= (int) $usuarioEdit['id'] ?>" class="btn btn-secondary">Alterar senha</a>
-                <button type="submit" class="btn btn-primary">Salvar alteracoes</button>
+                <button type="submit" class="btn btn-primary">Salvar alterações</button>
             </div>
         </div>
     </form>

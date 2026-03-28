@@ -11,7 +11,7 @@ $statusDisponiveis = ['ATIVO', 'INATIVO'];
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<title>Cadastrar Usuario</title>
+<title>Cadastrar Usuário</title>
 <link rel="icon" type="image/x-icon" href="/assets/images/logo.cbmpa.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logo.cbmpa.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo.cbmpa.ico">
@@ -34,8 +34,8 @@ $statusDisponiveis = ['ATIVO', 'INATIVO'];
 <?php
 $breadcrumb = [
     'Painel' => '/pages/painel.php',
-    'Usuarios' => '/pages/usuarios/listar.php',
-    'Cadastrar usuario' => null,
+    'Usuários' => '/pages/usuarios/listar.php',
+    'Cadastrar usuário' => null,
 ];
 include __DIR__ . '/../_breadcrumb.php';
 ?>
@@ -44,30 +44,30 @@ include __DIR__ . '/../_breadcrumb.php';
     <div class="alerta-form-hero">
         <div class="alerta-form-lead">
             <span class="alerta-form-kicker">Cadastro administrativo</span>
-            <h1 class="alerta-form-title">Novo usuario do sistema</h1>
+            <h1 class="alerta-form-title">Novo usuário do sistema</h1>
             <p class="alerta-form-description">
                 Cadastre um novo acesso administrativo no mesmo fluxo visual das telas operacionais do sistema.
-                Defina os dados principais, configure o perfil e estabeleca a situacao inicial da conta antes de salvar.
+                Defina os dados principais, configure o perfil e estabeleça a situação inicial da conta antes de salvar.
             </p>
         </div>
 
         <div class="alerta-form-summary">
             <div class="alerta-summary-card">
                 <span class="alerta-summary-label">Estrutura</span>
-                <span class="alerta-summary-value">2 secoes organizadas</span>
+                <span class="alerta-summary-value">2 seções organizadas</span>
                 <span class="alerta-summary-note">Dados da conta de um lado e regras de acesso do outro.</span>
             </div>
 
             <div class="alerta-summary-card">
                 <span class="alerta-summary-label">Perfis permitidos</span>
                 <span class="alerta-summary-value"><?= count($perfis) ?> perfis</span>
-                <span class="alerta-summary-note">ADMIN, GESTOR, ANALISTA e OPERACOES disponiveis para configuracao.</span>
+                <span class="alerta-summary-note">ADMIN, GESTOR, ANALISTA e OPERACOES disponíveis para configuração.</span>
             </div>
 
             <div class="alerta-summary-card">
-                <span class="alerta-summary-label">Criacao</span>
+                <span class="alerta-summary-label">Criação</span>
                 <span class="alerta-summary-value"><?= htmlspecialchars((string) ($usuario['nome'] ?? '-'), ENT_QUOTES, 'UTF-8') ?></span>
-                <span class="alerta-summary-note">O cadastro sera registrado com rastreabilidade no historico administrativo.</span>
+                <span class="alerta-summary-note">O cadastro será registrado com rastreabilidade no histórico administrativo.</span>
             </div>
         </div>
     </div>
@@ -78,10 +78,10 @@ include __DIR__ . '/../_breadcrumb.php';
         <div class="alerta-form-grid usuarios-form-grid">
             <section class="alerta-form-section">
                 <header class="alerta-section-header">
-                    <span class="alerta-section-kicker">Secao 1</span>
+                    <span class="alerta-section-kicker">Seção 1</span>
                     <h2 class="alerta-section-title">Dados da conta</h2>
                     <p class="alerta-section-text">
-                        Preencha as informacoes essenciais do usuario. Esses dados serao usados para autenticacao e identificacao na operacao.
+                        Preencha as informações essenciais do usuário. Esses dados serão usados para autenticação e identificação na operação.
                     </p>
                 </header>
 
@@ -89,20 +89,20 @@ include __DIR__ . '/../_breadcrumb.php';
                     <div class="form-group field-span-2">
                         <label for="nome">Nome completo</label>
                         <input type="text" id="nome" name="nome" autocomplete="name" required>
-                        <span class="field-helper">Informe o nome completo do operador ou gestor que utilizara a conta.</span>
+                        <span class="field-helper">Informe o nome completo do operador ou gestor que utilizará a conta.</span>
                     </div>
 
                     <div class="form-group field-span-2">
                         <label for="email">E-mail</label>
                         <input type="email" id="email" name="email" autocomplete="email" required>
-                        <span class="field-helper">O e-mail sera usado como identificador da conta e para futuras comunicacoes administrativas.</span>
+                        <span class="field-helper">O e-mail será usado como identificador da conta e para futuras comunicações administrativas.</span>
                     </div>
 
                     <div class="form-group field-span-2">
                         <label for="senha">Senha inicial</label>
                         <input type="password" id="senha" name="senha" autocomplete="new-password" required>
                         <div class="field-footer">
-                            <span class="field-helper">Defina uma senha inicial segura. O usuario podera altera-la posteriormente pela gestao interna.</span>
+                            <span class="field-helper">Defina uma senha inicial segura. O usuário poderá alterá-la posteriormente pela gestão interna.</span>
                             <span class="usuarios-inline-chip">Cadastro interno</span>
                         </div>
                     </div>
@@ -111,10 +111,10 @@ include __DIR__ . '/../_breadcrumb.php';
 
             <section class="alerta-form-section">
                 <header class="alerta-section-header">
-                    <span class="alerta-section-kicker">Secao 2</span>
-                    <h2 class="alerta-section-title">Perfil e liberacao de acesso</h2>
+                    <span class="alerta-section-kicker">Seção 2</span>
+                    <h2 class="alerta-section-title">Perfil e liberação de acesso</h2>
                     <p class="alerta-section-text">
-                        Configure o perfil operacional e o status inicial da conta para que o acesso entre em producao conforme a necessidade da equipe.
+                        Configure o perfil operacional e o status inicial da conta para que o acesso entre em produção conforme a necessidade da equipe.
                     </p>
                 </header>
 
@@ -127,7 +127,7 @@ include __DIR__ . '/../_breadcrumb.php';
                                 <option value="<?= htmlspecialchars($perfil, ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($perfil, ENT_QUOTES, 'UTF-8') ?></option>
                             <?php endforeach; ?>
                         </select>
-                        <span class="field-helper">Escolha o nivel de permissao mais adequado para a funcao operacional da conta.</span>
+                        <span class="field-helper">Escolha o nível de permissão mais adequado para a função operacional da conta.</span>
                     </div>
 
                     <div class="form-group">
@@ -137,14 +137,14 @@ include __DIR__ . '/../_breadcrumb.php';
                                 <option value="<?= htmlspecialchars($status, ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($status, ENT_QUOTES, 'UTF-8') ?></option>
                             <?php endforeach; ?>
                         </select>
-                        <span class="field-helper">Defina se a conta ja nasce pronta para uso ou se fica bloqueada ate liberacao posterior.</span>
+                        <span class="field-helper">Defina se a conta já nasce pronta para uso ou se fica bloqueada até liberação posterior.</span>
                     </div>
                 </div>
 
                 <div class="usuarios-note-stack">
                     <article class="usuarios-note-card">
-                        <strong>Orientacao de seguranca</strong>
-                        <span>Evite compartilhar a senha inicial por canais inseguros. Sempre que possivel, realize a troca no primeiro acesso do usuario.</span>
+                        <strong>Orientação de segurança</strong>
+                        <span>Evite compartilhar a senha inicial por canais inseguros. Sempre que possível, realize a troca no primeiro acesso do usuário.</span>
                     </article>
 
                     <article class="usuarios-note-card">
@@ -158,7 +158,7 @@ include __DIR__ . '/../_breadcrumb.php';
 
                     <article class="usuarios-note-card">
                         <strong>Controle administrativo</strong>
-                        <span>Depois do cadastro, a conta podera ser editada, ter senha redefinida e status alterado pela tela de usuarios.</span>
+                        <span>Depois do cadastro, a conta poderá ser editada, ter senha redefinida e status alterado pela tela de usuários.</span>
                     </article>
                 </div>
             </section>
@@ -171,7 +171,7 @@ include __DIR__ . '/../_breadcrumb.php';
 
             <div class="alerta-form-actions-right">
                 <a href="/pages/usuarios/listar.php" class="btn btn-secondary">Cancelar</a>
-                <button type="submit" class="btn btn-primary">Cadastrar usuario</button>
+                <button type="submit" class="btn btn-primary">Cadastrar usuário</button>
             </div>
         </div>
     </form>

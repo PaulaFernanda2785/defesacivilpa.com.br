@@ -149,14 +149,14 @@ foreach ($totaisPorPerfil as $perfilResumo) {
 $resumoExecutivo = [
     [
         'label' => 'Base monitorada',
-        'value' => $totalUsuarios . ' usuarios',
+        'value' => $totalUsuarios . ' usuários',
         'note' => $totalUsuarios > 0
             ? "Exibindo {$inicioRegistro} a {$fimRegistro} no recorte atual."
-            : 'Nenhum usuario localizado com os filtros atuais.',
+            : 'Nenhum usuário localizado com os filtros atuais.',
         'tone' => 'primary',
     ],
     [
-        'label' => 'Saude de acesso',
+        'label' => 'Saúde de acesso',
         'value' => $percentualAtivos . '% ativos',
         'note' => $totalAtivos . ' contas ativas e ' . $totalInativos . ' inativas no momento.',
         'tone' => 'success',
@@ -165,12 +165,12 @@ $resumoExecutivo = [
         'label' => 'Perfis monitorados',
         'value' => $totalPerfis . ' perfis',
         'note' => $perfilLiderTotal > 0
-            ? $perfilLider . ' lidera com ' . $perfilLiderTotal . ' usuarios.'
-            : 'Sem distribuicao por perfil no recorte atual.',
+            ? $perfilLider . ' lidera com ' . $perfilLiderTotal . ' usuários.'
+            : 'Sem distribuição por perfil no recorte atual.',
         'tone' => 'neutral',
     ],
     [
-        'label' => 'Ultimo cadastro',
+        'label' => 'Último cadastro',
         'value' => $ultimoCadastro,
         'note' => 'Leitura temporal da base administrativa atualmente filtrada.',
         'tone' => 'warning',
@@ -186,7 +186,7 @@ function paginacaoProfissionalUsuarios(int $paginaAtual, int $totalPaginas): arr
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<title>Usuarios</title>
+<title>Usuários</title>
 <link rel="icon" type="image/x-icon" href="/assets/images/logo.cbmpa.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logo.cbmpa.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo.cbmpa.ico">
@@ -209,7 +209,7 @@ function paginacaoProfissionalUsuarios(int $paginaAtual, int $totalPaginas): arr
 <?php
 $breadcrumb = [
     'Painel' => '/pages/painel.php',
-    'Usuarios' => null,
+    'Usuários' => null,
 ];
 include __DIR__ . '/../_breadcrumb.php';
 ?>
@@ -218,21 +218,21 @@ include __DIR__ . '/../_breadcrumb.php';
     <div class="usuarios-hero-grid">
         <div class="alerta-form-hero usuarios-hero-panel">
             <div class="alerta-form-lead usuarios-hero-copy">
-                <span class="alerta-form-kicker">Governanca de acesso</span>
-                <h1 class="alerta-form-title">Administracao institucional de usuarios</h1>
+                <span class="alerta-form-kicker">Governança de acesso</span>
+                <h1 class="alerta-form-title">Administração institucional de usuários</h1>
                 <p class="alerta-form-description">
-                    Controle contas, perfis e situacoes de acesso em um painel administrativo.
+                    Controle contas, perfis e situações de acesso em um painel administrativo.
                 </p>
 
                 <div class="usuarios-hero-chip-row">
-                    <span class="usuarios-hero-chip">Pagina <?= $pagina ?> de <?= $totalPaginas ?></span>
+                    <span class="usuarios-hero-chip">Página <?= $pagina ?> de <?= $totalPaginas ?></span>
                     <span class="usuarios-hero-chip"><?= $percentualAtivos ?>% da base ativa</span>
                     <span class="usuarios-hero-chip"><?= htmlspecialchars($filtrosResumo, ENT_QUOTES, 'UTF-8') ?></span>
                 </div>
 
                 <div class="usuarios-hero-actions">
-                    <a href="/pages/usuarios/cadastrar.php" class="btn btn-primary">Cadastrar usuario</a>
-                    <a href="/pages/historico/index.php" class="btn btn-secondary">Abrir historico</a>
+                    <a href="/pages/usuarios/cadastrar.php" class="btn btn-primary">Cadastrar usuário</a>
+                    <a href="/pages/historico/index.php" class="btn btn-secondary">Abrir histórico</a>
                 </div>
             </div>
         </div>
@@ -249,17 +249,17 @@ include __DIR__ . '/../_breadcrumb.php';
 
         <aside class="usuarios-command-card">
             <span class="usuarios-command-kicker">Painel do administrador</span>
-            <h2>Comando rapido da base de acessos</h2>
+            <h2>Comando rápido da base de acessos</h2>
             <p>
-                Esta area concentra o recorte atual da base, a pessoa responsavel pela sessao e a prioridade
-                operacional mais recomendada para a gestao das contas.
+                Esta área concentra o recorte atual da base, a pessoa responsável pela sessão e a prioridade
+                operacional mais recomendada para a gestão das contas.
             </p>
 
             <div class="usuarios-command-grid">
                 <article class="usuarios-command-item">
                     <span>Administrador logado</span>
                     <strong><?= htmlspecialchars((string) ($usuario['nome'] ?? '-'), ENT_QUOTES, 'UTF-8') ?></strong>
-                    <small>Permissao integral para cadastro, edicao, senha e status.</small>
+                    <small>Permissão integral para cadastro, edição, senha e status.</small>
                 </article>
 
                 <article class="usuarios-command-item">
@@ -273,8 +273,8 @@ include __DIR__ . '/../_breadcrumb.php';
                     <strong><?= $totalInativos > 0 ? 'Revisar acessos inativos' : 'Manter base atualizada' ?></strong>
                     <small>
                         <?= $totalInativos > 0
-                            ? $totalInativos . ' conta(s) inativa(s) merecem revisao administrativa.'
-                            : 'A base atual esta sem registros inativos no recorte aplicado.' ?>
+                            ? $totalInativos . ' conta(s) inativa(s) merecem revisão administrativa.'
+                            : 'A base atual está sem registros inativos no recorte aplicado.' ?>
                     </small>
                 </article>
             </div>
@@ -288,7 +288,7 @@ include __DIR__ . '/../_breadcrumb.php';
                     <span class="alerta-section-kicker">Consulta administrativa</span>
                     <h2 class="alerta-section-title">Filtrar, localizar e reduzir o recorte</h2>
                     <p class="alerta-section-text">
-                        Busque rapidamente por nome, perfil e status para chegar ao grupo certo de usuarios antes de editar,
+                        Busque rapidamente por nome, perfil e status para chegar ao grupo certo de usuários antes de editar,
                         redefinir senha ou alterar o estado da conta.
                     </p>
                 </header>
@@ -296,7 +296,7 @@ include __DIR__ . '/../_breadcrumb.php';
                 <form method="get" class="usuarios-filters">
                     <div class="usuarios-filter-grid">
                         <div class="form-group usuarios-field-span-2">
-                            <label for="nome">Nome do usuario</label>
+                            <label for="nome">Nome do usuário</label>
                             <input
                                 id="nome"
                                 type="search"
@@ -343,7 +343,7 @@ include __DIR__ . '/../_breadcrumb.php';
 
                     <div class="alerta-form-actions usuarios-filter-actions">
                         <div class="alerta-form-actions-left">
-                            <span class="alerta-inline-note">A consulta preserva paginacao e leituras executivas do painel.</span>
+                            <span class="alerta-inline-note">A consulta preserva paginação e leituras executivas do painel.</span>
                         </div>
 
                         <div class="alerta-form-actions-right usuarios-filter-actions-group">
@@ -357,20 +357,20 @@ include __DIR__ . '/../_breadcrumb.php';
             <section class="alerta-form-section usuarios-governance-panel">
                 <header class="alerta-section-header">
                     <span class="alerta-section-kicker">Leitura executiva</span>
-                    <h2 class="alerta-section-title">Saude, distribuicao e governanca</h2>
+                    <h2 class="alerta-section-title">Saúde, distribuição e governança</h2>
                     <p class="alerta-section-text">
-                        Acompanhe o equilibrio da base de acessos, a distribuicao por perfil e os pontos que merecem atencao
-                        administrativa antes de partir para as acoes da tabela.
+                        Acompanhe o equilíbrio da base de acessos, a distribuição por perfil e os pontos que merecem atenção
+                        administrativa antes de partir para as ações da tabela.
                     </p>
                 </header>
 
                 <div class="usuarios-insight-grid">
                     <article class="usuarios-insight-card usuarios-insight-card-emphasis">
-                        <span class="usuarios-insight-kicker">Saude da base</span>
+                        <span class="usuarios-insight-kicker">Saúde da base</span>
                         <strong><?= $percentualAtivos ?>% ativos</strong>
                         <p><?= $totalAtivos ?> contas ativas e <?= $totalInativos ?> inativas no recorte consultado.</p>
 
-                        <div class="usuarios-status-meter" aria-label="Distribuicao entre contas ativas e inativas">
+                        <div class="usuarios-status-meter" aria-label="Distribuição entre contas ativas e inativas">
                             <span class="usuarios-status-meter-active" style="width: <?= $percentualAtivos ?>%"></span>
                             <span class="usuarios-status-meter-inactive" style="width: <?= $percentualInativos ?>%"></span>
                         </div>
@@ -382,9 +382,9 @@ include __DIR__ . '/../_breadcrumb.php';
                     </article>
 
                     <article class="usuarios-insight-card usuarios-profile-card">
-                        <span class="usuarios-insight-kicker">Distribuicao por perfil</span>
+                        <span class="usuarios-insight-kicker">Distribuição por perfil</span>
                         <strong><?= $totalPerfis ?> perfis ativos na consulta</strong>
-                        <p>Veja rapidamente onde a base esta mais concentrada para orientar revisoes administrativas.</p>
+                        <p>Veja rapidamente onde a base está mais concentrada para orientar revisões administrativas.</p>
 
                         <div class="usuarios-profile-list">
                             <?php if ($totaisPorPerfil === []): ?>
@@ -408,15 +408,15 @@ include __DIR__ . '/../_breadcrumb.php';
                     </article>
 
                     <article class="usuarios-insight-card">
-                        <span class="usuarios-insight-kicker">Ultimo movimento de base</span>
+                        <span class="usuarios-insight-kicker">Último movimento de base</span>
                         <strong><?= htmlspecialchars($ultimoCadastro, ENT_QUOTES, 'UTF-8') ?></strong>
-                        <p>Ultimo cadastro registrado no recorte atual. Use essa referencia para acompanhar renovacao da base.</p>
+                        <p>Último cadastro registrado no recorte atual. Use essa referência para acompanhar renovação da base.</p>
                     </article>
 
                     <article class="usuarios-insight-card">
                         <span class="usuarios-insight-kicker">Rastreabilidade</span>
-                        <strong>Gestao protegida por historico</strong>
-                        <p>Toda alteracao de cadastro, senha e status deve ser acompanhada no historico para reforcar governanca e auditoria institucional.</p>
+                        <strong>Gestão protegida por histórico</strong>
+                        <p>Toda alteração de cadastro, senha e status deve ser acompanhada no histórico para reforçar governança e auditoria institucional.</p>
                     </article>
                 </div>
             </section>
@@ -427,9 +427,9 @@ include __DIR__ . '/../_breadcrumb.php';
         <header class="usuarios-table-head">
             <div class="alerta-section-header">
                 <span class="alerta-section-kicker">Base administrativa</span>
-                <h2 class="alerta-section-title">Contas, perfis e acoes da operacao</h2>
+                <h2 class="alerta-section-title">Contas, perfis e ações da operação</h2>
                 <p class="alerta-section-text">
-                    A listagem abaixo concentra identificacao, contato, perfil, status e atalhos administrativos.
+                    A listagem abaixo concentra identificação, contato, perfil, status e atalhos administrativos.
                 </p>
             </div>
 
@@ -437,7 +437,7 @@ include __DIR__ . '/../_breadcrumb.php';
                 <span class="usuarios-result-chip">
                     <?= $totalUsuarios > 0 ? "Exibindo {$inicioRegistro} a {$fimRegistro} de {$totalUsuarios}" : 'Nenhum resultado no filtro atual' ?>
                 </span>
-                <a href="/pages/usuarios/cadastrar.php" class="btn btn-primary">Novo usuario</a>
+                <a href="/pages/usuarios/cadastrar.php" class="btn btn-primary">Novo usuário</a>
             </div>
         </header>
 
@@ -458,25 +458,25 @@ include __DIR__ . '/../_breadcrumb.php';
             <table class="tabela-usuarios">
                 <thead>
                     <tr>
-                        <th>Usuario</th>
+                        <th>Usuário</th>
                         <th>Contato</th>
                         <th>Perfil</th>
                         <th>Status</th>
                         <th>Criado em</th>
-                        <th>Acoes</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if ($usuarios === []): ?>
                         <tr>
-                            <td colspan="6" class="usuarios-empty-row">Nenhum usuario encontrado para os filtros informados.</td>
+                            <td colspan="6" class="usuarios-empty-row">Nenhum usuário encontrado para os filtros informados.</td>
                         </tr>
                     <?php endif; ?>
 
                     <?php foreach ($usuarios as $item): ?>
                         <?php $classeStatus = $item['status'] === 'ATIVO' ? 'status-ativo' : 'status-inativo'; ?>
                         <tr>
-                            <td data-label="Usuario">
+                            <td data-label="Usuário">
                                 <div class="usuarios-user-cell">
                                     <strong><?= htmlspecialchars((string) $item['nome'], ENT_QUOTES, 'UTF-8') ?></strong>
                                 </div>
@@ -497,7 +497,7 @@ include __DIR__ . '/../_breadcrumb.php';
                                     <strong><?= htmlspecialchars(TimeHelper::formatUtcDate($item['criado_em'] ?? null), ENT_QUOTES, 'UTF-8') ?></strong>
                                 </div>
                             </td>
-                            <td data-label="Acoes">
+                            <td data-label="Ações">
                                 <div class="usuarios-actions">
                                     <a href="/pages/usuarios/editar.php?id=<?= (int) $item['id'] ?>" class="btn-acao btn-editar">Editar</a>
                                     <a href="/pages/usuarios/senha.php?id=<?= (int) $item['id'] ?>" class="btn-acao btn-detalhe">Senha</a>
@@ -510,7 +510,7 @@ include __DIR__ . '/../_breadcrumb.php';
                                             <button
                                                 type="submit"
                                                 class="btn-acao btn-inativar"
-                                                onclick="return confirm('Deseja inativar este usuario?')"
+                                                onclick="return confirm('Deseja inativar este usuário?')"
                                             >
                                                 Inativar
                                             </button>
@@ -523,7 +523,7 @@ include __DIR__ . '/../_breadcrumb.php';
                                             <button
                                                 type="submit"
                                                 class="btn-acao btn-ativar"
-                                                onclick="return confirm('Deseja ativar este usuario?')"
+                                                onclick="return confirm('Deseja ativar este usuário?')"
                                             >
                                                 Ativar
                                             </button>
@@ -540,13 +540,13 @@ include __DIR__ . '/../_breadcrumb.php';
         <?php if ($totalPaginas > 1): ?>
             <div class="usuarios-pagination-wrap">
                 <div class="usuarios-pagination-copy">
-                    <strong>Paginacao administrativa</strong>
-                    <span>Navegue entre as paginas sem perder o recorte aplicado.</span>
+                    <strong>Paginação administrativa</strong>
+                    <span>Navegue entre as páginas sem perder o recorte aplicado.</span>
                 </div>
 
                 <div class="paginacao">
                     <?php if ($pagina > 1): ?>
-                        <a href="?<?= http_build_query(array_merge($queryBase, ['pagina' => $pagina - 1])) ?>" aria-label="Pagina anterior" title="Pagina anterior">&laquo;</a>
+                        <a href="?<?= http_build_query(array_merge($queryBase, ['pagina' => $pagina - 1])) ?>" aria-label="Página anterior" title="Página anterior">&laquo;</a>
                     <?php endif; ?>
 
                     <?php foreach (paginacaoProfissionalUsuarios($pagina, $totalPaginas) as $itemPaginacao): ?>
@@ -563,7 +563,7 @@ include __DIR__ . '/../_breadcrumb.php';
                     <?php endforeach; ?>
 
                     <?php if ($pagina < $totalPaginas): ?>
-                        <a href="?<?= http_build_query(array_merge($queryBase, ['pagina' => $pagina + 1])) ?>" aria-label="Proxima pagina" title="Proxima pagina">&raquo;</a>
+                        <a href="?<?= http_build_query(array_merge($queryBase, ['pagina' => $pagina + 1])) ?>" aria-label="Próxima página" title="Próxima página">&raquo;</a>
                     <?php endif; ?>
                 </div>
             </div>
