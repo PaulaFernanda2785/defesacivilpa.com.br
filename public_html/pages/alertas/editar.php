@@ -9,7 +9,7 @@ $db = Database::getConnection();
 
 $id = (int) ($_GET['id'] ?? 0);
 if ($id <= 0) {
-    die('Alerta invalido.');
+    die('Alerta inválido.');
 }
 
 $stmt = $db->prepare('SELECT * FROM alertas WHERE id = ?');
@@ -17,7 +17,7 @@ $stmt->execute([$id]);
 $alerta = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$alerta) {
-    die('Alerta nao encontrado.');
+    die('Alerta não encontrado.');
 }
 
 function formatarVigenciaAtual(array $alerta): string
@@ -25,7 +25,7 @@ function formatarVigenciaAtual(array $alerta): string
     $inicio = TimeHelper::formatDateTime($alerta['inicio_alerta'] ?? null);
     $fim = TimeHelper::formatDateTime($alerta['fim_alerta'] ?? null);
 
-    return $inicio . ' ate ' . $fim;
+    return $inicio . ' até ' . $fim;
 }
 
 $eventos = AlertaFormHelper::eventos();
@@ -100,17 +100,17 @@ include __DIR__ . '/../_breadcrumb.php';
     <div class="usuarios-hero-grid alerta-edicao-hero-grid">
         <div class="alerta-form-hero usuarios-hero-panel alerta-edicao-hero-panel">
             <div class="alerta-form-lead usuarios-hero-copy alerta-edicao-hero-copy">
-                <span class="alerta-form-kicker">Atualizacao operacional</span>
+                <span class="alerta-form-kicker">Atualização operacional</span>
                 <h1 class="alerta-form-title">Editar alerta <?= htmlspecialchars($alerta['numero']) ?></h1>
                 <p class="alerta-form-description">
-                    Atualize as informacoes tecnicas, substitua anexos quando necessario e revise a area afetada diretamente no mapa.
-                    O numero do alerta permanece imutavel durante toda a edicao.
+                    Atualize as informações técnicas, substitua anexos quando necessário e revise a área afetada diretamente no mapa.
+                    O número do alerta permanece imutável durante toda a edição.
                 </p>
 
                 <div class="usuarios-hero-chip-row alerta-edicao-hero-chip-row">
                     <span class="usuarios-hero-chip">Status: <?= htmlspecialchars((string) ($alerta['status'] ?? 'N/D'), ENT_QUOTES, 'UTF-8') ?></span>
-                    <span class="usuarios-hero-chip">Origem da area: <?= htmlspecialchars($areaOrigemAtual, ENT_QUOTES, 'UTF-8') ?></span>
-                    <span class="usuarios-hero-chip"><?= count($eventos) ?> tipos de evento disponiveis</span>
+                    <span class="usuarios-hero-chip">Origem da área: <?= htmlspecialchars($areaOrigemAtual, ENT_QUOTES, 'UTF-8') ?></span>
+                    <span class="usuarios-hero-chip"><?= count($eventos) ?> tipos de evento disponíveis</span>
                 </div>
 
                 <div class="usuarios-hero-actions alerta-edicao-hero-actions">
@@ -122,7 +122,7 @@ include __DIR__ . '/../_breadcrumb.php';
 
         <div class="usuarios-summary-grid alerta-edicao-summary-grid">
             <article class="usuarios-summary-card usuarios-summary-card-primary">
-                <span class="usuarios-summary-label">Numero</span>
+                <span class="usuarios-summary-label">Número</span>
                 <strong class="usuarios-summary-value"><?= htmlspecialchars($alerta['numero']) ?></strong>
                 <span class="usuarios-summary-note">Identificador permanente do alerta.</span>
             </article>
@@ -132,46 +132,46 @@ include __DIR__ . '/../_breadcrumb.php';
                 <strong class="usuarios-summary-value">
                     <span class="status-chip <?= $statusClass ?>"><?= htmlspecialchars((string) ($alerta['status'] ?? 'N/D'), ENT_QUOTES, 'UTF-8') ?></span>
                 </strong>
-                <span class="usuarios-summary-note">A edicao redefine o mapa em PDF e zera o status de envio.</span>
+                <span class="usuarios-summary-note">A edição redefine o mapa em PDF e zera o status de envio.</span>
             </article>
 
             <article class="usuarios-summary-card usuarios-summary-card-neutral">
-                <span class="usuarios-summary-label">Vigencia atual</span>
+                <span class="usuarios-summary-label">Vigência atual</span>
                 <strong class="usuarios-summary-value"><?= htmlspecialchars(formatarVigenciaAtual($alerta), ENT_QUOTES, 'UTF-8') ?></strong>
-                <span class="usuarios-summary-note">Origem da area: <?= htmlspecialchars($areaOrigemAtual, ENT_QUOTES, 'UTF-8') ?>.</span>
+                <span class="usuarios-summary-note">Origem da área: <?= htmlspecialchars($areaOrigemAtual, ENT_QUOTES, 'UTF-8') ?>.</span>
             </article>
 
             <article class="usuarios-summary-card usuarios-summary-card-warning">
                 <span class="usuarios-summary-label">Operador</span>
-                <strong class="usuarios-summary-value"><?= htmlspecialchars((string) ($usuario['nome'] ?? 'Nao identificado'), ENT_QUOTES, 'UTF-8') ?></strong>
-                <span class="usuarios-summary-note">Perfil atual: <?= htmlspecialchars((string) ($usuario['perfil'] ?? 'Nao informado'), ENT_QUOTES, 'UTF-8') ?>.</span>
+                <strong class="usuarios-summary-value"><?= htmlspecialchars((string) ($usuario['nome'] ?? 'Não identificado'), ENT_QUOTES, 'UTF-8') ?></strong>
+                <span class="usuarios-summary-note">Perfil atual: <?= htmlspecialchars((string) ($usuario['perfil'] ?? 'Não informado'), ENT_QUOTES, 'UTF-8') ?>.</span>
             </article>
         </div>
 
         <aside class="usuarios-command-card alerta-edicao-command-card">
-            <span class="usuarios-command-kicker">Comando de edicao</span>
-            <h2>Ritmo de atualizacao</h2>
+            <span class="usuarios-command-kicker">Comando de edição</span>
+            <h2>Ritmo de atualização</h2>
             <p>
-                Revise dados tecnicos, confirme anexos e valide a geometria final no mapa antes de salvar.
-                A alteracao impacta a geracao de PDF e o fluxo de comunicacao do alerta.
+                Revise dados técnicos, confirme anexos e valide a geometria final no mapa antes de salvar.
+                A alteração impacta a geração de PDF e o fluxo de comunicação do alerta.
             </p>
 
             <div class="usuarios-command-grid alerta-edicao-command-grid">
                 <article class="usuarios-command-item">
                     <span>Etapa 1</span>
-                    <strong>Conferencia</strong>
-                    <small>Valide vigencia, evento, gravidade e descricao operacional.</small>
+                    <strong>Conferência</strong>
+                    <small>Valide vigência, evento, gravidade e descrição operacional.</small>
                 </article>
 
                 <article class="usuarios-command-item">
                     <span>Etapa 2</span>
                     <strong>Mapa e anexos</strong>
-                    <small>Troque imagem/KML somente quando necessario e revise a area final.</small>
+                    <small>Troque imagem/KML somente quando necessário e revise a área final.</small>
                 </article>
 
                 <article class="usuarios-command-item">
                     <span>Etapa 3</span>
-                    <strong>Salvar alteracoes</strong>
+                    <strong>Salvar alterações</strong>
                     <small>Finalize com a geometria correta para atualizar os materiais operacionais.</small>
                 </article>
             </div>
@@ -181,7 +181,7 @@ include __DIR__ . '/../_breadcrumb.php';
     <?php if (($alerta['status'] ?? '') === 'ATIVO'): ?>
         <div class="alerta-callout alerta-edicao-status-callout">
             <strong>Alerta ativo</strong>
-            Este alerta permanece ativo. Para encerrar ou cancelar, utilize os controles proprios da listagem de alertas.
+            Este alerta permanece ativo. Para encerrar ou cancelar, utilize os controles próprios da listagem de alertas.
         </div>
     <?php endif; ?>
 
@@ -194,16 +194,16 @@ include __DIR__ . '/../_breadcrumb.php';
         <div class="alerta-form-grid alerta-edicao-form-grid">
             <section id="edicao-dados" class="alerta-form-section">
                 <header class="alerta-section-header">
-                    <span class="alerta-section-kicker">Secao 1</span>
-                    <h2 class="alerta-section-title">Informacoes do alerta</h2>
+                    <span class="alerta-section-kicker">Seção 1</span>
+                    <h2 class="alerta-section-title">Informações do alerta</h2>
                     <p class="alerta-section-text">
-                        Revise status, periodo, classificacao e conteudo operacional do alerta antes de confirmar a alteracao.
+                        Revise status, período, classificação e conteúdo operacional do alerta antes de confirmar a alteração.
                     </p>
                 </header>
 
                 <div class="alerta-fields-grid">
                     <div class="form-group">
-                        <label for="numero_exibicao">Numero do alerta</label>
+                        <label for="numero_exibicao">Número do alerta</label>
                         <input
                             type="text"
                             id="numero_exibicao"
@@ -248,7 +248,7 @@ include __DIR__ . '/../_breadcrumb.php';
                     </div>
 
                     <div class="form-group">
-                        <label for="inicio_alerta">Inicio da vigencia</label>
+                        <label for="inicio_alerta">Início da vigência</label>
                         <input
                             type="datetime-local"
                             id="inicio_alerta"
@@ -258,7 +258,7 @@ include __DIR__ . '/../_breadcrumb.php';
                     </div>
 
                     <div class="form-group">
-                        <label for="fim_alerta">Fim da vigencia</label>
+                        <label for="fim_alerta">Fim da vigência</label>
                         <input
                             type="datetime-local"
                             id="fim_alerta"
@@ -279,7 +279,7 @@ include __DIR__ . '/../_breadcrumb.php';
                     </div>
 
                     <div class="form-group">
-                        <label for="nivel_gravidade">Nivel de gravidade</label>
+                        <label for="nivel_gravidade">Nível de gravidade</label>
                         <select id="nivel_gravidade" name="nivel_gravidade" required>
                             <?php foreach ($niveis as $nivel): ?>
                                 <option value="<?= htmlspecialchars($nivel) ?>" <?= $nivelAtual === $nivel ? 'selected' : '' ?>>
@@ -298,13 +298,13 @@ include __DIR__ . '/../_breadcrumb.php';
                             required
                         ><?= htmlspecialchars((string) ($alerta['riscos'] ?? '')) ?></textarea>
                         <div class="field-footer">
-                            <span class="field-helper">Ajuste a descricao dos riscos sempre que houver mudanca de area, gravidade ou vigencia.</span>
+                            <span class="field-helper">Ajuste a descrição dos riscos sempre que houver mudança de área, gravidade ou vigência.</span>
                             <span class="char-counter" data-char-target="riscos"></span>
                         </div>
                     </div>
 
                     <div class="form-group field-span-2">
-                        <label for="recomendacoes">Recomendacoes</label>
+                        <label for="recomendacoes">Recomendações</label>
                         <textarea
                             id="recomendacoes"
                             name="recomendacoes"
@@ -312,7 +312,7 @@ include __DIR__ . '/../_breadcrumb.php';
                             required
                         ><?= htmlspecialchars((string) ($alerta['recomendacoes'] ?? '')) ?></textarea>
                         <div class="field-footer">
-                            <span class="field-helper">As recomendacoes enviadas para PDF e comunicacao serao regeneradas apos salvar.</span>
+                            <span class="field-helper">As recomendações enviadas para PDF e comunicação serão regeneradas após salvar.</span>
                             <span class="char-counter" data-char-target="recomendacoes"></span>
                         </div>
                     </div>
@@ -320,13 +320,13 @@ include __DIR__ . '/../_breadcrumb.php';
                     <div class="territorio-preview-card field-span-2" id="territorioPreviewCard">
                         <div class="territorio-preview-header">
                             <div>
-                                <strong>Regioes de integracao e municipios afetados</strong>
+                                <strong>Regiões de integração e municípios afetados</strong>
                                 <span>Esse quadro acompanha a geometria atual do mapa e ajuda a revisar o impacto territorial antes de salvar.</span>
                             </div>
-                            <div class="territorio-preview-summary" id="territorioResumo">Carregando area atual.</div>
+                            <div class="territorio-preview-summary" id="territorioResumo">Carregando área atual.</div>
                         </div>
                         <div class="territorio-preview-list" id="territorioLista">
-                            <div class="territorio-preview-empty">Nenhuma area territorial reconhecida ainda.</div>
+                            <div class="territorio-preview-empty">Nenhuma área territorial reconhecida ainda.</div>
                         </div>
                     </div>
                 </div>
@@ -334,7 +334,7 @@ include __DIR__ . '/../_breadcrumb.php';
 
             <section id="edicao-anexos" class="alerta-form-section">
                 <header class="alerta-section-header">
-                    <span class="alerta-section-kicker">Secao 2</span>
+                    <span class="alerta-section-kicker">Seção 2</span>
                     <h2 class="alerta-section-title">Anexos, imagem, mapa e KML</h2>
                     <p class="alerta-section-text">
                         Selecione uma nova imagem somente quando realmente quiser substituir a atual. O KML pode ser trocado, mantido ou descartado.
@@ -347,7 +347,7 @@ include __DIR__ . '/../_breadcrumb.php';
                         <div class="upload-dropzone" id="informacoesDropzone" tabindex="0">
                             <input type="file" id="informacoesInput" name="informacoes" accept="image/jpeg,image/png,image/webp">
                             <span class="upload-dropzone-title">Atualize ou mantenha a imagem atual</span>
-                            <span class="upload-dropzone-text">Arraste, solte, cole ou selecione uma nova imagem. Se desistir, descarte a selecao e a imagem atual permanece.</span>
+                            <span class="upload-dropzone-text">Arraste, solte, cole ou selecione uma nova imagem. Se desistir, descarte a seleção e a imagem atual permanece.</span>
                         </div>
                     </div>
 
@@ -367,7 +367,7 @@ include __DIR__ . '/../_breadcrumb.php';
                         <div class="upload-dropzone" id="kmlDropzone" tabindex="0">
                             <input type="file" id="kmlInput" name="kml" accept=".kml,.xml,application/vnd.google-earth.kml+xml,text/xml,application/xml">
                             <span class="upload-dropzone-title">Substitua ou mantenha o KML atual</span>
-                            <span class="upload-dropzone-text">Arquivos com multiplos poligonos ou multipoligonos sao carregados no mapa e podem ser revisados antes do envio.</span>
+                            <span class="upload-dropzone-text">Arquivos com múltiplos polígonos ou multipolígonos são carregados no mapa e podem ser revisados antes do envio.</span>
                         </div>
                     </div>
 
@@ -383,8 +383,8 @@ include __DIR__ . '/../_breadcrumb.php';
                     <div class="map-card">
                         <div class="map-card-header">
                             <div>
-                                <div class="map-card-title">Area afetada</div>
-                                <div class="map-card-text">A geometria salva no sistema sera a que estiver visivel no mapa no momento do envio.</div>
+                                <div class="map-card-title">Área afetada</div>
+                                <div class="map-card-text">A geometria salva no sistema será a que estiver visível no mapa no momento do envio.</div>
                             </div>
                             <span class="area-source-chip" id="areaOrigemBadge">Origem atual: <?= $areaOrigemAtual === 'KML' ? 'KML' : 'desenho/manual' ?></span>
                         </div>
@@ -397,12 +397,12 @@ include __DIR__ . '/../_breadcrumb.php';
 
         <div class="alerta-form-actions">
             <div class="alerta-form-actions-left">
-                <span class="alerta-inline-note">Salvar esta edicao redefine a imagem do mapa em PDF e exige nova geracao antes do envio para COMPDEC.</span>
+                <span class="alerta-inline-note">Salvar esta edição redefine a imagem do mapa em PDF e exige nova geração antes do envio para COMPDEC.</span>
             </div>
 
             <div class="alerta-form-actions-right">
                 <a href="/pages/alertas/listar.php" class="btn btn-secondary">Voltar</a>
-                <button type="submit" class="btn btn-primary">Salvar alteracoes</button>
+                <button type="submit" class="btn btn-primary">Salvar alterações</button>
             </div>
         </div>
     </form>
