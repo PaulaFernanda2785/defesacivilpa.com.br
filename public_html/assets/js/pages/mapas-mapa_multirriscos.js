@@ -172,6 +172,18 @@
         return partes.length === 3 ? `${partes[2]}/${partes[1]}/${partes[0]}` : String(valor);
     }
 
+    function formatarDataCurtaGrafico(valor, incluirAno = false) {
+        if (!valor) return '-';
+        const partes = String(valor).split(' ')[0].split('-');
+
+        if (partes.length !== 3) {
+            return String(valor);
+        }
+
+        const [ano, mes, dia] = partes;
+        return incluirAno ? `${dia}/${mes}/${ano.slice(-2)}` : `${dia}/${mes}`;
+    }
+
     function formatarDataHora(valor) {
         if (!valor) return '-';
         const [data, hora] = String(valor).split(' ');
@@ -617,6 +629,12 @@
 
     function cardAlertaHtml(detalhe, territorioLabel, territorioValor, exibirMunicipios) {
         const gravidade = String(detalhe.gravidade || 'Sem gravidade');
+        const pesoGravidadeDetalhe = Number(detalhe.peso_gravidade ?? pesoGravidade(gravidade));
+        const pesoGravidadeNormalizado = Number.isFinite(pesoGravidadeDetalhe) ? pesoGravidadeDetalhe : 0;
+        const municipiosNoRecorte = Number(detalhe.municipios_total || 0);
+        const formulaIRP = exibirMunicipios
+            ? `${pesoGravidadeNormalizado} x ${municipiosNoRecorte}`
+            : `${pesoGravidadeNormalizado} x 1`;
         const extraMunicipios = exibirMunicipios ? `
             <div class="multirrisco-alerta-extra">
                 <span class="multirrisco-alerta-extra-label">Municípios cobertos neste alerta</span>
@@ -638,9 +656,12 @@
                     <div class="multirrisco-alerta-item"><span>Data do alerta</span><strong>${escapeHtml(formatarData(detalhe.data_alerta))}</strong></div>
                     <div class="multirrisco-alerta-item"><span>Vigência</span><strong>${escapeHtml(formatarVigencia(detalhe.inicio_alerta, detalhe.fim_alerta))}</strong></div>
                     <div class="multirrisco-alerta-item"><span>Gravidade</span><strong>${escapeHtml(gravidade)}</strong></div>
-                    <div class="multirrisco-alerta-item"><span>Pressão</span><strong>${escapeHtml(formatarPressao(detalhe.pressao))}</strong></div>
+                    <div class="multirrisco-alerta-item"><span>Peso gravidade</span><strong>${escapeHtml(String(pesoGravidadeNormalizado))}</strong></div>
+                    <div class="multirrisco-alerta-item"><span>Fórmula IRP</span><strong>${escapeHtml(formulaIRP)}</strong></div>
+                    <div class="multirrisco-alerta-item"><span>Pontos IRP</span><strong>${escapeHtml(formatarPressao(detalhe.pressao))}</strong></div>
                     <div class="multirrisco-alerta-item"><span>Fonte</span><strong>${escapeHtml(detalhe.fonte || '-')}</strong></div>
                     <div class="multirrisco-alerta-item"><span>${escapeHtml(territorioLabel)}</span><strong>${escapeHtml(territorioValor)}</strong></div>
+                    ${exibirMunicipios ? `<div class="multirrisco-alerta-item"><span>Municípios no recorte</span><strong>${escapeHtml(String(municipiosNoRecorte))}</strong></div>` : ''}
                 </div>
                 ${extraMunicipios}
             </article>
@@ -868,13 +889,29 @@
     function atualizarGraficoLinhaTempo(dados) {
         if (!el.graficoLinhaTempo || typeof Chart === 'undefined') return;
 
-        const labels = dados.map((item) => formatarData(item.dia).slice(0, 5));
+        const anos = new Set(
+            dados
+                .map((item) => String(item?.dia || '').split('-')[0])
+                .filter((ano) => /^\d{4}$/.test(ano))
+        );
+        const incluirAnoNoRotulo = anos.size > 1;
+        const labels = dados.map((item) => formatarDataCurtaGrafico(item.dia, incluirAnoNoRotulo));
         const valores = dados.map((item) => Number(item.irp || 0));
+        const tooltipTitulo = (contexto) => {
+            const indice = contexto?.[0]?.dataIndex;
+            if (!Number.isInteger(indice) || !dados[indice]) return '';
+            return `Dia ${formatarData(dados[indice].dia)}`;
+        };
+        const tooltipValor = (contexto) => `${Number(contexto?.raw ?? 0)} pts IRP`;
 
         if (graficoIRP) {
             graficoIRP.data.labels = labels;
             graficoIRP.data.datasets[0].data = valores;
             graficoIRP.options.onClick = cliqueGraficoLinhaTempo(dados);
+            if (graficoIRP.options?.plugins?.tooltip?.callbacks) {
+                graficoIRP.options.plugins.tooltip.callbacks.title = tooltipTitulo;
+                graficoIRP.options.plugins.tooltip.callbacks.label = tooltipValor;
+            }
             graficoIRP.update();
             return;
         }
@@ -898,8 +935,30 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 animation: false,
-                plugins: { legend: { display: false } },
-                scales: { y: { beginAtZero: true } },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitulo,
+                            label: tooltipValor
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 8
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Pontos IRP'
+                        }
+                    }
+                },
                 onClick: cliqueGraficoLinhaTempo(dados)
             }
         });
@@ -1554,3 +1613,4 @@
         renderizarFalhaMapa('Não foi possível carregar a base territorial do mapa. Tente atualizar a página.');
     });
 })();
+

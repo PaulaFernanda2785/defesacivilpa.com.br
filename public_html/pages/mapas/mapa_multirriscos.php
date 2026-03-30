@@ -445,7 +445,7 @@ $totalRegioesBase = count($regioesDisponiveis);
                             <div class="alerta-form-actions multirrisco-chart-actions">
                                 <div class="alerta-form-actions-left">
                                     <span class="alerta-inline-note">
-                                        O IRP combina gravidade e abrangência territorial dos alertas ativos.
+                                        IRP diário = soma de (peso da gravidade × municípios afetados no recorte) para cada alerta ativo do dia.
                                     </span>
                                 </div>
 
@@ -492,7 +492,7 @@ $totalRegioesBase = count($regioesDisponiveis);
         </p>
 
         <p>
-            A leitura considera o peso da gravidade e a abrangência municipal de cada alerta ativo.
+            Fórmula no recorte atual: <strong>Pontos IRP = peso da gravidade × municípios afetados no próprio recorte</strong>.
         </p>
 
         <ul>
@@ -502,6 +502,14 @@ $totalRegioesBase = count($regioesDisponiveis);
             <li>Muito alto = 4</li>
             <li>Extremo = 5</li>
         </ul>
+
+        <p>
+            Exemplo regional: alerta <strong>ALTO</strong> em 4 municípios da região = <strong>3 × 4 = 12 pontos</strong>.
+        </p>
+
+        <p>
+            Exemplo municipal: no filtro de um município, o mesmo alerta soma <strong>3 × 1 = 3 pontos</strong>.
+        </p>
 
         <p>
             Quanto maior o IRP, maior a pressão territorial e a necessidade de resposta operacional.
@@ -683,3 +691,4 @@ $totalRegioesBase = count($regioesDisponiveis);
 <script src="/assets/js/pages/mapas-mapa_multirriscos.js"></script>
 </body>
 </html>
+

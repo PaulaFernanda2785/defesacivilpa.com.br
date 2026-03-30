@@ -28,6 +28,7 @@ public_html/storage/tmp/
 storage/cache/
 storage/tmp/
 storage/logs/
+storage/reports/
 *.log
 *.tmp
 tmp_*.pdf

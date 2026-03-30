@@ -1,96 +1,13 @@
 <?php
 require_once __DIR__ . '/../../app/Core/Database.php';
 require_once __DIR__ . '/../../app/Helpers/SecurityHeaders.php';
+require_once __DIR__ . '/_pressao_shared.php';
 
 SecurityHeaders::applyJson(60, true);
 
 $db = Database::getConnection();
 
-function normalizarDataFiltroMapa(?string $valor): ?DateTimeImmutable
-{
-    if ($valor === null) {
-        return null;
-    }
-
-    $valor = trim($valor);
-
-    if ($valor === '') {
-        return null;
-    }
-
-    $data = DateTimeImmutable::createFromFormat('!Y-m-d', $valor);
-
-    if (!($data instanceof DateTimeImmutable)) {
-        return null;
-    }
-
-    return $data->format('Y-m-d') === $valor ? $data : null;
-}
-
-function pesoGravidadeRegiao(?string $nivel): int
-{
-    return match (strtoupper(trim((string) $nivel))) {
-        'BAIXO' => 1,
-        'MODERADO' => 2,
-        'ALTO' => 3,
-        'MUITO ALTO' => 4,
-        'EXTREMO' => 5,
-        default => 0,
-    };
-}
-
-$where = ["a.status = 'ATIVO'"];
-$params = [];
-
-if (!empty($_GET['data_inicio'])) {
-    $dataInicio = normalizarDataFiltroMapa((string) $_GET['data_inicio']);
-
-    if ($dataInicio instanceof DateTimeImmutable) {
-        $where[] = "a.data_alerta >= :data_inicio";
-        $params[':data_inicio'] = $dataInicio->format('Y-m-d');
-    }
-}
-
-if (!empty($_GET['data_fim'])) {
-    $dataFim = normalizarDataFiltroMapa((string) $_GET['data_fim']);
-
-    if ($dataFim instanceof DateTimeImmutable) {
-        $where[] = "a.data_alerta < :data_fim_exclusiva";
-        $params[':data_fim_exclusiva'] = $dataFim->modify('+1 day')->format('Y-m-d');
-    }
-}
-
-if (!empty($_GET['gravidade'])) {
-    $where[] = "a.nivel_gravidade = :gravidade";
-    $params[':gravidade'] = $_GET['gravidade'];
-}
-
-if (!empty($_GET['fonte'])) {
-    $where[] = "a.fonte = :fonte";
-    $params[':fonte'] = $_GET['fonte'];
-}
-
-if (!empty($_GET['tipo_evento'])) {
-    $where[] = "a.tipo_evento = :tipo_evento";
-    $params[':tipo_evento'] = $_GET['tipo_evento'];
-}
-
-if (!empty($_GET['regiao'])) {
-    $where[] = "mr.regiao_integracao = :regiao";
-    $params[':regiao'] = trim((string) $_GET['regiao']);
-}
-
-if (!empty($_GET['municipio'])) {
-    $municipio = trim((string) $_GET['municipio']);
-
-    if (preg_match('/^\d{7}$/', $municipio)) {
-        $where[] = "am.municipio_codigo = :municipio_codigo";
-        $params[':municipio_codigo'] = $municipio;
-    } else {
-        $where[] = "am.municipio_nome = :municipio_nome";
-        $params[':municipio_nome'] = $municipio;
-    }
-}
+[$where, $params] = montarFiltroMapaPressao($_GET, 'a', 'am', 'mr');
 
 $sql = "
     SELECT
@@ -103,15 +20,25 @@ $sql = "
         a.inicio_alerta,
         a.fim_alerta,
         am.municipio_codigo AS cod_ibge,
-        am.municipio_nome AS municipio,
-        mr.regiao_integracao AS regiao
+        MAX(am.municipio_nome) AS municipio,
+        MAX(mr.regiao_integracao) AS regiao
     FROM alertas a
     INNER JOIN alerta_municipios am
         ON am.alerta_id = a.id
     INNER JOIN municipios_regioes_pa mr
         ON mr.cod_ibge = am.municipio_codigo
     WHERE " . implode(' AND ', $where) . "
-    ORDER BY mr.regiao_integracao, a.data_alerta DESC, a.inicio_alerta DESC, a.numero DESC
+    GROUP BY
+        a.id,
+        a.numero,
+        a.fonte,
+        a.tipo_evento,
+        a.nivel_gravidade,
+        a.data_alerta,
+        a.inicio_alerta,
+        a.fim_alerta,
+        am.municipio_codigo
+    ORDER BY regiao, a.data_alerta DESC, a.inicio_alerta DESC, a.numero DESC
 ";
 
 $stmt = $db->prepare($sql);
@@ -141,7 +68,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         ];
     }
 
-    $peso = pesoGravidadeRegiao($row['nivel_gravidade'] ?? null);
+    $peso = pesoGravidadeMapa($row['nivel_gravidade'] ?? null);
     $alertaId = (int) ($row['id'] ?? 0);
     $codIbge = (string) ($row['cod_ibge'] ?? '');
     $municipioNome = (string) ($row['municipio'] ?? '');
@@ -164,6 +91,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             'numero' => $row['numero'],
             'tipo_evento' => $row['tipo_evento'],
             'gravidade' => $row['nivel_gravidade'],
+            'peso_gravidade' => $peso,
             'data_alerta' => $row['data_alerta'],
             'inicio_alerta' => $row['inicio_alerta'],
             'fim_alerta' => $row['fim_alerta'],
@@ -212,7 +140,10 @@ foreach ($resultado as &$regiao) {
         return strcmp((string) ($b['inicio_alerta'] ?? ''), (string) ($a['inicio_alerta'] ?? ''));
     });
 
-    $regiao['quantidade_alertas_ativos'] = $regiao['alertas'];
+    $regiao['pressao'] = (int) $regiao['pressao'];
+    $regiao['alertas'] = (int) $regiao['alertas'];
+    $regiao['municipios'] = (int) $regiao['municipios'];
+    $regiao['quantidade_alertas_ativos'] = (int) $regiao['alertas'];
 
     unset($regiao['_peso_max'], $regiao['_alertas']);
 }
