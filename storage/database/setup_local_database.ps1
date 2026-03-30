@@ -1,7 +1,7 @@
 param(
     [string]$MysqlExe = "D:\wamp64\bin\mysql\mysql8.4.7\bin\mysql.exe",
-    [string]$DumpPath = "D:\wamp64\www\defesacivilpa.com.br\public_html\banco_db\u696029111_DefesaCivilPA.sql",
-    [string]$DatabaseName = "u696029111_DefesaCivilPA",
+    [string]$DumpPath = "D:\wamp64\www\defesacivilpa.com.br\public_html\banco_db\defesacivilpa.sql",
+    [string]$DatabaseName = "defesacivilpa",
     [string]$User = "",
     [string]$Password = "",
     [string]$TempDirectory = "D:\wamp64\www\defesacivilpa.com.br\storage\database"

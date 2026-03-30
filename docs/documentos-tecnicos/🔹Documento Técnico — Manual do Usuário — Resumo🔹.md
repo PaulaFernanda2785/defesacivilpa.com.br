@@ -41,4 +41,4 @@ Guia rápido de operação do **Sistema Inteligente Multirriscos** para consulta
 
 ## 7. Referência
 - Data de referência técnica: **2026-03-28**.
-- Base: código em `public_html` e schema SQL em `public_html/banco_db/u696029111_DefesaCivilPA.sql`.
+- Base: código em `public_html` e schema SQL em `public_html/banco_db/defesacivilpa.sql`.

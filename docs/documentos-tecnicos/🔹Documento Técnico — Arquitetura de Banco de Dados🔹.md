@@ -28,4 +28,4 @@ O banco relacional centraliza operação de alertas, territorialização, usuár
 - Persistência de geometria em JSON textual (`area_geojson`/`poligono`).
 
 ## 6. Fonte de referência
-- Schema validado em `public_html/banco_db/u696029111_DefesaCivilPA.sql`.
+- Schema validado em `public_html/banco_db/defesacivilpa.sql`.

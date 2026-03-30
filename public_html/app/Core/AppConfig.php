@@ -24,7 +24,7 @@ class AppConfig
             'organization' => self::value('APP_ORG_NAME', 'Defesa Civil do Estado do Pará'),
             'institution' => self::value('APP_INSTITUTION', 'Defesa Civil do Estado do Pará'),
             'department' => self::value('APP_DEPARTMENT', 'Coordenadoria Estadual de Protecao e Defesa Civil'),
-            'support_email' => self::value('SUPPORT_EMAIL', 'dgr.cedecpa@gmail.com'),
+            'support_email' => self::value('SUPPORT_EMAIL', 'suporte@defesacivil.pa.gov.br'),
             'environment' => $environment,
             'environment_label' => self::value('APP_ENV_LABEL', self::defaultEnvironmentLabel($environment)),
             'environment_class' => self::environmentClass($environment),

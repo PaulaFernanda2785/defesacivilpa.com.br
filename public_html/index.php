@@ -33,6 +33,13 @@ if (Session::isExpiredByInactivity()) {
 
 $appConfig = AppConfig::get();
 $usuarioAtivo = $_SESSION['usuario'] ?? null;
+$supportEmail = trim((string) ($appConfig['support_email'] ?? 'suporte@defesacivil.pa.gov.br'));
+
+if ($supportEmail === '') {
+    $supportEmail = 'suporte@defesacivil.pa.gov.br';
+}
+
+$supportEmailSafe = htmlspecialchars($supportEmail, ENT_QUOTES, 'UTF-8');
 
 if (is_array($usuarioAtivo)) {
     Session::touchActivity();
@@ -554,7 +561,7 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
 
                 <div class="public-access-support">
                     <strong>Solicitação de acesso</strong>
-                    <a href="mailto:dgr.cedecpa@gmail.com">dgr.cedecpa@gmail.com</a>
+                    <a href="mailto:<?= $supportEmailSafe ?>"><?= $supportEmailSafe ?></a>
                 </div>
             <?php endif; ?>
         </aside>
@@ -1196,7 +1203,7 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
         <div class="public-info-modal-footer">
             <div class="public-info-modal-support">
                 <strong>Solicitação de acesso</strong>
-                <a href="mailto:dgr.cedecpa@gmail.com">dgr.cedecpa@gmail.com</a>
+                <a href="mailto:<?= $supportEmailSafe ?>"><?= $supportEmailSafe ?></a>
             </div>
             <button type="button" class="btn btn-secondary" data-close-modal="modalInfo">Fechar</button>
         </div>

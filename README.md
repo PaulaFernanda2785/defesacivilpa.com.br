@@ -101,7 +101,7 @@ Etapas e diretrizes principais de desenvolvimento:
 ### 3) Importar banco
 
 - Use o dump de referencia em:
-  - `public_html/banco_db/u696029111_DefesaCivilPA.sql`
+  - `public_html/banco_db/defesacivilpa.sql`
 - Ou execute o script local:
   - `storage/database/setup_local_database.ps1`
 
@@ -134,4 +134,3 @@ A documentacao detalhada esta em `docs/documentos-tecnicos/`, incluindo:
 ## Licenca
 
 Este repositorio utiliza a licenca MIT. Consulte o arquivo `LICENSE`.
-
