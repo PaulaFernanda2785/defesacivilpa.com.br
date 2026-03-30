@@ -1,7 +1,13 @@
 Options -Indexes
 
 <FilesMatch "^\.">
-    Require all denied
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
 </FilesMatch>
 
 <IfModule mod_rewrite.c>
@@ -13,16 +19,16 @@ Options -Indexes
 <IfModule mod_headers.c>
     # Garante que paginas HTML/PHP nunca fiquem "presas" em cache antigo.
     <FilesMatch "\.(?:html?|php)$">
-        Header always set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
-        Header always set Pragma "no-cache"
-        Header always set Expires "0"
+        Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
     </FilesMatch>
 
     # Forca revalidacao de CSS e JS a cada carregamento.
     # Assim, apos atualizar o sistema, o navegador baixa os arquivos novos.
     <FilesMatch "\.(?:css|js)$">
-        Header always set Cache-Control "no-cache, max-age=0, must-revalidate"
-        Header always set Pragma "no-cache"
-        Header always set Expires "0"
+        Header set Cache-Control "no-cache, max-age=0, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
     </FilesMatch>
 </IfModule>

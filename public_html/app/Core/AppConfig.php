@@ -11,10 +11,17 @@ class AppConfig
             return self::$config;
         }
 
-        Env::loadFromCandidates([
-            dirname(__DIR__, 3) . '/.env',
-            dirname(__DIR__, 2) . '/.env',
-        ]);
+        $appRoot = dirname(__DIR__, 2);
+        $projectRoot = dirname($appRoot);
+        $appRootBaseName = strtolower(basename(str_replace('\\', '/', $appRoot)));
+        $isLegacyPublicLayout = $appRootBaseName === 'public_html';
+
+        // Compatibilidade de layout legado e V2 (fora da raiz publica).
+        $envCandidates = $isLegacyPublicLayout
+            ? [$projectRoot . '/.env', $appRoot . '/.env']
+            : [$appRoot . '/.env', $projectRoot . '/.env'];
+
+        Env::loadFromCandidates($envCandidates);
 
         $environment = strtolower(trim((string) Env::get('APP_ENV', 'local')));
 

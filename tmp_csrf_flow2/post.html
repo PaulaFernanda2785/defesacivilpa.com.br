@@ -1,437 +1,30 @@
-<?php
-require_once __DIR__ . '/app/Core/Session.php';
-require_once __DIR__ . '/app/Core/Auth.php';
-require_once __DIR__ . '/app/Core/Csrf.php';
-require_once __DIR__ . '/app/Core/Database.php';
-require_once __DIR__ . '/app/Core/AppConfig.php';
-require_once __DIR__ . '/app/Helpers/AlertaFormHelper.php';
-require_once __DIR__ . '/app/Helpers/LoginRateLimiter.php';
-require_once __DIR__ . '/app/Helpers/SecurityHeaders.php';
-require_once __DIR__ . '/app/Helpers/TimeHelper.php';
-require_once __DIR__ . '/app/Services/HistoricoService.php';
-
-TimeHelper::bootstrap();
-Session::start();
-SecurityHeaders::applyHtmlPage();
-$cspNonce = SecurityHeaders::scriptNonce();
-SecurityHeaders::applyPublicCsp([
-    'include_nonce' => true,
-    'script_src' => ["'self'", 'https://unpkg.com'],
-    'style_src' => ["'self'", "'unsafe-inline'", 'https://unpkg.com'],
-    'img_src' => ["'self'", 'data:', 'blob:', 'https://tile.openstreetmap.org', 'https://*.tile.openstreetmap.org'],
-    'font_src' => ["'self'", 'data:'],
-    'connect_src' => ["'self'"],
-    'frame_src' => ["'self'"],
-    'frame_ancestors' => ["'self'"],
-]);
-
-if (Session::isExpiredByInactivity()) {
-    Session::destroy();
-    header('Location: /index.php?motivo=inatividade');
-    exit;
-}
-
-$appConfig = AppConfig::get();
-$usuarioAtivo = $_SESSION['usuario'] ?? null;
-$supportEmail = trim((string) ($appConfig['support_email'] ?? 'suporte@defesacivil.pa.gov.br'));
-
-if ($supportEmail === '') {
-    $supportEmail = 'suporte@defesacivil.pa.gov.br';
-}
-
-$supportEmailSafe = htmlspecialchars($supportEmail, ENT_QUOTES, 'UTF-8');
-
-if (is_array($usuarioAtivo)) {
-    Session::touchActivity();
-}
-
-$erro = '';
-$mensagemSessao = '';
-$emailInformado = '';
-$motivo = trim((string) ($_GET['motivo'] ?? ''));
-
-if ($motivo === 'inatividade') {
-    $mensagemSessao = 'Sua sessão foi encerrada por inatividade. Entre novamente para continuar.';
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim((string) ($_POST['email'] ?? ''));
-    $senha = (string) ($_POST['senha'] ?? '');
-    $emailInformado = $email;
-
-    if (!Csrf::validateRequest()) {
-        $erro = Csrf::validationErrorMessage();
-    } else {
-        $loginThrottleKey = LoginRateLimiter::keyForRequest();
-
-        if (LoginRateLimiter::isBlocked($loginThrottleKey)) {
-            $minutosRestantes = max(1, (int) ceil(LoginRateLimiter::retryAfterSeconds($loginThrottleKey) / 60));
-            $erro = 'Muitas tentativas de acesso. Aguarde ' . $minutosRestantes . ' minuto(s) e tente novamente.';
-        } elseif (Auth::login($email, $senha)) {
-            LoginRateLimiter::clear($loginThrottleKey);
-            $usuario = $_SESSION['usuario'] ?? null;
-
-            if (is_array($usuario) && !empty($usuario['id']) && !empty($usuario['nome'])) {
-                HistoricoService::registrar(
-                    (int) $usuario['id'],
-                    (string) $usuario['nome'],
-                    'LOGIN_SISTEMA',
-                    'Realizou login no sistema',
-                    'Origem: tela inicial publica'
-                );
-            }
-
-            header('Location: /pages/painel.php');
-            exit;
-        } else {
-            LoginRateLimiter::registerFailure($loginThrottleKey);
-            usleep(250000);
-
-            if (LoginRateLimiter::isBlocked($loginThrottleKey)) {
-                $erro = 'Muitas tentativas de acesso. Aguarde alguns minutos antes de tentar novamente.';
-            } else {
-                $erro = 'Usuario ou senha invalidos.';
-            }
-        }
-    }
-}
-$db = Database::getConnection();
-
-$eventosDisponiveis = AlertaFormHelper::eventos();
-$gravidadesDisponiveis = AlertaFormHelper::niveis();
-$fontesDisponiveis = array_values(array_unique(array_merge(['MANUAL'], AlertaFormHelper::fontes())));
-sort($fontesDisponiveis, SORT_NATURAL | SORT_FLAG_CASE);
-
-$stmtTerritorios = $db->query("
-    SELECT cod_ibge, municipio, regiao_integracao
-    FROM municipios_regioes_pa
-    WHERE cod_ibge IS NOT NULL
-      AND cod_ibge <> ''
-      AND municipio IS NOT NULL
-      AND municipio <> ''
-      AND regiao_integracao IS NOT NULL
-      AND regiao_integracao <> ''
-      AND regiao_integracao <> 'regiao_integracao'
-    ORDER BY regiao_integracao, municipio
-");
-
-$regioesDisponiveis = [];
-$municipiosDisponiveis = [];
-
-foreach ($stmtTerritorios->fetchAll(PDO::FETCH_ASSOC) as $territorio) {
-    $regiao = trim((string) ($territorio['regiao_integracao'] ?? ''));
-    $municipio = trim((string) ($territorio['municipio'] ?? ''));
-    $codIbge = trim((string) ($territorio['cod_ibge'] ?? ''));
-
-    if ($regiao === '' || $municipio === '' || $codIbge === '') {
-        continue;
-    }
-
-    $regioesDisponiveis[$regiao] = true;
-    $municipiosDisponiveis[] = [
-        'cod_ibge' => $codIbge,
-        'municipio' => $municipio,
-        'regiao' => $regiao,
-    ];
-}
-
-$regioesDisponiveis = array_keys($regioesDisponiveis);
-sort($regioesDisponiveis, SORT_NATURAL | SORT_FLAG_CASE);
-
-$totalAtivos = (int) $db->query("
-    SELECT COUNT(*)
-    FROM alertas
-    WHERE status = 'ATIVO'
-")->fetchColumn();
-
-$totalAlertasMapeados = (int) $db->query("
-    SELECT COUNT(*)
-    FROM alertas
-    WHERE status = 'ATIVO'
-      AND area_geojson IS NOT NULL
-      AND area_geojson <> ''
-")->fetchColumn();
-
-$alertaMaisRecente = $db->query("
-    SELECT numero, tipo_evento, data_alerta
-    FROM alertas
-    WHERE status = 'ATIVO'
-    ORDER BY COALESCE(inicio_alerta, CONCAT(data_alerta, ' 00:00:00')) DESC, numero DESC
-    LIMIT 1
-")->fetch(PDO::FETCH_ASSOC) ?: null;
-
-$stmtAlertasPublicos = $db->query("
-    SELECT
-        a.id,
-        a.numero,
-        a.fonte,
-        a.tipo_evento,
-        a.nivel_gravidade,
-        a.data_alerta,
-        a.inicio_alerta,
-        a.fim_alerta,
-        COUNT(DISTINCT am.municipio_codigo) AS total_municipios,
-        GROUP_CONCAT(DISTINCT mr.regiao_integracao ORDER BY mr.regiao_integracao SEPARATOR ', ') AS regioes
-    FROM alertas a
-    LEFT JOIN alerta_municipios am
-        ON am.alerta_id = a.id
-    LEFT JOIN municipios_regioes_pa mr
-        ON mr.cod_ibge = am.municipio_codigo
-    WHERE a.status = 'ATIVO'
-    GROUP BY
-        a.id,
-        a.numero,
-        a.fonte,
-        a.tipo_evento,
-        a.nivel_gravidade,
-        a.data_alerta,
-        a.inicio_alerta,
-        a.fim_alerta
-    ORDER BY
-        CASE a.nivel_gravidade
-            WHEN 'EXTREMO' THEN 5
-            WHEN 'MUITO ALTO' THEN 4
-            WHEN 'ALTO' THEN 3
-            WHEN 'MODERADO' THEN 2
-            WHEN 'BAIXO' THEN 1
-            ELSE 0
-        END DESC,
-        COALESCE(a.inicio_alerta, CONCAT(a.data_alerta, ' 00:00:00')) DESC,
-        a.numero DESC
-    LIMIT 12
-");
-
-$alertasPublicos = $stmtAlertasPublicos->fetchAll(PDO::FETCH_ASSOC);
-
-$analises = [
-    [
-        'slug' => 'temporal',
-        'kicker' => 'Temporal',
-        'titulo' => 'Leitura temporal',
-        'descricao' => 'Avalia sazonalidade, frequência por período do dia e variação anual dos alertas.',
-        'nivel' => 'Operacional / Tático',
-        'filtros' => ['Ano', 'Mês', 'Região', 'Município', 'Evento'],
-        'href' => '/pages/analises/temporal.php',
-        'graficos' => [
-            'Sazonalidade mensal',
-            'Comparativo multievento',
-            'Distribuição mensal por evento',
-            'Evolução do período',
-            'Evolução anual',
-            'Alertas cancelados por ano',
-            'Frequência por período do dia',
-        ],
-    ],
-    [
-        'slug' => 'severidade',
-        'kicker' => 'Severidade',
-        'titulo' => 'Severidade e impacto',
-        'descricao' => 'Resume distribuição por gravidade, duração média e concentração territorial.',
-        'nivel' => 'Operacional',
-        'filtros' => ['Ano', 'Mês', 'Região', 'Município'],
-        'href' => '/pages/analises/severidade.php',
-        'graficos' => [
-            'Distribuição por gravidade',
-            'Proporção entre faixas de severidade',
-            'Duração média por evento',
-            'Quantidade de alertas por evento',
-            'Municípios mais impactados',
-        ],
-    ],
-    [
-        'slug' => 'tipologia',
-        'kicker' => 'Tipologia',
-        'titulo' => 'Tipologia de eventos',
-        'descricao' => 'Mostra quais eventos predominam por região e sua correlação com severidade.',
-        'nivel' => 'Operacional',
-        'filtros' => ['Ano', 'Mês', 'Região', 'Município'],
-        'href' => '/pages/analises/tipologia.php',
-        'graficos' => [
-            'Distribuição por tipo de evento',
-            'Participação percentual dos eventos',
-            'Correlação entre tipologia e severidade',
-            'Tipologia por região',
-            'Sazonalidade dos eventos',
-            'Recorrência municipal por tipologia',
-        ],
-    ],
-    [
-        'slug' => 'indices',
-        'kicker' => 'Índices',
-        'titulo' => 'IRP e IPT',
-        'descricao' => 'Prioriza territórios com maior pressão operacional e maior intensidade territorial.',
-        'nivel' => 'Estratégico',
-        'filtros' => ['Ano', 'Mês', 'Região', 'Município'],
-        'href' => '/pages/analises/indice_risco.php',
-        'graficos' => [
-            'Ranking regional do IRP',
-            'Ranking municipal do IPT',
-            'Gráfico comparativo do IRP',
-            'Gráfico comparativo do IPT',
-        ],
-    ],
-];
-
-$analisesPreview = [
-    'temporal' => [
-        'hero_kicker' => 'Análise operacional',
-        'pagina_titulo' => 'Análise temporal de alertas',
-        'pagina_descricao' => 'Organize a leitura de sazonalidade, recorrência por período do dia e evolução histórica dos alertas no mesmo padrão visual das telas analíticas.',
-        'resumo' => [
-            ['label' => 'Sazonalidade', 'value' => 'Meses críticos', 'note' => 'Resume os períodos com maior concentração de alertas no recorte.'],
-            ['label' => 'Recorrência diária', 'value' => 'Turno predominante', 'note' => 'Mostra a faixa horária mais frequente nas ocorrências monitoradas.'],
-            ['label' => 'Histórico', 'value' => 'Comparativo anual', 'note' => 'Cruza a evolução temporal com os anos anteriores do recorte selecionado.'],
-        ],
-        'filtros_titulo' => 'Filtros do recorte temporal',
-        'filtros_texto' => 'Ano, mês, região, município e evento recalculam a leitura temporal e mantêm a comparação histórica coerente.',
-        'insights_titulo' => 'Leituras rápidas do período',
-        'insights_texto' => 'A página destaca pico sazonal, período do dia predominante, evento dominante e ano historicamente mais ativo.',
-        'insights' => [
-            ['label' => 'Pico sazonal', 'value' => 'Mês com maior volume', 'note' => 'Ajuda a localizar a janela de maior recorrência no recorte.'],
-            ['label' => 'Período do dia', 'value' => 'Faixa horária líder', 'note' => 'Indica o turno em que os alertas mais se concentram.'],
-            ['label' => 'Evento dominante', 'value' => 'Tipologia principal', 'note' => 'Aponta o evento mais recorrente da leitura temporal.'],
-            ['label' => 'Base histórica', 'value' => 'Ano mais ativo', 'note' => 'Mostra a referência anual com maior carga de alertas.'],
-        ],
-        'graficos_preview' => [
-            ['kicker' => 'Seção 3', 'titulo' => 'Sazonalidade mensal do recorte', 'descricao' => 'Gráfico principal com a distribuição mensal dos alertas.', 'variant' => 'wide'],
-            ['kicker' => 'Seção 4', 'titulo' => 'Comparativo mensal de eventos', 'descricao' => 'Compara o comportamento das tipologias ao longo do ano.', 'variant' => 'half'],
-            ['kicker' => 'Seção 5', 'titulo' => 'Sazonalidade do evento selecionado', 'descricao' => 'Detalha a distribuição mensal de um evento específico.', 'variant' => 'half'],
-            ['kicker' => 'Seção 6', 'titulo' => 'Evolução anual e alertas cancelados', 'descricao' => 'Consolida histórico anual, cancelamentos e recorrência por hora.', 'variant' => 'wide'],
-        ],
-        'rodape' => 'Ideal para entender janelas críticas antes de aprofundar a leitura territorial no mapa.',
-    ],
-    'severidade' => [
-        'hero_kicker' => 'Análise operacional',
-        'pagina_titulo' => 'Severidade e impacto dos alertas',
-        'pagina_descricao' => 'Consolide distribuição de gravidade, duração média dos eventos e impacto territorial no mesmo padrão visual das páginas analíticas recentes.',
-        'resumo' => [
-            ['label' => 'Severidade', 'value' => 'Faixas de gravidade', 'note' => 'Mostra como o recorte se distribui entre baixo, moderado, alto, muito alto e extremo.'],
-            ['label' => 'Impacto', 'value' => 'Abrangência territorial', 'note' => 'Resume a carga operacional observada por região e município.'],
-            ['label' => 'Contexto', 'value' => 'Eventos e duração', 'note' => 'Cruza severidade com tempo de permanência dos alertas ativos.'],
-        ],
-        'filtros_titulo' => 'Filtros do recorte analítico',
-        'filtros_texto' => 'Ano, mês, região e município recalculam automaticamente a leitura de severidade e impacto.',
-        'insights_titulo' => 'Leituras rápidas do período',
-        'insights_texto' => 'A página evidencia a severidade predominante, o evento mais recorrente, a maior duração média e o município mais impactado.',
-        'insights' => [
-            ['label' => 'Severidade predominante', 'value' => 'Faixa líder', 'note' => 'Sinaliza a faixa de gravidade com maior concentração no recorte.'],
-            ['label' => 'Evento recorrente', 'value' => 'Tipologia dominante', 'note' => 'Mostra qual evento mais pressiona a operação no período.'],
-            ['label' => 'Duração média', 'value' => 'Evento mais duradouro', 'note' => 'Indica os eventos que tendem a permanecer ativos por mais tempo.'],
-            ['label' => 'Impacto municipal', 'value' => 'Município mais afetado', 'note' => 'Destaca o território com maior concentração de alertas.'],
-        ],
-        'graficos_preview' => [
-            ['kicker' => 'Seção 3', 'titulo' => 'Distribuição final de severidade', 'descricao' => 'Gráfico principal com a quantidade absoluta por gravidade.', 'variant' => 'wide'],
-            ['kicker' => 'Seção 4', 'titulo' => 'Proporção por grau de severidade', 'descricao' => 'Leitura percentual da composição do recorte.', 'variant' => 'half'],
-            ['kicker' => 'Seção 5', 'titulo' => 'Duração média por tipo de evento', 'descricao' => 'Compara em horas os eventos com maior permanência.', 'variant' => 'half'],
-            ['kicker' => 'Seção 6', 'titulo' => 'Alertas por evento e municípios impactados', 'descricao' => 'Cruza volume de emissões com os territórios mais pressionados.', 'variant' => 'wide'],
-        ],
-        'rodape' => 'Recomendado para medir carga operacional e identificar territórios onde a resposta pode ficar mais pressionada.',
-    ],
-    'tipologia' => [
-        'hero_kicker' => 'Análise operacional',
-        'pagina_titulo' => 'Tipologia de alertas',
-        'pagina_descricao' => 'Observe os tipos de evento mais recorrentes, sua correlação com a severidade e a distribuição territorial por regiões e municípios.',
-        'resumo' => [
-            ['label' => 'Tipologias', 'value' => 'Eventos no recorte', 'note' => 'Resume as tipologias de alerta presentes no período analisado.'],
-            ['label' => 'Território', 'value' => 'Regiões e municípios', 'note' => 'Mostra onde cada evento aparece com maior recorrência.'],
-            ['label' => 'Severidade', 'value' => 'Correlação ativa', 'note' => 'Conecta tipologias com as faixas de gravidade observadas.'],
-        ],
-        'filtros_titulo' => 'Filtros do recorte analítico',
-        'filtros_texto' => 'Ano, mês, região e município recalculam automaticamente a leitura tipológica.',
-        'insights_titulo' => 'Leituras rápidas do período',
-        'insights_texto' => 'A página destaca a tipologia dominante e os territórios com maior recorrência para cada padrão de evento.',
-        'insights' => [
-            ['label' => 'Evento mais recorrente', 'value' => 'Tipologia principal', 'note' => 'Aponta o tipo de evento com maior volume no recorte.'],
-            ['label' => 'Recorrência regional', 'value' => 'Região líder', 'note' => 'Mostra a região com maior concentração tipológica.'],
-            ['label' => 'Recorrência municipal', 'value' => 'Município líder', 'note' => 'Evidencia o município mais impactado por aquele padrão de evento.'],
-        ],
-        'graficos_preview' => [
-            ['kicker' => 'Seção 3', 'titulo' => 'Correlação entre evento e severidade', 'descricao' => 'Matriz visual para comparar tipologias e faixas de gravidade.', 'variant' => 'wide'],
-            ['kicker' => 'Seção 4', 'titulo' => 'Distribuição das tipologias', 'descricao' => 'Mostra a composição total por tipo de evento.', 'variant' => 'half'],
-            ['kicker' => 'Seção 5', 'titulo' => 'Tipologia por região e sazonalidade', 'descricao' => 'Cruza regiões, eventos e comportamento temporal.', 'variant' => 'half'],
-            ['kicker' => 'Seção 6', 'titulo' => 'Recorrência municipal por tipologia', 'descricao' => 'Indica onde cada evento se concentra com maior intensidade.', 'variant' => 'wide'],
-        ],
-        'rodape' => 'Use essa página quando precisar entender padrões de evento e sua distribuição territorial com mais profundidade.',
-    ],
-    'indices' => [
-        'hero_kicker' => 'Inteligência estratégica',
-        'pagina_titulo' => 'Índices de risco (IRP / IPT)',
-        'pagina_descricao' => 'Acompanhe a pressão regional e territorial provocada pelos alertas multirriscos, com leitura consolidada por período e metodologia em modal.',
-        'resumo' => [
-            ['label' => 'IRP', 'value' => 'Pressão regional', 'note' => 'Mostra a carga operacional média nas regiões de integração.'],
-            ['label' => 'IPT', 'value' => 'Carga municipal', 'note' => 'Resume a intensidade territorial acumulada nos municípios.'],
-            ['label' => 'Contexto', 'value' => 'Priorização territorial', 'note' => 'Facilita decidir onde monitorar e responder primeiro.'],
-        ],
-        'filtros_titulo' => 'Filtros do recorte analítico',
-        'filtros_texto' => 'Ano, mês, região e município recalculam automaticamente o IRP e o IPT no mesmo painel.',
-        'insights_titulo' => 'Leituras rápidas do período',
-        'insights_texto' => 'A página destaca líderes de pressão, comportamento do recorte atual e acesso imediato à metodologia dos índices.',
-        'insights' => [
-            ['label' => 'Região com maior IRP', 'value' => 'Líder regional', 'note' => 'Indica a região com maior pressão operacional no recorte.'],
-            ['label' => 'Município com maior IPT', 'value' => 'Líder territorial', 'note' => 'Mostra o município com maior carga acumulada.'],
-            ['label' => 'Metodologia', 'value' => 'IRP e IPT explicados', 'note' => 'O painel possui modal próprio para interpretar os cálculos.'],
-        ],
-        'graficos_preview' => [
-            ['kicker' => 'Seção 3', 'titulo' => 'Ranking regional de pressão', 'descricao' => 'Gráfico principal comparando as regiões pelo IRP.', 'variant' => 'half'],
-            ['kicker' => 'Seção 4', 'titulo' => 'Ranking territorial de pressão', 'descricao' => 'Gráfico principal comparando municípios pelo IPT.', 'variant' => 'half'],
-            ['kicker' => 'Destaque', 'titulo' => 'Metodologia em modal', 'descricao' => 'A página traz explicação detalhada sobre como os índices são calculados.', 'variant' => 'wide'],
-        ],
-        'rodape' => 'Recomendado para priorização estratégica e decisão sobre onde a pressão multirriscos exige resposta mais imediata.',
-    ],
-];
-
-foreach ($analises as &$analise) {
-    $slugAnalise = (string) ($analise['slug'] ?? '');
-
-    if (isset($analisesPreview[$slugAnalise])) {
-        $analise['preview'] = $analisesPreview[$slugAnalise];
-    }
-}
-unset($analise);
-$cssPainelBasePath = __DIR__ . '/assets/css/painel.css';
-$cssPainelPagePath = __DIR__ . '/assets/css/pages/painel.css';
-$cssAlertasFormPath = __DIR__ . '/assets/css/pages/alertas-form.css';
-$cssAnalisesIndexPath = __DIR__ . '/assets/css/pages/analises-index.css';
-$cssMapaMultirriscosPath = __DIR__ . '/assets/css/mapa_multirriscos.css';
-$cssLoginPath = __DIR__ . '/assets/css/login.css';
-$jsMapaMultirriscosPath = __DIR__ . '/assets/js/pages/mapas-mapa_multirriscos.js';
-$jsAnaliseGlobalPath = __DIR__ . '/assets/js/analise-global.js';
-$cssPainelBaseVersion = (string) ((int) @filemtime($cssPainelBasePath));
-$cssPainelPageVersion = (string) ((int) @filemtime($cssPainelPagePath));
-$cssAlertasFormVersion = (string) ((int) @filemtime($cssAlertasFormPath));
-$cssAnalisesIndexVersion = (string) ((int) @filemtime($cssAnalisesIndexPath));
-$cssMapaMultirriscosVersion = (string) ((int) @filemtime($cssMapaMultirriscosPath));
-$cssLoginVersion = (string) ((int) @filemtime($cssLoginPath));
-$jsMapaMultirriscosVersion = (string) ((int) @filemtime($jsMapaMultirriscosPath));
-$jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
-?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<title><?= htmlspecialchars($appConfig['name'], ENT_QUOTES, 'UTF-8') ?> - Defesa Civil do Estado do Pará</title>
+<title>Sistema Inteligente Multirriscos - Defesa Civil do Estado do Pará</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-site-verification" content="n12nK-Z0mLxGkBdZgzgKzSED9LVYlsNL-8JJKt-Vo9g">
 <link rel="icon" type="image/x-icon" href="/assets/images/logo.cbmpa.ico">
 <link rel="preconnect" href="https://unpkg.com" crossorigin>
 <link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin>
 <link rel="stylesheet" href="/assets/css/base.css">
-<link rel="stylesheet" href="/assets/css/painel.css?v=<?= htmlspecialchars($cssPainelBaseVersion, ENT_QUOTES, 'UTF-8') ?>">
-<link rel="stylesheet" href="/assets/css/pages/painel.css?v=<?= htmlspecialchars($cssPainelPageVersion, ENT_QUOTES, 'UTF-8') ?>">
-<link rel="stylesheet" href="/assets/css/pages/alertas-form.css?v=<?= htmlspecialchars($cssAlertasFormVersion, ENT_QUOTES, 'UTF-8') ?>">
-<link rel="stylesheet" href="/assets/css/pages/analises-index.css?v=<?= htmlspecialchars($cssAnalisesIndexVersion, ENT_QUOTES, 'UTF-8') ?>">
-<link rel="stylesheet" href="/assets/css/mapa_multirriscos.css?v=<?= htmlspecialchars($cssMapaMultirriscosVersion, ENT_QUOTES, 'UTF-8') ?>">
+<link rel="stylesheet" href="/assets/css/painel.css?v=1774403638">
+<link rel="stylesheet" href="/assets/css/pages/painel.css?v=1774657679">
+<link rel="stylesheet" href="/assets/css/pages/alertas-form.css?v=1774658444">
+<link rel="stylesheet" href="/assets/css/pages/analises-index.css?v=1774630669">
+<link rel="stylesheet" href="/assets/css/mapa_multirriscos.css?v=1774657687">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link rel="stylesheet" href="/assets/css/login.css?v=<?= htmlspecialchars($cssLoginVersion, ENT_QUOTES, 'UTF-8') ?>">
+<link rel="stylesheet" href="/assets/css/login.css?v=1774635146">
 </head>
 <body class="public-home-page">
 <header class="public-topbar">
     <a href="#inicio" class="public-brand">
         <img src="/assets/images/logo-cedec.png" alt="CEDEC-PA">
         <span class="public-brand-copy">
-            <small><?= htmlspecialchars($appConfig['name'], ENT_QUOTES, 'UTF-8') ?></small>
-            <strong><?= htmlspecialchars($appConfig['institution'], ENT_QUOTES, 'UTF-8') ?></strong>
-            <em><?= htmlspecialchars($appConfig['department'], ENT_QUOTES, 'UTF-8') ?></em>
+            <small>Sistema Inteligente Multirriscos</small>
+            <strong>Defesa Civil do Estado do Pará</strong>
+            <em>Coordenadoria Estadual de Protecao e Defesa Civil</em>
         </span>
     </a>
 
@@ -442,11 +35,8 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
     </nav>
 
     <div class="public-topbar-actions">
-        <span class="topbar-pill topbar-pill-neutral">Versão <?= htmlspecialchars($appConfig['version'], ENT_QUOTES, 'UTF-8') ?></span>
-        <?php if (is_array($usuarioAtivo) && !empty($usuarioAtivo['nome'])): ?>
-            <a href="/pages/painel.php" class="btn btn-primary">Acessar painel</a>
-        <?php endif; ?>
-    </div>
+        <span class="topbar-pill topbar-pill-neutral">Versão 1.1.0</span>
+            </div>
 </header>
 
 <main class="public-home" id="inicio">
@@ -461,64 +51,41 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
             <div class="public-hero-actions">
                 <a href="#mapa-publico" class="btn btn-primary">Explorar o mapa</a>
                 <a href="#alertas-ativos" class="btn btn-secondary">Baixar alertas ativos</a>
-                <?php if (is_array($usuarioAtivo) && !empty($usuarioAtivo['nome'])): ?>
-                    <a href="/pages/painel.php" class="btn btn-secondary">Abrir ambiente operacional</a>
-                <?php else: ?>
-                    <a href="#analises-publicas" class="btn btn-secondary">Ver análise</a>
-                <?php endif; ?>
-                <button type="button" class="btn btn-secondary" data-open-info>Sobre o sistema</button>
+                                    <a href="#analises-publicas" class="btn btn-secondary">Ver análise</a>
+                                <button type="button" class="btn btn-secondary" data-open-info>Sobre o sistema</button>
             </div>
 
-            <?php if ($mensagemSessao !== ''): ?>
-                <div class="public-banner public-banner-warning"><?= htmlspecialchars($mensagemSessao, ENT_QUOTES, 'UTF-8') ?></div>
-            <?php endif; ?>
-
+            
             <div class="public-highlight-grid">
                 <article class="public-highlight-card">
                     <span class="alerta-summary-label">Alertas ativos</span>
-                    <strong class="alerta-summary-value"><?= $totalAtivos ?></strong>
+                    <strong class="alerta-summary-value">13</strong>
                     <span class="alerta-summary-note">Alertas vigentes e disponíveis para consulta e download em PDF.</span>
                 </article>
 
                 <article class="public-highlight-card">
                     <span class="alerta-summary-label">Cobertura territorial</span>
-                    <strong class="alerta-summary-value"><?= count($municipiosDisponiveis) ?> municípios</strong>
-                    <span class="alerta-summary-note"><?= count($regioesDisponiveis) ?> regiões de integração monitoradas.</span>
+                    <strong class="alerta-summary-value">144 municípios</strong>
+                    <span class="alerta-summary-note">12 regiões de integração monitoradas.</span>
                 </article>
 
                 <article class="public-highlight-card">
                     <span class="alerta-summary-label">Mapa pronto</span>
-                    <strong class="alerta-summary-value"><?= $totalAlertasMapeados ?> áreas mapeadas</strong>
+                    <strong class="alerta-summary-value">13 áreas mapeadas</strong>
                     <span class="alerta-summary-note">Leitura cartográfica com foco territorial e filtros analíticos.</span>
                 </article>
 
                 <article class="public-highlight-card">
                     <span class="alerta-summary-label">Último alerta ativo</span>
-                    <strong class="alerta-summary-value"><?= htmlspecialchars((string) ($alertaMaisRecente['numero'] ?? 'Sem alerta ativo'), ENT_QUOTES, 'UTF-8') ?></strong>
+                    <strong class="alerta-summary-value">233/2026</strong>
                     <span class="alerta-summary-note">
-                        <?= $alertaMaisRecente
-                            ? htmlspecialchars((string) ($alertaMaisRecente['tipo_evento'] ?? ''), ENT_QUOTES, 'UTF-8') . ' em ' . htmlspecialchars(TimeHelper::formatDate((string) ($alertaMaisRecente['data_alerta'] ?? null)), ENT_QUOTES, 'UTF-8')
-                            : 'Não há registros ativos no momento.' ?>
-                    </span>
+                        Chuvas Intensas em 27/03/2026                    </span>
                 </article>
             </div>
         </div>
 
         <aside class="public-access-card public-access-summary-card" id="acesso-sistema">
-            <?php if (is_array($usuarioAtivo) && !empty($usuarioAtivo['nome'])): ?>
-                <span class="public-access-kicker">Sessão ativa</span>
-                <h2><?= htmlspecialchars((string) $usuarioAtivo['nome'], ENT_QUOTES, 'UTF-8') ?></h2>
-                <p>Seu acesso autenticado está ativo. Use os atalhos abaixo para entrar no ambiente operacional ou encerrar a sessão.</p>
-                <div class="public-access-meta">
-                    <span class="analises-chip">Perfil: <?= htmlspecialchars((string) ($usuarioAtivo['perfil'] ?? ''), ENT_QUOTES, 'UTF-8') ?></span>
-                    <span class="analises-chip">Timeout: <?= (int) (Session::inactivityTimeout() / 60) ?> min</span>
-                </div>
-                <div class="public-access-actions">
-                    <a href="/pages/painel.php" class="btn btn-primary">Ir para o painel</a>
-                    <a href="/logout.php" class="btn btn-secondary">Encerrar sessão</a>
-                </div>
-            <?php else: ?>
-                <span class="public-access-kicker">Acesso protegido</span>
+                            <span class="public-access-kicker">Acesso protegido</span>
                 <h2 class="public-access-title-protected">Ambiente operacional com autenticação</h2>
                 <p>O visitante consulta o painel aberto. O usuário autenticado acessa cadastro, gestão, histórico e os painéis analíticos completos do sistema.</p>
                 <div class="public-access-meta">
@@ -536,17 +103,15 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                         <span>Cadastro e gerenciamento operacional continuam reservados aos perfis internos do sistema.</span>
                     </article>
                 </div>
-                <?php if ($erro !== ''): ?>
-                    <div class="public-banner public-banner-danger public-auth-banner"><?= htmlspecialchars($erro, ENT_QUOTES, 'UTF-8') ?></div>
-                <?php endif; ?>
-
+                                    <div class="public-banner public-banner-danger public-auth-banner">Usuario ou senha invalidos.</div>
+                
                 <form method="post" class="public-access-login-form">
-                    <?= Csrf::inputField() ?>
-
+                    <input type="hidden" name="csrf_token" value="f620ed5a9c3c081b410dc915c15e7ea877cc197d90cc0144f2099e0c60c3d71d">
+<input type="hidden" name="request_token" value="e918d6a1ac6d4b7fd75b6fae1fdc3dccd893c38c2fc36c39e21483928bf1fdb0">
                     <div class="public-access-login-grid">
                         <div class="public-auth-field">
                             <label for="login-email">E-mail institucional</label>
-                            <input type="email" id="login-email" name="email" value="<?= htmlspecialchars($emailInformado, ENT_QUOTES, 'UTF-8') ?>" required autocomplete="username">
+                            <input type="email" id="login-email" name="email" value="admin@teste.local" required autocomplete="username">
                         </div>
 
                         <div class="public-auth-field">
@@ -563,10 +128,9 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
 
                 <div class="public-access-support">
                     <strong>Solicitação de acesso</strong>
-                    <a href="mailto:<?= $supportEmailSafe ?>"><?= $supportEmailSafe ?></a>
+                    <a href="mailto:dgr.cedecpa@gmail.com">dgr.cedecpa@gmail.com</a>
                 </div>
-            <?php endif; ?>
-        </aside>
+                    </aside>
     </section>
 
     <section class="dashboard alerta-form-shell public-section" id="mapa-publico">
@@ -582,13 +146,13 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
             <div class="alerta-form-summary">
                 <div class="alerta-summary-card">
                     <span class="alerta-summary-label">Monitoramento ativo</span>
-                    <span class="alerta-summary-value" id="hero-alertas-ativos"><?= $totalAtivos ?> alertas</span>
+                    <span class="alerta-summary-value" id="hero-alertas-ativos">13 alertas</span>
                     <span class="alerta-summary-note">Total de alertas ativos disponíveis para leitura territorial nesta tela pública.</span>
                 </div>
                 <div class="alerta-summary-card">
                     <span class="alerta-summary-label">Base territorial</span>
-                    <span class="alerta-summary-value"><?= count($municipiosDisponiveis) ?> municípios</span>
-                    <span class="alerta-summary-note">Cobertura completa em <?= count($regioesDisponiveis) ?> regiões de integração.</span>
+                    <span class="alerta-summary-value">144 municípios</span>
+                    <span class="alerta-summary-note">Cobertura completa em 12 regiões de integração.</span>
                 </div>
                 <div class="alerta-summary-card">
                     <span class="alerta-summary-label">Foco atual</span>
@@ -621,37 +185,65 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                                 <label for="tipo_evento">Tipo de evento</label>
                                 <select id="tipo_evento" name="tipo_evento">
                                     <option value="">Todos os eventos</option>
-                                    <?php foreach ($eventosDisponiveis as $evento): ?>
-                                        <option value="<?= htmlspecialchars($evento, ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($evento, ENT_QUOTES, 'UTF-8') ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+                                                                            <option value="Chuvas Intensas">Chuvas Intensas</option>
+                                                                            <option value="Tempestade">Tempestade</option>
+                                                                            <option value="Vento Costeiros">Vento Costeiros</option>
+                                                                            <option value="Movimento de Massa">Movimento de Massa</option>
+                                                                            <option value="Inundação">Inundação</option>
+                                                                            <option value="Alagamento">Alagamento</option>
+                                                                            <option value="Baixa Umidade">Baixa Umidade</option>
+                                                                            <option value="Ventania">Ventania</option>
+                                                                            <option value="Acumulado de Chuva">Acumulado de Chuva</option>
+                                                                            <option value="Incêndio Florestal">Incêndio Florestal</option>
+                                                                            <option value="Qualidade do Ar">Qualidade do Ar</option>
+                                                                            <option value="Ondas de Calor">Ondas de Calor</option>
+                                                                            <option value="Maré Alta">Maré Alta</option>
+                                                                    </select>
                             </div>
                             <div class="form-group">
                                 <label for="gravidade">Gravidade</label>
                                 <select id="gravidade" name="gravidade">
                                     <option value="">Todas as gravidades</option>
-                                    <?php foreach ($gravidadesDisponiveis as $gravidade): ?>
-                                        <option value="<?= htmlspecialchars($gravidade, ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($gravidade, ENT_QUOTES, 'UTF-8') ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+                                                                            <option value="BAIXO">BAIXO</option>
+                                                                            <option value="MODERADO">MODERADO</option>
+                                                                            <option value="ALTO">ALTO</option>
+                                                                            <option value="MUITO ALTO">MUITO ALTO</option>
+                                                                            <option value="EXTREMO">EXTREMO</option>
+                                                                    </select>
                             </div>
                             <div class="form-group">
                                 <label for="fonte">Fonte</label>
                                 <select id="fonte" name="fonte">
                                     <option value="">Todas as fontes</option>
-                                    <?php foreach ($fontesDisponiveis as $fonte): ?>
-                                        <option value="<?= htmlspecialchars($fonte, ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($fonte, ENT_QUOTES, 'UTF-8') ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+                                                                            <option value="ANA">ANA</option>
+                                                                            <option value="BDQUEIMADAS">BDQUEIMADAS</option>
+                                                                            <option value="CEMADEN">CEMADEN</option>
+                                                                            <option value="CENSIPAM">CENSIPAM</option>
+                                                                            <option value="INMET">INMET</option>
+                                                                            <option value="MANUAL">MANUAL</option>
+                                                                            <option value="MARINHA">MARINHA</option>
+                                                                            <option value="SEMAS">SEMAS</option>
+                                                                            <option value="SGB">SGB</option>
+                                                                            <option value="SIMD">SIMD</option>
+                                                                    </select>
                             </div>
                             <div class="form-group">
                                 <label for="regiao">Região</label>
                                 <select id="regiao" name="regiao">
                                     <option value="">Todas as regiões</option>
-                                    <?php foreach ($regioesDisponiveis as $regiao): ?>
-                                        <option value="<?= htmlspecialchars($regiao, ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($regiao, ENT_QUOTES, 'UTF-8') ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+                                                                            <option value="Araguaia">Araguaia</option>
+                                                                            <option value="Baixo Amazonas">Baixo Amazonas</option>
+                                                                            <option value="Carajás">Carajás</option>
+                                                                            <option value="Guajará">Guajará</option>
+                                                                            <option value="Guamá">Guamá</option>
+                                                                            <option value="Lago de Tucuruí">Lago de Tucuruí</option>
+                                                                            <option value="Marajó">Marajó</option>
+                                                                            <option value="Rio Caeté">Rio Caeté</option>
+                                                                            <option value="Rio Capim">Rio Capim</option>
+                                                                            <option value="Tapajós">Tapajós</option>
+                                                                            <option value="Tocantins">Tocantins</option>
+                                                                            <option value="Xingu">Xingu</option>
+                                                                    </select>
                             </div>
                             <div class="form-group">
                                 <label for="municipio">Município</label>
@@ -842,7 +434,7 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
             <div class="alerta-form-summary">
                 <div class="alerta-summary-card">
                     <span class="alerta-summary-label">Módulos integrados</span>
-                    <span class="alerta-summary-value"><?= count($analises) ?> leituras</span>
+                    <span class="alerta-summary-value">4 leituras</span>
                     <span class="alerta-summary-note">Temporal, severidade, tipologia e índices em um mesmo fluxo.</span>
                 </div>
                 <div class="alerta-summary-card">
@@ -911,23 +503,63 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
                     </header>
 
                     <div class="analises-insight-grid public-analises-insight-grid">
-                        <?php foreach ($analises as $analise): ?>
-                            <a
-                                href="<?= htmlspecialchars((string) $analise['href'], ENT_QUOTES, 'UTF-8') ?>?embed=1"
-                                data-href-base="<?= htmlspecialchars((string) $analise['href'], ENT_QUOTES, 'UTF-8') ?>"
+                                                    <a
+                                href="/pages/analises/temporal.php?embed=1"
+                                data-href-base="/pages/analises/temporal.php"
                                 data-analise-link="1"
                                 class="alerta-summary-card analises-mini-card public-analise-card"
                             >
-                                <span class="alerta-summary-label"><?= htmlspecialchars($analise['kicker'], ENT_QUOTES, 'UTF-8') ?></span>
-                                <span class="alerta-summary-value"><?= htmlspecialchars($analise['titulo'], ENT_QUOTES, 'UTF-8') ?></span>
-                                <span class="alerta-summary-note"><?= htmlspecialchars($analise['descricao'], ENT_QUOTES, 'UTF-8') ?></span>
+                                <span class="alerta-summary-label">Temporal</span>
+                                <span class="alerta-summary-value">Leitura temporal</span>
+                                <span class="alerta-summary-note">Avalia sazonalidade, frequência por período do dia e variação anual dos alertas.</span>
                                 <span class="public-analise-card-footer">
-                                    <span class="analises-chip"><?= count($analise['graficos']) ?> gráficos</span>
+                                    <span class="analises-chip">7 gráficos</span>
                                     <span class="public-analise-card-link">Abrir página pública</span>
                                 </span>
                             </a>
-                        <?php endforeach; ?>
-                    </div>
+                                                    <a
+                                href="/pages/analises/severidade.php?embed=1"
+                                data-href-base="/pages/analises/severidade.php"
+                                data-analise-link="1"
+                                class="alerta-summary-card analises-mini-card public-analise-card"
+                            >
+                                <span class="alerta-summary-label">Severidade</span>
+                                <span class="alerta-summary-value">Severidade e impacto</span>
+                                <span class="alerta-summary-note">Resume distribuição por gravidade, duração média e concentração territorial.</span>
+                                <span class="public-analise-card-footer">
+                                    <span class="analises-chip">5 gráficos</span>
+                                    <span class="public-analise-card-link">Abrir página pública</span>
+                                </span>
+                            </a>
+                                                    <a
+                                href="/pages/analises/tipologia.php?embed=1"
+                                data-href-base="/pages/analises/tipologia.php"
+                                data-analise-link="1"
+                                class="alerta-summary-card analises-mini-card public-analise-card"
+                            >
+                                <span class="alerta-summary-label">Tipologia</span>
+                                <span class="alerta-summary-value">Tipologia de eventos</span>
+                                <span class="alerta-summary-note">Mostra quais eventos predominam por região e sua correlação com severidade.</span>
+                                <span class="public-analise-card-footer">
+                                    <span class="analises-chip">6 gráficos</span>
+                                    <span class="public-analise-card-link">Abrir página pública</span>
+                                </span>
+                            </a>
+                                                    <a
+                                href="/pages/analises/indice_risco.php?embed=1"
+                                data-href-base="/pages/analises/indice_risco.php"
+                                data-analise-link="1"
+                                class="alerta-summary-card analises-mini-card public-analise-card"
+                            >
+                                <span class="alerta-summary-label">Índices</span>
+                                <span class="alerta-summary-value">IRP e IPT</span>
+                                <span class="alerta-summary-note">Prioriza territórios com maior pressão operacional e maior intensidade territorial.</span>
+                                <span class="public-analise-card-footer">
+                                    <span class="analises-chip">4 gráficos</span>
+                                    <span class="public-analise-card-link">Abrir página pública</span>
+                                </span>
+                            </a>
+                                            </div>
 
                     <div class="alerta-callout analises-info-callout">
                         <strong>Uso recomendado</strong>
@@ -947,66 +579,355 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
             </div>
 
             <div class="public-section-meta">
-                <span class="analises-chip"><?= count($alertasPublicos) ?> alertas destacados</span>
-                <span class="analises-chip"><?= $totalAtivos ?> PDFs ativos</span>
+                <span class="analises-chip">12 alertas destacados</span>
+                <span class="analises-chip">13 PDFs ativos</span>
             </div>
         </div>
 
-        <?php if (!$alertasPublicos): ?>
-            <div class="multirrisco-empty-box">Não há alertas ativos disponíveis para download no momento.</div>
-        <?php else: ?>
-            <div class="public-alert-grid">
-                <?php foreach ($alertasPublicos as $alerta): ?>
-                    <article class="public-alert-card">
+                    <div class="public-alert-grid">
+                                    <article class="public-alert-card">
                         <div class="public-alert-head">
                             <div>
-                                <span class="public-alert-number"><?= htmlspecialchars((string) $alerta['numero'], ENT_QUOTES, 'UTF-8') ?></span>
-                                <h3><?= htmlspecialchars((string) $alerta['tipo_evento'], ENT_QUOTES, 'UTF-8') ?></h3>
+                                <span class="public-alert-number">231/2026</span>
+                                <h3>Maré Alta</h3>
                             </div>
-                            <span class="public-alert-severity severity-<?= strtolower(str_replace(' ', '-', (string) $alerta['nivel_gravidade'])) ?>">
-                                <?= htmlspecialchars((string) $alerta['nivel_gravidade'], ENT_QUOTES, 'UTF-8') ?>
-                            </span>
+                            <span class="public-alert-severity severity-extremo">
+                                EXTREMO                            </span>
                         </div>
 
                         <div class="public-alert-meta">
-                            <span><strong>Fonte:</strong> <?= htmlspecialchars((string) $alerta['fonte'], ENT_QUOTES, 'UTF-8') ?></span>
-                            <span><strong>Data:</strong> <?= htmlspecialchars(TimeHelper::formatDate((string) ($alerta['data_alerta'] ?? null)), ENT_QUOTES, 'UTF-8') ?></span>
-                            <span><strong>Vigência:</strong> <?= htmlspecialchars(TimeHelper::formatDateTime((string) ($alerta['inicio_alerta'] ?? null)), ENT_QUOTES, 'UTF-8') ?> até <?= htmlspecialchars(TimeHelper::formatDateTime((string) ($alerta['fim_alerta'] ?? null)), ENT_QUOTES, 'UTF-8') ?></span>
-                            <span><strong>Municípios:</strong> <?= (int) ($alerta['total_municipios'] ?? 0) ?></span>
+                            <span><strong>Fonte:</strong> CEMADEN</span>
+                            <span><strong>Data:</strong> 25/03/2026</span>
+                            <span><strong>Vigência:</strong> 25/03/2026 19:38 até 26/03/2026 19:38</span>
+                            <span><strong>Municípios:</strong> 35</span>
                         </div>
 
                         <p class="public-alert-region">
                             <strong>Regiões:</strong>
-                            <?= htmlspecialchars((string) ($alerta['regioes'] ?: 'Não informadas'), ENT_QUOTES, 'UTF-8') ?>
-                        </p>
+                            Araguaia, Carajás, Lago de Tucuruí, Rio Capim, Tapajós, Xingu                        </p>
 
                         <div class="public-alert-actions">
-                            <a href="/pages/alertas/pdf.php?id=<?= (int) $alerta['id'] ?>&download=1" class="btn btn-primary" target="_blank" rel="noopener">
+                            <a href="/pages/alertas/pdf.php?id=563&download=1" class="btn btn-primary" target="_blank" rel="noopener">
                                 Baixar PDF do alerta
                             </a>
                         </div>
                     </article>
-                <?php endforeach; ?>
-            </div>
-        <?php endif; ?>
-    </section>
+                                    <article class="public-alert-card">
+                        <div class="public-alert-head">
+                            <div>
+                                <span class="public-alert-number">203/2026</span>
+                                <h3>Inundação</h3>
+                            </div>
+                            <span class="public-alert-severity severity-muito-alto">
+                                MUITO ALTO                            </span>
+                        </div>
+
+                        <div class="public-alert-meta">
+                            <span><strong>Fonte:</strong> SIMD</span>
+                            <span><strong>Data:</strong> 18/03/2026</span>
+                            <span><strong>Vigência:</strong> 18/03/2026 18:00 até 24/03/2026 18:00</span>
+                            <span><strong>Municípios:</strong> 1</span>
+                        </div>
+
+                        <p class="public-alert-region">
+                            <strong>Regiões:</strong>
+                            Araguaia                        </p>
+
+                        <div class="public-alert-actions">
+                            <a href="/pages/alertas/pdf.php?id=535&download=1" class="btn btn-primary" target="_blank" rel="noopener">
+                                Baixar PDF do alerta
+                            </a>
+                        </div>
+                    </article>
+                                    <article class="public-alert-card">
+                        <div class="public-alert-head">
+                            <div>
+                                <span class="public-alert-number">233/2026</span>
+                                <h3>Chuvas Intensas</h3>
+                            </div>
+                            <span class="public-alert-severity severity-alto">
+                                ALTO                            </span>
+                        </div>
+
+                        <div class="public-alert-meta">
+                            <span><strong>Fonte:</strong> INMET</span>
+                            <span><strong>Data:</strong> 27/03/2026</span>
+                            <span><strong>Vigência:</strong> 27/03/2026 08:52 até 27/03/2026 23:59</span>
+                            <span><strong>Municípios:</strong> 33</span>
+                        </div>
+
+                        <p class="public-alert-region">
+                            <strong>Regiões:</strong>
+                            Araguaia, Baixo Amazonas, Marajó, Tapajós, Xingu                        </p>
+
+                        <div class="public-alert-actions">
+                            <a href="/pages/alertas/pdf.php?id=565&download=1" class="btn btn-primary" target="_blank" rel="noopener">
+                                Baixar PDF do alerta
+                            </a>
+                        </div>
+                    </article>
+                                    <article class="public-alert-card">
+                        <div class="public-alert-head">
+                            <div>
+                                <span class="public-alert-number">230/2026</span>
+                                <h3>Chuvas Intensas</h3>
+                            </div>
+                            <span class="public-alert-severity severity-alto">
+                                ALTO                            </span>
+                        </div>
+
+                        <div class="public-alert-meta">
+                            <span><strong>Fonte:</strong> INMET</span>
+                            <span><strong>Data:</strong> 23/03/2026</span>
+                            <span><strong>Vigência:</strong> 23/03/2026 10:00 até 24/03/2026 10:00</span>
+                            <span><strong>Municípios:</strong> 1</span>
+                        </div>
+
+                        <p class="public-alert-region">
+                            <strong>Regiões:</strong>
+                            Carajás                        </p>
+
+                        <div class="public-alert-actions">
+                            <a href="/pages/alertas/pdf.php?id=562&download=1" class="btn btn-primary" target="_blank" rel="noopener">
+                                Baixar PDF do alerta
+                            </a>
+                        </div>
+                    </article>
+                                    <article class="public-alert-card">
+                        <div class="public-alert-head">
+                            <div>
+                                <span class="public-alert-number">228/2026</span>
+                                <h3>Inundação</h3>
+                            </div>
+                            <span class="public-alert-severity severity-alto">
+                                ALTO                            </span>
+                        </div>
+
+                        <div class="public-alert-meta">
+                            <span><strong>Fonte:</strong> SIMD</span>
+                            <span><strong>Data:</strong> 22/03/2026</span>
+                            <span><strong>Vigência:</strong> 22/03/2026 12:00 até 25/03/2026 12:00</span>
+                            <span><strong>Municípios:</strong> 1</span>
+                        </div>
+
+                        <p class="public-alert-region">
+                            <strong>Regiões:</strong>
+                            Carajás                        </p>
+
+                        <div class="public-alert-actions">
+                            <a href="/pages/alertas/pdf.php?id=560&download=1" class="btn btn-primary" target="_blank" rel="noopener">
+                                Baixar PDF do alerta
+                            </a>
+                        </div>
+                    </article>
+                                    <article class="public-alert-card">
+                        <div class="public-alert-head">
+                            <div>
+                                <span class="public-alert-number">225/2026</span>
+                                <h3>Chuvas Intensas</h3>
+                            </div>
+                            <span class="public-alert-severity severity-alto">
+                                ALTO                            </span>
+                        </div>
+
+                        <div class="public-alert-meta">
+                            <span><strong>Fonte:</strong> INMET</span>
+                            <span><strong>Data:</strong> 22/03/2026</span>
+                            <span><strong>Vigência:</strong> 22/03/2026 10:00 até 23/03/2026 23:59</span>
+                            <span><strong>Municípios:</strong> 59</span>
+                        </div>
+
+                        <p class="public-alert-region">
+                            <strong>Regiões:</strong>
+                            Araguaia, Baixo Amazonas, Carajás, Lago de Tucuruí, Rio Capim, Tapajós, Tocantins, Xingu                        </p>
+
+                        <div class="public-alert-actions">
+                            <a href="/pages/alertas/pdf.php?id=557&download=1" class="btn btn-primary" target="_blank" rel="noopener">
+                                Baixar PDF do alerta
+                            </a>
+                        </div>
+                    </article>
+                                    <article class="public-alert-card">
+                        <div class="public-alert-head">
+                            <div>
+                                <span class="public-alert-number">223/2026</span>
+                                <h3>Inundação</h3>
+                            </div>
+                            <span class="public-alert-severity severity-alto">
+                                ALTO                            </span>
+                        </div>
+
+                        <div class="public-alert-meta">
+                            <span><strong>Fonte:</strong> SIMD</span>
+                            <span><strong>Data:</strong> 21/03/2026</span>
+                            <span><strong>Vigência:</strong> 21/03/2026 19:30 até 24/03/2026 19:00</span>
+                            <span><strong>Municípios:</strong> 1</span>
+                        </div>
+
+                        <p class="public-alert-region">
+                            <strong>Regiões:</strong>
+                            Rio Capim                        </p>
+
+                        <div class="public-alert-actions">
+                            <a href="/pages/alertas/pdf.php?id=555&download=1" class="btn btn-primary" target="_blank" rel="noopener">
+                                Baixar PDF do alerta
+                            </a>
+                        </div>
+                    </article>
+                                    <article class="public-alert-card">
+                        <div class="public-alert-head">
+                            <div>
+                                <span class="public-alert-number">221/2026</span>
+                                <h3>Acumulado de Chuva</h3>
+                            </div>
+                            <span class="public-alert-severity severity-alto">
+                                ALTO                            </span>
+                        </div>
+
+                        <div class="public-alert-meta">
+                            <span><strong>Fonte:</strong> INMET</span>
+                            <span><strong>Data:</strong> 21/03/2026</span>
+                            <span><strong>Vigência:</strong> 21/03/2026 08:30 até 22/03/2026 10:00</span>
+                            <span><strong>Municípios:</strong> 58</span>
+                        </div>
+
+                        <p class="public-alert-region">
+                            <strong>Regiões:</strong>
+                            Araguaia, Carajás, Guamá, Lago de Tucuruí, Rio Caeté, Rio Capim, Tapajós, Xingu                        </p>
+
+                        <div class="public-alert-actions">
+                            <a href="/pages/alertas/pdf.php?id=553&download=1" class="btn btn-primary" target="_blank" rel="noopener">
+                                Baixar PDF do alerta
+                            </a>
+                        </div>
+                    </article>
+                                    <article class="public-alert-card">
+                        <div class="public-alert-head">
+                            <div>
+                                <span class="public-alert-number">226/2026</span>
+                                <h3>Chuvas Intensas</h3>
+                            </div>
+                            <span class="public-alert-severity severity-moderado">
+                                MODERADO                            </span>
+                        </div>
+
+                        <div class="public-alert-meta">
+                            <span><strong>Fonte:</strong> INMET</span>
+                            <span><strong>Data:</strong> 22/03/2026</span>
+                            <span><strong>Vigência:</strong> 22/03/2026 10:00 até 23/03/2026 23:59</span>
+                            <span><strong>Municípios:</strong> 144</span>
+                        </div>
+
+                        <p class="public-alert-region">
+                            <strong>Regiões:</strong>
+                            Araguaia, Baixo Amazonas, Carajás, Guajará, Guamá, Lago de Tucuruí, Marajó, Rio Caeté, Rio Capim, Tapajós, Tocantins, Xingu                        </p>
+
+                        <div class="public-alert-actions">
+                            <a href="/pages/alertas/pdf.php?id=558&download=1" class="btn btn-primary" target="_blank" rel="noopener">
+                                Baixar PDF do alerta
+                            </a>
+                        </div>
+                    </article>
+                                    <article class="public-alert-card">
+                        <div class="public-alert-head">
+                            <div>
+                                <span class="public-alert-number">222/2026</span>
+                                <h3>Chuvas Intensas</h3>
+                            </div>
+                            <span class="public-alert-severity severity-moderado">
+                                MODERADO                            </span>
+                        </div>
+
+                        <div class="public-alert-meta">
+                            <span><strong>Fonte:</strong> INMET</span>
+                            <span><strong>Data:</strong> 21/03/2026</span>
+                            <span><strong>Vigência:</strong> 21/03/2026 08:30 até 22/03/2026 10:00</span>
+                            <span><strong>Municípios:</strong> 144</span>
+                        </div>
+
+                        <p class="public-alert-region">
+                            <strong>Regiões:</strong>
+                            Araguaia, Baixo Amazonas, Carajás, Guajará, Guamá, Lago de Tucuruí, Marajó, Rio Caeté, Rio Capim, Tapajós, Tocantins, Xingu                        </p>
+
+                        <div class="public-alert-actions">
+                            <a href="/pages/alertas/pdf.php?id=554&download=1" class="btn btn-primary" target="_blank" rel="noopener">
+                                Baixar PDF do alerta
+                            </a>
+                        </div>
+                    </article>
+                                    <article class="public-alert-card">
+                        <div class="public-alert-head">
+                            <div>
+                                <span class="public-alert-number">224/2026</span>
+                                <h3>Inundação</h3>
+                            </div>
+                            <span class="public-alert-severity severity-moderado">
+                                MODERADO                            </span>
+                        </div>
+
+                        <div class="public-alert-meta">
+                            <span><strong>Fonte:</strong> SIMD</span>
+                            <span><strong>Data:</strong> 21/03/2026</span>
+                            <span><strong>Vigência:</strong> 21/03/2026 00:11 até 23/03/2026 21:11</span>
+                            <span><strong>Municípios:</strong> 5</span>
+                        </div>
+
+                        <p class="public-alert-region">
+                            <strong>Regiões:</strong>
+                            Rio Caeté, Rio Capim                        </p>
+
+                        <div class="public-alert-actions">
+                            <a href="/pages/alertas/pdf.php?id=556&download=1" class="btn btn-primary" target="_blank" rel="noopener">
+                                Baixar PDF do alerta
+                            </a>
+                        </div>
+                    </article>
+                                    <article class="public-alert-card">
+                        <div class="public-alert-head">
+                            <div>
+                                <span class="public-alert-number">212/2026</span>
+                                <h3>Movimento de Massa</h3>
+                            </div>
+                            <span class="public-alert-severity severity-moderado">
+                                MODERADO                            </span>
+                        </div>
+
+                        <div class="public-alert-meta">
+                            <span><strong>Fonte:</strong> CEMADEN</span>
+                            <span><strong>Data:</strong> 20/03/2026</span>
+                            <span><strong>Vigência:</strong> 20/03/2026 09:27 até 22/03/2026 22:59</span>
+                            <span><strong>Municípios:</strong> 1</span>
+                        </div>
+
+                        <p class="public-alert-region">
+                            <strong>Regiões:</strong>
+                            Baixo Amazonas                        </p>
+
+                        <div class="public-alert-actions">
+                            <a href="/pages/alertas/pdf.php?id=544&download=1" class="btn btn-primary" target="_blank" rel="noopener">
+                                Baixar PDF do alerta
+                            </a>
+                        </div>
+                    </article>
+                            </div>
+            </section>
 </main>
 
 <footer class="public-footer">
     <div class="public-footer-brand">
         <span class="public-footer-kicker">Painel institucional aberto</span>
-        <strong><?= htmlspecialchars($appConfig['organization'], ENT_QUOTES, 'UTF-8') ?></strong>
-        <p><?= htmlspecialchars($appConfig['department'], ENT_QUOTES, 'UTF-8') ?> com acesso visual ao mapa multirriscos, relatório consolidado e PDFs dos alertas ativos.</p>
+        <strong>Defesa Civil do Estado do Pará</strong>
+        <p>Coordenadoria Estadual de Protecao e Defesa Civil com acesso visual ao mapa multirriscos, relatório consolidado e PDFs dos alertas ativos.</p>
         <div class="public-footer-pills">
-            <span class="analises-chip"><?= htmlspecialchars($appConfig['name'], ENT_QUOTES, 'UTF-8') ?></span>
-            <span class="analises-chip">Versão <?= htmlspecialchars($appConfig['version'], ENT_QUOTES, 'UTF-8') ?></span>
+            <span class="analises-chip">Sistema Inteligente Multirriscos</span>
+            <span class="analises-chip">Versão 1.1.0</span>
         </div>
     </div>
     <div>
-        <?= htmlspecialchars($appConfig['name'], ENT_QUOTES, 'UTF-8') ?> · Versão <strong><?= htmlspecialchars($appConfig['version'], ENT_QUOTES, 'UTF-8') ?></strong>
+        Sistema Inteligente Multirriscos · Versão <strong>1.1.0</strong>
     </div>
     <div>
-        Suporte: <a href="mailto:<?= htmlspecialchars($appConfig['support_email'], ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($appConfig['support_email'], ENT_QUOTES, 'UTF-8') ?></a>
+        Suporte: <a href="mailto:dgr.cedecpa@gmail.com">dgr.cedecpa@gmail.com</a>
     </div>
     <div class="public-footer-grid">
         <section class="public-footer-card">
@@ -1024,7 +945,7 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
         <section class="public-footer-card">
             <span class="public-footer-kicker">Acesso e suporte</span>
             <p>Suporte institucional para acesso autenticado e orientações operacionais.</p>
-            <a href="mailto:<?= htmlspecialchars($appConfig['support_email'], ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($appConfig['support_email'], ENT_QUOTES, 'UTF-8') ?></a>
+            <a href="mailto:dgr.cedecpa@gmail.com">dgr.cedecpa@gmail.com</a>
         </section>
     </div>
 </footer>
@@ -1185,7 +1106,7 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
             <span class="public-info-modal-pill">Painel público</span>
             <span class="public-info-modal-pill">Mapa ao vivo</span>
             <span class="public-info-modal-pill">Relatório analítico</span>
-            <span class="public-info-modal-pill">Versão <?= htmlspecialchars($appConfig['version'], ENT_QUOTES, 'UTF-8') ?></span>
+            <span class="public-info-modal-pill">Versão 1.1.0</span>
         </div>
 
         <div class="public-info-modal-grid">
@@ -1205,19 +1126,16 @@ $jsAnaliseGlobalVersion = (string) ((int) @filemtime($jsAnaliseGlobalPath));
         <div class="public-info-modal-footer">
             <div class="public-info-modal-support">
                 <strong>Solicitação de acesso</strong>
-                <a href="mailto:<?= $supportEmailSafe ?>"><?= $supportEmailSafe ?></a>
+                <a href="mailto:dgr.cedecpa@gmail.com">dgr.cedecpa@gmail.com</a>
             </div>
             <button type="button" class="btn btn-secondary" data-close-modal="modalInfo">Fechar</button>
         </div>
     </div>
 </div>
 
-<script nonce="<?= htmlspecialchars($cspNonce, ENT_QUOTES, 'UTF-8') ?>" id="multirrisco-bootstrap" type="application/json"><?= json_encode([
-    'regioes' => $regioesDisponiveis,
-    'municipios' => $municipiosDisponiveis,
-], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?></script>
+<script nonce="i-6bTYVa9HF0kFxCobCVMipU" id="multirrisco-bootstrap" type="application/json">{"regioes":["Araguaia","Baixo Amazonas","Carajás","Guajará","Guamá","Lago de Tucuruí","Marajó","Rio Caeté","Rio Capim","Tapajós","Tocantins","Xingu"],"municipios":[{"cod_ibge":"1500347","municipio":"Água Azul do Norte","regiao":"Araguaia"},{"cod_ibge":"1501253","municipio":"Bannach","regiao":"Araguaia"},{"cod_ibge":"1502707","municipio":"Conceição do Araguaia","regiao":"Araguaia"},{"cod_ibge":"1502764","municipio":"Cumaru do Norte","regiao":"Araguaia"},{"cod_ibge":"1503044","municipio":"Floresta do Araguaia","regiao":"Araguaia"},{"cod_ibge":"1505437","municipio":"Ourilândia do Norte","regiao":"Araguaia"},{"cod_ibge":"1505551","municipio":"Pau D\u0027Arco","regiao":"Araguaia"},{"cod_ibge":"1506138","municipio":"Redenção","regiao":"Araguaia"},{"cod_ibge":"1506161","municipio":"Rio Maria","regiao":"Araguaia"},{"cod_ibge":"1506583","municipio":"Santa Maria das Barreiras","regiao":"Araguaia"},{"cod_ibge":"1506708","municipio":"Santana do Araguaia","regiao":"Araguaia"},{"cod_ibge":"1507300","municipio":"São Félix do Xingu","regiao":"Araguaia"},{"cod_ibge":"1507755","municipio":"Sapucaia","regiao":"Araguaia"},{"cod_ibge":"1508084","municipio":"Tucumã","regiao":"Araguaia"},{"cod_ibge":"1508407","municipio":"Xinguara","regiao":"Araguaia"},{"cod_ibge":"1500404","municipio":"Alenquer","regiao":"Baixo Amazonas"},{"cod_ibge":"1500503","municipio":"Almeirim","regiao":"Baixo Amazonas"},{"cod_ibge":"1501451","municipio":"Belterra","regiao":"Baixo Amazonas"},{"cod_ibge":"1502855","municipio":"Curuá","regiao":"Baixo Amazonas"},{"cod_ibge":"1503002","municipio":"Faro","regiao":"Baixo Amazonas"},{"cod_ibge":"1503903","municipio":"Juruti","regiao":"Baixo Amazonas"},{"cod_ibge":"1504752","municipio":"Mojuí dos Campos","regiao":"Baixo Amazonas"},{"cod_ibge":"1504802","municipio":"Monte Alegre","regiao":"Baixo Amazonas"},{"cod_ibge":"1505106","municipio":"Óbidos","regiao":"Baixo Amazonas"},{"cod_ibge":"1505304","municipio":"Oriximiná","regiao":"Baixo Amazonas"},{"cod_ibge":"1506005","municipio":"Prainha","regiao":"Baixo Amazonas"},{"cod_ibge":"1506807","municipio":"Santarém","regiao":"Baixo Amazonas"},{"cod_ibge":"1507979","municipio":"Terra Santa","regiao":"Baixo Amazonas"},{"cod_ibge":"1501576","municipio":"Bom Jesus do Tocantins","regiao":"Carajás"},{"cod_ibge":"1501758","municipio":"Brejo Grande do Araguaia","regiao":"Carajás"},{"cod_ibge":"1502152","municipio":"Canaã dos Carajás","regiao":"Carajás"},{"cod_ibge":"1502772","municipio":"Curionópolis","regiao":"Carajás"},{"cod_ibge":"1502954","municipio":"Eldorado dos Carajás","regiao":"Carajás"},{"cod_ibge":"1504208","municipio":"Marabá","regiao":"Carajás"},{"cod_ibge":"1505494","municipio":"Palestina do Pará","regiao":"Carajás"},{"cod_ibge":"1505536","municipio":"Parauapebas","regiao":"Carajás"},{"cod_ibge":"1505635","municipio":"Piçarra","regiao":"Carajás"},{"cod_ibge":"1507151","municipio":"São Domingos do Araguaia","regiao":"Carajás"},{"cod_ibge":"1507458","municipio":"São Geraldo do Araguaia","regiao":"Carajás"},{"cod_ibge":"1507508","municipio":"São João do Araguaia","regiao":"Carajás"},{"cod_ibge":"1500800","municipio":"Ananindeua","regiao":"Guajará"},{"cod_ibge":"1501402","municipio":"Belém","regiao":"Guajará"},{"cod_ibge":"1501501","municipio":"Benevides","regiao":"Guajará"},{"cod_ibge":"1504422","municipio":"Marituba","regiao":"Guajará"},{"cod_ibge":"1506351","municipio":"Santa Bárbara do Pará","regiao":"Guajará"},{"cod_ibge":"1502400","municipio":"Castanhal","regiao":"Guamá"},{"cod_ibge":"1502608","municipio":"Colares","regiao":"Guamá"},{"cod_ibge":"1502905","municipio":"Curuçá","regiao":"Guamá"},{"cod_ibge":"1503200","municipio":"Igarapé-Açu","regiao":"Guamá"},{"cod_ibge":"1503408","municipio":"Inhangapi","regiao":"Guamá"},{"cod_ibge":"1504109","municipio":"Magalhães Barata","regiao":"Guamá"},{"cod_ibge":"1504307","municipio":"Maracanã","regiao":"Guamá"},{"cod_ibge":"1504406","municipio":"Marapanim","regiao":"Guamá"},{"cod_ibge":"1506500","municipio":"Santa Isabel do Pará","regiao":"Guamá"},{"cod_ibge":"1506609","municipio":"Santa Maria do Pará","regiao":"Guamá"},{"cod_ibge":"1507003","municipio":"Santo Antônio do Tauá","regiao":"Guamá"},{"cod_ibge":"1507102","municipio":"São Caetano de Odivelas","regiao":"Guamá"},{"cod_ibge":"1507201","municipio":"São Domingos do Capim","regiao":"Guamá"},{"cod_ibge":"1507409","municipio":"São Francisco do Pará","regiao":"Guamá"},{"cod_ibge":"1507466","municipio":"São João da Ponta","regiao":"Guamá"},{"cod_ibge":"1507607","municipio":"São Miguel do Guamá","regiao":"Guamá"},{"cod_ibge":"1507961","municipio":"Terra Alta","regiao":"Guamá"},{"cod_ibge":"1508209","municipio":"Vigia","regiao":"Guamá"},{"cod_ibge":"1501782","municipio":"Breu Branco","regiao":"Lago de Tucuruí"},{"cod_ibge":"1503093","municipio":"Goianésia do Pará","regiao":"Lago de Tucuruí"},{"cod_ibge":"1503705","municipio":"Itupiranga","regiao":"Lago de Tucuruí"},{"cod_ibge":"1503804","municipio":"Jacundá","regiao":"Lago de Tucuruí"},{"cod_ibge":"1504976","municipio":"Nova Ipixuna","regiao":"Lago de Tucuruí"},{"cod_ibge":"1505064","municipio":"Novo Repartimento","regiao":"Lago de Tucuruí"},{"cod_ibge":"1508100","municipio":"Tucuruí","regiao":"Lago de Tucuruí"},{"cod_ibge":"1500305","municipio":"Afuá","regiao":"Marajó"},{"cod_ibge":"1500701","municipio":"Anajás","regiao":"Marajó"},{"cod_ibge":"1501105","municipio":"Bagre","regiao":"Marajó"},{"cod_ibge":"1501808","municipio":"Breves","regiao":"Marajó"},{"cod_ibge":"1502004","municipio":"Cachoeira do Arari","regiao":"Marajó"},{"cod_ibge":"1502509","municipio":"Chaves","regiao":"Marajó"},{"cod_ibge":"1502806","municipio":"Curralinho","regiao":"Marajó"},{"cod_ibge":"1503101","municipio":"Gurupá","regiao":"Marajó"},{"cod_ibge":"1504505","municipio":"Melgaço","regiao":"Marajó"},{"cod_ibge":"1504901","municipio":"Muaná","regiao":"Marajó"},{"cod_ibge":"1505700","municipio":"Ponta de Pedras","regiao":"Marajó"},{"cod_ibge":"1505809","municipio":"Portel","regiao":"Marajó"},{"cod_ibge":"1506302","municipio":"Salvaterra","regiao":"Marajó"},{"cod_ibge":"1506401","municipio":"Santa Cruz do Arari","regiao":"Marajó"},{"cod_ibge":"1507706","municipio":"São Sebastião da Boa Vista","regiao":"Marajó"},{"cod_ibge":"1507904","municipio":"Soure","regiao":"Marajó"},{"cod_ibge":"1500909","municipio":"Augusto Corrêa","regiao":"Rio Caeté"},{"cod_ibge":"1501600","municipio":"Bonito","regiao":"Rio Caeté"},{"cod_ibge":"1501709","municipio":"Bragança","regiao":"Rio Caeté"},{"cod_ibge":"1501956","municipio":"Cachoeira do Piriá","regiao":"Rio Caeté"},{"cod_ibge":"1502202","municipio":"Capanema","regiao":"Rio Caeté"},{"cod_ibge":"1505007","municipio":"Nova Timboteua","regiao":"Rio Caeté"},{"cod_ibge":"1505601","municipio":"Peixe-Boi","regiao":"Rio Caeté"},{"cod_ibge":"1506104","municipio":"Primavera","regiao":"Rio Caeté"},{"cod_ibge":"1506112","municipio":"Quatipuru","regiao":"Rio Caeté"},{"cod_ibge":"1506203","municipio":"Salinópolis","regiao":"Rio Caeté"},{"cod_ibge":"1506559","municipio":"Santa Luzia do Pará","regiao":"Rio Caeté"},{"cod_ibge":"1506906","municipio":"Santarém Novo","regiao":"Rio Caeté"},{"cod_ibge":"1507474","municipio":"São João de Pirabas","regiao":"Rio Caeté"},{"cod_ibge":"1508035","municipio":"Tracuateua","regiao":"Rio Caeté"},{"cod_ibge":"1508308","municipio":"Viseu","regiao":"Rio Caeté"},{"cod_ibge":"1500131","municipio":"Abel Figueiredo","regiao":"Rio Capim"},{"cod_ibge":"1500958","municipio":"Aurora do Pará","regiao":"Rio Capim"},{"cod_ibge":"1501907","municipio":"Bujaru","regiao":"Rio Capim"},{"cod_ibge":"1502301","municipio":"Capitão Poço","regiao":"Rio Capim"},{"cod_ibge":"1502756","municipio":"Concórdia do Pará","regiao":"Rio Capim"},{"cod_ibge":"1502939","municipio":"Dom Eliseu","regiao":"Rio Capim"},{"cod_ibge":"1503077","municipio":"Garrafão do Norte","regiao":"Rio Capim"},{"cod_ibge":"1503457","municipio":"Ipixuna do Pará","regiao":"Rio Capim"},{"cod_ibge":"1503507","municipio":"Irituia","regiao":"Rio Capim"},{"cod_ibge":"1504059","municipio":"Mãe do Rio","regiao":"Rio Capim"},{"cod_ibge":"1504950","municipio":"Nova Esperança do Piriá","regiao":"Rio Capim"},{"cod_ibge":"1505403","municipio":"Ourém","regiao":"Rio Capim"},{"cod_ibge":"1505502","municipio":"Paragominas","regiao":"Rio Capim"},{"cod_ibge":"1506187","municipio":"Rondon do Pará","regiao":"Rio Capim"},{"cod_ibge":"1508001","municipio":"Tomé-Açu","regiao":"Rio Capim"},{"cod_ibge":"1508126","municipio":"Ulianópolis","regiao":"Rio Capim"},{"cod_ibge":"1501006","municipio":"Aveiro","regiao":"Tapajós"},{"cod_ibge":"1503606","municipio":"Itaituba","regiao":"Tapajós"},{"cod_ibge":"1503754","municipio":"Jacareacanga","regiao":"Tapajós"},{"cod_ibge":"1505031","municipio":"Novo Progresso","regiao":"Tapajós"},{"cod_ibge":"1506195","municipio":"Rurópolis","regiao":"Tapajós"},{"cod_ibge":"1508050","municipio":"Trairão","regiao":"Tapajós"},{"cod_ibge":"1500107","municipio":"Abaetetuba","regiao":"Tocantins"},{"cod_ibge":"1500206","municipio":"Acará","regiao":"Tocantins"},{"cod_ibge":"1501204","municipio":"Baião","regiao":"Tocantins"},{"cod_ibge":"1501303","municipio":"Barcarena","regiao":"Tocantins"},{"cod_ibge":"1502103","municipio":"Cametá","regiao":"Tocantins"},{"cod_ibge":"1503309","municipio":"Igarapé-Miri","regiao":"Tocantins"},{"cod_ibge":"1504000","municipio":"Limoeiro do Ajuru","regiao":"Tocantins"},{"cod_ibge":"1504604","municipio":"Mocajuba","regiao":"Tocantins"},{"cod_ibge":"1504703","municipio":"Moju","regiao":"Tocantins"},{"cod_ibge":"1505205","municipio":"Oeiras do Pará","regiao":"Tocantins"},{"cod_ibge":"1507953","municipio":"Tailândia","regiao":"Tocantins"},{"cod_ibge":"1500602","municipio":"Altamira","regiao":"Xingu"},{"cod_ibge":"1500859","municipio":"Anapu","regiao":"Xingu"},{"cod_ibge":"1501725","municipio":"Brasil Novo","regiao":"Xingu"},{"cod_ibge":"1504455","municipio":"Medicilândia","regiao":"Xingu"},{"cod_ibge":"1505486","municipio":"Pacajá","regiao":"Xingu"},{"cod_ibge":"1505650","municipio":"Placas","regiao":"Xingu"},{"cod_ibge":"1505908","municipio":"Porto de Moz","regiao":"Xingu"},{"cod_ibge":"1507805","municipio":"Senador José Porfírio","regiao":"Xingu"},{"cod_ibge":"1508159","municipio":"Uruará","regiao":"Xingu"},{"cod_ibge":"1508357","municipio":"Vitória do Xingu","regiao":"Xingu"}]}</script>
 
-<script nonce="<?= htmlspecialchars($cspNonce, ENT_QUOTES, 'UTF-8') ?>">
+<script nonce="i-6bTYVa9HF0kFxCobCVMipU">
 window.MULTIRRISCO_CONFIG = { enableCompdec: false };
 window.ANALISE_GLOBAL_CONFIG = { pdfEnabled: false };
 
@@ -1342,8 +1260,7 @@ window.ANALISE_GLOBAL_CONFIG = { pdfEnabled: false };
     window.setTimeout(atualizarLinksAnaliticosPublicos, 300);
     window.setTimeout(atualizarLinksAnaliticosPublicos, 1200);
 
-    <?php if ($erro !== '' && (!is_array($usuarioAtivo) || empty($usuarioAtivo['nome']))): ?>
-    const acessoSistema = document.getElementById('acesso-sistema');
+        const acessoSistema = document.getElementById('acesso-sistema');
     if (acessoSistema) {
         acessoSistema.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -1352,13 +1269,12 @@ window.ANALISE_GLOBAL_CONFIG = { pdfEnabled: false };
             loginEmail.focus();
         }, 120);
     }
-    <?php endif; ?>
-})();
+    })();
 </script>
 <script src="/assets/js/app-shell.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="/assets/vendor/chartjs/chart-lite.js"></script>
-<script src="/assets/js/pages/mapas-mapa_multirriscos.js?v=<?= htmlspecialchars($jsMapaMultirriscosVersion, ENT_QUOTES, 'UTF-8') ?>"></script>
-<script src="/assets/js/analise-global.js?v=<?= htmlspecialchars($jsAnaliseGlobalVersion, ENT_QUOTES, 'UTF-8') ?>"></script>
+<script src="/assets/js/pages/mapas-mapa_multirriscos.js?v=1774660775"></script>
+<script src="/assets/js/analise-global.js?v=1774659721"></script>
 </body>
 </html>

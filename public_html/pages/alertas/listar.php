@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once __DIR__ . '/../../app/Core/Protect.php';
 require_once __DIR__ . '/../../app/Core/Database.php';
 require_once __DIR__ . '/../../app/Core/AppConfig.php';

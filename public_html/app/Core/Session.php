@@ -14,7 +14,7 @@ class Session {
                 (string) ($_SERVER['SERVER_PORT'] ?? '') === '443'
             );
 
-            session_name('sim_multirriscos');
+            session_name(self::resolveSessionName());
             session_set_cookie_params([
                 'lifetime' => 0,
                 'path' => '/',
@@ -29,6 +29,24 @@ class Session {
         ini_set('session.cookie_httponly', '1');
 
         session_start();
+    }
+
+    private static function resolveSessionName(): string
+    {
+        $configuredName = $_ENV['SESSION_NAME'] ?? getenv('SESSION_NAME');
+
+        if (is_string($configuredName)) {
+            $configuredName = trim($configuredName);
+
+            if (preg_match('/^[A-Za-z][A-Za-z0-9_]{2,64}$/', $configuredName) === 1) {
+                return $configuredName;
+            }
+        }
+
+        $appPublicRoot = realpath(dirname(__DIR__, 2)) ?: dirname(__DIR__, 2);
+        $fingerprint = substr(hash('sha256', (string) $appPublicRoot), 0, 12);
+
+        return 'sim_multirriscos_' . $fingerprint;
     }
 
     public static function inactivityTimeout(): int

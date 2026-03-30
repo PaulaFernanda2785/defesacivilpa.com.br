@@ -11,6 +11,7 @@ class Csrf
     private const IDEMPOTENCY_TOKEN_MAX_AGE_SECONDS = 1800;
     private const IDEMPOTENCY_MAX_TOKENS = 1000;
     private static bool $requestValidated = false;
+    private static ?string $lastValidationError = null;
 
     public static function token(): string
     {
@@ -38,31 +39,76 @@ class Csrf
 
     public static function validateRequestOrFail(): void
     {
+        if (self::validateRequest()) {
+            return;
+        }
+
+        $error = self::lastValidationError();
+        $status = $error === 'duplicate' ? 409 : 419;
+        $message = self::validationErrorMessage($error);
+
+        http_response_code($status);
+
+        if (self::expectsJson()) {
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode([
+                'ok' => false,
+                'erro' => $message,
+                'duplicado' => $error === 'duplicate',
+            ], JSON_UNESCAPED_UNICODE);
+        } else {
+            die($message);
+        }
+
+        exit;
+    }
+
+    public static function validateRequest(): bool
+    {
+        self::$requestValidated = false;
+        self::$lastValidationError = null;
+
         $requestToken = self::requestToken();
 
         if (!is_string($requestToken) || !hash_equals(self::token(), $requestToken)) {
-            http_response_code(419);
-
-            if (self::expectsJson()) {
-                header('Content-Type: application/json; charset=utf-8');
-                echo json_encode([
-                    'ok' => false,
-                    'erro' => 'Token CSRF invalido ou expirado. Recarregue a pagina e tente novamente.',
-                ], JSON_UNESCAPED_UNICODE);
-            } else {
-                die('Token CSRF invalido ou expirado. Recarregue a pagina e tente novamente.');
-            }
-
-            exit;
+            self::$lastValidationError = 'csrf';
+            return false;
         }
 
-        self::validateIdempotencyOrFail();
+        $idempotencyStatus = self::validateIdempotency();
+
+        if ($idempotencyStatus !== 'ok') {
+            self::$lastValidationError = $idempotencyStatus;
+            return false;
+        }
+
         self::$requestValidated = true;
+        return true;
     }
 
     public static function currentRequestIsValidated(): bool
     {
         return self::$requestValidated;
+    }
+
+    public static function lastValidationError(): ?string
+    {
+        return self::$lastValidationError;
+    }
+
+    public static function validationErrorMessage(?string $error = null): string
+    {
+        $error = $error ?? self::$lastValidationError;
+
+        if ($error === 'duplicate') {
+            return 'Esta solicitacao ja foi processada ha instantes. Aguarde alguns segundos e tente novamente.';
+        }
+
+        if ($error === 'idempotency') {
+            return 'Token de envio invalido ou expirado. Recarregue a pagina e tente novamente.';
+        }
+
+        return 'Token CSRF invalido ou expirado. Recarregue a pagina e tente novamente.';
     }
 
     private static function requestToken(): ?string
@@ -82,40 +128,17 @@ class Csrf
         return null;
     }
 
-    private static function validateIdempotencyOrFail(): void
+    private static function validateIdempotency(): string
     {
         $requestToken = self::requestIdempotencyToken();
 
         if (!is_string($requestToken) || trim($requestToken) === '') {
-            return;
+            return 'ok';
         }
 
         $status = self::consumeIdempotencyToken($requestToken);
 
-        if ($status === 'ok') {
-            return;
-        }
-
-        http_response_code($status === 'duplicate' ? 409 : 419);
-
-        if (self::expectsJson()) {
-            header('Content-Type: application/json; charset=utf-8');
-            echo json_encode([
-                'ok' => false,
-                'erro' => $status === 'duplicate'
-                    ? 'Esta solicitacao ja foi processada ha instantes. Aguarde e tente novamente.'
-                    : 'Token de envio invalido ou expirado. Recarregue a pagina e tente novamente.',
-                'duplicado' => $status === 'duplicate',
-            ], JSON_UNESCAPED_UNICODE);
-        } else {
-            if ($status === 'duplicate') {
-                die('Esta solicitacao ja foi processada ha instantes. Aguarde alguns segundos e tente novamente.');
-            }
-
-            die('Token de envio invalido ou expirado. Recarregue a pagina e tente novamente.');
-        }
-
-        exit;
+        return $status === 'invalid' ? 'idempotency' : $status;
     }
 
     private static function requestIdempotencyToken(): ?string
