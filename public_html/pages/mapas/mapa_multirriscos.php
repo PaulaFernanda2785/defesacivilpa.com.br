@@ -453,6 +453,9 @@ $totalRegioesBase = count($regioesDisponiveis);
                                     <button type="button" class="btn btn-secondary" id="btnAbrirIRP">
                                         Entender o IRP
                                     </button>
+                                    <button type="button" class="btn btn-secondary" id="btnAbrirValidacaoIRP">
+                                        Ver validação IRP
+                                    </button>
                                 </div>
                             </div>
                         </section>
@@ -516,6 +519,39 @@ $totalRegioesBase = count($regioesDisponiveis);
         </p>
 
         <button type="button" data-close-irp>Fechar</button>
+    </div>
+</div>
+
+<div id="modalValidacaoIRP" class="modal modal-validacao" aria-hidden="true">
+    <div class="modal-conteudo modal-validacao-conteudo">
+        <h3>Validação automática do IRP</h3>
+        <p class="modal-validacao-meta" id="validacaoIrpMeta">Carregando relatório...</p>
+        <div class="modal-validacao-resumo" id="validacaoIrpResumo"></div>
+        <div class="modal-validacao-cenarios" id="validacaoIrpCenarios"></div>
+        <div class="modal-validacao-tabela-wrap">
+            <table class="modal-validacao-tabela" aria-label="Resultado detalhado da validação do IRP">
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Cenário</th>
+                        <th>Etapa</th>
+                        <th>Detalhe</th>
+                    </tr>
+                </thead>
+                <tbody id="validacaoIrpTabelaBody">
+                    <tr>
+                        <td colspan="4">Carregando resultados detalhados...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <details class="modal-validacao-raw">
+            <summary>Ver markdown bruto</summary>
+            <pre class="modal-validacao-markdown" id="validacaoIrpConteudo">Aguarde, estamos carregando o relatório mais recente.</pre>
+        </details>
+        <div class="modal-validacao-actions">
+            <button type="button" data-close-validacao-irp>Fechar</button>
+        </div>
     </div>
 </div>
 

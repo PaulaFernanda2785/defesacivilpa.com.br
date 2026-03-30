@@ -159,6 +159,10 @@
     z-index: 9999;
 }
 
+.modal.is-open {
+    display: block;
+}
+
 .modal-conteudo {
     background: #fff;
     max-width: 480px;
@@ -195,6 +199,194 @@
 .modal-conteudo button:hover{
     background: #ffffff;
     color: #0b3c68;
+}
+
+.modal-validacao .modal-conteudo {
+    max-width: min(980px, 94vw);
+    max-height: 90vh;
+    margin: 4vh auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+}
+
+.modal-validacao-meta {
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #f2f7fb;
+    border: 1px solid rgba(15, 61, 87, 0.12);
+    color: #325164;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.modal-validacao-resumo {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.modal-validacao-resumo-item {
+    border: 1px solid rgba(15, 61, 87, 0.12);
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: #fbfdff;
+    display: grid;
+    gap: 4px;
+}
+
+.modal-validacao-resumo-item span {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #567084;
+}
+
+.modal-validacao-resumo-item strong {
+    font-size: 13px;
+    color: #143f5a;
+}
+
+.modal-validacao-cenarios {
+    border: 1px solid rgba(15, 61, 87, 0.12);
+    border-radius: 12px;
+    background: #f7fbfe;
+    padding: 10px 12px;
+}
+
+.modal-validacao-cenarios strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #174761;
+}
+
+.modal-validacao-cenarios ul {
+    margin: 0;
+    padding-left: 18px;
+    display: grid;
+    gap: 4px;
+    font-size: 12px;
+    color: #2f556c;
+}
+
+.modal-validacao-tabela-wrap {
+    border: 1px solid rgba(15, 61, 87, 0.14);
+    border-radius: 12px;
+    overflow: auto;
+    max-height: 40vh;
+    background: #ffffff;
+}
+
+.modal-validacao-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.modal-validacao-tabela thead th {
+    position: sticky;
+    top: 0;
+    background: #0f3d57;
+    color: #ffffff;
+    text-align: left;
+    padding: 10px 12px;
+    font-weight: 700;
+    z-index: 1;
+}
+
+.modal-validacao-tabela tbody td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #e6edf2;
+    color: #25475f;
+    vertical-align: top;
+}
+
+.modal-validacao-tabela tbody tr:nth-child(even) td {
+    background: #fbfdff;
+}
+
+.modal-validacao-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 58px;
+    min-height: 24px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+
+.modal-validacao-status.is-pass {
+    color: #0f5a35;
+    background: rgba(39, 174, 96, 0.16);
+    border: 1px solid rgba(39, 174, 96, 0.32);
+}
+
+.modal-validacao-status.is-fail {
+    color: #8f1919;
+    background: rgba(231, 76, 60, 0.14);
+    border: 1px solid rgba(231, 76, 60, 0.28);
+}
+
+.modal-validacao-raw {
+    border: 1px solid rgba(15, 61, 87, 0.12);
+    border-radius: 12px;
+    background: #fcfeff;
+    padding: 8px 10px;
+    max-height: 32vh;
+    overflow: hidden;
+}
+
+.modal-validacao-raw summary {
+    cursor: pointer;
+    color: #2f556c;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.modal-validacao-raw[open] {
+    overflow: auto;
+}
+
+.modal-validacao-markdown {
+    margin: 8px 0 0;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(15, 61, 87, 0.14);
+    background: #0d2533;
+    color: #e8f4fb;
+    min-height: 0;
+    max-height: min(28vh, 260px);
+    overflow: auto;
+    white-space: pre-wrap;
+    font-size: 12px;
+    line-height: 1.55;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+.modal-validacao-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media (max-width: 900px) {
+    .modal-validacao-resumo {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-validacao-raw {
+        max-height: 28vh;
+    }
+
+    .modal-validacao-markdown {
+        max-height: 22vh;
+    }
 }
 
 

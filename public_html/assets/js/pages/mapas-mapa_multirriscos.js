@@ -50,6 +50,7 @@
         btnLimparFiltros: document.getElementById('btnLimparFiltros'),
         btnAbrirAjuda: document.getElementById('btnAbrirAjuda'),
         btnAbrirIRP: document.getElementById('btnAbrirIRP'),
+        btnAbrirValidacaoIRP: document.getElementById('btnAbrirValidacaoIRP'),
         btnLimparFiltroDia: document.getElementById('btnLimparFiltroDia'),
         resumoFiltros: document.getElementById('resumo-filtros'),
         heroAlertas: document.getElementById('hero-alertas-ativos'),
@@ -77,6 +78,12 @@
         modalTerritorioResumo: document.getElementById('modalTerritorioResumo'),
         modalTerritorioBody: document.getElementById('modalTerritorioBody'),
         modalIRP: document.getElementById('modalIRP'),
+        modalValidacaoIRP: document.getElementById('modalValidacaoIRP'),
+        validacaoIrpMeta: document.getElementById('validacaoIrpMeta'),
+        validacaoIrpResumo: document.getElementById('validacaoIrpResumo'),
+        validacaoIrpCenarios: document.getElementById('validacaoIrpCenarios'),
+        validacaoIrpTabelaBody: document.getElementById('validacaoIrpTabelaBody'),
+        validacaoIrpConteudo: document.getElementById('validacaoIrpConteudo'),
         modalAjuda: document.getElementById('modalAjuda'),
         drawerCompdec: document.getElementById('drawer-compdec'),
         conteudoCompdec: document.getElementById('conteudo-compdec'),
@@ -126,6 +133,7 @@
     let resizeTimer = null;
     let compdecCarregado = false;
     let carregamentoCompdec = null;
+    let carregamentoValidacaoIRP = null;
     let timerDestaqueTemporario = null;
 
     const TEMPO_DESTAQUE_TERRITORIAL_MS = 3200;
@@ -1170,6 +1178,11 @@
             el.modalIRP.setAttribute('aria-hidden', 'true');
         }
 
+        if (el.modalValidacaoIRP) {
+            el.modalValidacaoIRP.classList.remove('is-open');
+            el.modalValidacaoIRP.setAttribute('aria-hidden', 'true');
+        }
+
         if (el.modalTerritorio) {
             el.modalTerritorio.classList.remove('ativo');
             el.modalTerritorio.setAttribute('aria-hidden', 'true');
@@ -1371,6 +1384,248 @@
         }
     }
 
+    function preencherValidacaoIRPBruto(meta, conteudo) {
+        if (el.validacaoIrpMeta) {
+            el.validacaoIrpMeta.textContent = meta;
+        }
+
+        if (el.validacaoIrpConteudo) {
+            el.validacaoIrpConteudo.textContent = conteudo;
+        }
+    }
+
+    function renderizarResumoValidacaoIRP(payload) {
+        if (!el.validacaoIrpResumo) return;
+
+        const cards = [
+            { label: 'Status geral', value: payload.status_geral || '-' },
+            { label: 'Resultado', value: payload.resultado || '-' },
+            { label: 'Atualizado em', value: payload.data_relatorio || payload.atualizado_em || '-' }
+        ];
+
+        el.validacaoIrpResumo.innerHTML = cards.map((item) => `
+            <article class="modal-validacao-resumo-item">
+                <span>${escapeHtml(item.label)}</span>
+                <strong>${escapeHtml(String(item.value || '-'))}</strong>
+            </article>
+        `).join('');
+    }
+
+    function renderizarCenariosValidacaoIRP(cenarios) {
+        if (!el.validacaoIrpCenarios) return;
+
+        if (!Array.isArray(cenarios) || !cenarios.length) {
+            el.validacaoIrpCenarios.innerHTML = `
+                <strong>Cenarios testados</strong>
+                <ul><li>Nenhum cenario detalhado disponivel neste relatorio.</li></ul>
+            `;
+            return;
+        }
+
+        el.validacaoIrpCenarios.innerHTML = `
+            <strong>Cenarios testados</strong>
+            <ul>
+                ${cenarios.map((item) => `<li>${escapeHtml(enriquecerTextoComMunicipio(String(item || '-')))}</li>`).join('')}
+            </ul>
+        `;
+    }
+
+    function classeStatusValidacao(status) {
+        return String(status || '').toUpperCase() === 'PASS' ? 'is-pass' : 'is-fail';
+    }
+
+    function enriquecerTextoComMunicipio(texto) {
+        const valor = String(texto || '');
+
+        return valor.replace(/\b\d{7}\b/g, (codigo, indice, linhaOriginal) => {
+            const municipio = municipiosPorCodigo[codigo];
+
+            if (!municipio) {
+                return codigo;
+            }
+
+            const caractereAnterior = indice > 0 ? linhaOriginal.charAt(indice - 1) : '';
+            const caractereSeguinte = linhaOriginal.charAt(indice + codigo.length);
+
+            // Evita duplicacao quando o texto ja estiver no formato "Nome (codigo)".
+            if (caractereAnterior === '(' && caractereSeguinte === ')') {
+                return codigo;
+            }
+
+            return `${municipio.municipio} (${codigo})`;
+        });
+    }
+
+    function renderizarTabelaValidacaoIRP(detalhes) {
+        if (!el.validacaoIrpTabelaBody) return;
+
+        if (!Array.isArray(detalhes) || !detalhes.length) {
+            el.validacaoIrpTabelaBody.innerHTML = `
+                <tr>
+                    <td colspan="4">Nenhum resultado detalhado disponivel para este relatorio.</td>
+                </tr>
+            `;
+            return;
+        }
+
+        el.validacaoIrpTabelaBody.innerHTML = detalhes.map((item) => {
+            const status = String(item.status || '-').toUpperCase();
+            return `
+                <tr>
+                    <td><span class="modal-validacao-status ${classeStatusValidacao(status)}">${escapeHtml(status)}</span></td>
+                    <td>${escapeHtml(enriquecerTextoComMunicipio(String(item.cenario || '-')))}</td>
+                    <td>${escapeHtml(String(item.etapa || '-'))}</td>
+                    <td>${escapeHtml(enriquecerTextoComMunicipio(String(item.detalhe || '-')))}</td>
+                </tr>
+            `;
+        }).join('');
+    }
+
+    function preencherValidacaoIRP(payload) {
+        const partesMeta = [];
+
+        if (payload.data_relatorio) {
+            partesMeta.push(`Execucao: ${payload.data_relatorio}`);
+        } else if (payload.atualizado_em) {
+            partesMeta.push(`Atualizado em: ${payload.atualizado_em}`);
+        }
+
+        if (payload.arquivo) {
+            partesMeta.push(`Arquivo: ${payload.arquivo}`);
+        }
+
+        preencherValidacaoIRPBruto(
+            partesMeta.join(' | ') || 'Relatorio carregado.',
+            String(payload.conteudo_markdown || 'Relatorio sem conteudo disponivel.')
+        );
+        renderizarResumoValidacaoIRP(payload);
+        renderizarCenariosValidacaoIRP(Array.isArray(payload.cenarios) ? payload.cenarios : []);
+        renderizarTabelaValidacaoIRP(Array.isArray(payload.detalhes) ? payload.detalhes : []);
+    }
+
+    function preencherErroValidacaoIRP(mensagem, detalheErro = '') {
+        preencherValidacaoIRPBruto(
+            'Falha ao carregar a validacao automatica.',
+            `${mensagem}\n\nDetalhe: ${detalheErro || 'erro desconhecido'}`
+        );
+
+        if (el.validacaoIrpResumo) {
+            el.validacaoIrpResumo.innerHTML = `
+                <article class="modal-validacao-resumo-item">
+                    <span>Status geral</span>
+                    <strong>ERRO</strong>
+                </article>
+                <article class="modal-validacao-resumo-item">
+                    <span>Resultado</span>
+                    <strong>Nao foi possivel carregar o relatorio</strong>
+                </article>
+                <article class="modal-validacao-resumo-item">
+                    <span>Atualizado em</span>
+                    <strong>-</strong>
+                </article>
+            `;
+        }
+
+        if (el.validacaoIrpCenarios) {
+            el.validacaoIrpCenarios.innerHTML = `
+                <strong>Cenarios testados</strong>
+                <ul><li>Indisponivel devido a falha de carregamento.</li></ul>
+            `;
+        }
+
+        if (el.validacaoIrpTabelaBody) {
+            el.validacaoIrpTabelaBody.innerHTML = `
+                <tr>
+                    <td><span class="modal-validacao-status is-fail">FAIL</span></td>
+                    <td>Carregamento do relatorio</td>
+                    <td>validacao_irp.php</td>
+                    <td>${escapeHtml(detalheErro || mensagem)}</td>
+                </tr>
+            `;
+        }
+    }
+
+    function carregarValidacaoIRP() {
+        if (carregamentoValidacaoIRP) {
+            return carregamentoValidacaoIRP;
+        }
+
+        preencherValidacaoIRPBruto(
+            'Carregando relatorio mais recente...',
+            'Aguarde enquanto buscamos o relatorio automatico de validacao do IRP.'
+        );
+
+        if (el.validacaoIrpResumo) {
+            el.validacaoIrpResumo.innerHTML = `
+                <article class="modal-validacao-resumo-item">
+                    <span>Status geral</span>
+                    <strong>Carregando...</strong>
+                </article>
+                <article class="modal-validacao-resumo-item">
+                    <span>Resultado</span>
+                    <strong>Aguarde</strong>
+                </article>
+                <article class="modal-validacao-resumo-item">
+                    <span>Atualizado em</span>
+                    <strong>-</strong>
+                </article>
+            `;
+        }
+
+        if (el.validacaoIrpCenarios) {
+            el.validacaoIrpCenarios.innerHTML = `
+                <strong>Cenarios testados</strong>
+                <ul><li>Carregando cenarios da validacao...</li></ul>
+            `;
+        }
+
+        if (el.validacaoIrpTabelaBody) {
+            el.validacaoIrpTabelaBody.innerHTML = `
+                <tr>
+                    <td colspan="4">Carregando resultados detalhados...</td>
+                </tr>
+            `;
+        }
+
+        carregamentoValidacaoIRP = obterJson(`${mapaApiBase}/validacao_irp.php?tipo=latest`)
+            .then((payload) => {
+                if (!payload || payload.ok === false) {
+                    throw new Error(payload?.erro || 'Nao foi possivel carregar o relatorio.');
+                }
+
+                preencherValidacaoIRP(payload);
+            })
+            .catch((error) => {
+                preencherErroValidacaoIRP(
+                    'Nao foi possivel carregar o relatorio de validacao do IRP.',
+                    error?.message || 'erro desconhecido'
+                );
+                throw error;
+            })
+            .finally(() => {
+                carregamentoValidacaoIRP = null;
+            });
+
+        return carregamentoValidacaoIRP;
+    }
+    function abrirModalValidacaoIRP() {
+        if (!el.modalValidacaoIRP) return;
+
+        el.modalValidacaoIRP.classList.add('is-open');
+        el.modalValidacaoIRP.setAttribute('aria-hidden', 'false');
+
+        carregarValidacaoIRP().catch((error) => {
+            console.error('Erro ao carregar o relatório de validação do IRP.', error);
+        });
+    }
+
+    function fecharModalValidacaoIRP() {
+        if (el.modalValidacaoIRP) {
+            el.modalValidacaoIRP.classList.remove('is-open');
+            el.modalValidacaoIRP.setAttribute('aria-hidden', 'true');
+        }
+    }
+
     function abrirModalAjuda() {
         if (el.modalAjuda) el.modalAjuda.classList.add('ativo');
     }
@@ -1450,6 +1705,9 @@
             case 'abrir_irp':
                 abrirModalIRP();
                 return Promise.resolve();
+            case 'abrir_validacao_irp':
+                abrirModalValidacaoIRP();
+                return Promise.resolve();
             case 'abrir_ajuda':
                 abrirModalAjuda();
                 return Promise.resolve();
@@ -1514,6 +1772,7 @@
     if (el.btnLimparFiltros) el.btnLimparFiltros.addEventListener('click', limparFiltros);
     if (el.btnAbrirAjuda) el.btnAbrirAjuda.addEventListener('click', abrirModalAjuda);
     if (el.btnAbrirIRP) el.btnAbrirIRP.addEventListener('click', abrirModalIRP);
+    if (el.btnAbrirValidacaoIRP) el.btnAbrirValidacaoIRP.addEventListener('click', abrirModalValidacaoIRP);
     if (el.btnLimparFiltroDia) el.btnLimparFiltroDia.addEventListener('click', limparFiltroDia);
 
     if (el.regiao) {
@@ -1565,6 +1824,7 @@
     if (el.toggleCompdec) el.toggleCompdec.addEventListener('change', (event) => alternarCompdec(event.target.checked));
 
     document.querySelectorAll('[data-close-irp]').forEach((button) => button.addEventListener('click', fecharModalIRP));
+    document.querySelectorAll('[data-close-validacao-irp]').forEach((button) => button.addEventListener('click', fecharModalValidacaoIRP));
     document.querySelectorAll('[data-close-ajuda]').forEach((button) => button.addEventListener('click', fecharModalAjuda));
     document.querySelectorAll('[data-close-territorio]').forEach((button) => button.addEventListener('click', fecharModalTerritorio));
     document.querySelectorAll('[data-close-compdec]').forEach((button) => button.addEventListener('click', fecharDrawerCompdec));
@@ -1572,6 +1832,7 @@
     document.addEventListener('click', (event) => {
         if (event.target === el.modalAjuda) fecharModalAjuda();
         if (event.target === el.modalIRP) fecharModalIRP();
+        if (event.target === el.modalValidacaoIRP) fecharModalValidacaoIRP();
         if (event.target === el.modalTerritorio) fecharModalTerritorio();
     });
 
@@ -1579,6 +1840,7 @@
         if (event.key !== 'Escape') return;
         fecharModalAjuda();
         fecharModalIRP();
+        fecharModalValidacaoIRP();
         fecharModalTerritorio();
         fecharDrawerCompdec();
     });
@@ -1613,4 +1875,5 @@
         renderizarFalhaMapa('Não foi possível carregar a base territorial do mapa. Tente atualizar a página.');
     });
 })();
+
 

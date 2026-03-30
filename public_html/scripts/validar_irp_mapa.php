@@ -26,6 +26,47 @@ function pesoGravidade(string $nivel): int
     return PESOS_GRAVIDADE[$chave] ?? 0;
 }
 
+function carregarCatalogoMunicipios(PDO $db): array
+{
+    $sql = "
+        SELECT cod_ibge, municipio
+        FROM municipios_regioes_pa
+        WHERE cod_ibge IS NOT NULL
+          AND cod_ibge <> ''
+          AND municipio IS NOT NULL
+          AND municipio <> ''
+    ";
+
+    $stmt = $db->query($sql);
+    $linhas = $stmt ? $stmt->fetchAll(PDO::FETCH_ASSOC) : [];
+    $catalogo = [];
+
+    foreach ($linhas as $linha) {
+        $codigo = trim((string) ($linha['cod_ibge'] ?? ''));
+        $nome = trim((string) ($linha['municipio'] ?? ''));
+
+        if ($codigo === '' || $nome === '') {
+            continue;
+        }
+
+        $catalogo[$codigo] = $nome;
+    }
+
+    return $catalogo;
+}
+
+function descreverMunicipioCodigo(?string $codigo, array $catalogoMunicipios): string
+{
+    $codIbge = trim((string) $codigo);
+
+    if ($codIbge === '') {
+        return '-';
+    }
+
+    $nome = trim((string) ($catalogoMunicipios[$codIbge] ?? ''));
+    return $nome !== '' ? "{$nome} ({$codIbge})" : $codIbge;
+}
+
 function contarAlertasFiltrados(PDO $db, array $filtro): int
 {
     $sql = "
@@ -299,19 +340,22 @@ function gerarRelatorioMarkdown(
     $linhas[] = '## Cenarios Selecionados Automaticamente';
 
     if (is_array($cenario1)) {
+        $municipioC1 = (string) ($cenario1['municipio_descricao'] ?? ($cenario1['municipio_codigo'] ?? '-'));
         $linhas[] = '- C1 (1 alerta x 1 municipio): alerta #' . ($cenario1['numero'] ?? '-')
             . ', data ' . ($cenario1['data_alerta'] ?? '-')
-            . ', municipio ' . ($cenario1['municipio_codigo'] ?? '-')
+            . ', municipio ' . $municipioC1
             . ', gravidade ' . ($cenario1['nivel_gravidade'] ?? '-');
     } else {
         $linhas[] = '- C1: nao identificado.';
     }
 
     if (is_array($cenario2)) {
+        $municipioExemplo = (string) ($cenario2['municipio_exemplo_descricao'] ?? ($cenario2['municipio_exemplo'] ?? '-'));
         $linhas[] = '- C2 (1 alerta x N municipios na regiao): alerta #' . ($cenario2['numero'] ?? '-')
             . ', data ' . ($cenario2['data_alerta'] ?? '-')
             . ', regiao ' . ($cenario2['regiao'] ?? '-')
             . ', municipios no recorte ' . (int) ($cenario2['municipios_no_recorte'] ?? 0)
+            . ', municipio exemplo ' . $municipioExemplo
             . ', gravidade ' . ($cenario2['nivel_gravidade'] ?? '-');
     } else {
         $linhas[] = '- C2: nao identificado.';
@@ -371,6 +415,9 @@ echo str_repeat('-', 72) . "\n";
 
 $cenario1 = null;
 $cenario2 = null;
+$catalogoMunicipios = carregarCatalogoMunicipios($db);
+$municipioDescricaoC1 = '-';
+$municipioDescricaoC2Exemplo = '-';
 
 try {
     $cenario1 = encontrarCenarioAlertaUnicoMunicipio($db);
@@ -383,6 +430,11 @@ try {
     if ($cenario2 === null) {
         throw new RuntimeException('Nao foi possivel encontrar cenario isolado de 1 alerta em N municipios na regiao.');
     }
+
+    $municipioDescricaoC1 = descreverMunicipioCodigo((string) ($cenario1['municipio_codigo'] ?? ''), $catalogoMunicipios);
+    $municipioDescricaoC2Exemplo = descreverMunicipioCodigo((string) ($cenario2['municipio_exemplo'] ?? ''), $catalogoMunicipios);
+    $cenario1['municipio_descricao'] = $municipioDescricaoC1;
+    $cenario2['municipio_exemplo_descricao'] = $municipioDescricaoC2Exemplo;
 
     // CENARIO 1: 1 alerta em 1 municipio (filtro municipal)
     $peso1 = pesoGravidade((string) $cenario1['nivel_gravidade']);
@@ -421,7 +473,9 @@ registrarResultado(
     'C1 - 1 alerta x 1 municipio',
     'municipios_pressao',
     $ok1b,
-    'Pressao municipal esperada ' . $esperado1 . '; obtida ' . (int) ($registroMunicipio1['pressao'] ?? -1)
+    'Municipio: ' . $municipioDescricaoC1
+    . '; pressao esperada ' . $esperado1
+    . '; obtida ' . (int) ($registroMunicipio1['pressao'] ?? -1)
 );
 
 if (!$ok1b) {
@@ -546,7 +600,7 @@ registrarResultado(
     'C3 - filtro municipal sobre alerta com N municipios',
     'linha_tempo_pressao',
     $ok3,
-    "Esperado {$peso2} x 1 = {$esperado3}; obtido {$irpDia3}"
+    "Municipio filtro {$municipioDescricaoC2Exemplo}. Esperado {$peso2} x 1 = {$esperado3}; obtido {$irpDia3}"
 );
 
 if (!$ok3) {
