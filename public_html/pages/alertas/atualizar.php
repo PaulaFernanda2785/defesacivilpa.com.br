@@ -14,12 +14,29 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 $db = Database::getConnection();
+$id = (int) ($_POST['id'] ?? 0);
+
+function redirectWithFormError(string $path, string $message, array $extraParams = []): void
+{
+    $params = array_merge($extraParams, ['erro' => $message]);
+    $query = http_build_query($params);
+    $location = $path . ($query !== '' ? '?' . $query : '');
+    header('Location: ' . $location);
+    exit;
+}
+
+function redirectToEditarWithError(int $id, string $message): void
+{
+    if ($id > 0) {
+        redirectWithFormError('editar.php', $message, ['id' => $id]);
+    }
+
+    redirectWithFormError('listar.php', $message);
+}
 
 try {
-    $id = (int) ($_POST['id'] ?? 0);
-
     if ($id <= 0) {
-        die('ID invalido.');
+        redirectWithFormError('listar.php', 'ID invalido para edicao do alerta.');
     }
 
     $stmtDados = $db->prepare("
@@ -31,7 +48,7 @@ try {
     $dadosAtuais = $stmtDados->fetch(PDO::FETCH_ASSOC);
 
     if (!$dadosAtuais) {
-        die('Alerta nao encontrado.');
+        redirectWithFormError('listar.php', 'Alerta nao encontrado para edicao.');
     }
 
     $numeroAlerta = $dadosAtuais['numero'];
@@ -188,8 +205,7 @@ try {
         $db->rollBack();
     }
 
-    http_response_code(422);
-    die($e->getMessage());
+    redirectToEditarWithError($id, $e->getMessage());
 
 } catch (Throwable $e) {
 
@@ -198,6 +214,5 @@ try {
     }
 
     error_log('[ALERTA_ATUALIZAR] ' . $e->getMessage());
-    http_response_code(500);
-    die('Erro interno ao atualizar alerta.');
+    redirectToEditarWithError($id, 'Erro interno ao atualizar alerta. Tente novamente.');
 }

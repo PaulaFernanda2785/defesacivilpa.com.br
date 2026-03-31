@@ -54,21 +54,13 @@ class UploadHelper
         self::assertFileSize($file, $maxBytes, 'O arquivo KML excede o limite permitido de 10 MB.');
 
         $tmpPath = (string) ($file['tmp_name'] ?? '');
-        $contents = @file_get_contents($tmpPath, false, null, 0, 65536);
+        $contents = @file_get_contents($tmpPath);
 
-        if ($contents === false) {
+        if ($contents === false || trim($contents) === '') {
             throw new RuntimeException('Nao foi possivel validar o arquivo KML enviado.');
         }
 
-        $normalizedContents = strtolower($contents);
-
-        if (!preg_match('/<kml[\s>:]/', $normalizedContents)) {
-            throw new RuntimeException('O arquivo enviado nao contem um KML valido.');
-        }
-
-        if (str_contains($normalizedContents, '<!entity') || str_contains($normalizedContents, '<!doctype')) {
-            throw new RuntimeException('O arquivo KML enviado usa declaracoes XML nao permitidas.');
-        }
+        self::assertKmlContents($contents);
 
         self::ensureDirectory($destinationDir);
 
@@ -80,6 +72,38 @@ class UploadHelper
         }
 
         return $fileName;
+    }
+
+    private static function assertKmlContents(string $contents): void
+    {
+        $document = new DOMDocument();
+        $previousErrorsState = libxml_use_internal_errors(true);
+        $loaded = $document->loadXML($contents, LIBXML_NONET | LIBXML_NOERROR | LIBXML_NOWARNING);
+        libxml_clear_errors();
+        libxml_use_internal_errors($previousErrorsState);
+
+        if (!$loaded || !$document->documentElement) {
+            throw new RuntimeException('O arquivo enviado nao contem um KML valido.');
+        }
+
+        $rootName = strtolower((string) ($document->documentElement->localName ?: $document->documentElement->nodeName));
+
+        if ($rootName !== 'kml') {
+            throw new RuntimeException('O arquivo enviado nao contem um KML valido.');
+        }
+
+        $doctype = $document->doctype;
+
+        if (
+            $doctype !== null
+            && (
+                (string) $doctype->systemId !== ''
+                || (string) $doctype->publicId !== ''
+                || ($doctype->entities !== null && $doctype->entities->length > 0)
+            )
+        ) {
+            throw new RuntimeException('O arquivo KML enviado usa declaracoes XML nao permitidas.');
+        }
     }
 
     public static function decodeBase64Png(string $dataUri, int $maxBytes = 5242880): string

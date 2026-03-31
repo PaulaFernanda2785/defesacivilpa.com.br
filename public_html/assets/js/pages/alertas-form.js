@@ -133,22 +133,20 @@
 
     function parseCoordinateText(text) {
         const coordinates = [];
+        const source = String(text || '');
+        const coordinatePattern = /(-?\d+(?:\.\d+)?(?:e[-+]?\d+)?)\s*,\s*(-?\d+(?:\.\d+)?(?:e[-+]?\d+)?)(?:\s*,\s*(-?\d+(?:\.\d+)?(?:e[-+]?\d+)?))?/gi;
+        let match = coordinatePattern.exec(source);
 
-        String(text || '').trim().split(/\s+/).forEach(function (chunk) {
-            if (!chunk) {
-                return;
+        while (match !== null) {
+            const lng = Number(match[1]);
+            const lat = Number(match[2]);
+
+            if (Number.isFinite(lng) && Number.isFinite(lat)) {
+                coordinates.push([lng, lat]);
             }
 
-            const parts = chunk.split(',');
-            const lng = Number(parts[0]);
-            const lat = Number(parts[1]);
-
-            if (!Number.isFinite(lng) || !Number.isFinite(lat)) {
-                return;
-            }
-
-            coordinates.push([lng, lat]);
-        });
+            match = coordinatePattern.exec(source);
+        }
 
         return closeRing(coordinates);
     }
@@ -543,6 +541,7 @@
             });
 
             dropzone.classList.toggle('has-file', Boolean(options.active));
+            dropzone.classList.toggle('is-invalid', Boolean(options.error));
             clearButton.hidden = !options.active;
         }
 
@@ -555,7 +554,8 @@
                     active: true,
                     title: 'KML atual mantido',
                     details: config.currentKmlName,
-                    pills: config.currentKmlPills || []
+                    pills: config.currentKmlPills || [],
+                    error: false
                 });
                 return;
             }
@@ -564,7 +564,23 @@
                 active: false,
                 title: 'KML opcional',
                 details: 'Arraste ou selecione um arquivo KML para carregar a área automaticamente.',
-                pills: []
+                pills: [],
+                error: false
+            });
+        }
+
+        function showKmlError(message) {
+            clearInputFile(input);
+            mapState.restoreInitialGeojson();
+
+            renderStatus({
+                active: false,
+                title: 'KML nao aceito',
+                details: String(message || 'Nao foi possivel processar o arquivo KML.'),
+                pills: config.currentKmlName
+                    ? ['KML atual mantido no alerta.']
+                    : ['Revise o arquivo e tente novamente.'],
+                error: true
             });
         }
 
@@ -575,14 +591,14 @@
             }
 
             if (file.size > KML_MAX_BYTES) {
-                window.alert('O arquivo KML excede o limite permitido de 10 MB.');
+                showKmlError('O arquivo KML excede o limite permitido de 10 MB.');
                 return;
             }
 
             parseKml(file)
                 .then(function (geojson) {
                     if (!setInputFile(input, file)) {
-                        window.alert('Não foi possível anexar o KML arrastado neste navegador. Use o seletor de arquivo.');
+                        showKmlError('Nao foi possivel anexar o KML neste navegador. Use o seletor de arquivo.');
                         return;
                     }
 
@@ -604,13 +620,12 @@
                             geojson.features.length + ' geometrias de área',
                             polygonCount + ' polígonos',
                             multiPolygonCount + ' multipolígonos'
-                        ]
+                        ],
+                        error: false
                     });
                 })
                 .catch(function (error) {
-                    clearInputFile(input);
-                    restoreInitialState();
-                    window.alert(error.message);
+                    showKmlError(error && error.message ? error.message : 'Nao foi possivel processar o arquivo KML.');
                 });
         }
 

@@ -8,6 +8,7 @@ $eventos = AlertaFormHelper::eventos();
 $niveis = AlertaFormHelper::niveis();
 $fontes = AlertaFormHelper::fontes();
 $usuario = $_SESSION['usuario'] ?? [];
+$erroFormulario = trim((string) ($_GET['erro'] ?? ''));
 $cssCadastroPath = __DIR__ . '/../../assets/css/pages/alertas-cadastrar.css';
 $cssCadastroVersion = (string) ((int) @filemtime($cssCadastroPath));
 ?>
@@ -128,6 +129,13 @@ include __DIR__ . '/../_breadcrumb.php';
             </div>
         </aside>
     </div>
+
+    <?php if ($erroFormulario !== ''): ?>
+        <div class="alerta-callout alerta-form-callout-error">
+            <strong>Nao foi possivel salvar o alerta</strong>
+            <?= htmlspecialchars($erroFormulario, ENT_QUOTES, 'UTF-8') ?>
+        </div>
+    <?php endif; ?>
 
     <form id="alertaForm" class="alerta-form-panel usuarios-control-panel alerta-cadastro-form-panel" method="post" action="salvar.php" enctype="multipart/form-data">
         <?= Csrf::inputField() ?>

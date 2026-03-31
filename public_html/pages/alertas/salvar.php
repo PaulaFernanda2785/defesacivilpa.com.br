@@ -15,6 +15,15 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $db = Database::getConnection();
 
+function redirectWithFormError(string $path, string $message, array $extraParams = []): void
+{
+    $params = array_merge($extraParams, ['erro' => $message]);
+    $query = http_build_query($params);
+    $location = $path . ($query !== '' ? '?' . $query : '');
+    header('Location: ' . $location);
+    exit;
+}
+
 try {
     $db->beginTransaction();
 
@@ -179,8 +188,7 @@ try {
         $db->rollBack();
     }
 
-    http_response_code(422);
-    die($e->getMessage());
+    redirectWithFormError('cadastrar.php', $e->getMessage());
 
 } catch (Throwable $e) {
 
@@ -189,6 +197,5 @@ try {
     }
 
     error_log('[SALVAR_ALERTA] ' . $e->getMessage());
-    http_response_code(500);
-    die('Erro interno ao salvar alerta.');
+    redirectWithFormError('cadastrar.php', 'Erro interno ao salvar alerta. Tente novamente.');
 }

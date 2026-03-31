@@ -55,6 +55,7 @@ $kmlAtualNome = !empty($alerta['kml_arquivo']) ? basename((string) $alerta['kml_
 $imagemAtualNome = !empty($alerta['informacoes']) ? basename((string) $alerta['informacoes']) : '';
 $areaOrigemAtual = strtoupper((string) ($alerta['area_origem'] ?? '')) === 'KML' ? 'KML' : 'DESENHO';
 $kmlAtualVisivel = $areaOrigemAtual === 'KML' ? $kmlAtualNome : '';
+$erroFormulario = trim((string) ($_GET['erro'] ?? ''));
 $cssEditarPath = __DIR__ . '/../../assets/css/pages/alertas-editar.css';
 $cssEditarVersion = (string) ((int) @filemtime($cssEditarPath));
 ?>
@@ -182,6 +183,13 @@ include __DIR__ . '/../_breadcrumb.php';
         <div class="alerta-callout alerta-edicao-status-callout">
             <strong>Alerta ativo</strong>
             Este alerta permanece ativo. Para encerrar ou cancelar, utilize os controles próprios da listagem de alertas.
+        </div>
+    <?php endif; ?>
+
+    <?php if ($erroFormulario !== ''): ?>
+        <div class="alerta-callout alerta-form-callout-error">
+            <strong>Nao foi possivel atualizar o alerta</strong>
+            <?= htmlspecialchars($erroFormulario, ENT_QUOTES, 'UTF-8') ?>
         </div>
     <?php endif; ?>
 
