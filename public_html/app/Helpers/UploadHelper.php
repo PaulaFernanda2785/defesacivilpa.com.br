@@ -88,8 +88,17 @@ class UploadHelper
 
         $rootName = strtolower((string) ($document->documentElement->localName ?: $document->documentElement->nodeName));
 
-        if ($rootName !== 'kml') {
+        if (!in_array($rootName, ['kml', 'document'], true)) {
             throw new RuntimeException('O arquivo enviado nao contem um KML valido.');
+        }
+
+        $polygonCount = max(
+            $document->getElementsByTagNameNS('*', 'Polygon')->length,
+            $document->getElementsByTagName('Polygon')->length
+        );
+
+        if ($polygonCount < 1) {
+            throw new RuntimeException('O KML precisa conter pelo menos uma geometria de area.');
         }
 
         $doctype = $document->doctype;

@@ -290,7 +290,10 @@ include __DIR__ . '/../_breadcrumb.php';
                     <div class="kml-status-card">
                         <div class="kml-status-row">
                             <strong class="kml-status-title" id="kmlTitle">KML opcional</strong>
-                            <button type="button" class="btn btn-secondary" id="kmlClear" hidden>Remover KML</button>
+                            <div class="upload-actions">
+                                <button type="button" class="btn btn-secondary" id="kmlBrowse">Selecionar KML</button>
+                                <button type="button" class="btn btn-secondary" id="kmlClear" hidden>Remover KML</button>
+                            </div>
                         </div>
                         <div class="kml-status-text" id="kmlDetails">Arraste ou selecione um arquivo KML para carregar a área automaticamente.</div>
                         <div class="kml-status-list" id="kmlPills"></div>

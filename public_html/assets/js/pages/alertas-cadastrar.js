@@ -25,6 +25,7 @@
         kmlDetailsId: 'kmlDetails',
         kmlPillsId: 'kmlPills',
         kmlClearButtonId: 'kmlClear',
+        kmlBrowseButtonId: 'kmlBrowse',
         currentKmlName: '',
         initialGeojson: null,
         initialAreaOrigem: 'DESENHO',

@@ -382,7 +382,10 @@ include __DIR__ . '/../_breadcrumb.php';
                     <div class="kml-status-card">
                         <div class="kml-status-row">
                             <strong class="kml-status-title" id="kmlTitle">KML atual</strong>
-                            <button type="button" class="btn btn-secondary" id="kmlClear" hidden>Remover novo KML</button>
+                            <div class="upload-actions">
+                                <button type="button" class="btn btn-secondary" id="kmlBrowse">Substituir KML</button>
+                                <button type="button" class="btn btn-secondary" id="kmlClear" hidden>Remover KML</button>
+                            </div>
                         </div>
                         <div class="kml-status-text" id="kmlDetails"><?= htmlspecialchars($kmlAtualVisivel !== '' ? $kmlAtualVisivel : 'Nenhum KML vinculado ao alerta.') ?></div>
                         <div class="kml-status-list" id="kmlPills"></div>

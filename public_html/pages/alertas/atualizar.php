@@ -34,6 +34,40 @@ function redirectToEditarWithError(int $id, string $message): void
     redirectWithFormError('listar.php', $message);
 }
 
+function shouldDeleteKmlFile(PDO $db, string $kmlArquivo, int $alertaId): bool
+{
+    $kmlArquivo = trim($kmlArquivo);
+
+    if ($kmlArquivo === '') {
+        return false;
+    }
+
+    $stmt = $db->prepare('
+        SELECT COUNT(*)
+        FROM alertas
+        WHERE kml_arquivo = ?
+          AND id <> ?
+    ');
+    $stmt->execute([$kmlArquivo, $alertaId]);
+
+    return (int) $stmt->fetchColumn() === 0;
+}
+
+function removeKmlFileIfUnused(PDO $db, ?string $kmlArquivo, int $alertaId): void
+{
+    $kmlArquivo = trim((string) $kmlArquivo);
+
+    if ($kmlArquivo === '' || !shouldDeleteKmlFile($db, $kmlArquivo, $alertaId)) {
+        return;
+    }
+
+    $kmlPath = __DIR__ . '/../../' . ltrim($kmlArquivo, '/');
+
+    if (is_file($kmlPath)) {
+        unlink($kmlPath);
+    }
+}
+
 try {
     if ($id <= 0) {
         redirectWithFormError('listar.php', 'ID invalido para edicao do alerta.');
@@ -82,25 +116,14 @@ try {
         $novoKmlArquivo = '/uploads/kml/' . $novoNome;
 
         if (!empty($kmlArquivo) && $kmlArquivo !== $novoKmlArquivo) {
-            $kmlAntigo = __DIR__ . '/../../' . ltrim($kmlArquivo, '/');
-
-            if (is_file($kmlAntigo)) {
-                unlink($kmlAntigo);
-            }
+            removeKmlFileIfUnused($db, $kmlArquivo, $id);
         }
 
         $kmlArquivo = $novoKmlArquivo;
     }
 
     if ($areaOrigem !== 'KML') {
-        if (!empty($kmlArquivo)) {
-            $kmlAntigo = __DIR__ . '/../../' . ltrim($kmlArquivo, '/');
-
-            if (is_file($kmlAntigo)) {
-                unlink($kmlAntigo);
-            }
-        }
-
+        removeKmlFileIfUnused($db, $kmlArquivo, $id);
         $kmlArquivo = null;
     }
 

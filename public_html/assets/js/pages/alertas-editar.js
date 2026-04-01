@@ -36,6 +36,7 @@
         kmlDetailsId: 'kmlDetails',
         kmlPillsId: 'kmlPills',
         kmlClearButtonId: 'kmlClear',
+        kmlBrowseButtonId: 'kmlBrowse',
         currentKmlName: pageData.currentKmlName || '',
         initialGeojson: pageData.initialGeojson || null,
         initialAreaOrigem: pageData.initialAreaOrigem || 'DESENHO',

@@ -69,19 +69,37 @@
         return String(path || '').split('/').pop() || '';
     }
 
-    function setInputFile(input, file) {
-        if (!input) {
+    function inputHasFile(input, file) {
+        if (!input || !file || !input.files || !input.files.length) {
             return false;
+        }
+
+        const selectedFile = input.files[0];
+
+        return Boolean(selectedFile)
+            && selectedFile.name === file.name
+            && selectedFile.size === file.size
+            && selectedFile.type === file.type;
+    }
+
+    function setInputFile(input, file) {
+        if (!input || !file) {
+            return false;
+        }
+
+        if (inputHasFile(input, file)) {
+            return true;
         }
 
         try {
             const transfer = new DataTransfer();
             transfer.items.add(file);
             input.files = transfer.files;
-            return true;
         } catch (error) {
-            return false;
+            // Some browsers do not allow DataTransfer in this context.
         }
+
+        return inputHasFile(input, file);
     }
 
     function clearInputFile(input) {
@@ -523,6 +541,15 @@
         const details = document.getElementById(config.detailsId);
         const pills = document.getElementById(config.pillsId);
         const clearButton = document.getElementById(config.clearButtonId);
+        const browseButton = config.browseButtonId
+            ? document.getElementById(config.browseButtonId)
+            : null;
+        let currentKmlName = String(config.currentKmlName || '');
+        let currentKmlPills = Array.isArray(config.currentKmlPills)
+            ? config.currentKmlPills.slice()
+            : [];
+        let hasPendingSelection = false;
+        let restoreWithoutCurrentUsesInitial = true;
 
         if (!dropzone || !input || !title || !details || !pills || !clearButton) {
             return;
@@ -542,28 +569,54 @@
 
             dropzone.classList.toggle('has-file', Boolean(options.active));
             dropzone.classList.toggle('is-invalid', Boolean(options.error));
-            clearButton.hidden = !options.active;
+            if (hasPendingSelection) {
+                clearButton.hidden = false;
+                clearButton.textContent = currentKmlName !== ''
+                    ? 'Descartar substituicao'
+                    : 'Remover KML';
+            } else if (currentKmlName !== '') {
+                clearButton.hidden = false;
+                clearButton.textContent = 'Remover KML atual';
+            } else {
+                clearButton.hidden = true;
+            }
+
+            if (browseButton) {
+                browseButton.textContent = currentKmlName !== '' || hasPendingSelection
+                    ? 'Substituir KML'
+                    : 'Selecionar KML';
+            }
         }
 
-        function restoreInitialState() {
+        function restoreBaselineState() {
             clearInputFile(input);
-            mapState.restoreInitialGeojson();
+            hasPendingSelection = false;
 
-            if (config.currentKmlName) {
+            if (currentKmlName !== '') {
+                mapState.restoreInitialGeojson();
+
                 renderStatus({
                     active: true,
-                    title: 'KML atual mantido',
-                    details: config.currentKmlName,
-                    pills: config.currentKmlPills || [],
+                    title: 'KML atual vinculado',
+                    details: currentKmlName,
+                    pills: currentKmlPills,
                     error: false
                 });
                 return;
             }
 
+            if (restoreWithoutCurrentUsesInitial) {
+                mapState.restoreInitialGeojson();
+            }
+
+            if (typeof mapState.setAreaOrigem === 'function') {
+                mapState.setAreaOrigem('DESENHO');
+            }
+
             renderStatus({
                 active: false,
                 title: 'KML opcional',
-                details: 'Arraste ou selecione um arquivo KML para carregar a área automaticamente.',
+                details: 'Arraste ou selecione um arquivo KML para carregar a area automaticamente.',
                 pills: [],
                 error: false
             });
@@ -571,14 +624,14 @@
 
         function showKmlError(message) {
             clearInputFile(input);
-            mapState.restoreInitialGeojson();
+            hasPendingSelection = false;
 
             renderStatus({
-                active: false,
-                title: 'KML nao aceito',
+                active: currentKmlName !== '',
+                title: 'KML invalido',
                 details: String(message || 'Nao foi possivel processar o arquivo KML.'),
-                pills: config.currentKmlName
-                    ? ['KML atual mantido no alerta.']
+                pills: currentKmlName !== ''
+                    ? ['KML atual permanece no alerta.']
                     : ['Revise o arquivo e tente novamente.'],
                 error: true
             });
@@ -586,7 +639,7 @@
 
         function applyKmlFile(file) {
             if (!file) {
-                restoreInitialState();
+                restoreBaselineState();
                 return;
             }
 
@@ -603,6 +656,7 @@
                     }
 
                     mapState.loadGeojson(geojson, 'KML');
+                    hasPendingSelection = true;
 
                     const polygonCount = geojson.features.filter(function (feature) {
                         return feature.geometry.type === 'Polygon';
@@ -614,12 +668,12 @@
 
                     renderStatus({
                         active: true,
-                        title: 'KML carregado no mapa',
+                        title: 'KML valido no mapa',
                         details: file.name + ' - ' + formatBytes(file.size),
                         pills: [
-                            geojson.features.length + ' geometrias de área',
-                            polygonCount + ' polígonos',
-                            multiPolygonCount + ' multipolígonos'
+                            geojson.features.length + ' geometrias de area',
+                            polygonCount + ' poligonos',
+                            multiPolygonCount + ' multipoligonos'
                         ],
                         error: false
                     });
@@ -633,15 +687,19 @@
             applyKmlFile(input.files && input.files[0] ? input.files[0] : null);
         });
 
-        dropzone.addEventListener('click', function () {
+        function openPicker() {
             input.click();
             dropzone.focus();
+        }
+
+        dropzone.addEventListener('click', function () {
+            openPicker();
         });
 
         dropzone.addEventListener('keydown', function (event) {
             if (event.key === 'Enter' || event.key === ' ') {
                 event.preventDefault();
-                input.click();
+                openPicker();
             }
         });
 
@@ -665,10 +723,42 @@
         });
 
         clearButton.addEventListener('click', function () {
-            restoreInitialState();
+            if (hasPendingSelection) {
+                restoreBaselineState();
+                return;
+            }
+
+            if (currentKmlName === '') {
+                restoreBaselineState();
+                return;
+            }
+
+            currentKmlName = '';
+            currentKmlPills = [];
+            hasPendingSelection = false;
+            restoreWithoutCurrentUsesInitial = false;
+            clearInputFile(input);
+
+            if (typeof mapState.setAreaOrigem === 'function') {
+                mapState.setAreaOrigem('DESENHO');
+            }
+
+            renderStatus({
+                active: false,
+                title: 'KML removido',
+                details: 'O alerta sera salvo sem arquivo KML. A area atual permanece no mapa como desenho/manual.',
+                pills: ['Salve as alteracoes para concluir a remocao.'],
+                error: false
+            });
         });
 
-        restoreInitialState();
+        if (browseButton) {
+            browseButton.addEventListener('click', function () {
+                openPicker();
+            });
+        }
+
+        restoreBaselineState();
     }
 
     function initMap(config) {
@@ -790,7 +880,8 @@
 
         return {
             loadGeojson: loadGeojson,
-            restoreInitialGeojson: restoreInitialGeojson
+            restoreInitialGeojson: restoreInitialGeojson,
+            setAreaOrigem: setAreaOrigem
         };
     }
 
@@ -850,6 +941,7 @@
                 detailsId: config.kmlDetailsId,
                 pillsId: config.kmlPillsId,
                 clearButtonId: config.kmlClearButtonId,
+                browseButtonId: config.kmlBrowseButtonId,
                 currentKmlName: config.currentKmlName || '',
                 currentKmlPills: config.currentKmlName ? ['KML atual preservado'] : []
             }, mapState);
